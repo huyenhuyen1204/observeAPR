@@ -1,0 +1,8 @@
+@@ -46,7 +46,6 @@
+  *
+  */
+ @RunWith( JUnit4TestRunner.class )
+-@ExamReactorStrategy( AllConfinedStagedReactorFactory.class )
+ public class ShutdownTimeoutTestWrapped
+ {
+     @Inject

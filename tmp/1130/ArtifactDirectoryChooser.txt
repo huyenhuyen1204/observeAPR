@@ -1,0 +1,9 @@
+@@ -75,7 +75,7 @@
+     }
+ 
+     public File temporaryConsoleFile(LocatableEntity locatableEntity) {
+-        return new File("work/local", format("%s.log", DigestUtils.md5Hex(locatableEntity.entityLocator())));
++        return new File("data/console", format("%s.log", DigestUtils.md5Hex(locatableEntity.entityLocator())));
+     }
+ 
+ }

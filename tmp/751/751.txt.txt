@@ -1,0 +1,9 @@
+@@ -563,7 +563,7 @@
+           start = dp.startOffset();
+           end = dp.endOffset();
+         }
+-        if (start >= current.endOffset) {
++if (start >= current.endOffset || end > contentLength) {
+           pq.offer(off);
+           break;
+         }

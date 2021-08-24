@@ -1,0 +1,9 @@
+@@ -92,7 +92,7 @@
+         throw this.flash().redirect(
+             this.uriInfo().getBaseUriBuilder()
+                 .clone()
+-                .path(StandRs.class)
++                .path(AclRs.class)
+                 .build(name),
+             String.format("Stand `%s` successfully created", name),
+             Level.INFO

@@ -1,0 +1,9 @@
+@@ -51,7 +51,7 @@
+ 
+     public String toString()
+     {
+-        return "Token(" + token + ")";
++return token.toString();
+     }
+ 
+     public boolean equals(Object obj)

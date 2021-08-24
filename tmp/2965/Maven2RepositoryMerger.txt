@@ -1,0 +1,9 @@
+@@ -261,7 +261,7 @@
+                 if ( !projectMetadataFileInTargetRepo.exists() )
+                 {
+ 
+-                    copyFile( projectMetadataFileInSourceRepo, projectMetadataFileInSourceRepo );
++                    copyFile( projectMetadataFileInSourceRepo, projectMetadataFileInTargetRepo );
+                 }
+                 else
+                 {

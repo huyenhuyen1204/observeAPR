@@ -1,0 +1,8 @@
+@@ -38,6 +38,6 @@
+ 
+   @Override
+   public byte[] convert(ValueMetaInterface meta, BytesWritable obj) throws TypeConversionException {
+-    return obj.getBytes();
++    return obj.getBytes().clone();
+   }
+ }

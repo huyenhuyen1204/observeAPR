@@ -1,0 +1,9 @@
+@@ -507,7 +507,7 @@
+                                     new BytesRef(t.text()),
+                                     MultiFields.getLiveDocs(reader),
+                                     null,
+-                                    0);
++false);
+ 
+     int count = 0;
+     while(tdocs.nextDoc() != DocIdSetIterator.NO_MORE_DOCS) {

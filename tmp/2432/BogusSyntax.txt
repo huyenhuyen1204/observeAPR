@@ -1,0 +1,9 @@
+@@ -42,7 +42,7 @@
+         setObsolete( false );
+         addName( "bogus" );
+         setDescription( "bogus" );
+-        setSchemaName( "bogus" );
++        setSchemaName( "other" );
+     }
+ 
+ 

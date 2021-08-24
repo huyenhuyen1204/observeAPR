@@ -1,0 +1,9 @@
+@@ -173,7 +173,7 @@
+             }
+         }
+ 
+-        if( m_taxonset.get() == null && labels != null ) {
++        if( m_taxonset.get() == null && labels != null && isLabelledNewickInput.get() ) {
+             m_taxonset.setValue(new TaxonSet(TaxonSet.createTaxonList(labels)), this);
+         }
+ 

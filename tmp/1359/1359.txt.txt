@@ -1,0 +1,9 @@
+@@ -510,7 +510,7 @@
+ 		newStatement.setQueryTimeout(oldStatement.getQueryTimeout());
+ 	}
+ 
+-	protected Statement getStatement() throws SQLException {
++public Statement getStatement() throws SQLException {
+ 		return control.getRealStatement();
+ 	}
+ 	protected final ResultSet wrapResultSet(ResultSet rs) {

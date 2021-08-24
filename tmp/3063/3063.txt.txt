@@ -1,0 +1,9 @@
+@@ -85,7 +85,7 @@
+       }
+       // Only one .fdt and one .fdx files must have been found
+       assertEquals(2, counter);
+-      iw.close();
++iw.shutdown();
+       dir.close();
+     }
+   }

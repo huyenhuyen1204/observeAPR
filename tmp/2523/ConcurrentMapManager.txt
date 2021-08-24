@@ -1,0 +1,8 @@
+@@ -1825,7 +1825,6 @@
+ 
+         @Override
+         public void doOp() {
+-//            CounterService.userCounter.add(System.nanoTime() - request.lastTime);
+             target = null;
+             super.doOp();
+         }

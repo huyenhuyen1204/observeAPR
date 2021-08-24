@@ -1,0 +1,9 @@
+@@ -90,7 +90,7 @@
+ 		int	operandType;
+ 		TypeId opTypeId;
+ 
+-		super.bindExpression(fromList, subqueryList,
++bindOperand(fromList, subqueryList,
+ 				aggregateVector);
+ 
+ 		opTypeId = operand.getTypeId();

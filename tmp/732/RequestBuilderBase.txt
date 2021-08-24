@@ -1,0 +1,9 @@
+@@ -170,7 +170,7 @@
+             AsyncHttpProviderUtils.validateSupportedScheme(originalUri);
+ 
+             StringBuilder builder = new StringBuilder();
+-            builder.append(originalUri.getScheme()).append("://").append(originalUri.getAuthority());
++            builder.append(originalUri.getScheme()).append("://").append(originalUri.getRawAuthority());
+             if (isNonEmpty(originalUri.getRawPath())) {
+                 builder.append(originalUri.getRawPath());
+             } else {

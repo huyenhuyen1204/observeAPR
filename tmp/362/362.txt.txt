@@ -1,0 +1,9 @@
+@@ -96,7 +96,7 @@
+             }
+             catch (Exception e)
+             {
+-                throw new RuntimeException(e);
++logger_.error("Gossip error", e);
+             }
+         }
+     }

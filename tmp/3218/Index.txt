@@ -1,0 +1,8 @@
+@@ -66,6 +66,6 @@
+ 
+ 	@Override
+ 	public String toString() {
+-		return type + " " + PlainSelect.getStringList(columnsNames, true, true) + (name != null ? " " + name : "");
++		return type + (name != null ? " " + name : "") + " " + PlainSelect.getStringList(columnsNames, true, true);
+ 	}
+ }

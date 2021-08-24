@@ -1,0 +1,8 @@
+@@ -173,6 +173,7 @@
+ 				}
+ 			}
+ 		}
++		MemoryWarningSystem.removeListener(this);
+ 	}
+ 
+ 	protected void onFinished() {

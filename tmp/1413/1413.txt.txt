@@ -1,0 +1,9 @@
+@@ -50,7 +50,7 @@
+ 
+   @Test
+   public void testProcessOutput() throws Exception {
+-    Configuration conf = new Configuration();
++Configuration conf = getConfiguration();
+     conf.setInt("mapred.map.tasks", NUM_MAPS);
+ 
+     Random rng = RandomUtils.getRandom();

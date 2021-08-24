@@ -1,0 +1,8 @@
+@@ -173,7 +173,6 @@
+             }
+         }
+         catch(Exception e) {
+-            throw new RuntimeException("Native library delete failed: " + e.getMessage());
+         }
+         return false;
+     }

@@ -1,0 +1,9 @@
+@@ -10,7 +10,7 @@
+ import org.hive2hive.core.H2HConstants;
+ 
+ /**
+- * An ASN.1 encoder and decoder for the signature.
++ * A RSA encoder and decoder for the signature.
+  * 
+  * @author Thomas, Seppi
+  */

@@ -1,0 +1,9 @@
+@@ -86,7 +86,7 @@
+   @After
+   public void tearDown() throws Exception {
+     originalIndex.close();
+-    indexWriter.close();
++indexWriter.shutdown();
+     dir.close();
+     super.tearDown();
+   }

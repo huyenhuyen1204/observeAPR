@@ -1,0 +1,8 @@
+@@ -17,7 +17,6 @@
+ 
+         newContext = cleanChapter(value);
+         newContext = cleanSection(newContext);
+-        //System.out.println(newContext);
+         return newContext;
+     }
+ 

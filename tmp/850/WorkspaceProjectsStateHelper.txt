@@ -1,0 +1,9 @@
+@@ -93,7 +93,7 @@
+ 	}
+ 	
+ 	protected boolean isAccessibleXtextProject(IProject p) {
+-		return p != null && XtextProjectHelper.hasNature(p) && XtextProjectHelper.hasNature(p);
++		return p != null && XtextProjectHelper.hasNature(p);
+ 	}
+ 	
+ 	protected IWorkspaceRoot getWorkspaceRoot() {

@@ -1,0 +1,9 @@
+@@ -82,7 +82,7 @@
+ 
+ 
+ 	/**
+-		Committed Drop state of the container.  If a post comit action
++Committed Drop state of the container.  If a post commit action
+ 		determined that the drop container operation is committed, the whole
+ 		container may be removed and space reclaimed.
+ 

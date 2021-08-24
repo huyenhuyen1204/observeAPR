@@ -1,0 +1,6 @@
+@@ -4,5 +4,4 @@
+ 
+ public interface WebTransStyles extends CssResource
+ {
+-   String banner();
+ }

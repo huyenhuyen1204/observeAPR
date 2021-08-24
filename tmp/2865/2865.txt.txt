@@ -1,0 +1,9 @@
+@@ -116,7 +116,7 @@
+             ExecutorService executor = agentContext.getRegistrationExecutor();
+             executor.submit(new Runnable() {
+                 public void run() {
+-                    agentContext.unregisterMBean(getName());
++agentContext.unregisterMBean(AbstractCompendiumHandler.this);
+                 }
+             });
+             trackedId = null;

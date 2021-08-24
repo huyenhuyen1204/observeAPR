@@ -1,0 +1,9 @@
+@@ -39,7 +39,7 @@
+   @Before
+   public void setUp() throws Exception {
+     super.setUp();
+-    conf = new Configuration();
++conf = getConfiguration();
+   }
+ 
+   @Test

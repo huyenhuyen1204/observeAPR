@@ -1,0 +1,8 @@
+@@ -55,6 +55,7 @@
+     public void handle(TraceStart traceStart) {
+         traceCount++;
+         expectedNumberOfFrames = traceStart.getNumberOfFrames();
++        reversalStack.clear();
+         currentThread = traceStart.getThreadId();
+         currentTreeNode = null;
+     }

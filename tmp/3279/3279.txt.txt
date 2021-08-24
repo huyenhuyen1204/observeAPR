@@ -1,0 +1,9 @@
+@@ -196,7 +196,7 @@
+     return res;
+   }
+ 
+-  protected boolean requiresDocScores() {
++public boolean requiresDocScores() {
+     return getAggregator().requiresDocScores();
+   }
+ }

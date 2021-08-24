@@ -1,0 +1,9 @@
+@@ -295,7 +295,7 @@
+ 
+     @Override
+     public BytesRef getByOrd(int ord, BytesRef bytesRef) {
+-      bytesRef.copy(missingValue);
++bytesRef.copyBytes(missingValue);
+       return bytesRef;
+     }
+ 

@@ -1,0 +1,8 @@
+@@ -455,7 +455,6 @@
+     public synchronized String generateApiKey(Profile profile) {
+         String newApiKey = generateApiKey();
+         profile.setApiKey(newApiKey);
+-
+         return newApiKey;
+     }
+ 

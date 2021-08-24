@@ -1,0 +1,8 @@
+@@ -52,6 +52,7 @@
+         HtmlInput input = getInput(page);
+         page = (HtmlPage) input.setValueAttribute(value);
+         page = submit(page);
++        System.out.println(page.asXml());
+         checkMessage(page, "uiMessage", matcher);
+         return page;
+     }

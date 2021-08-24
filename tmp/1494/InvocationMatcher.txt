@@ -1,0 +1,9 @@
+@@ -52,7 +52,7 @@
+     public boolean matches(Invocation actual) {
+         return invocation.getMock().equals(actual.getMock())
+                 && hasSameMethod(actual)
+-                && (argumentsMatch(actual.getArguments()) || argumentsMatch(actual.getRawArguments()));
++                && (argumentsMatch(actual.getArguments()));
+     }
+ 
+     private boolean argumentsMatch(Object[] actualArgs) {

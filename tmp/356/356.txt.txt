@@ -1,0 +1,9 @@
+@@ -207,7 +207,7 @@
+       }
+     }
+     
+-    public int size() throws IOException {
++public int size() {
+       return delegateFieldsProducer.size();
+     }
+     

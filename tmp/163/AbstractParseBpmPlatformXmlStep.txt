@@ -1,0 +1,9 @@
+@@ -145,7 +145,7 @@
+   }
+ 
+   protected URL lookupBpmPlatformXmlLocationFromJndi() {
+-    String jndi = "java:/comp/env/" + BPM_PLATFORM_XML_LOCATION;
++    String jndi = "java:comp/env/" + BPM_PLATFORM_XML_LOCATION;
+ 
+     try {
+       String bpmPlatformXmlLocation = InitialContext.doLookup(jndi);

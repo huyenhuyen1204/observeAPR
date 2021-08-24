@@ -1,0 +1,9 @@
+@@ -294,7 +294,7 @@
+       bytes = new byte[length];
+       in.read(bytes, 0, length);
+     } else {
+-      bytes = null;
++bytes = EMPTY_BYTES;
+     }
+   }
+ }

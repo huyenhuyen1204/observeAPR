@@ -1,0 +1,8 @@
+@@ -138,6 +138,7 @@
+             } catch (InterruptedException e) {
+             }
+         }
++        notifyAll();
+         return list.removeFirst();
+     }
+ 

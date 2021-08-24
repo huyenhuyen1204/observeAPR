@@ -1,0 +1,9 @@
+@@ -80,7 +80,7 @@
+                                           repositoryCategoryService );
+     }
+ 
+-    protected RulesRepository getRulesRepository() {
++    private RulesRepository getRulesRepository() {
+         if ( repository == null ) {
+             repository = new RulesRepository( TestEnvironmentSessionHelper.getSession( true ) );
+         }

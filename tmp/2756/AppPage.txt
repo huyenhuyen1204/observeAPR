@@ -1,0 +1,9 @@
+@@ -682,7 +682,7 @@
+      * The header row will be ignored
+      */
+     public void verifyTablePattern(int column, String patternString){
+-        verifyTablePattern(1, column, patternString);
++        verifyTablePattern(0, column, patternString);
+     }
+     
+     /**

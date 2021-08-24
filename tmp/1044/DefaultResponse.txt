@@ -1,0 +1,8 @@
+@@ -133,6 +133,7 @@
+ 
+         if (StringUtils.isNotEmpty(content)) {
+             httpString.appendNewLine();
++            httpString.appendNewLine();
+             httpString.append(StringUtils.abbreviate(content, Response.MAX_BODY_DISPLAY_LENGTH));
+         }
+ 

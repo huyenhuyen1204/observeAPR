@@ -1,0 +1,9 @@
+@@ -201,7 +201,7 @@
+       seekOpt = true;
+     }
+ 
+-    lastSeekScratch.copy(term);
++lastSeekScratch.copyBytes(term);
+     lastSeek = lastSeekScratch;
+ 
+     for(int i=0;i<numSubs;i++) {

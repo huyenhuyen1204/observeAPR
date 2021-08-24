@@ -1,0 +1,8 @@
+@@ -587,6 +587,7 @@
+ 
+   @Override
+   public void close(QueryHandle handle) throws ExploreException, HandleNotFoundException {
++    inactiveHandleCache.invalidate(handle);
+     activeHandleCache.invalidate(handle);
+   }
+ 

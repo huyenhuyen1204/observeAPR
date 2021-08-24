@@ -1,0 +1,8 @@
+@@ -149,6 +149,7 @@
+             else
+                 suite.addTest(LDAPAuthenticationTest.suite());
+             suite.addTest(InvalidLDAPServerAuthenticationTest.suite());
++            suite.addTest(XAJNDITest.suite());
+         }
+ 
+         return suite;

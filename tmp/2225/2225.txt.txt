@@ -1,0 +1,9 @@
+@@ -430,7 +430,7 @@
+     if(zkController != null) {
+       try {
+         synchronized (zkController.getZkStateReader().getUpdateLock()) {
+-          zkController.addShardZkNodeWatches();
++zkController.getZkStateReader().addShardZkNodeWatches();
+           zkController.getZkStateReader().updateCloudState(true);
+         }
+       } catch (InterruptedException e) {

@@ -1,0 +1,9 @@
+@@ -33,7 +33,7 @@
+   private static final Pattern WORD = Pattern.compile("\\b\\p{L}*'?\\p{L}*");
+ 
+   @NonNls
+-  private static final Pattern WORD_EXT = Pattern.compile("(\\p{L}*?)[_$\\[\\]]");
++  private static final Pattern WORD_EXT = Pattern.compile("(\\p{L}*?)[-_$\\[\\]]");
+ 
+   @NonNls
+   private static final Pattern WORD_BRACES = Pattern.compile("(['\"]+?)(.*?)(['\"]+?)");

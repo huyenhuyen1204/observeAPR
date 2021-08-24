@@ -1,0 +1,8 @@
+@@ -662,6 +662,7 @@
+                 "Project 'spring-aspects' is an AspectJ project"
+                 );
+     
++       buildProjects();
+         
+         //check that the refresh preferences got setup properly (only checking one property).
+         //the one that has a non-default value.

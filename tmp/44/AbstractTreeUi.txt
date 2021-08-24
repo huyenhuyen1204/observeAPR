@@ -1,0 +1,9 @@
+@@ -3670,6 +3670,8 @@
+ 
+       if (myRequestedExpand != null && !myRequestedExpand.equals(path)) return;
+ 
++      //myRequestedExpand = null;
++
+       final DefaultMutableTreeNode node = (DefaultMutableTreeNode)path.getLastPathComponent();
+ 
+       if (!myUnbuiltNodes.contains(node)) {

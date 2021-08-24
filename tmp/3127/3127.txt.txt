@@ -1,0 +1,9 @@
+@@ -63,7 +63,7 @@
+     writer.addDocument(createDocument("Document 5", 1192209943000L));
+ 
+     reader = writer.getReader();
+-    writer.close();
++writer.shutdown();
+   }
+ 
+   @Override

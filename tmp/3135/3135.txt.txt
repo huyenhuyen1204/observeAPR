@@ -1,0 +1,9 @@
+@@ -390,7 +390,7 @@
+       thread.join();
+     }
+ 
+-    writer.close();
++writer.shutdown();
+     if (VERBOSE) {
+       System.out.println("TEST: close reader=" + reader);
+     }

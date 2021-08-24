@@ -1,0 +1,9 @@
+@@ -189,7 +189,7 @@
+             protected void afterExecute(Runnable r, Throwable t)
+             {
+                 super.afterExecute(r, t);
+-                cassandraServer.logout();
++cassandraServer.clientState.logout();
+             }
+         };
+         serverEngine = new CustomTThreadPoolServer(new TProcessorFactory(processor),

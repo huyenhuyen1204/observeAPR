@@ -1,0 +1,9 @@
+@@ -468,7 +468,7 @@
+      * @return
+      */
+     public boolean isFull() {
+-        return isSlave() || dispatched.size() - prefetchExtension >= info.getPrefetchSize();
++        return dispatched.size() - prefetchExtension >= info.getPrefetchSize();
+     }
+ 
+     /**

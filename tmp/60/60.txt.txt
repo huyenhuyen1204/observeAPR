@@ -1,0 +1,9 @@
+@@ -59,7 +59,7 @@
+   }
+ 
+   public static String docValuesId(String segmentsName, int fieldId) {
+-    return segmentsName + "-" + fieldId;
++return segmentsName + "_" + fieldId;
+   }
+   
+   

@@ -1,0 +1,9 @@
+@@ -45,7 +45,7 @@
+     {
+         // clean up commitlog
+         String[] directoryNames = {
+-                DatabaseDescriptor.getLogFileLocation(),
++DatabaseDescriptor.getCommitLogLocation(),
+         };
+         for (String dirName : directoryNames)
+         {

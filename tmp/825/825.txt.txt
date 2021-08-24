@@ -1,0 +1,9 @@
+@@ -796,7 +796,7 @@
+                 iterators.add(iter);
+             }
+ 
+-            Comparator<IColumn> comparator = filter.getColumnComparator(getComparator());
++Comparator<IColumn> comparator = QueryFilter.getColumnComparator(getComparator());
+             Iterator collated = IteratorUtils.collatedIterator(comparator, iterators);
+             if (!collated.hasNext())
+                 return null;

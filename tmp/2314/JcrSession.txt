@@ -1,0 +1,7 @@
+@@ -1952,5 +1952,5 @@
+         private void signalSaveOfSystemChanges() {
+             cache().checkForTransaction();
+         }
+-    };
++    }
+ }

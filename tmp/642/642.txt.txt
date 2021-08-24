@@ -1,0 +1,9 @@
+@@ -27,7 +27,7 @@
+ 
+ 
+ /**
+-  Class to hold a cloudscape Product version.
++Class to hold a Derby Product version.
+ 
+   This class includes the following product version features.
+ 

@@ -1,0 +1,8 @@
+@@ -296,6 +296,6 @@
+ 
+     public boolean isExpired()
+     {
+-        return System.currentTimeMillis() > creationTime + cfs.getMemtableFlushAfterMins() * 60 * 1000;
++return System.currentTimeMillis() > creationTime + cfs.getMemtableFlushAfterMins() * 60 * 1000L;
+     }
+ }

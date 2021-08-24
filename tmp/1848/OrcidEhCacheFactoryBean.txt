@@ -1,0 +1,9 @@
+@@ -109,6 +109,8 @@
+             CacheConfiguration config = createConfig();
+             this.cache = new Cache(config);
+             cacheManager.addCache(this.cache);
++        } else {
++            this.cache = existingCache;
+         }
+     }
+ 

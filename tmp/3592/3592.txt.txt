@@ -1,0 +1,9 @@
+@@ -34,7 +34,7 @@
+ /**
+  * CQL query compression
+  */
+-public enum Compression implements TEnum {
++public enum Compression implements org.apache.thrift.TEnum {
+   GZIP(1);
+ 
+   private final int value;

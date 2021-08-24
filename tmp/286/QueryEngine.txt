@@ -1,0 +1,9 @@
+@@ -24,7 +24,7 @@
+     private static final List<CustomQuery> queryLibrary = new ArrayList<>();
+ 
+     static {
+-        queryLibrary.add(new OrgFilterQuery());
++//        queryLibrary.add(new OrgFilterQuery());
+     }
+ 
+     private SqlRepositoryConfiguration repoConfiguration;

@@ -1,0 +1,9 @@
+@@ -52,7 +52,7 @@
+ 
+     System.out.println("Full merge...");
+     writer.forceMerge(1);
+-    writer.close();
++writer.shutdown();
+     System.out.println("Done.");
+   }
+ }

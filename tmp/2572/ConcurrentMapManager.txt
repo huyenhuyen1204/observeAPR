@@ -1,0 +1,8 @@
+@@ -751,6 +751,7 @@
+                     rethrowException(operation, (AddressAwareException) returnObject);
+                 }
+                 if (returnObject != Boolean.FALSE) {
++                    request.value = dataNew;
+                     backup(CONCURRENT_MAP_BACKUP_PUT);
+                 }
+                 return returnObject;

@@ -1,0 +1,9 @@
+@@ -595,7 +595,7 @@
+         fw.append( "\n" );
+     }
+     
+-    private String createGraphViz( GraphDatabaseService graphDatabaseService )
++    public String createGraphViz( GraphDatabaseService graphDatabaseService )
+     {
+         OutputStream out = new ByteArrayOutputStream();
+         GraphvizWriter writer = new GraphvizWriter(new AsciiDocStyle());

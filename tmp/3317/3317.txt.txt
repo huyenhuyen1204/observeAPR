@@ -1,0 +1,9 @@
+@@ -257,7 +257,7 @@
+ 	protected void setCollationUsingCompilationSchema(int collationDerivation)
+ 	throws StandardException {
+ 		dataTypeServices.setCollationType(
+-	    	     getSchemaDescriptor(null).getCollationType());
++getSchemaDescriptor(null, false).getCollationType());
+ 		dataTypeServices.setCollationDerivation(collationDerivation);
+ 	}
+ 

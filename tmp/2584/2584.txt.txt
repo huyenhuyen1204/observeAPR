@@ -1,0 +1,9 @@
+@@ -1006,7 +1006,7 @@
+      */
+     private static class FreqQ extends PriorityQueue<Object[]> {
+         FreqQ (int s) {
+-            initialize(s);
++super(s);
+         }
+ 
+         @Override

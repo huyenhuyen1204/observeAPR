@@ -1,0 +1,9 @@
+@@ -58,7 +58,7 @@
+ 
+ 			if (firstTime) {
+ 				Logs.reportString("----------------------------------------------");
+-				Logs.reportMessage("CSLOOK_Header", "views");
++Logs.reportMessage("CSLOOK_ViewsHeader");
+ 				Logs.reportString("----------------------------------------------\n");
+ 			}
+ 

@@ -1,0 +1,9 @@
+@@ -65,7 +65,7 @@
+     }
+     
+     reader = writer.getReader();
+-    writer.close();
++writer.shutdown();
+     searcher = newSearcher(reader);
+   }
+   

@@ -1,0 +1,9 @@
+@@ -55,7 +55,7 @@
+     addDoc(writer, "lucene release");
+ 
+     reader = writer.getReader();
+-    writer.close();
++writer.shutdown();
+     searcher = newSearcher(reader);
+   }
+   

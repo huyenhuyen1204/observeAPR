@@ -1,0 +1,9 @@
+@@ -75,7 +75,7 @@
+       disconnectedTimer = null;
+     }
+     if (!isClosed) {
+-      disconnectedTimer = new Timer();
++disconnectedTimer = new Timer(true);
+       disconnectedTimer.schedule(new TimerTask() {
+         
+         @Override

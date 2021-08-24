@@ -1,0 +1,9 @@
+@@ -58,7 +58,7 @@
+   public void setUp() throws Exception {
+     super.setUp();
+ 
+-    conf = new Configuration();
++conf = getConfiguration();
+ 
+     inputFile = getTestTempFile("trainingInstances.seq");
+     outputDir = getTestTempDir("output");

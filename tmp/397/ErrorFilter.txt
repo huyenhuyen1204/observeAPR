@@ -1,0 +1,8 @@
+@@ -73,6 +73,6 @@
+         break;
+       }
+     }
+-    return virtualFile == null ? null : new OpenFileHyperlinkInfo(myModule.getProject(), virtualFile, line);
++    return virtualFile == null ? null : new OpenFileHyperlinkInfo(myModule.getProject(), virtualFile, line - 1);
+   }
+ }

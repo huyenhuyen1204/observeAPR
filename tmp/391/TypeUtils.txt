@@ -1,0 +1,9 @@
+@@ -1626,7 +1626,7 @@
+             return equals(getImplicitLowerBounds(w), getImplicitLowerBounds(other))
+                 && equals(getImplicitUpperBounds(w), getImplicitUpperBounds(other));
+         }
+-        return true;
++        return false;
+     }
+ 
+     /**

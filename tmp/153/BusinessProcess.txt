@@ -1,0 +1,9 @@
+@@ -378,7 +378,7 @@
+   public void stopTask() {
+     assertCommandContextNotActive();
+     assertTaskAssociated();
+-    associationManager.setTask(null);
++    associationManager.disAssociate();
+   }
+ 
+   /**

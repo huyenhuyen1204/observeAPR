@@ -1,0 +1,8 @@
+@@ -31,7 +31,6 @@
+      */
+     public String mergeStrategy = MergeCommand.Strategy.DEFAULT.toString();
+ 
+-    @Exported
+     public RemoteConfig getMergeRemote() {
+         return mergeRemote;
+     }

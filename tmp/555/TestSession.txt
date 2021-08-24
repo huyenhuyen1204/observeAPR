@@ -1,0 +1,8 @@
+@@ -30,6 +30,7 @@
+  * your own risk.
+  * </p>
+  */
++@SuppressWarnings( "deprecation" )
+ public class TestSession implements HttpSession {
+ 
+   private final Map<String,Object> attributes;

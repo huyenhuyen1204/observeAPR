@@ -1,0 +1,9 @@
+@@ -211,7 +211,7 @@
+    * @param context The data context
+    */
+   public void insertAtPreviousInsert(Editor editor, DataContext context) {
+-    int offset = CommandGroups.getInstance().getMotion().moveCaretToMark(editor, context, '^');
++    int offset = CommandGroups.getInstance().getMotion().moveCaretToMark(editor, '^');
+     if (offset != -1) {
+       MotionGroup.moveCaret(editor, offset);
+     }

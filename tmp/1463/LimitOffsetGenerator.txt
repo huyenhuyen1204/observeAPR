@@ -1,0 +1,9 @@
+@@ -31,7 +31,7 @@
+ 		}
+ 		else
+ 		{
+-			searchRequestBuilder.setSize(100000);
++			searchRequestBuilder.setSize(1000);
+ 		}
+ 	}
+ }

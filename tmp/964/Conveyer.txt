@@ -1,0 +1,9 @@
+@@ -90,7 +90,7 @@
+         /**
+          * Simple.
+          */
+-        @Loggable(Loggable.INFO)
++        @Loggable(Loggable.DEBUG)
+         @ToString
+         @EqualsAndHashCode(of = { "who", "lvl", "msg" })
+         @Immutable

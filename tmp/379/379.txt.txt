@@ -1,0 +1,9 @@
+@@ -54,7 +54,7 @@
+   static SolrRequestParsers parser;
+ 
+   @AfterClass
+-  public static void afterClass() throws Exception {
++public static void afterClass() {
+     parser = null;
+   }
+   

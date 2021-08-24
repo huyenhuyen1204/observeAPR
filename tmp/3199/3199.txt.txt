@@ -1,0 +1,9 @@
+@@ -74,7 +74,7 @@
+   @After
+   public void tearDown() throws Exception {
+     super.tearDown();
+-    indexWriter.close();
++indexWriter.shutdown();
+     dir.close();
+   }
+ 

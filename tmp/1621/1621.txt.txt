@@ -1,0 +1,9 @@
+@@ -57,7 +57,7 @@
+         assertTrue(expected.contains(data.get(index)));
+       }
+ 
+-      return new Leaf(-1);
++return new Leaf(Double.NaN);
+     }
+   }
+ 

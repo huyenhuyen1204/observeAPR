@@ -1,0 +1,9 @@
+@@ -95,7 +95,7 @@
+   }
+ 
+   @Override
+-  public long size() throws IOException {
++public long size() {
+     return -1;
+   }
+ 

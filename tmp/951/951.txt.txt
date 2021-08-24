@@ -1,0 +1,9 @@
+@@ -57,7 +57,7 @@
+     {
+ 		super(
+             xactFactory, logFactory, dataFactory, dataValueFactory, 
+-            false, null);
++false, null, false);
+ 
+ 		// always want to hold latches & containers open past the commit/abort
+ 		setPostComplete();

@@ -1,0 +1,9 @@
+@@ -79,7 +79,7 @@
+         for (final Traversal<S, E> union : this.traversals) {
+             clone.traversals.add(union.clone());
+         }
+-        this.executeTraversalOperations(NEST_OPERATIONS);
++        clone.executeTraversalOperations(NEST_OPERATIONS);
+         return clone;
+     }
+ 

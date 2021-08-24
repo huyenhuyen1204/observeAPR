@@ -1,0 +1,9 @@
+@@ -48,7 +48,7 @@
+   @Override
+   public void tearDown() throws Exception {
+     super.tearDown();
+-    writer.close();
++writer.shutdown();
+     dir.close();
+   }
+ 

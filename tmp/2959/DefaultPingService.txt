@@ -1,0 +1,9 @@
+@@ -24,7 +24,7 @@
+ 
+ /**
+  * @author Olivier Lamy
+- * @since TODO
++ * @since 1.4
+  */
+ @Service( "pingService#rest" )
+ public class DefaultPingService

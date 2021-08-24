@@ -1,0 +1,9 @@
+@@ -225,7 +225,7 @@
+                 if (next == null) {
+                     next = computeNext();
+                 }
+-                return next != end;
++                return next != null && next != end;
+             }
+ 
+             @Override

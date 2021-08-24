@@ -1,0 +1,9 @@
+@@ -557,7 +557,7 @@
+ 	{
+ 		Entity entity = new MapEntity();
+ 
+-		for (AttributeMetaData attr : meta.getAttributes())
++		for (AttributeMetaData attr : meta.getAtomicAttributes())
+ 		{
+ 			String paramName = StringUtils.uncapitalize(attr.getName());
+ 			Object paramValue = request.get(paramName);

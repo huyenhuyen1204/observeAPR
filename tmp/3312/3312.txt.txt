@@ -1,0 +1,9 @@
+@@ -461,7 +461,7 @@
+         }
+         else if (propertyName.equals("version"))
+         {
+-            return "1";
++return "0.3.0";
+         }
+         else
+         {

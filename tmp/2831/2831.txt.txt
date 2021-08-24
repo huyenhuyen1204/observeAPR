@@ -1,0 +1,9 @@
+@@ -63,7 +63,7 @@
+ 
+ 			if (firstTime) {
+ 				Logs.reportString("----------------------------------------------");
+-				Logs.reportMessage("CSLOOK_Header", "schemas");
++Logs.reportMessage("CSLOOK_SchemasHeader");
+ 				Logs.reportString("----------------------------------------------\n");
+ 			}
+ 

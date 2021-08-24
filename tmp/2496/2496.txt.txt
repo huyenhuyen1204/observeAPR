@@ -1,0 +1,9 @@
+@@ -280,7 +280,7 @@
+                                 // only when timeSlice is set.
+                             }
+ 							currentTimeSlice = getTimeSlice();
+-						} while ((currentTimeSlice == 0)  || 
++} while ((currentTimeSlice <= 0)  ||
+ 							(System.currentTimeMillis() - timeStart < currentTimeSlice));
+ 
+ 						break;

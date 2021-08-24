@@ -1,0 +1,8 @@
+@@ -109,7 +109,6 @@
+         }
+ 
+         bridgeConnector.setLocalBrokerConfig(createBrokerConfig(pid, "localBroker", properties));
+-        bridgeConnector.setRemoteBrokerConfig(createBrokerConfig(pid, "remoteBroker", properties));
+         bridgeConnector.setExportedBrokerConfig(createBrokerConfig(pid, "exportedBroker", properties));
+ 
+ 

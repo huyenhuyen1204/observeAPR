@@ -1,0 +1,9 @@
+@@ -37,7 +37,7 @@
+ 
+   @Before
+   public void before() throws IOException {
+-    configuration = new Configuration();
++configuration = getConfiguration();
+   }
+ 
+   @After

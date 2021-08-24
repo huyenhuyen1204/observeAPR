@@ -1,0 +1,8 @@
+@@ -24,6 +24,7 @@
+ 
+     @Override
+     public <E2> Neo4jTraversal<S, E2> addStep(final Step<?, E2> step) {
++        if (this.strategies.complete()) throw Exceptions.traversalIsLocked();
+         TraversalHelper.insertStep(step, this);
+         return (Neo4jTraversal) this;
+     }

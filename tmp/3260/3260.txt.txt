@@ -1,0 +1,9 @@
+@@ -95,7 +95,7 @@
+         CompactionManager.instance.checkAllColumnFamilies();
+ 
+         // start server internals
+-        StorageService.instance().initServer();
++StorageService.instance.initServer();
+         
+         // now we start listening for clients
+         CassandraServer cassandraServer = new CassandraServer();

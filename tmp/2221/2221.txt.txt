@@ -1,0 +1,9 @@
+@@ -852,7 +852,7 @@
+                                                                   generation);
+     success = false;
+     try {
+-      dir.sync(fileName);
++dir.sync(Collections.singleton(fileName));
+       success = true;
+     } finally {
+       if (!success) {

@@ -1,0 +1,9 @@
+@@ -59,7 +59,7 @@
+         return instance_;
+     }
+     
+-    class BinaryMemtableFlusher implements Runnable
++static class BinaryMemtableFlusher implements Runnable
+     {
+         private BinaryMemtable memtable_;
+         

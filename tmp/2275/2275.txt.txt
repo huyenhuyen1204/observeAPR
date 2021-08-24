@@ -1,0 +1,9 @@
+@@ -871,7 +871,7 @@
+    */
+   public static XmlDoc doc(String... fieldsAndValues) {
+     XmlDoc d = new XmlDoc();
+-    d.xml = TestHarness.makeSimpleDoc(fieldsAndValues).toString();
++d.xml = TestHarness.makeSimpleDoc(fieldsAndValues);
+     return d;
+   }
+ 

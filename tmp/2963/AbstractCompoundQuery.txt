@@ -1,0 +1,8 @@
+@@ -25,6 +25,7 @@
+  * @author Edwin Punzalan
+  */
+ public abstract class AbstractCompoundQuery
++    implements Query
+ {
+     protected List queries;
+     

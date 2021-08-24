@@ -1,0 +1,9 @@
+@@ -170,7 +170,7 @@
+ 
+     rt.close();
+     mgr.close();
+-    w.close();
++w.shutdown();
+     dir.close();
+   }
+ }

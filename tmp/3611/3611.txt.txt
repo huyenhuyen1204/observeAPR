@@ -1,0 +1,9 @@
+@@ -355,7 +355,7 @@
+     {
+         StringBuilder sb = new StringBuilder("ColumnFamily(");
+         CFMetaData cfm = metadata();
+-        sb.append(cfm == null ? "-deleted-" : cfm.cfName);
++sb.append(cfm == null ? "<anonymous>" : cfm.cfName);
+ 
+         if (isMarkedForDelete())
+             sb.append(" -deleted at " + getMarkedForDeleteAt() + "-");

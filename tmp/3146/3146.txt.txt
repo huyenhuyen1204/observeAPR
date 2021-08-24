@@ -1,0 +1,9 @@
+@@ -53,7 +53,7 @@
+     }
+     
+     IndexReader ir = iw.getReader();
+-    iw.close();
++iw.shutdown();
+     
+     IndexSearcher is = newSearcher(ir);
+     

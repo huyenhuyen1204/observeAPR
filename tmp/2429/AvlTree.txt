@@ -1,0 +1,9 @@
+@@ -568,7 +568,7 @@
+ 	    {
+ 	        if( node == parentNode.left )
+ 	        {
+-	            parentNode.left = null;
++	            parentNode.left = node.left;
+ 	        }
+ 	        else if( node == parentNode.right )
+ 	        {

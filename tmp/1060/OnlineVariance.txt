@@ -1,0 +1,9 @@
+@@ -65,7 +65,7 @@
+     }
+ 
+     public double mean() {
+-        return mean();
++        return mean;
+     }
+ 
+     public double variance() {

@@ -1,0 +1,9 @@
+@@ -90,7 +90,7 @@
+         testOne(de, bDocIDs);
+       }
+ 
+-      w.close();
++w.shutdown();
+       r.close();
+       dir.close();
+     }

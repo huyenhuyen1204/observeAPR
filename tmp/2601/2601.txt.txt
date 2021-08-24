@@ -1,0 +1,9 @@
+@@ -492,7 +492,7 @@
+         
+         assertFalse(dmd.isCatalogAtStart()); 
+         
+-        assertFalse(dmd.locatorsUpdateCopy());
++assertTrue(dmd.locatorsUpdateCopy());
+         
+         assertTrue(dmd.usesLocalFilePerTable());
+         assertTrue(dmd.usesLocalFiles());

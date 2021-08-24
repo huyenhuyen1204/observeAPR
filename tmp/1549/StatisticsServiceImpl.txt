@@ -1,0 +1,8 @@
+@@ -120,7 +120,6 @@
+       ContainerTranslationStatistics iterationStats = new ContainerTranslationStatistics();
+       iterationStats.setId(iterationSlug);
+       iterationStats.addRef(new Link(URI.create(zPathService.generatePathForProjectIteration(iteration)), "statSource", "PROJ_ITER"));
+-
+       long iterationTotalMssgs = projectIterationDAO.getTotalCountForIteration(iteration.getId());
+       long iterationTotalWords = projectIterationDAO.getTotalWordCountForIteration(iteration.getId());
+ 

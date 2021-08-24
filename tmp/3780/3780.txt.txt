@@ -1,0 +1,9 @@
+@@ -132,7 +132,7 @@
+         return timestamp;
+     }
+ 
+-    public long mostRecentChangeAt()
++public long mostRecentLiveChangeAt()
+     {
+         return timestamp;
+     }

@@ -1,0 +1,9 @@
+@@ -423,7 +423,7 @@
+ 
+     public void forceFlushBinary()
+     {
+-        if (memtable_.isClean())
++if (binaryMemtable_.get().isClean())
+             return;
+ 
+         submitFlush(binaryMemtable_.get());

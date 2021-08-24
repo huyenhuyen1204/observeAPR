@@ -1,0 +1,9 @@
+@@ -21,7 +21,7 @@
+ 
+ final class PhraseQueue extends PriorityQueue<PhrasePositions> {
+   PhraseQueue(int size) {
+-    initialize(size);
++super(size);
+   }
+ 
+   @Override

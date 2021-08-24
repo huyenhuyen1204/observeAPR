@@ -1,0 +1,10 @@
+@@ -28,6 +28,9 @@
+     return ois;
+   }
+ 
++  /**
++   * Standard Union.
++   */
+   public static class StandardUnion implements UnionObject {
+     protected byte tag;
+     protected Object object;

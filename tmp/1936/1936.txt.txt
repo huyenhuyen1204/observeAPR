@@ -1,0 +1,9 @@
+@@ -54,7 +54,7 @@
+ {
+     public String asHex(String str)
+     {
+-        return bytesToHex(ByteBuffer.wrap(str.getBytes()));
++return bytesToHex(ByteBufferUtil.bytes(str));
+     }
+ 
+     @Test

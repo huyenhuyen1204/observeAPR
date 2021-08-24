@@ -1,0 +1,9 @@
+@@ -91,7 +91,7 @@
+             }
+             catch (ExecutionException e)
+             {
+-                Thread.getDefaultUncaughtExceptionHandler().uncaughtException(Thread.currentThread(), e);
++Thread.getDefaultUncaughtExceptionHandler().uncaughtException(Thread.currentThread(), e.getCause());
+             }
+         }
+ 

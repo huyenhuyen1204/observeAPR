@@ -1,0 +1,9 @@
+@@ -190,6 +190,8 @@
+             for (String node : downStreamNodes) {
+                 out.writeString(node);
+             }
++        } else {
++            out.writeVInt(0);
+         }
+     }
+ 

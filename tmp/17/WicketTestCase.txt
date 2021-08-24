@@ -1,0 +1,8 @@
+@@ -65,6 +65,6 @@
+ 
+ 		// Validate the document
+ 		String document = application.getServletResponse().getDocument();
+-		assertTrue(DiffUtil.validatePage(document, this.getClass(), filename));
++		assertTrue(DiffUtil.validatePage(document, this.getClass(), filename, false));
+ 	}
+ }

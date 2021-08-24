@@ -1,0 +1,9 @@
+@@ -52,7 +52,7 @@
+       doc.add(fld);
+       writer.addDocument(doc);
+     }
+-    writer.close();
++writer.shutdown();
+     
+   }
+   

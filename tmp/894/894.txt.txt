@@ -1,0 +1,9 @@
+@@ -592,7 +592,7 @@
+ 
+ 			try	{
+ 				try	{
+-					theResults.finish(); // release the result set, don't just close it
++theResults.close();
+ 				    
+ 				    if (this.singleUseActivation != null)
+ 				    {

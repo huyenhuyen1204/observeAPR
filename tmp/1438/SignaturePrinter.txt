@@ -1,0 +1,9 @@
+@@ -359,7 +359,7 @@
+ 
+ 	public <T> void visitCtLiteral(CtLiteral<T> literal) {
+ 		if (literal.getValue() != null)
+-			write(literal.getValue().toString());
++			write(literal.toString());
+ 		else write("null");
+ 	}
+ 

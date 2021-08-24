@@ -1,0 +1,9 @@
+@@ -67,7 +67,7 @@
+       return ((TermPositions) this.in).nextPosition();
+     }
+     
+-    public int getPayloadLength() {
++public int getPayloadLength() throws IOException {
+       return ((TermPositions) this.in).getPayloadLength();
+     }
+ 

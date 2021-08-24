@@ -1,0 +1,8 @@
+@@ -276,6 +276,7 @@
+                     Logger.warn(
+                         this,
+                         "assertThat(%[type]s): attempt #%d failed, re-trying..",
++                        assertion,
+                         attempt
+                     );
+                     this.iresponse = null;

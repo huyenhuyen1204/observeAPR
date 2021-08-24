@@ -1,0 +1,9 @@
+@@ -57,7 +57,7 @@
+         suite.addTest(StreamingColumnTest.suite());
+         suite.addTest(Derby3625Test.suite());
+         suite.addTest(Derby4577Test.suite());
+-        suite.addTest(Derby151Test.suite());
++suite.addTest(InterruptResilienceTest.suite());
+         suite.addTest(Derby4676Test.suite());
+         suite.addTest(BootLockTest.suite());
+         suite.addTest(PositionedStoreStreamTest.suite());

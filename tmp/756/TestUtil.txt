@@ -1,0 +1,8 @@
+@@ -183,7 +183,6 @@
+         VirtualFile file = root.findFileByRelativePath(filePathInSource);
+ 
+       PsiFile psiFile = PsiManager.getInstance(project).findFile(file);
+-      DumbService.getInstance(project).waitForSmartMode();
+ 
+       return psiFile;
+     }

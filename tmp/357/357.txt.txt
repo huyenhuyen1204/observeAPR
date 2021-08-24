@@ -1,0 +1,9 @@
+@@ -57,7 +57,7 @@
+     }
+ 
+     @Override
+-    public int size() throws IOException {
++public int size() {
+       return in.size();
+     }
+ 

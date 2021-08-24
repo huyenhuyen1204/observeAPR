@@ -1,0 +1,9 @@
+@@ -196,7 +196,7 @@
+      */
+     @NonNull
+     public URIRequirementBuilder withPath(@CheckForNull String path) {
+-        withoutScheme();
++        withoutPath();
+         if (path != null) {
+             requirements.add(new PathRequirement(path));
+         }

@@ -1,0 +1,8 @@
+@@ -50,6 +50,7 @@
+ 			ModelResponse<MetricReport> response = m_service.invoke(request);
+ 			MetricReport report = response.getModel();
+ 
++			System.out.println(report);
+ 			return report;
+ 		} else {
+ 			throw new RuntimeException("Internal error: no eligable metric service registered for " + request + "!");

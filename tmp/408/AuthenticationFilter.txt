@@ -1,0 +1,9 @@
+@@ -298,7 +298,7 @@
+          public void process() throws ServletException, IOException, LoginException
+          {
+             Identity identity = Identity.instance();
+-            identity.setUsername(username);
++            identity.getCredentials().setUsername(username);
+             identity.authenticate();
+          }
+       }.run();  

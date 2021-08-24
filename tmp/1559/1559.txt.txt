@@ -1,0 +1,9 @@
+@@ -156,7 +156,7 @@
+   {
+     float boost = getBoost();
+     return (boost!=1.0?"(":"") + func.toString()
+-            + (getBoost()==0 ? "" : ")^"+getBoost());
+++ (boost==1.0 ? "" : ")^"+boost);
+   }
+ 
+ 

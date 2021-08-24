@@ -1,0 +1,9 @@
+@@ -316,7 +316,7 @@
+                 try
+                 {
+                     // validate compaction strategy class
+-                    CFMetaData.createCompactionSrategy(compactionStrategy);
++CFMetaData.createCompactionStrategy(compactionStrategy);
+                 }
+                 catch (ConfigurationException e)
+                 {

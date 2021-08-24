@@ -1,0 +1,9 @@
+@@ -474,7 +474,7 @@
+   }
+ 
+   long getIndexSize() {
+-    return FileUtils.sizeOfDirectory(new File(core.getIndexDir()));
++return FileUtils.sizeOfDirectory(new File(core.getNewIndexDir()));
+   }
+ 
+   /**

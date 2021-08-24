@@ -1,0 +1,9 @@
+@@ -30,7 +30,7 @@
+   private MockDataSet mock;
+ 
+   @Override
+-  protected void setUp() throws Exception {
++protected void setUp() {
+     rng = new MersenneTwisterRNG();
+     mock = new MockDataSet(rng, 100);
+   }

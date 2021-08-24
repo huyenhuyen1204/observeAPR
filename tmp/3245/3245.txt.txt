@@ -1,0 +1,9 @@
+@@ -157,7 +157,7 @@
+ 
+   @Override
+   public String toString() {
+-    return super.toString() + " lockFactory=" + getLockFactory();
++return getClass().getSimpleName() + '@' + Integer.toHexString(hashCode()) + " lockFactory=" + getLockFactory();
+   }
+ 
+   /**

@@ -1,0 +1,9 @@
+@@ -427,6 +427,8 @@
+                             dispatched.remove(node);
+                             node.getRegionDestination().getDestinationStatistics().getInflight().decrement();
+                         }
++                        node.getRegionDestination().wakeup();
++                        dispatchPending();
+                     }
+ 
+                     @Override

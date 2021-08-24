@@ -1,0 +1,9 @@
+@@ -73,7 +73,7 @@
+ 	 */
+ 	@Override
+ 	protected String getListKey() {
+-		return "ip_access_control_lists";
++		return "ip_addresses";
+ 	}
+ 
+ 	/**

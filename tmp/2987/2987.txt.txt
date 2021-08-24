@@ -1,0 +1,9 @@
+@@ -220,7 +220,7 @@
+         termState.skipFP += termState.bytesReader.readVLong();
+       }
+     } else if (isFirstTerm) {
+-      termState.skipFP = termState.bytesReader.readVLong();
++termState.skipFP = 0;
+     }
+   }
+ 

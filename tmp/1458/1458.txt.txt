@@ -1,0 +1,8 @@
+@@ -22,6 +22,6 @@
+ 
+ public interface IFailureNotification
+ {   
+-    public void suspect(InetAddress ep);
++public void convict(InetAddress ep);
+     public void revive(InetAddress ep);
+ }

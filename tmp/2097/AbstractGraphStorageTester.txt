@@ -1,0 +1,9 @@
+@@ -48,7 +48,7 @@
+     EdgeExplorer carOutExplorer;
+     EdgeExplorer carInExplorer;
+     EdgeExplorer carAllExplorer;
+-    private GraphStorage graph;
++    protected GraphStorage graph;
+ 
+     protected GraphStorage createGraph()
+     {

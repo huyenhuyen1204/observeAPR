@@ -1,0 +1,9 @@
+@@ -453,7 +453,7 @@
+   public Query rewrite(IndexReader reader) throws IOException {
+     final Query childRewrite = childQuery.rewrite(reader);
+     if (childRewrite != childQuery) {
+-      Query rewritten = new ToParentBlockJoinQuery(childQuery,
++Query rewritten = new ToParentBlockJoinQuery(origChildQuery,
+                                 childRewrite,
+                                 parentsFilter,
+                                 scoreMode);

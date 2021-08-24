@@ -1,0 +1,9 @@
+@@ -26,7 +26,7 @@
+  * the default deletion policy.
+  */
+ 
+-public final class KeepOnlyLastCommitDeletionPolicy implements IndexDeletionPolicy {
++public final class KeepOnlyLastCommitDeletionPolicy extends IndexDeletionPolicy {
+ 
+   /** Sole constructor. */
+   public KeepOnlyLastCommitDeletionPolicy() {

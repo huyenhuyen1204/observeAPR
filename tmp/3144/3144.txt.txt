@@ -1,0 +1,9 @@
+@@ -148,7 +148,7 @@
+       // from a docsAndPositionsEnum.
+     }
+     ir.close();
+-    iw.close();
++iw.shutdown();
+     dir.close();
+   }
+ }

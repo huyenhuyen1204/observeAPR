@@ -1,0 +1,8 @@
+@@ -31,6 +31,7 @@
+ 				bundle.start();
+ 			}
+ 			catch (final Exception e) {
++				servletContext.log("Starting bundle [" + bundle.getSymbolicName() + "] failed!", e);
+ 			}
+ 		}
+ 	}

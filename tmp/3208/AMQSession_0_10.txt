@@ -1,0 +1,8 @@
+@@ -942,6 +942,7 @@
+ 
+     protected Long requestQueueDepth(AMQDestination amqd)
+     {
++        flushAcknowledgments();
+         return getQpidSession().queueQuery(amqd.getQueueName()).get().getMessageCount();
+     }
+ 

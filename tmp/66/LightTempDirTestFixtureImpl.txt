@@ -1,0 +1,8 @@
+@@ -30,6 +30,7 @@
+ 
+   private VirtualFile findOrCreateTargetDir(String path) throws IOException {
+     VirtualFile root = LightPlatformTestCase.getSourceRoot();
++    if (path.length() == 0) return root;
+     final String[] dirs = path.split("/");
+     for (String dirName : dirs) {
+       VirtualFile dir = root.findChild(dirName);

@@ -1,0 +1,9 @@
+@@ -21,7 +21,7 @@
+ 
+ final class SegmentTermEnum extends TermEnum implements Cloneable {
+   private InputStream input;
+-  private FieldInfos fieldInfos;
++FieldInfos fieldInfos;
+   long size;
+   long position = -1;
+ 

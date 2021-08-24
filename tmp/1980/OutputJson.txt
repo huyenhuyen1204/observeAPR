@@ -1,0 +1,9 @@
+@@ -271,7 +271,7 @@
+ 
+ 	@Override
+ 	public String toString() {
+-		String overwriteOption = " ";
++		String overwriteOption = "";
+ 		if (overwrite)
+ 			overwriteOption = " overwrite=t ";
+ 

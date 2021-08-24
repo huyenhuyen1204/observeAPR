@@ -1,0 +1,8 @@
+@@ -4,6 +4,6 @@
+ 
+ public class FitNesseVersion {
+ 	public String toString() {
+-		return "v20090918";
++		return "v20090930";
+ 	}
+ }

@@ -1,0 +1,9 @@
+@@ -306,7 +306,7 @@
+         s = new String(chars, 0, 2);
+       }
+       allTerms.add(s);
+-      f.setValue(s);
++f.setStringValue(s);
+ 
+       writer.addDocument(d);
+ 

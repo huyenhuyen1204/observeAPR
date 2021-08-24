@@ -1,0 +1,9 @@
+@@ -52,7 +52,7 @@
+   final PostingsReaderBase wrappedPostingsReader;
+   int maxPositions;
+ 
+-  public PulsingPostingsReader(PostingsReaderBase wrappedPostingsReader) throws IOException {
++public PulsingPostingsReader(PostingsReaderBase wrappedPostingsReader) {
+     this.wrappedPostingsReader = wrappedPostingsReader;
+   }
+ 

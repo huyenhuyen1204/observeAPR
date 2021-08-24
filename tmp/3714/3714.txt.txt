@@ -1,0 +1,9 @@
+@@ -229,7 +229,7 @@
+         wait(500);
+       } catch (InterruptedException e) {
+         Thread.currentThread().interrupt();
+-        throw new RuntimeException(e);
++break;
+       }
+       left = expire - System.currentTimeMillis();
+     }

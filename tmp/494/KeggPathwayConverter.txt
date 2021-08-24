@@ -1,0 +1,9 @@
+@@ -127,7 +127,7 @@
+                                                                    mapArray[i]).getIdentifier());
+                     }
+                     Item gene = createItem("Gene");
+-                    gene.setAttribute("secondaryIdentifier", geneName);
++                    gene.setAttribute("identifier", geneName);
+                     gene.setReference("organism", organism);
+ 
+                     gene.addCollection(referenceList);

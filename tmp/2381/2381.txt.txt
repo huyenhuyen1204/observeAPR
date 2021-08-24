@@ -1,0 +1,9 @@
+@@ -226,7 +226,7 @@
+   private Map<SegmentInfoPerCommit,Boolean> segmentsToMerge = new HashMap<SegmentInfoPerCommit,Boolean>();
+   private int mergeMaxNumSegments;
+ 
+-  private Lock writeLock;
++protected Lock writeLock;
+ 
+   private volatile boolean closed;
+   private volatile boolean closing;

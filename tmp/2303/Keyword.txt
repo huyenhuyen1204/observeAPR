@@ -1,0 +1,8 @@
+@@ -71,6 +71,7 @@
+ 	
+ 	@Override
+ 	protected Automaton createAutomaton() {
++		seq.addConditions(conditions);
+ 		return seq.toAutomaton().copy();
+ 	}
+ 	

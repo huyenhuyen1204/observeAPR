@@ -1,0 +1,9 @@
+@@ -138,7 +138,7 @@
+   }
+ 
+   @Override
+-  protected Analyzer getWrappedAnalyzer(String fieldName) {
++public final Analyzer getWrappedAnalyzer(String fieldName) {
+     return delegate;
+   }
+ 

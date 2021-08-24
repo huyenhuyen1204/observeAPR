@@ -1,0 +1,8 @@
+@@ -69,6 +69,7 @@
+     }
+ 
+     void addDefiningURI(URI uri) {
++        definingURIs.add(uri);
+         try {
+             File file = new File(uri);
+ //            assert(file.exists()) : file + " does not exist";

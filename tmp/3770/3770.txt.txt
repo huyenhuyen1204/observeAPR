@@ -1,0 +1,9 @@
+@@ -32,7 +32,7 @@
+   private final KeywordAttribute keywordAtt = addAttribute(KeywordAttribute.class);
+   private final HindiStemmer stemmer = new HindiStemmer();
+   
+-  protected HindiStemFilter(TokenStream input) {
++public HindiStemFilter(TokenStream input) {
+     super(input);
+   }
+   

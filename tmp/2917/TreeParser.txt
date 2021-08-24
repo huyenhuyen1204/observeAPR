@@ -1,0 +1,8 @@
+@@ -110,6 +110,7 @@
+                 } else {
+                     labels = new ArrayList<String>();
+                     createUnrecognizedTaxa = true;
++            		sortNodesAlphabetically = true;
+                 }
+             } else {
+                 if (m_initial.get() != null) {

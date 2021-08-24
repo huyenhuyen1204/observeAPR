@@ -1,0 +1,9 @@
+@@ -209,7 +209,7 @@
+       return null;
+     }
+ 
+-    return MetaClassFactory.get(type.getEnclosingType());
++    return MetaClassFactory.get(type.getSuperclass());
+   }
+ 
+   @Override

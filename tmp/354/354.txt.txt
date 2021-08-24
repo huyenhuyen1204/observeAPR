@@ -1,0 +1,9 @@
+@@ -31,7 +31,7 @@
+ 
+   @BeforeClass
+   public static void beforeTest() throws Exception {
+-    initCore(EXAMPLE_CONFIG, EXAMPLE_SCHEMA);
++initCore(EXAMPLE_CONFIG, EXAMPLE_SCHEMA, EXAMPLE_HOME);
+   }
+ 
+   @Override

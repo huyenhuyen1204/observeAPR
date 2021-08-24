@@ -1,0 +1,9 @@
+@@ -396,7 +396,7 @@
+                    listener.processExpired();
+                } while (!listener.done());
+             } else {
+-                destinationStatistics.getMessages().setCount(messageCount);
++                destinationStatistics.getMessages().add(messageCount);
+             }
+         }
+     }

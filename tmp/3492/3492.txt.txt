@@ -1,0 +1,9 @@
+@@ -36,7 +36,7 @@
+  * @lucene.internal
+  **/
+ 
+-public final class FixedBitSet extends DocIdSet {
++public final class FixedBitSet extends DocIdSet implements Bits {
+   private final long[] bits;
+   private int numBits;
+ 

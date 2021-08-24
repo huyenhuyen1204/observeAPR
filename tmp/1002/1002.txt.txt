@@ -1,0 +1,9 @@
+@@ -95,7 +95,7 @@
+         if (zkStateReader == null) {
+           try {
+             ZkStateReader zk = new ZkStateReader(zkHost, zkConnectTimeout,
+-                zkClientTimeout, true);
++zkClientTimeout);
+             zk.createClusterStateWatchersAndUpdate();
+             zkStateReader = zk;
+           } catch (InterruptedException e) {

@@ -1,0 +1,9 @@
+@@ -52,7 +52,7 @@
+     }
+ 
+     @Override
+-    protected boolean skipField(String key) {
++    protected boolean skipField(final String key) {
+         return key.equals(ID_FIELD_NAME);
+     }
+ 

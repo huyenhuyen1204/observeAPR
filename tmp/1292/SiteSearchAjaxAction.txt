@@ -1,0 +1,9 @@
+@@ -132,7 +132,7 @@
+ 			}
+ 		}
+ 
+-		config.setJobName(config.getJobName()+"_"+config.get("indexAlias"));
++		
+ 
+ 		try {
+ 			if(config.runNow()){

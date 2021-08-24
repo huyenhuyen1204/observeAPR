@@ -1,0 +1,9 @@
+@@ -226,7 +226,7 @@
+   }
+ 
+   /** Closes the store to future operations, releasing associated memory. */
+-  public final void close() {
++public void close() {
+     fileMap = null;
+   }
+ 

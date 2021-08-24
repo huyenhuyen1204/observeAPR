@@ -1,0 +1,9 @@
+@@ -118,7 +118,7 @@
+ 
+ 	public void printUsage() {
+ 		this.commandLineArgs = new String[] { "--help" };
+-		run();
++		processArguments();
+ 	}
+ 
+ 	static {

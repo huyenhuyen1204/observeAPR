@@ -1,0 +1,11 @@
+@@ -203,6 +203,10 @@
+         // the performance decrease seems to be minimal.
+         conf.setProperty("storage.berkeleydb.cache-percentage", 1);
+ 
++        // Increase storage write buffer since we basically do a large bulk load during the first phases.
++        // See http://s3.thinkaurelius.com/docs/titan/current/bulk-loading.html
++        conf.setProperty("storage.buffer-size", "4096");
++
+         //
+         // turn on a db-cache that persists across txn boundaries, but make it relatively small
+         conf.setProperty("cache.db-cache", true);

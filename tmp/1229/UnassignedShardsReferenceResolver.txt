@@ -1,0 +1,9 @@
+@@ -42,7 +42,7 @@
+         .add(new UnassignedShardCollectorExpression<Boolean>(ShardPrimaryExpression.NAME) {
+             @Override
+             public Boolean value() {
+-                return false;
++                return null;
+             }
+         })
+         .add(new UnassignedShardCollectorExpression<BytesRef>(ShardRelocatingNodeExpression.NAME) {

@@ -1,0 +1,9 @@
+@@ -52,7 +52,7 @@
+ 	    {
+             RowMutationMessage rmMsg = RowMutationMessage.serializer().deserialize(rowMutationCtx.buffer_);
+             RowMutation rm = rmMsg.getRowMutation();            	                
+-            rowMutationCtx.row_.key(rm.key());
++rowMutationCtx.row_.setKey(rm.key());
+             rm.applyBinary(rowMutationCtx.row_);
+ 	
+ 	    }        

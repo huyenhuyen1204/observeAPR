@@ -1,0 +1,8 @@
+@@ -67,7 +67,6 @@
+         this.entryProcessor = entryProcessor;
+         this.brandlessEntryProcessor = brandlessEntryProcessor;
+     }
+-    
+ 
+     @Override
+     protected void runTask() {

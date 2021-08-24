@@ -1,0 +1,9 @@
+@@ -158,7 +158,7 @@
+   }
+ 
+   @Override
+-  void startDocument() throws IOException {
++void startDocument() {
+     assert clearLastVectorFieldName();
+     reset();
+   }

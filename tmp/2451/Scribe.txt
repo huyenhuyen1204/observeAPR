@@ -1,0 +1,8 @@
+@@ -1606,6 +1606,7 @@
+ 		case Token.tRBRACE:
+ 		case Token.tLBRACE:
+ 			formatBrace = true;
++			lastLineComment.contiguous = false;
+ 		}
+ 		try {
+ 			printComment();

@@ -1,0 +1,9 @@
+@@ -38,7 +38,7 @@
+  *
+  */
+ public interface PreparedStatement
+-	extends Dependent, Provider
++extends Dependent
+ {
+ 
+ 	/**

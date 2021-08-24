@@ -1,0 +1,9 @@
+@@ -310,7 +310,7 @@
+         }
+       } else {
+         assert sameTermInfo(ti, tiOrd, enumerator);
+-        assert (int) enumerator.position == tiOrd.termOrd;
++assert enumerator.position == tiOrd.termOrd;
+       }
+     } else {
+       ti = null;

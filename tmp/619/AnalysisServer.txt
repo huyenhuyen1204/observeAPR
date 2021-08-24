@@ -1,0 +1,8 @@
+@@ -345,6 +345,7 @@
+           index = 0;
+         }
+         queue.add(index, new AnalyzeContextTask(this, savedContext));
++        queue.notifyAll();
+       }
+     }
+   }

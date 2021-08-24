@@ -1,0 +1,9 @@
+@@ -107,7 +107,7 @@
+   @Before
+   public void setUp() throws Exception {
+     super.setUp();
+-    conf = new Configuration();
++conf = getConfiguration();
+     fs = FileSystem.get(conf);
+   }
+   

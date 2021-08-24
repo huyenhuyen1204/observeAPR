@@ -1,0 +1,6 @@
+@@ -45,4 +45,5 @@
+   protected ILaunchManager getLaunchManager() {
+     return DebugPlugin.getDefault().getLaunchManager();
+   }
++
+ }

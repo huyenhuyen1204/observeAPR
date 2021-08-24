@@ -1,0 +1,9 @@
+@@ -495,7 +495,7 @@
+     }
+   }
+ 
+-  private final static class TermsEnumWithSlice {
++final static class TermsEnumWithSlice {
+     private final ReaderSlice subSlice;
+     private TermsEnum terms;
+     public BytesRef current;

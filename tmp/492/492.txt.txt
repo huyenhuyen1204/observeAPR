@@ -1,0 +1,9 @@
+@@ -74,7 +74,7 @@
+     private BytesRef seekTerm;
+     private int upto = 0;
+ 
+-    SeekingTermSetTermsEnum(TermsEnum tenum, BytesRefHash terms) throws IOException {
++SeekingTermSetTermsEnum(TermsEnum tenum, BytesRefHash terms) {
+       super(tenum);
+       this.terms = terms;
+ 

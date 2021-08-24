@@ -1,0 +1,9 @@
+@@ -72,7 +72,7 @@
+ 	}
+ 	
+ 	@PostConstruct
+-	public void setup() {
++	protected void setup() {
+ 		loadProperties();
+ 	}
+ 	

@@ -1,0 +1,9 @@
+@@ -53,7 +53,7 @@
+   private SolrCore solrCore;
+   private SimpleFSLockFactory lockFactory;
+   
+-  public SnapShooter(SolrCore core, String location) throws IOException {
++public SnapShooter(SolrCore core, String location) {
+     solrCore = core;
+     if (location == null) snapDir = core.getDataDir();
+     else  {

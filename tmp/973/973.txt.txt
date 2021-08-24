@@ -1,0 +1,9 @@
+@@ -79,7 +79,7 @@
+ 
+     public ColumnFamily getColumnFamily()
+     {
+-        return reader.getEmptyColumnFamily();
++return reader == null ? null : reader.getEmptyColumnFamily();
+     }
+ 
+     protected IColumn computeNext()

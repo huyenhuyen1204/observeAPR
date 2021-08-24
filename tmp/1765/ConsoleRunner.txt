@@ -1,0 +1,8 @@
+@@ -91,6 +91,7 @@
+                     .templateCode(templateCode)
+                     .params(params),
+                     new FileOutputStream(cmd.getOptionValue(OUTPUT_PATH)));
++            System.exit(0);
+         } catch (Exception e) {
+             e.printStackTrace();
+             System.exit(-1);

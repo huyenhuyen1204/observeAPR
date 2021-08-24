@@ -1,0 +1,9 @@
+@@ -37,7 +37,7 @@
+     final Directory directory = new RAMDirectory();
+     RAMDirectoryFactory factory = new RAMDirectoryFactory()  {
+       @Override
+-      protected Directory create(String path) throws IOException {
++protected Directory create(String path) {
+         return directory;
+       }
+     };

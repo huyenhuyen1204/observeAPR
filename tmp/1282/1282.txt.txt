@@ -1,0 +1,9 @@
+@@ -94,7 +94,7 @@
+           
+           synchronized (this) {
+             if (detachedManager == null) {
+-              detachedManager = temp;
++detachedManager = new SynchronizedEntityManagerWrapper(temp);
+               temp = null;
+             }
+           }

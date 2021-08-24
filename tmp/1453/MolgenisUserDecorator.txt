@@ -1,0 +1,9 @@
+@@ -46,6 +46,8 @@
+ 			molgenisRoleGroupLink.setIdentifier(UUID.randomUUID().toString());
+ 			molgenisRoleGroupLink.setRole(molgenisUser);
+ 			molgenisRoleGroupLink.setGroup(userGroup);
++			getDatabase().add(molgenisRoleGroupLink);
++
+ 		}
+ 
+ 		return count;

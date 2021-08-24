@@ -1,0 +1,9 @@
+@@ -247,7 +247,7 @@
+     return doReopen(false);
+   }
+     
+-  protected IndexReader doReopen(boolean doClone) throws CorruptIndexException, IOException {
++private IndexReader doReopen(boolean doClone) throws CorruptIndexException, IOException {
+     ensureOpen();
+     
+     boolean reopened = false;

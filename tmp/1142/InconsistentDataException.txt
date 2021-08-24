@@ -1,0 +1,8 @@
+@@ -35,6 +35,7 @@
+ 
+     public InconsistentDataException(String message, List<?> versions) {
+         super(message);
++        this.versions = versions;
+     }
+ 
+     @Override

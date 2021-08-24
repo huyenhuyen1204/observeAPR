@@ -1,0 +1,8 @@
+@@ -15,6 +15,7 @@
+             Callback callback) {
+         if (query instanceof XFilteredQuery) {
+             flattenQuery((XFilteredQuery)query, pathBoost, rewritten, reader, callback);
++            return true;
+         }
+         return false;
+     }

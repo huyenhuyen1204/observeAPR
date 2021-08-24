@@ -1,0 +1,9 @@
+@@ -62,7 +62,7 @@
+ 
+ 	@Override
+ 	public boolean supports(String feature) {
+-		return Boolean.parseBoolean(get(feature));
++		return Boolean.parseBoolean(get(feature).trim());
+ 	}
+ 
+ 	@Override

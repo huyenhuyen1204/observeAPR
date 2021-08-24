@@ -1,0 +1,9 @@
+@@ -103,7 +103,7 @@
+             md.withAnnotation(info);
+             bulk.add(createSingleRequest(md));
+         }
+-        bulk.execute();
++        bulk.execute().actionGet();
+     }
+ 
+     private IndexRequestBuilder createSingleRequest(Discovery md) throws IOException {

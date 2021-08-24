@@ -1,0 +1,9 @@
+@@ -568,7 +568,7 @@
+   }
+ 
+   @Override
+-  public final int freq() throws IOException {
++public final int freq() {
+     return _freq;
+   }
+ 

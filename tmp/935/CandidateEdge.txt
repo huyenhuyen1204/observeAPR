@@ -1,0 +1,9 @@
+@@ -161,8 +161,6 @@
+ 	/**
+ 	 * Construct from a Coordinate. 
+ 	 * 
+-	 * Deprecated.
+-	 * 
+ 	 * @param e
+ 	 * @param p
+ 	 * @param pref

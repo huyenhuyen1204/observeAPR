@@ -1,0 +1,9 @@
+@@ -84,7 +84,7 @@
+ 
+                 case '.':
+                     poll();
+-                    if (peek() == '.') {
++	                if (!isEmpty() && peek() == '.') {
+                         poll();
+                         fragments.add("..");
+ 

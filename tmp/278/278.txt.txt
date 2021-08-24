@@ -1,0 +1,9 @@
+@@ -392,7 +392,7 @@
+         ssProxy.loadBalance();
+     }
+ 
+-    public void move(String newToken) throws InterruptedException
++public void move(String newToken) throws IOException, InterruptedException
+     {
+         ssProxy.move(newToken);
+     }

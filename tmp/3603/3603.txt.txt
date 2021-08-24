@@ -1,0 +1,9 @@
+@@ -393,7 +393,7 @@
+             {
+                 public void run()
+                 {
+-                    MemtableManager.instance().submit(cfName_, Memtable.this, cLogCtx);
++ColumnFamilyStore.submitFlush(Memtable.this, cLogCtx);
+                 }
+             };
+             flushQueuer = new FutureTask(runnable, null);

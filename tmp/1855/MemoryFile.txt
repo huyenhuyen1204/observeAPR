@@ -1,0 +1,9 @@
+@@ -40,7 +40,7 @@
+ 
+   @Override
+   public boolean hasChild(String name) {
+-    throw new UnsupportedOperationException();
++    return false;
+   }
+ 
+   @Override

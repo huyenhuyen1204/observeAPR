@@ -1,0 +1,9 @@
+@@ -71,7 +71,7 @@
+     }
+     
+     public String getValueString() {
+-        if( type == Type.STRING || type == Type.DATE ) {
++        if( type == Type.STRING || type == Type.DATE || name.equals("dialect") ) {
+             // needs escaping
+             return "\""+this.value+"\"";
+         }

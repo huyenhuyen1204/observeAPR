@@ -1,0 +1,9 @@
+@@ -68,7 +68,7 @@
+ 		try {
+ 			paramType = (ParameterizedType) type;
+ 		} catch (ClassCastException cause) {
+-			paramType = (ParameterizedType) ((Class<T>) type).getGenericSuperclass();
++			return getGenericTypeArgument((Class<T>) type, idx);
+ 		}
+ 
+ 		return (Class<T>) paramType.getActualTypeArguments()[idx];

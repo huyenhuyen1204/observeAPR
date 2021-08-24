@@ -1,0 +1,8 @@
+@@ -1121,6 +1121,7 @@
+                 pageInMessages(!memoryUsage.isFull(110));
+             };
+ 
++            doBrowseList(browseList, max, redeliveredWaitingDispatch, pagedInPendingDispatchLock, connectionContext, "redeliveredWaitingDispatch");
+             doBrowseList(browseList, max, pagedInPendingDispatch, pagedInPendingDispatchLock, connectionContext, "pagedInPendingDispatch");
+             doBrowseList(browseList, max, pagedInMessages, pagedInMessagesLock, connectionContext, "pagedInMessages");
+ 

@@ -1,0 +1,9 @@
+@@ -78,7 +78,7 @@
+    
+    public boolean add(E o)
+    {
+-      return theMap.put(o, dummy) == dummy;
++      return theMap.put(o, dummy) == null;
+    }
+    
+    public boolean contains(Object o)

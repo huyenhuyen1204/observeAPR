@@ -1,0 +1,9 @@
+@@ -326,7 +326,7 @@
+     }
+ 
+     @Override
+-    public boolean incrementToken() throws IOException {
++public boolean incrementToken() {
+       if (tokenIterator.hasNext()) {
+         clearAttributes();
+         AttributeSource next = tokenIterator.next();

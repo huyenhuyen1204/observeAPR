@@ -1,0 +1,9 @@
+@@ -51,7 +51,7 @@
+      */
+     public static Style addStyle(Style s){
+         if (styles.contains(s)) styles.remove(s);
+-        else styles.add(s);
++        styles.add(s);
+         return s;
+     }
+ 

@@ -1,0 +1,9 @@
+@@ -44,7 +44,7 @@
+ 
+         try
+         {
+-            CompletedFileStatus streamStatus = CompletedFileStatus.serializer().deserialize(new DataInputStream(bufIn));
++FileStatus streamStatus = FileStatus.serializer().deserialize(new DataInputStream(bufIn));
+ 
+             switch (streamStatus.getAction())
+             {

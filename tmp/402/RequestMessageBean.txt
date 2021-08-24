@@ -1,0 +1,9 @@
+@@ -89,7 +89,7 @@
+     protected ProcessRequestBean processRequestBean;
+ 
+     @Inject
+-    private BackupIdentityProviderProducer backupIdentityProviderProducer;
++    protected BackupIdentityProviderProducer backupIdentityProviderProducer;
+ 
+     @Inject
+     private DynamicJaxbContext dynamicJaxbContext;

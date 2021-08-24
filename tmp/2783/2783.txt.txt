@@ -1,0 +1,9 @@
+@@ -604,7 +604,7 @@
+     field.setTokenStream(ts);
+     writer.addDocument(doc);
+     DirectoryReader reader = writer.getReader();
+-    AtomicReader sr = reader.getSequentialSubReaders().get(0);
++AtomicReader sr = SlowCompositeReaderWrapper.wrap(reader);
+     DocsAndPositionsEnum de = sr.termPositionsEnum(null, "field", new BytesRef("withPayload"));
+     de.nextDoc();
+     de.nextPosition();

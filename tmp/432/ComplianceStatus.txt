@@ -1,0 +1,9 @@
+@@ -139,7 +139,7 @@
+         if (isCompliant()) {
+             return GREEN;
+         }
+-        if (!partiallyCompliantProducts.isEmpty() && nonCompliantProducts.isEmpty()) {
++        if (nonCompliantProducts.isEmpty()) {
+             return YELLOW;
+         }
+         return RED;

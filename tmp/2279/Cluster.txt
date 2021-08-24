@@ -1,0 +1,9 @@
+@@ -968,6 +968,8 @@
+                 while (true) {
+                     try {
+                         controlConnection.connect();
++                        if (connectionFactory.protocolVersion < 0)
++                            connectionFactory.protocolVersion = 2;
+                         return;
+                     } catch (UnsupportedProtocolVersionException e) {
+                         assert connectionFactory.protocolVersion < 1;

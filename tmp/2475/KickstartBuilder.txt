@@ -1,0 +1,9 @@
+@@ -318,7 +318,7 @@
+             type = KickstartScript.TYPE_POST;
+         }
+         
+-        scriptCommand.setScript(interpreter, buf.toString(), type, chroot);
++        scriptCommand.setScript(interpreter, buf.toString(), type, chroot, false);
+         scriptCommand.store();
+ 
+     }

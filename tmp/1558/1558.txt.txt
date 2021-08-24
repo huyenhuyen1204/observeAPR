@@ -1,0 +1,9 @@
+@@ -96,7 +96,7 @@
+ 		@see org.apache.derby.iapi.store.raw.xact.RawTransaction#recoveryRollbackFirst
+ 	*/
+ 	
+-	 public void checkLogicalOperationOK() 
++public void checkLogicalOperationOk()
+          throws StandardException 
+      {
+ 		throw StandardException.newException(

@@ -1,0 +1,9 @@
+@@ -820,7 +820,7 @@
+         riw.commit();
+       }
+     }
+-    riw.close();
++riw.shutdown();
+     checkFiles(dir);
+     dir.close();
+   }

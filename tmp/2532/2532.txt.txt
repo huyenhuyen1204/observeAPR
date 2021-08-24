@@ -1,0 +1,9 @@
+@@ -42,7 +42,7 @@
+         mbeanServerTracker.open();
+ 
+         mbeanTracker = new MBeanTracker(context);
+-        mbeanTracker.open();
++mbeanTracker.open(true);
+     }
+ 
+     public void stop(BundleContext context) throws Exception {

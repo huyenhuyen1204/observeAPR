@@ -1,0 +1,9 @@
+@@ -181,7 +181,7 @@
+         while (low <= high)
+         {
+             mid = (low + high) >> 1;
+-            if ((result = -compare(get(mid).name(), name)) > 0)
++if ((result = compare(name, get(mid).name())) > 0)
+             {
+                 low = mid + 1;
+             }

@@ -1,0 +1,9 @@
+@@ -40,7 +40,7 @@
+   @Override
+   public void setUp() throws Exception {
+       super.setUp();
+-      workDir = new File(TEMP_DIR, "TestMultiMMap");
++workDir = _TestUtil.getTempDir("TestMultiMMap");
+       workDir.mkdirs();
+   }
+   

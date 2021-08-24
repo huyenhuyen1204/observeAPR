@@ -1,0 +1,9 @@
+@@ -62,7 +62,7 @@
+ /** A Query that matches documents containing a term.
+   This may be combined with other terms with a {@link BooleanQuery}.
+   */
+-final public class TermQuery extends Query {
++public class TermQuery extends Query {
+   private Term term;
+   private float idf = 0.0f;
+   private float weight = 0.0f;

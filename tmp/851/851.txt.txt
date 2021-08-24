@@ -1,0 +1,8 @@
+@@ -109,6 +109,6 @@
+ 
+     public int compareTo(IteratingRow o)
+     {
+-        return partitioner.getDecoratedKeyComparator().compare(key, o.key);
++return key.compareTo(o.key);
+     }
+ }

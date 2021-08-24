@@ -1,0 +1,9 @@
+@@ -1677,7 +1677,7 @@
+             {
+                long tx = storageManager.generateUniqueID();
+                storageManager.deleteQueueBinding(tx, queueBindingInfo.getId());
+-               storageManager.commit(tx);
++               storageManager.commitBindings(tx);
+                continue;
+             }
+             else

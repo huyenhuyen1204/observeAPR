@@ -1,0 +1,9 @@
+@@ -218,7 +218,7 @@
+         writer.deleteDocuments(new Term(ID_FIELD, id.toString()));
+       }
+     }
+-    writer.close();
++writer.shutdown();
+   }
+   
+   @BeforeClass

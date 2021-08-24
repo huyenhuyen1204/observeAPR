@@ -1,0 +1,7 @@
+@@ -588,6 +588,4 @@
+       results.addAll(QuickDeps.getQuickTypeDependencyList(new String(sourceBuffer), null));
+     }
+   }
+-
+-
+ }

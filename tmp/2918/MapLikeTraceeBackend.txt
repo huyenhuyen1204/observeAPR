@@ -1,0 +1,9 @@
+@@ -18,7 +18,7 @@
+ 
+     @Override
+     public final boolean isEmpty() {
+-        return getFromMap(REGISTERED_KEYS_KEY) != null;
++        return getFromMap(REGISTERED_KEYS_KEY) == null;
+     }
+ 
+     @Override

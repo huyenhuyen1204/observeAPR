@@ -1,0 +1,9 @@
+@@ -389,7 +389,7 @@
+         };
+     }
+ 
+-    public void clearUnsafe()
++void clearUnsafe()
+     {
+         columnFamilies_.clear();
+     }

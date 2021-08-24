@@ -1,0 +1,9 @@
+@@ -685,7 +685,7 @@
+                   throw new RuntimeException("term " + term + ": doc " + doc + ": pos " + pos + " < lastPos " + lastPos);
+                 }
+                 lastPos = pos;
+-                if (postings.getPayloadLength() != 0) {
++if (postings.hasPayload()) {
+                   postings.getPayload();
+                 }
+               }

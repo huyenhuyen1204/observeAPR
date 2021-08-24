@@ -1,0 +1,8 @@
+@@ -46,6 +46,7 @@
+ 
+ 			if (satisfied) {
+ 				ifStatement.getRight().render(self, writer, context);
++				break;
+ 			}
+ 		}
+ 

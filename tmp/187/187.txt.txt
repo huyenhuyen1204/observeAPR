@@ -1,0 +1,9 @@
+@@ -120,7 +120,7 @@
+ 
+         try
+         {
+-            AbstractCompactedRow compactedRow = controller.getCompactedRow(rows);
++AbstractCompactedRow compactedRow = controller.getCompactedRow(new ArrayList<SSTableIdentityIterator>(rows));
+             if (compactedRow.isEmpty())
+             {
+                 controller.invalidateCachedRow(compactedRow.key);

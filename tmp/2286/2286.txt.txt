@@ -1,0 +1,9 @@
+@@ -233,7 +233,7 @@
+     if (discountOverlaps)
+       numTerms = state.getLength() - state.getNumOverlap();
+     else
+-      numTerms = state.getLength() / state.getBoost();
++numTerms = state.getLength();
+     return encodeNormValue(state.getBoost(), numTerms);
+   }
+   

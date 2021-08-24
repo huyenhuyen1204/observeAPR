@@ -1,0 +1,9 @@
+@@ -239,7 +239,7 @@
+             buf.append( "Source: {#SourceBase}\\lib\\" );
+             File artifact = ( ( Artifact ) artifacts.get( ii ) ).getFile();
+             buf.append( artifact.getName() );
+-            buf.append( "; DestDir: {app}; DestName: " );
++            buf.append( "; DestDir: {app}\\lib; DestName: " );
+             buf.append( artifact.getName() );
+             buf.append( "\n" );
+         }

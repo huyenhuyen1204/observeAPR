@@ -1,0 +1,9 @@
+@@ -107,7 +107,7 @@
+ 
+     @Override
+     public long encodeNormValue(float f) {
+-      return (long) f;
++return (byte) f;
+     }
+ 
+     @Override

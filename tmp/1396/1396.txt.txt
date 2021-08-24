@@ -1,0 +1,9 @@
+@@ -265,7 +265,7 @@
+   @Override
+   public void addTo(Vector v) {
+     if (v.size() != size()) {
+-      throw new CardinalityException();
++throw new CardinalityException(size(), v.size());
+     }
+     values.forEachPair(new AddToVector(v));
+   }

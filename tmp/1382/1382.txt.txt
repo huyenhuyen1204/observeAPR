@@ -1,0 +1,9 @@
+@@ -141,7 +141,7 @@
+         this.resultCode + "\t" +
+         this.mimeType + "\t" +
+         this.size + "\t" +
+-        "\"" + this.title.replace('\"', (char)0xff ).replace('\n',' ').replace('\r',' ') + "\"";
++"\"" + this.title.replace('\t',' ').replace('\"', (char)0xff ).replace('\n',' ').replace('\r',' ') + "\"";
+     }
+ 
+ 

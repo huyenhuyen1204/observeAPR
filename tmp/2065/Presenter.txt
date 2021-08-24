@@ -1,0 +1,7 @@
+@@ -126,6 +126,5 @@
+    * multiple calls to this method.
+    */
+   protected void onDestroy() {
+-    if (view != null) dropView(view);
+   }
+ }

@@ -1,0 +1,9 @@
+@@ -43,7 +43,7 @@
+     ir = iw.getReader();
+     verifyCount(ir);
+     ir.close();
+-    iw.close();
++iw.shutdown();
+     dir.close();
+   }
+   

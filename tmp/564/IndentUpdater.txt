@@ -1,0 +1,9 @@
+@@ -88,6 +88,8 @@
+   }
+ 
+   public void visibilityChanged(SourceCT item, PropertyChangeEvent<Boolean> change) {
++    if (item == root()) return;
++
+     if (change.getNewValue()) {
+       childAdded(item, false);
+     } else {

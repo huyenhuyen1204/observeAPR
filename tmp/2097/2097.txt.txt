@@ -1,0 +1,9 @@
+@@ -112,7 +112,7 @@
+         //service unget
+         verify(bundleContext).ungetService(reference);
+         //unregister is invoked on context
+-        verify(agentContext).unregisterMBean(name);
++verify(agentContext).unregisterMBean(target);
+ 
+     }
+ 

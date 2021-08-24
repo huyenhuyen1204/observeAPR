@@ -1,0 +1,9 @@
+@@ -249,7 +249,7 @@
+         String              classpath = BaseTestCase.getSystemProperty( "java.class.path" );
+         boolean         skipHostName = false;
+ 
+-        al.add( "java" );
++al.add( BaseTestCase.getJavaExecutableName() );
+         al.add( "-classpath" );
+         al.add( classpath );
+         

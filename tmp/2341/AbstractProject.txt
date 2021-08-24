@@ -1,0 +1,9 @@
+@@ -763,7 +763,7 @@
+     /**
+      * Reflect the submission of the pseudo 'upstream build trigger'.
+      */
+-    private void convertUpstreamBuildTrigger(Set<AbstractProject> upstream) throws IOException {
++    protected void convertUpstreamBuildTrigger(Set<AbstractProject> upstream) throws IOException {
+ 
+         SecurityContext saveCtx = ACL.impersonate(ACL.SYSTEM);
+         try {

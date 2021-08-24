@@ -1,0 +1,9 @@
+@@ -559,7 +559,7 @@
+     
+     @Override
+     public int docID() {
+-      return docIt >= upto ? NO_MORE_DOCS : docs[docIt];
++return docIt < 0 ? -1 : docIt >= upto ? NO_MORE_DOCS : docs[docIt];
+     }
+     
+     @Override

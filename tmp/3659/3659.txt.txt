@@ -1,0 +1,9 @@
+@@ -1367,7 +1367,7 @@
+   }
+ 
+   /** Expert */
+-  public Object getFieldCacheKey() {
++public Object getCoreCacheKey() {
+     return this;
+   }
+ 

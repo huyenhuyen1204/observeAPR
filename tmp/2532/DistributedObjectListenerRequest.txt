@@ -1,0 +1,8 @@
+@@ -59,6 +59,7 @@
+ 
+         @Override
+         public void distributedObjectDestroyed(DistributedObjectEvent event) {
++            send(event);
+         }
+ 
+         private void send(DistributedObjectEvent event) {

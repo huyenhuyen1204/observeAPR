@@ -1,0 +1,6 @@
+@@ -2676,5 +2676,4 @@
+                            String.format(UserMessages.getMessage(UserErrors.RESET_FAIL), e.getMessage()));
+     }
+   }
+-
+ }

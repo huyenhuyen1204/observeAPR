@@ -1,0 +1,8 @@
+@@ -68,6 +68,6 @@
+ 
+   @Override
+   public String toString() {
+-    return name;
++return "PostingsFormat(name=" + name + ")";
+   }
+ }

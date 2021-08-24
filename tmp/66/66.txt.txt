@@ -1,0 +1,9 @@
+@@ -3803,7 +3803,7 @@
+ 		} 
+ 		catch (SQLException se)
+ 		{
+-			skipRemainder(false);
++skipRemainder(true);
+ 			throw se;
+ 		}
+ 	}

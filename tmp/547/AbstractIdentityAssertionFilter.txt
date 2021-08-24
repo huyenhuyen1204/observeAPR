@@ -1,0 +1,8 @@
+@@ -145,7 +145,6 @@
+           }
+           if (groupsMapped) {
+             addMappedGroupsToSubject(mappedPrincipalName, groups, subject);
+-            addMappedGroupsToSubject("*", groups, subject);
+           }
+           doAs(request, response, chain, subject);
+         }

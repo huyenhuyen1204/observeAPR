@@ -1,0 +1,9 @@
+@@ -407,7 +407,7 @@
+ 			{
+ 				GroupedRunnable taskToRun;
+ 				synchronized (groupedNotifyTaskMap) {
+-					taskToRun = tasks.pollLast();
++					taskToRun = tasks.pollFirst();
+ 					if (taskToRun == null) {
+ 						groupedNotifyTaskMap.remove(key);
+ 						break;

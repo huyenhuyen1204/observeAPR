@@ -1,0 +1,8 @@
+@@ -57,6 +57,7 @@
+ 						infoViewExam.getInfoExam()), false);
+ 
+ 			sp.getIPersistentExam().delete(examToDelete);
++			result = true;
+ 		} catch (ExcepcaoPersistencia ex) {
+ 			throw new FenixServiceException("Errer deleteing exam");
+ 		}

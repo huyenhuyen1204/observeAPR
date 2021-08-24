@@ -1,0 +1,9 @@
+@@ -343,7 +343,7 @@
+ 
+         current = newPosition;
+ 
+-        if (newPosition >= bufferOffset + validBufferBytes || newPosition < bufferOffset)
++if (newPosition > (bufferOffset + validBufferBytes) || newPosition < bufferOffset)
+             reBuffer(); // this will set bufferEnd for us
+     }
+ 

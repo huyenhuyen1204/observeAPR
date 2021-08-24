@@ -1,0 +1,9 @@
+@@ -1533,7 +1533,7 @@
+      *
+      * @return connection to default database.
+      */
+-    Connection openDefaultConnection()
++public Connection openDefaultConnection()
+         throws SQLException {
+         return connector.openConnection();
+     }

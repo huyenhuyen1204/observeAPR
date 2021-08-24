@@ -1,0 +1,9 @@
+@@ -361,7 +361,7 @@
+         dmlWithSchema = false;
+         // columns
+         if (!columns.isEmpty()) {
+-            append("(");
++            append(" (");
+             skipParent = true;
+             handle(COMMA, columns);
+             skipParent = false;

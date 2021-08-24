@@ -1,0 +1,9 @@
+@@ -3816,7 +3816,7 @@
+                 if( i > 20 )
+                 {
+                     throw StandardException.newException(
+-                                SQLState.LOG_FULL, ioe, null );
++SQLState.LOG_FULL, ioe);
+                 }
+             }
+         }

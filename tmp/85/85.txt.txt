@@ -1,0 +1,9 @@
+@@ -55,7 +55,7 @@
+         sb.append(random.nextBoolean() ? "aaa" : "bbb");
+         sb.append(' ');
+       }
+-      body.setValue(sb.toString());
++body.setStringValue(sb.toString());
+       w.addDocument(doc);
+       sb.delete(0, sb.length());
+     }

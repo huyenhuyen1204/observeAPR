@@ -1,0 +1,8 @@
+@@ -144,6 +144,7 @@
+                         temp.add(obj);
+                     }
+                     objects.put(propertyName, new OpenEngSBModelEntry(propertyName, temp, entry.getType()));
++                    break;
+                 }
+             }
+         } else {

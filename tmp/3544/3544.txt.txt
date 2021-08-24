@@ -1,0 +1,9 @@
+@@ -91,7 +91,7 @@
+             }
+             catch (ExecutionException e)
+             {
+-                logger.error("Error in executor futuretask", e);
++Thread.getDefaultUncaughtExceptionHandler().uncaughtException(Thread.currentThread(), e);
+             }
+         }
+ 

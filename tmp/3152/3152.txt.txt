@@ -1,0 +1,9 @@
+@@ -60,7 +60,7 @@
+         riw.deleteDocuments(new Term("id", Integer.toString(i)));
+       }
+     }
+-    riw.close();
++riw.shutdown();
+     checkHeaders(dir);
+     dir.close();
+   }

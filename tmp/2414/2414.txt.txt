@@ -1,0 +1,9 @@
+@@ -514,7 +514,7 @@
+ 	    if (expectedString != null) {
+ 	        for (int i = 0; i < expectedString.length; i++) {
+ 	            assertTrue("Could not find expectedString:" +
+-	                    expectedString + " in output:" + output,
++expectedString[i] + " in output:" + output,
+ 	                    output.indexOf(expectedString[i]) >= 0);
+ 	        }
+ 	    }

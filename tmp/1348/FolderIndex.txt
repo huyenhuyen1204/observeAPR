@@ -1,0 +1,9 @@
+@@ -257,7 +257,7 @@
+ 		}
+ 
+ 		// ask the parent whether this subfolder is shared
+-		return parent.isShared;
++		return parent.isShared();
+ 	}
+ 
+ 	/**

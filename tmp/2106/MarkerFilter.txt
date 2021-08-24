@@ -1,0 +1,9 @@
+@@ -47,7 +47,7 @@
+       return onMismatch;
+     } 
+     
+-    if(markerToMatch.contains(marker)) {
++    if(marker.contains(markerToMatch)) {
+       return onMatch;
+     } else {
+       return onMismatch;

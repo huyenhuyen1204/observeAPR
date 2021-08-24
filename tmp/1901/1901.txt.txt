@@ -1,0 +1,9 @@
+@@ -2985,7 +2985,7 @@
+                     }
+ 						
+ 					if (checkpointInstant == LogCounter.INVALID_LOG_INSTANT &&
+-										getMirrorControlFileName().exists())
++privExists(getMirrorControlFileName()))
+                     {
+ 						checkpointInstant =
+                             readControlFile(

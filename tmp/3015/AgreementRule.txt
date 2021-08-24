@@ -1,0 +1,8 @@
+@@ -155,6 +155,7 @@
+     "ihn",
+     "dessen",
+     "deren",
++    "denen",
+     "sich",
+     "unser",
+     "aller",

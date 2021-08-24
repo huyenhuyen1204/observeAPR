@@ -1,0 +1,9 @@
+@@ -59,7 +59,7 @@
+     BayesThetaNormalizerDriver normalizer = new BayesThetaNormalizerDriver();
+     normalizer.runJob(input, output, params);
+     
+-    if (Boolean.parseBoolean(params.get("skipCleanup"))) {
++if (params.isSkipCleanup()) {
+       return;
+     }
+     

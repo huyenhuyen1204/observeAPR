@@ -1,0 +1,7 @@
+@@ -4,5 +4,5 @@
+ 
+ public interface MessageProducer
+ {
+-    public Message getMessage(int version) throws IOException;
++public Message getMessage(Integer version) throws IOException;
+ }

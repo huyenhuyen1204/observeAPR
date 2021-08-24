@@ -1,0 +1,9 @@
+@@ -54,7 +54,7 @@
+     }
+ 
+     s = newSearcher(w.getReader());
+-    w.close();
++w.shutdown();
+   }
+ 
+   @AfterClass

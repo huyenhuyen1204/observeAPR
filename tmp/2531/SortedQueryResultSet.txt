@@ -1,0 +1,9 @@
+@@ -82,7 +82,7 @@
+         }
+     }
+ 
+-    private class EmptyIterator implements Iterator {
++    private static class EmptyIterator implements Iterator {
+ 
+         @Override
+         public boolean hasNext() {

@@ -1,0 +1,8 @@
+@@ -46,6 +46,6 @@
+ 
+     @Override
+     public String escapePattern(String pattern) {
+-        return pattern;
++        return pattern.replaceAll ("\\\\", "\\\\\\\\");
+     }
+ }

@@ -1,0 +1,9 @@
+@@ -72,7 +72,7 @@
+    * Set the current action being executed
+    */
+   public void setAction(String action) {
+-
++    this.action = action;
+   }
+ 
+ }

@@ -1,0 +1,9 @@
+@@ -77,7 +77,7 @@
+ 
+     // Open near-real-time searcher
+     searcher = new IndexSearcher(DirectoryReader.open(indexWriter, true));
+-    indexWriter.close();
++indexWriter.shutdown();
+   }
+ 
+   private FacetsConfig getConfig() {

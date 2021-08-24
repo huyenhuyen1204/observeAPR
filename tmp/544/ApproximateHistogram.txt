@@ -1,0 +1,8 @@
+@@ -183,6 +183,7 @@
+     }
+     leafCount++;
+     count++;
++    leavesSorted = (leafCount == 1);
+   }
+ 
+   @Override

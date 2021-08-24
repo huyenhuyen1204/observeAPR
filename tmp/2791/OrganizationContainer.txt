@@ -1,0 +1,9 @@
+@@ -82,7 +82,7 @@
+     private transient ViewGroupMixIn viewGroupMixIn;
+     private transient OrganizationGravatarIcon icon;
+ 
+-    protected OrganizationContainer(ItemGroup parent, String name) {
++    public OrganizationContainer(ItemGroup parent, String name) {
+         super(parent, name);
+         init(name);
+         if(id == null) {

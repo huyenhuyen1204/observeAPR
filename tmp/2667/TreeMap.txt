@@ -1,0 +1,10 @@
+@@ -234,7 +234,8 @@
+ 
+     @Override
+     public String toString() {
+-      return (isRed ? "R: " : "B: ") + key + "=" + value;
++      // for compatibility with the real Jre: issue 3422
++      return key + "=" + value;
+     }
+   }
+ 

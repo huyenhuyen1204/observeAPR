@@ -1,0 +1,9 @@
+@@ -35,7 +35,7 @@
+   @Before
+   public void setUp() throws Exception {
+     super.setUp();
+-    configuration = new Configuration();
++configuration = getConfiguration();
+     output = getTestTempDirPath();
+   }
+ 

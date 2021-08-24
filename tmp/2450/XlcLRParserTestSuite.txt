@@ -1,0 +1,8 @@
+@@ -33,7 +33,6 @@
+ 			addTest(XlcLRCompleteParser2Tests.suite());
+ 			addTest(XlcLRCompletionBasicTest.suite());	
+ 			addTest(XlcLRCompletionParseTest.suite());
+-			addTest(XlcLRCPPSpecFailingTest.suite());
+ 			addTest(XlcLRCPPSpecTest.suite());
+ 			addTest(XlcLRCPPTests.suite()); 
+ 			addTest(XlcLRCSpecTests.suite()); // a couple of failures

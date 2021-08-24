@@ -1,0 +1,8 @@
+@@ -985,6 +985,7 @@
+     }
+     
+     @Test
++    @Ignore
+     public void testBug1953() {
+         compareWithJavaSource("bug19xx/Bug1953");
+     }

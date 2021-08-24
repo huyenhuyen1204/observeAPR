@@ -1,0 +1,9 @@
+@@ -122,7 +122,7 @@
+     {
+         logger.info("Writing " + this);
+         String path = cfs.getFlushPath();
+-        SSTableWriter writer = new SSTableWriter(path, sortedKeys.size(), cfs.metadata, cfs.partitioner_);
++SSTableWriter writer = new SSTableWriter(path, sortedKeys.size(), cfs.metadata, cfs.partitioner);
+ 
+         for (DecoratedKey key : sortedKeys)
+         {

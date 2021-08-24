@@ -1,0 +1,9 @@
+@@ -77,7 +77,7 @@
+ 	{
+ 		TypeId	operandType;
+ 
+-		super.bindExpression(fromList, subqueryList, 
++bindOperand(fromList, subqueryList,
+ 				aggregateVector);
+ 
+ 		/*

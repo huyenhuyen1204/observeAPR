@@ -1,0 +1,9 @@
+@@ -251,7 +251,7 @@
+ 
+         message("  merge thread: done");
+ 
+-      } catch (IOException exc) {
++} catch (Throwable exc) {
+ 
+         if (merge != null) {
+           merge.setException(exc);

@@ -1,0 +1,9 @@
+@@ -26,7 +26,7 @@
+  * <br>Example: <code>{!lucenePlusSort}myfield:foo +bar -baz;price asc</code>
+  */
+ public class OldLuceneQParserPlugin extends QParserPlugin {
+-  public static String NAME = "lucenePlusSort";
++public static final String NAME = "lucenePlusSort";
+ 
+   @Override
+   public void init(NamedList args) {

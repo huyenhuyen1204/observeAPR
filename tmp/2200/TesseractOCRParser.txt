@@ -1,0 +1,9 @@
+@@ -197,7 +197,7 @@
+           new ImageParser(), new JpegParser(), new TiffParser()
+       });
+       CompositeImageParser() {
+-          super(MediaTypeRegistry.getDefaultRegistry(), imageParsers);
++          super(new MediaTypeRegistry(), imageParsers);
+       }
+   }
+ 

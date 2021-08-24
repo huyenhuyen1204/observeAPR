@@ -1,0 +1,8 @@
+@@ -492,6 +492,7 @@
+         JdbcSqlStat sqlStat = statement.getSqlStat();
+ 
+         if (sqlStat != null) {
++            sqlStat.decrementExecutingCount();
+             sqlStat.error(error);
+             sqlStat.addExecuteTime(statement.getLastExecuteType(), statement.isFirstResultSet(), nanos);
+             statement.setLastExecuteTimeNano(nanos);

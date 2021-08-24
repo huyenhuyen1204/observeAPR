@@ -1,0 +1,9 @@
+@@ -65,7 +65,7 @@
+         }
+ 
+         if (text.isEmpty()){
+-            return new String[]{""};
++            return new String[]{"",""};
+         }
+ 
+         String[] resultOfRemoveQuestion = new String[2];

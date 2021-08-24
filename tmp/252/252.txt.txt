@@ -1,0 +1,9 @@
+@@ -409,7 +409,7 @@
+ 		if (bestCD.isIndex())
+ 		{
+ 			columnPosition = bestCD.getIndexDescriptor().
+-			  getKeyColumnPosition(new Integer(columnPosition)).intValue();
++getKeyColumnPosition(columnPosition);
+ 
+ 			if (SanityManager.DEBUG)
+ 			{

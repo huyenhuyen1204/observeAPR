@@ -1,0 +1,9 @@
+@@ -230,7 +230,7 @@
+         base.close();
+       }
+       @Override
+-      public IndexInput openFullSlice() throws IOException {
++public IndexInput openFullSlice() {
+         return (IndexInput) base.clone();
+       }
+     };

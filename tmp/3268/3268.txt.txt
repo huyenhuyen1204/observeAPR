@@ -1,0 +1,7 @@
+@@ -50,5 +50,5 @@
+                     Iterable<Cooccurrence> cooccurrences,
+                     double weightOfVectorA,
+                     double weightOfVectorB,
+-                    int numberOfColumns);
++long numberOfColumns);
+ }

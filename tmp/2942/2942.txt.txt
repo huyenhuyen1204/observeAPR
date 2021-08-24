@@ -1,0 +1,9 @@
+@@ -48,7 +48,7 @@
+       writer.addDocument(doc);
+     }
+     writer.close();
+-    searcher = new IndexSearcher(directory);
++searcher = new IndexSearcher(directory, true);
+   }
+ 
+   private String[] docFields = {

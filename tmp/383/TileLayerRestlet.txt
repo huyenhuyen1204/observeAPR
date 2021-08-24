@@ -1,0 +1,8 @@
+@@ -61,6 +61,7 @@
+ 
+     private TileLayerDispatcher layerDispatcher;
+ 
++    @Override
+     public void handle(Request request, Response response) {
+         Method met = request.getMethod();
+         try {

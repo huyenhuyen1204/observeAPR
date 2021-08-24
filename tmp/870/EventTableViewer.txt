@@ -1,0 +1,8 @@
+@@ -408,6 +408,7 @@
+         checkFilterList = null;
+         tableHandler = null;
+         selection = null;
++        source = null;
+     }
+ 
+     /**

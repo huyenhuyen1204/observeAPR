@@ -1,0 +1,9 @@
+@@ -46,7 +46,7 @@
+     {
+         try
+         {
+-            RowMutation rm = RowMutation.fromBytes(message.getMessageBody());
++RowMutation rm = RowMutation.fromBytes(message.getMessageBody(), message.getVersion());
+             if (logger_.isDebugEnabled())
+               logger_.debug("Applying " + rm);
+ 

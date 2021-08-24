@@ -1,0 +1,9 @@
+@@ -45,7 +45,7 @@
+   public T get()
+   {
+     if (serviceObject == null && ref.getBundle() != null) {
+-      serviceObject = (T) ctx.getService(ref);
++serviceObject = (T) Utils.getServicePrivileged(ctx, ref);
+     }
+     
+     return serviceObject;

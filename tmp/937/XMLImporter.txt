@@ -1,0 +1,8 @@
+@@ -32,6 +32,7 @@
+                 list.add(item);
+             }
+         };
++        importStream(inputStream, handler);
+         return list;
+     }
+ 

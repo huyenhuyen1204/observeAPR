@@ -1,0 +1,9 @@
+@@ -277,7 +277,7 @@
+             }
+             else if (listedNode instanceof ListNode)
+             {
+-                convertListNode(writer, (ListNode)listedNode, offset);
++                convertListNode(writer, (ListNode)listedNode, offset + 1);
+                 endOfMapOrList = true;
+             }
+             else

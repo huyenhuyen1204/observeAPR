@@ -1,0 +1,8 @@
+@@ -1536,6 +1536,7 @@
+ 			if(connection.isCopyMessageOnSend()){
+ 				msg=(ActiveMQMessage)msg.copy();
+ 			}
++			msg.setConnection(connection);
+ 			msg.onSend();
+ 			msg.setProducerId(msg.getMessageId().getProducerId());
+ 			if(log.isDebugEnabled()){

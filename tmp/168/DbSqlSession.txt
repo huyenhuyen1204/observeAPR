@@ -1,0 +1,9 @@
+@@ -1088,7 +1088,7 @@
+       dbSchemaUpdate();
+     }
+     
+-    checkHistoryLevel();
++//    checkHistoryLevel();
+   }
+ 
+   public void performSchemaOperationsProcessEngineClose() {

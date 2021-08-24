@@ -1,0 +1,8 @@
+@@ -186,6 +186,7 @@
+ 							.setMessage(newMessage)
+ 							.setReflogComment("revert: " + shortMessage).call(); //$NON-NLS-1$
+ 					revertedRefs.add(src);
++					headCommit = newHead;
+ 				} else {
+ 					unmergedPaths = merger.getUnmergedPaths();
+ 					Map<String, MergeFailureReason> failingPaths = merger

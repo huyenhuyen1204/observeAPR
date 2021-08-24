@@ -1,0 +1,9 @@
+@@ -231,7 +231,7 @@
+         int count = 0;
+         for (PileupElement p : pileup) {
+             if (p.isDeletion() || p.isInsertionAtBeginningOfRead() || BaseUtils.isRegularBase(p.getBase()))
+-                count++;
++                count += p.getRepresentativeCount();
+         }
+ 
+         return count;

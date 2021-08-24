@@ -1,0 +1,9 @@
+@@ -1431,7 +1431,7 @@
+     }
+ 
+     // TRUNCATE <columnFamily>
+-    private void executeTruncate(String columnFamily) throws TException, InvalidRequestException, UnavailableException
++private void executeTruncate(String columnFamily) throws TException, InvalidRequestException, UnavailableException, TimedOutException
+     {
+         if (!CliMain.isConnected() || !hasKeySpace())
+             return;

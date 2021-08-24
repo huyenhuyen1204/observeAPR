@@ -1,0 +1,9 @@
+@@ -55,7 +55,7 @@
+     @Override
+     public int getLocalDeletionTime()
+     {
+-       return value.getInt(value.position()+value.arrayOffset()	);
++return value.getInt(value.position());
+     }
+     
+     @Override

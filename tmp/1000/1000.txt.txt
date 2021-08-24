@@ -1,0 +1,9 @@
+@@ -61,7 +61,7 @@
+     this.semaphore.acquire();
+   }
+   
+-  public int getMaxPermits() {
++public synchronized int getMaxPermits() {
+     return maxPermits;
+   }
+   

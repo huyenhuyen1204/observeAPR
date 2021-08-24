@@ -1,0 +1,9 @@
+@@ -40,7 +40,7 @@
+     return FileBasedIndex.getInstance().getAllKeys(NAME, project);
+   }
+ 
+-  private static final ID<String,Void> NAME = ID.create("XmlTagNames");
++  static final ID<String,Void> NAME = ID.create("XmlTagNames");
+ 
+   @Override
+   @NotNull

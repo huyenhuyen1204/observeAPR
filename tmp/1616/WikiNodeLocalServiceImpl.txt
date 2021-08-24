@@ -1,0 +1,9 @@
+@@ -519,7 +519,7 @@
+ 	protected void moveDependentsToTrash(long nodeId, long trashEntryId)
+ 		throws PortalException {
+ 
+-		List<WikiPage> pages = wikiPagePersistence.findByN_H(nodeId, true);
++		List<WikiPage> pages = wikiPagePersistence.findByNodeId(nodeId);
+ 
+ 		for (WikiPage page : pages) {
+ 			wikiPageLocalService.moveDependentToTrash(page, trashEntryId);

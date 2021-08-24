@@ -1,0 +1,8 @@
+@@ -221,6 +221,7 @@
+     protected void configureSynonymItem(OboTermSynonym syn, Item item, OboTerm term)
+         throws ObjectStoreException {
+         item.setAttribute("name", syn.getName());
++        item.setAttribute("type", syn.getType());
+     }
+ 
+     /**

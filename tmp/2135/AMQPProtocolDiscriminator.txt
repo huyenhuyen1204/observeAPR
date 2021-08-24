@@ -1,0 +1,9 @@
+@@ -59,7 +59,7 @@
+ 
+     }
+ 
+-    static final private ArrayList<Command> pendingCommands = new ArrayList<Command>();
++    final private ArrayList<Command> pendingCommands = new ArrayList<Command>();
+ 
+     public AMQPProtocolDiscriminator(AmqpTransport transport) {
+         this.transport = transport;

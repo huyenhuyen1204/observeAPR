@@ -1,0 +1,8 @@
+@@ -52,6 +52,7 @@
+     public void table(TableIdent tableIdent) {
+         table = referenceInfos.getTableInfo(tableIdent);
+         Preconditions.checkNotNull(table, "Table not found", tableIdent);
++        updateRowGranularity(table.rowGranularity());
+     }
+ 
+     public TableInfo table() {

@@ -1,0 +1,9 @@
+@@ -104,6 +104,8 @@
+ 
+    {
+       this(transportConnection, -1, interceptors, active, false);
++      
++      log.info("Created remotingconnection " + this + " on server");
+    }
+ 
+    private RemotingConnectionImpl(final Connection transportConnection,

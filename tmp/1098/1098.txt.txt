@@ -1,0 +1,9 @@
+@@ -63,7 +63,7 @@
+   }
+ 
+   public DataSource getDataSource(String name) {
+-    return dataImporter.getDataSourceInstance(entity);
++return dataImporter.getDataSourceInstance(entity, name, this);
+   }
+ 
+   public boolean isRootEntity() {

@@ -1,0 +1,9 @@
+@@ -62,7 +62,7 @@
+     IndexReader reader = null;
+     
+     try {
+-      reader = IndexReader.open(directory);
++reader = IndexReader.open(directory, true);
+       for(int i = 1; i <= numThreads; i++)
+         testTermPositionVectors(reader, i);
+       

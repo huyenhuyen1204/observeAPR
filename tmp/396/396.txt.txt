@@ -1,0 +1,9 @@
+@@ -246,7 +246,7 @@
+ {
+   private final HttpServletRequest req;
+   
+-  public HttpRequestContentStream( HttpServletRequest req ) throws IOException {
++public HttpRequestContentStream( HttpServletRequest req ) {
+     this.req = req;
+     
+     contentType = req.getContentType();

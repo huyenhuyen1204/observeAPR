@@ -1,0 +1,9 @@
+@@ -139,7 +139,7 @@
+ 		ijTokMgr = new ijTokenManager(charStream);
+ 		ijParser = new ij(ijTokMgr, this);
+ 		this.out = out;
+-		this.ignoreErrors = ignoreErrors;
++if ( ignoreErrors != null ) { this.ignoreErrors = (Hashtable) ignoreErrors.clone(); }
+ 		
+ 		showErrorCode = 
+ 			Boolean.valueOf(

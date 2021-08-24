@@ -1,0 +1,9 @@
+@@ -83,7 +83,7 @@
+       pending.cancel(true);
+       pending = null;
+     }
+-    scheduler.shutdown();
++scheduler.shutdownNow();
+   }
+   
+   /** schedule individual commits */

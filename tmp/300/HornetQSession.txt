@@ -1,0 +1,9 @@
+@@ -283,7 +283,7 @@
+ 
+       try
+       {
+-         session.rollback();
++         session.rollback(true);
+       }
+       catch (HornetQException e)
+       {

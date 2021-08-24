@@ -1,0 +1,9 @@
+@@ -61,7 +61,7 @@
+         transformationMatrix.put(0x7C, getCodePoint('!'));  // |
+         
+         unsafePrefixes = new HashSet<String>();
+-        unsafePrefixes.add(".");
++        //unsafePrefixes.add(".");
+         unsafePrefixes.add("$");
+         
+         unsafeSuffixes = new HashSet<String>();

@@ -1,0 +1,9 @@
+@@ -107,7 +107,7 @@
+ 	 */
+ 	@Deprecated // TODO remove in 3.2
+ 	public void setExclusionTable( Map<?,?> exclusiontable ) {
+-		exclusions = new HashSet(exclusiontable.keySet());
++exclusions = exclusiontable.keySet();
+ 	}
+ }
+ 

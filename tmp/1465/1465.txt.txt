@@ -1,0 +1,9 @@
+@@ -54,7 +54,7 @@
+  *
+  */
+ 
+-public class TernaryOperatorNode extends ValueNode
++public class TernaryOperatorNode extends OperatorNode
+ {
+ 	String		operator;
+ 	String		methodName;

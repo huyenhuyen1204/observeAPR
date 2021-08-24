@@ -1,0 +1,9 @@
+@@ -26,7 +26,7 @@
+ 
+ 		//super(new GLCapabilities( GLProfile.getDefault() )); //GLJPanel
+ 		//super(RendererJogl.caps); //GLJPanel or GLCanvas	
+-		super(null);
++		super();
+ 	}
+ 
+ 	

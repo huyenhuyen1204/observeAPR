@@ -1,0 +1,9 @@
+@@ -78,7 +78,7 @@
+       }
+ 
+       if (i%2 == 0) {
+-        doc.add(new NumericField("numInt").setIntValue(i));
++doc.add(new NumericField("numInt", i));
+       }
+ 
+       // sometimes skip the field:

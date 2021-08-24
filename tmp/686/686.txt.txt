@@ -1,0 +1,9 @@
+@@ -34,7 +34,7 @@
+     protected abstract boolean termCompare(Term term);
+     
+     /** Equality measure on the term */
+-    protected abstract float difference();
++public abstract float difference();
+ 
+     /** Indiciates the end of the enumeration has been reached */
+     protected abstract boolean endEnum();

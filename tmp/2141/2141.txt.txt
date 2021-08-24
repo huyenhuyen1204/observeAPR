@@ -1,0 +1,9 @@
+@@ -328,7 +328,7 @@
+ 			)
+ 			{
+ 				if (server != null)
+-					server.consoleExceptionPrintTrace(e);
++server.consoleExceptionPrint(e);
+ 				else
+ 					e.printStackTrace();  // default output stream is System.out
+ 			}

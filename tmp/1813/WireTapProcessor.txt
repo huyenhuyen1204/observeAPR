@@ -1,0 +1,9 @@
+@@ -44,7 +44,7 @@
+  * @version 
+  */
+ public class WireTapProcessor extends ServiceSupport implements AsyncProcessor, Traceable {
+-    private final static transient Logger LOG = LoggerFactory.getLogger(WireTapProcessor.class);
++    private static final transient Logger LOG = LoggerFactory.getLogger(WireTapProcessor.class);
+     private final Endpoint destination;
+     private final Processor processor;
+     private final ExchangePattern exchangePattern;

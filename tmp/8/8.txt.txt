@@ -1,0 +1,9 @@
+@@ -40,7 +40,7 @@
+ 
+   /* @override constructor */
+   public TestOrdValues(String name) {
+-    super(name);
++super(name, false);
+   }
+ 
+   /** Test OrdFieldSource */

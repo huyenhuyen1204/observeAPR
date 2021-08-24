@@ -1,0 +1,8 @@
+@@ -91,7 +91,6 @@
+     objRef.set(viewResponse);
+     multigetRef.set(oper);
+     status = s;
+-    notifyListeners();
+   }
+ 
+   @Override

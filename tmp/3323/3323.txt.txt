@@ -1,0 +1,9 @@
+@@ -164,7 +164,7 @@
+       SolrException.log(log, e);
+     }
+     try {
+-      ExecutorUtil.shutdownAndAwaitTermination(commExecutor);
++ExecutorUtil.shutdownNowAndAwaitTermination(commExecutor);
+     } catch (Throwable e) {
+       SolrException.log(log, e);
+     }

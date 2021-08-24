@@ -1,0 +1,9 @@
+@@ -98,7 +98,7 @@
+ 
+             return countsStore;
+         }
+-        catch ( RuntimeException e )
++        catch ( Exception e )
+         {
+             pageCache.unmap( storeFile );
+             throw e;

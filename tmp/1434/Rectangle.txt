@@ -1,0 +1,10 @@
+@@ -16,9 +16,6 @@
+     private Point topLeftCorner;
+     private Point bottomRightCorner;
+ 
+-    /**
+-     * IMPORTANT TO UNDERSTAND: the most top left corner of the plane this rectangle can be on is (0, 0)
+-     */
+     public Rectangle(Point topLeftCorner, Point bottomRightCorner) {
+         int TLx = (int) topLeftCorner.getX();
+         int TLy = (int) topLeftCorner.getY();

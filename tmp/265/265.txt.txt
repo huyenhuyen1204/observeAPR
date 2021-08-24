@@ -1,0 +1,9 @@
+@@ -30,7 +30,7 @@
+ 
+ public class TimestampReconcilerTest
+ {   
+-    private static final TimestampReconciler reconciler = new TimestampReconciler();
++private static final TimestampReconciler reconciler = TimestampReconciler.instance;
+ 
+     @Test
+     public void testReconcileNormal()

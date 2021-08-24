@@ -1,0 +1,8 @@
+@@ -110,6 +110,7 @@
+      * plexus.requirement
+      */
+     @Inject
++    @Named(value="metadataTools#default")
+     private MetadataTools metadataTools;
+ 
+     @Inject

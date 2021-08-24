@@ -1,0 +1,9 @@
+@@ -1453,7 +1453,7 @@
+                 }
+                 catch (Throwable th)
+                 {
+-                    logger_.error(th);
++logger_.error("error closing " + ci, th);
+                 }
+             }
+ 

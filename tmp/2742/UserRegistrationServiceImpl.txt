@@ -1,0 +1,9 @@
+@@ -166,7 +166,7 @@
+         hibernateTemplate.findByCriteria(
+             DetachedCriteria.forClass(UserProfile.class)
+                 .add(Restrictions.eq("email", email))
+-        ));
++                .add(Restrictions.eq("verified", true))));
+     if (profile == null) {
+       throw new NoSuchUserException("No user with the email: " + email);
+     }

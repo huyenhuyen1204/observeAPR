@@ -1,0 +1,9 @@
+@@ -542,7 +542,7 @@
+ 						+ " " + se.getErrorCode());
+ 			}
+ 		}
+-		if (e.getMessage().equals(null)) {
++if (e.getMessage() == null) {
+ 			System.out.println(getThreadName()
+ 					+ " dbUtil --> NULL error message detected");
+ 			System.out

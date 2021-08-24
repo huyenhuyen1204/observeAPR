@@ -1,0 +1,9 @@
+@@ -73,7 +73,7 @@
+     }
+ 
+     reader = writer.getReader();
+-    writer.close();
++writer.shutdown();
+   }
+ 
+   @AfterClass

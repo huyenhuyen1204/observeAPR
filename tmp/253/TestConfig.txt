@@ -1,0 +1,8 @@
+@@ -124,6 +124,6 @@
+ 
+     @Validation
+     private void validate() {
+-
++        System.out.println("config validated");
+     }
+ }

@@ -1,0 +1,9 @@
+@@ -155,7 +155,7 @@
+     return sb;
+   }
+   
+-  protected DocData getNextDocData() throws NoMoreDataException, Exception {
++protected synchronized DocData getNextDocData() throws NoMoreDataException, Exception {
+     if (reader==null) {
+       openNextFile();
+     }

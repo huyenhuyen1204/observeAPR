@@ -1,0 +1,9 @@
+@@ -4047,7 +4047,7 @@
+         message("merge store matchedCount=" + merger.getMatchedSubReaderCount() + " vs " + merge.readers.size());
+       }
+ 
+-      anyNonBulkMerges |= merger.getMatchedSubReaderCount() != merge.readers.size();
++anyNonBulkMerges |= merger.getAnyNonBulkMerges();
+       
+       assert mergedDocCount == totDocCount: "mergedDocCount=" + mergedDocCount + " vs " + totDocCount;
+ 

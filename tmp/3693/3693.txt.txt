@@ -1,0 +1,9 @@
+@@ -183,7 +183,7 @@
+         }
+ 
+         StreamOutSession session = StreamOutSession.create(keyspace, LOCAL, null);
+-        StreamOut.transferSSTables(session, ssTableReaders, ranges);
++StreamOut.transferSSTables(session, ssTableReaders, ranges, OperationType.BOOTSTRAP);
+ 
+         session.await();
+ 

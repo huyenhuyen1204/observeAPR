@@ -1,0 +1,9 @@
+@@ -600,7 +600,7 @@
+ 				resultSet.enhanceRCLForInsert(
+ 						numTableColumns, colMap, dataDictionary,
+ 						targetTableDescriptor, targetVTI);
+-			resultColumnList.checkAutoincrement(resultSet.getResultColumns());
++resultColumnList.forbidOverrides(resultSet.getResultColumns());
+ 		}
+ 	}
+ 

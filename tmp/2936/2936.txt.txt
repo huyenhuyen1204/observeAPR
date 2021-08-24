@@ -1,0 +1,8 @@
+@@ -155,6 +155,6 @@
+ 		writer.close();
+ 
+ 		//
+-		searcher = new IndexSearcher(rd);
++searcher = new IndexSearcher(rd, true);
+ 	}
+ }

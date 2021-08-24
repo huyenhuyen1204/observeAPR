@@ -1,0 +1,9 @@
+@@ -163,7 +163,7 @@
+ 
+    @Override
+    public int hashCode() {
+-      return Objects.hashCode(containerFormat, diskFormat, size, checksum);
++      return Objects.hashCode(super.hashCode(), containerFormat, diskFormat, size, checksum);
+    }
+ 
+    @Override

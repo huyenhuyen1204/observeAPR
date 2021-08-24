@@ -1,0 +1,8 @@
+@@ -192,6 +192,7 @@
+ 
+             rollingPolicy.setParent(appender);
+             rollingPolicy.start();
++            return appender;
+         }
+         return new FileAppender<>();
+     }

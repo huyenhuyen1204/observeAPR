@@ -1,0 +1,9 @@
+@@ -157,7 +157,7 @@
+    * modify it.
+    */
+ 
+-  public Set<String> files() throws IOException {
++public Set<String> files() {
+     if (setFiles == null) {
+       throw new IllegalStateException("files were not computed yet");
+     }

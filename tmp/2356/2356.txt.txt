@@ -1,0 +1,9 @@
+@@ -567,7 +567,7 @@
+ 	//clear the parent resultset hash table;
+ 	public void clearParentResultSets();
+ 
+-	public Hashtable getParentResultSets();
++public Enumeration getParentResultSetKeys();
+ 
+ 	/**
+ 	 * beetle 3865: updateable cursor using index.  A way of communication

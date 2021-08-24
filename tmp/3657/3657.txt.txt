@@ -1,0 +1,9 @@
+@@ -385,7 +385,7 @@
+                 throw new SQLSyntaxErrorException(String.format(BAD_FETCH_DIR, direction));
+             fetchDirection = direction;
+         }
+-        throw new SQLSyntaxErrorException(String.format(BAD_FETCH_DIR, direction));
++else throw new SQLSyntaxErrorException(String.format(BAD_FETCH_DIR, direction));
+     }
+ 
+ 

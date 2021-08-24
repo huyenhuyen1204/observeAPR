@@ -1,0 +1,9 @@
+@@ -1995,7 +1995,7 @@
+                                                                browseOnly,
+                                                                clientWindowSize,
+                                                                ackBatchSize,
+-                                                               consumerMaxRate > 0 ? new TokenBucketLimiterImpl(maxRate,
++                                                               maxRate > 0 ? new TokenBucketLimiterImpl(maxRate,
+                                                                                                                 false)
+                                                                   : null,
+                                                                executor,

@@ -1,0 +1,9 @@
+@@ -96,7 +96,7 @@
+                 }
+                 else
+                 {
+-                    int id = cfm.cfId;
++Integer id = cfm.cfId;
+                     if (!header.isDirty(id))
+                     {
+                         header.turnOn(id, logWriter.getFilePointer());

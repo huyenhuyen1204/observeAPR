@@ -1,0 +1,9 @@
+@@ -2928,7 +2928,7 @@
+     }
+ 
+     CallActivityBehavior callActivityBehaviour = null;
+-    String expressionRegex = "\\$+\\{+.+\\}";
++    String expressionRegex = "[$#]+\\{+.+\\}";
+     if (calledElement != null && calledElement.matches(expressionRegex)) {
+       if (calledElementBinding == null) {
+         callActivityBehaviour = new CallActivityBehavior(expressionManager.createExpression(calledElement));

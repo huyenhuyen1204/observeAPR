@@ -1,0 +1,9 @@
+@@ -48,7 +48,7 @@
+ 	 * Prefix under which JAX-RS resources should be registered.
+ 	 */
+ 	@XmlElement
+-	private String prefix = "/";
++	private String prefix = "";
+ 
+ 	/**
+ 	 * Automatically register in Jersey any class marked with

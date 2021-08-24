@@ -1,0 +1,9 @@
+@@ -37,7 +37,7 @@
+  * {@link org.apache.lucene.queries.function.valuesource.ReciprocalFloatFunction}
+  */
+ public class BoostQParserPlugin extends QParserPlugin {
+-  public static String NAME = "boost";
++public static final String NAME = "boost";
+   public static String BOOSTFUNC = "b";
+ 
+   @Override

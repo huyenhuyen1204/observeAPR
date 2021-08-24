@@ -1,0 +1,9 @@
+@@ -42,7 +42,7 @@
+ 	
+ 	@Override
+ 	public void close() {
+-		lastProcessedQueue = null;
++		lastProcessedQueue = new ArrayList<LuceneWork>();
+ 		super.close();
+ 	}
+ 	

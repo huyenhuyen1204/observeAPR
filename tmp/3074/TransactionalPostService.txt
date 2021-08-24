@@ -1,0 +1,9 @@
+@@ -130,7 +130,7 @@
+             branch.clearLastPost();
+         }
+ 
+-        if (post.getLastTouchedDate().equals(topic.getModificationDate())) {
++        if (post.getCreationDate().equals(topic.getModificationDate())) {
+             topic.recalculateModificationDate();
+         }
+ 

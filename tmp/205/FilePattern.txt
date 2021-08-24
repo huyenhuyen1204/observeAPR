@@ -1,0 +1,9 @@
+@@ -121,7 +121,7 @@
+     }
+ 
+     public boolean accept(File file) {
+-      return pattern.match(file.getAbsolutePath());
++      return pattern.match(FilenameUtils.separatorsToUnix(file.getAbsolutePath()));
+     }
+ 
+     public boolean accept(File file, String filename) {

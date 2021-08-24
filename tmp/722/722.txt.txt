@@ -1,0 +1,9 @@
+@@ -28,7 +28,7 @@
+ 
+ 
+   public enum CollectionAction {
+-    CREATE, DELETE, RELOAD;
++CREATE, DELETE, RELOAD, SYNCSHARD;
+     
+     public static CollectionAction get( String p )
+     {

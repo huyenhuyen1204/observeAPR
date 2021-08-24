@@ -1,0 +1,9 @@
+@@ -80,7 +80,7 @@
+       }
+     }
+     w.forceMerge(1);
+-    w.close();
++w.shutdown();
+     dir.close();
+   }
+   

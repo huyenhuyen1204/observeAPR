@@ -1,0 +1,9 @@
+@@ -331,7 +331,7 @@
+   }
+ 
+   @Override
+-  public void end() throws IOException {
++public void end() {
+     // set final offset
+     final int finalOffset = correctOffset(scanner.yychar() + scanner.yylength());
+     this.offsetAtt.setOffset(finalOffset, finalOffset);

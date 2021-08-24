@@ -1,0 +1,9 @@
+@@ -1532,7 +1532,7 @@
+             rows.add(new Row(key, getColumnFamily(filter)));
+         }
+ 
+-        return new RangeSliceReply(rows, rr.rangeCompletedLocally);
++return new RangeSliceReply(rows);
+     }
+ 
+     public AbstractType getComparator()

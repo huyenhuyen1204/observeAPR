@@ -1,0 +1,9 @@
+@@ -723,7 +723,7 @@
+ 											null,
+ 											(TableDescriptor) null,
+ 											null,
+-											0, 0, false);
++0, 0);
+ 			rc.setColumnDescriptor(null, cd);
+ 			rc.setVirtualColumnId(index + 1);
+ 		}

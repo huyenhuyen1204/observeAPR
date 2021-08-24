@@ -1,0 +1,9 @@
+@@ -107,7 +107,7 @@
+         } catch (RDFHandlerException ex) {
+             throw new IllegalStateException("Unexpected exception.", ex);
+         } catch (RDFParseException ex) {
+-            throw new ExtractionException("Error while parsing RDF document.", ex, extractionResult);
++//            throw new ExtractionException("Error while parsing RDF document.", ex, extractionResult);
+         }
+     }
+ 

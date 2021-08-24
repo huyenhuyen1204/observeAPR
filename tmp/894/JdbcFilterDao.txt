@@ -1,0 +1,8 @@
+@@ -634,7 +634,6 @@
+             }
+             regex.appendTail(tempStringBuff);
+             sqlRule = tempStringBuff.toString();
+-            System.err.println("sqlRule = " + sqlRule);
+             return "WHERE " + sqlRule;
+         }
+         return "";

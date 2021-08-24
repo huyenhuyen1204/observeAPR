@@ -1,0 +1,9 @@
+@@ -302,7 +302,7 @@
+         ", sort='" + sort + "'" +
+         ", startPage=" + startPage +
+         ", pageSize=" + pageSize +
+-        ", resultView=" + resultView +
++        ", resultView='" + resultView + "'" +
+         '}';
+   }
+ }

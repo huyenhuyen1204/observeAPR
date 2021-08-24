@@ -1,0 +1,9 @@
+@@ -51,7 +51,7 @@
+             catch (InterruptedException e) {
+                 break;
+             }
+-            if (exchange != null) {
++            if (exchange != null && !isStopping()) {
+                 try {
+                     processor.process(exchange);
+                 }

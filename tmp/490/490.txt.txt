@@ -1,0 +1,9 @@
+@@ -191,7 +191,7 @@
+       }
+ 
+       @Override
+-      public boolean incrementToken() throws IOException {
++public boolean incrementToken() {
+         if (currentToken >= tokens.length) {
+           return false;
+         }

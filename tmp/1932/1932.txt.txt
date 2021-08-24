@@ -1,0 +1,9 @@
+@@ -433,7 +433,7 @@
+       coreProps.setProperty(propName, propValue);
+     }
+ 
+-    return new CoreDescriptor(container, name, instancedir, coreProps);
++return new CoreDescriptor(container, name, instancedir, coreProps, params);
+   }
+ 
+   private static String checkNotEmpty(String value, String message) {

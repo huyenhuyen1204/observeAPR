@@ -1,0 +1,9 @@
+@@ -200,7 +200,7 @@
+ 	@Override
+ 	public boolean isLocalNode(String nodeId) {
+ 		// TODO Auto-generated method stub
+-		return false;
++		return true;
+ 	}
+ 
+ 	@Override

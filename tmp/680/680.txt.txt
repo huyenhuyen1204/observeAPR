@@ -1,0 +1,9 @@
+@@ -37,7 +37,7 @@
+     return new ArabicNormalizationFilter(input);
+   }
+ 
+-  @Override
++//@Override
+   public Object getMultiTermComponent() {
+     return this;
+   }

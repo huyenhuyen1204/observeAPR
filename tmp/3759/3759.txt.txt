@@ -1,0 +1,9 @@
+@@ -135,7 +135,7 @@
+     RAMDirectory rd = new RAMDirectory();
+ 
+     //
+-    IndexWriter writer = new IndexWriter(rd, new StandardAnalyzer(org.apache.lucene.util.Version.LUCENE_CURRENT), true, IndexWriter.MaxFieldLength.LIMITED);
++IndexWriter writer = new IndexWriter(rd, new StandardAnalyzer(TEST_VERSION_CURRENT), true, IndexWriter.MaxFieldLength.LIMITED);
+ 
+     //
+     Document d = new Document();

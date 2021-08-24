@@ -1,0 +1,9 @@
+@@ -341,7 +341,7 @@
+ 
+     @Override
+     public boolean isEnabled() {
+-      return true;
++      return repositoryManager != null;
+     }
+ 
+     @Override

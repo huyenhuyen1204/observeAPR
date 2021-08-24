@@ -1,0 +1,9 @@
+@@ -130,7 +130,7 @@
+     }
+ 
+     @Override
+-    public int getUniqueFieldCount() throws IOException {
++public int size() throws IOException {
+       // TODO: add faster implementation!
+       int c = 0;
+       final FieldsEnum it = iterator();

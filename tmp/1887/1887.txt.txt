@@ -1,0 +1,9 @@
+@@ -182,7 +182,7 @@
+ 				"undo Page is not an allocPage");
+ 		}
+ 
+-		((AllocPage)undoPage).compressSpace(
++((AllocPage)undoPage).undoCompressSpace(
+              CLRInstant, newHighestPage, num_pages_truncated);
+ 	}
+ 

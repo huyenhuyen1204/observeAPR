@@ -1,0 +1,9 @@
+@@ -566,7 +566,7 @@
+      * @return true if so
+      */
+ 	public boolean supportsConvert() {
+-		return true;
++return false;
+ 	}
+ 
+     /**

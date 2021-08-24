@@ -1,0 +1,9 @@
+@@ -15,7 +15,7 @@
+ 	
+ 	/**
+ 	 * Deslocamento do centro da imagem ao centro ao 
+-	 * centro l�gico do objeto
++	 * centro logico do objeto
+ 	 */
+ 	public float dx = 0;
+ 	public float dy = 0;

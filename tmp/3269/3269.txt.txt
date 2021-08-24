@@ -1,0 +1,9 @@
+@@ -31,7 +31,7 @@
+                                    Iterable<Cooccurrence> cooccurrences,
+                                    double weightOfVectorA,
+                                    double weightOfVectorB,
+-                                   int numberOfColumns) {
++long numberOfColumns) {
+     int cooccurrenceCount = countElements(cooccurrences);
+     if (cooccurrenceCount == 0) {
+       return Double.NaN;

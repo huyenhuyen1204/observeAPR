@@ -1,0 +1,9 @@
+@@ -786,7 +786,7 @@
+         }
+       }
+ 
+-      if (writer != null) writer.close();
++if (writer != null) writer.shutdown();
+ 
+     } finally {
+       solrCoreState.getCommitLock().unlock();

@@ -1,0 +1,9 @@
+@@ -48,7 +48,7 @@
+                 String preyTaxonName = null;
+                 for (String preyLabel : preyLabels) {
+                     preyTaxonName = parser.getValueByLabel(preyLabel);
+-                    if (StringUtils.isNotBlank(preyTaxonName) && !"NA".equals(preyTaxonName)) {
++                    if (StringUtils.isNotBlank(preyTaxonName)) {
+                         break;
+                     }
+                 }

@@ -1,0 +1,9 @@
+@@ -32,7 +32,7 @@
+ 
+ 	public Integer getNextStart()
+ 	{
+-		if (this.start + this.num >= this.total - 1) return null;
++		if (this.start + this.num > this.total - 1) return null;
+ 		else return this.start + this.num;
+ 	}
+ 

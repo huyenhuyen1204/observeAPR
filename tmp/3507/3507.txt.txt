@@ -1,0 +1,9 @@
+@@ -64,7 +64,7 @@
+       success = true;
+     } finally {
+       if (!success) {
+-        IOUtils.closeWhileHandlingException(tvx, tvd, tvf);
++abort();
+       }
+     }
+   }

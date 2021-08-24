@@ -1,0 +1,9 @@
+@@ -554,7 +554,7 @@
+         }
+     }
+ 
+-    private class CompactionExecutor extends DebuggableThreadPoolExecutor
++private static class CompactionExecutor extends DebuggableThreadPoolExecutor
+     {
+         private volatile ColumnFamilyStore cfs;
+         private volatile CompactionIterator ci;

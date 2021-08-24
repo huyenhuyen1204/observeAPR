@@ -1,0 +1,8 @@
+@@ -69,6 +69,7 @@
+     private transient ResponseHandler responseHandler;
+ 
+     public Operation() {
++        setFlag(true, BITMASK_VALIDATE_TARGET);
+         setFlag(true, BITMASK_CALL_TIMEOUT_64_BIT);
+     }
+ 

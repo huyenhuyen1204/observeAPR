@@ -1,0 +1,9 @@
+@@ -80,8 +80,6 @@
+                     .setBrokerURL(brokerURL);
+         }
+ 
+-        // set the connection factory with the provided broker url
+-        answer.setConnectionFactory(new ActiveMQConnectionFactory(brokerURL));
+         return answer;
+     }
+ 

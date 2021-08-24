@@ -1,0 +1,8 @@
+@@ -17,6 +17,7 @@
+       Serializer<N> columnNameSerializer,
+       ExecutionResult<Map<ByteBuffer, List<ColumnOrSuperColumn>>> executionResult, ColumnFamilyRowMapper mapper) {
+     super(keySerializer, columnNameSerializer, executionResult);    
++    this.rowMapper = mapper;
+   }
+ 
+   @Override

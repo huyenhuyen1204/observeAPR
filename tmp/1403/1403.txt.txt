@@ -1,0 +1,9 @@
+@@ -59,7 +59,7 @@
+     outputDir = getTestTempDir("output");
+     outputDir.delete();
+ 
+-    conf = new Configuration();
++conf = getConfiguration();
+   }
+ 
+   private Document asDocument(String line) {

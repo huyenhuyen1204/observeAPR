@@ -1,0 +1,9 @@
+@@ -320,7 +320,7 @@
+ 	}
+ 
+ 	public void removeDependency(final String other) {
+-		dependencies.remove(other);
++		dependencies.remove(getFilename(other, true));
+ 	}
+ 
+ 	public boolean hasDependency(final String filename) {

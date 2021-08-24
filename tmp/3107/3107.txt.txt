@@ -1,0 +1,9 @@
+@@ -89,7 +89,7 @@
+     reader = writer.getReader();
+     searcher1 = newSearcher(reader);
+     searcher2 = newSearcher(reader);
+-    writer.close();
++writer.shutdown();
+   }
+   
+   @Override

@@ -1,0 +1,9 @@
+@@ -58,7 +58,7 @@
+             writer.addDocument(doc);
+         }
+         writer.close();
+-        indexSearcher = new IndexSearcher(directory);
++indexSearcher = new IndexSearcher(directory, false);
+         indexReader = indexSearcher.getIndexReader();
+ 
+ 

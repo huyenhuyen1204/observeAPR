@@ -1,0 +1,9 @@
+@@ -42,7 +42,7 @@
+  */
+ 
+ public class SurroundQParserPlugin extends QParserPlugin {
+-  public static String NAME = "surround";
++public static final String NAME = "surround";
+ 
+   @Override
+   public void init(NamedList args) {

@@ -1,0 +1,9 @@
+@@ -385,7 +385,7 @@
+ 		{
+ 			if (terabytes() >= 1.0)
+ 			{
+-				return unitString(gigabytes(), "T", locale);
++				return unitString(terabytes(), "T", locale);
+ 			}
+ 
+ 			if (gigabytes() >= 1.0)

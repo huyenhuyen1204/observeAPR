@@ -1,0 +1,10 @@
+@@ -84,9 +84,6 @@
+     this.applicationMasterMem = applicationMasterMem;
+     this.defaultFs = defaultFs;
+     this.yarnSiteXml = yarnSiteXml;
+-    
+-    //TODO: this variable should be removed
+-    this.containerCount = 1;
+   }
+   
+   

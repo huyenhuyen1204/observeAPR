@@ -1,0 +1,9 @@
+@@ -75,7 +75,7 @@
+     
+     reader = iw.getReader();
+     searcher = new IndexSearcher(reader);
+-    iw.close();
++iw.shutdown();
+   }
+   
+   @Override

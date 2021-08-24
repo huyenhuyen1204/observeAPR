@@ -1,0 +1,9 @@
+@@ -35,7 +35,7 @@
+   }
+ 
+   private Path readPathImpl() throws IOException {
+-    int size = inputStream.readInt();
++    int size = readInt();
+     byte[] bytes = readBytes(size, "path");
+ 
+     /*

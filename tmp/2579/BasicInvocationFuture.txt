@@ -1,0 +1,9 @@
+@@ -74,7 +74,7 @@
+         isNotNull(executor, "executor");
+ 
+         synchronized (this) {
+-            if (response != null) {
++            if (response != null && !(response instanceof BasicInvocation.InternalResponse)) {
+                 runAsynchronous(callback, executor);
+                 return;
+             }

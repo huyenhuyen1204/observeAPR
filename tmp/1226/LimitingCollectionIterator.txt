@@ -1,0 +1,9 @@
+@@ -24,7 +24,7 @@
+ 
+     @Override
+     public boolean isEmpty() {
+-        return limit == 0 && collection.isEmpty();
++        return limit == 0 || collection.isEmpty();
+     }
+ 
+     @Override

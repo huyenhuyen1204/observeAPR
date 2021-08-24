@@ -1,0 +1,9 @@
+@@ -1422,7 +1422,7 @@
+ 		 */
+ 		if (eliminateSort)
+ 		{
+-			prnRSN.adjustForSortElimination();
++prnRSN.adjustForSortElimination(orderByList);
+ 		}
+ 
+ 		/* Set the cost of this node in the generated node */

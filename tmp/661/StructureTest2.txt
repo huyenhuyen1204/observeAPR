@@ -1,0 +1,9 @@
+@@ -256,7 +256,7 @@
+     }
+     
+     @Test
+-    public void testNstMethodReturningInner_fail(){
++    public void testNstMethodReturningInner(){
+         compareWithJavaSource("nesting/MethodReturningInner");
+     }
+ 

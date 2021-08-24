@@ -1,0 +1,8 @@
+@@ -209,6 +209,7 @@
+         propertyChangeListeners.add(listener);
+     }
+ 
++    @Delegate
+     public void removePropertyChangeListener(PropertyChangeListener listener) {
+         propertyChangeListeners.remove(listener);
+     }

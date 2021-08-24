@@ -1,0 +1,8 @@
+@@ -163,6 +163,7 @@
+                 return getString(index);
+             case V8_ARRAY:
+                 return getArray(index);
++            case V8_FUNCTION:
+             case V8_OBJECT:
+                 return getObject(index);
+         }

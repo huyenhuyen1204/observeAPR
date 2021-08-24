@@ -1,0 +1,9 @@
+@@ -55,7 +55,7 @@
+         this.range = range;
+     }
+ 
+-    public Message getMessage(int version)
++public Message getMessage(Integer version)
+     {
+         DataOutputBuffer dob = new DataOutputBuffer();
+         try

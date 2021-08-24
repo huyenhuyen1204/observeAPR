@@ -1,0 +1,8 @@
+@@ -649,7 +649,6 @@
+     }
+     // positional argument
+     {
+-      // TODO(scheglov) not implemented yet in Resolver 
+       ParameterElement parameter = expression.getParameterElement();
+       if (parameter != null) {
+         return parameter.getDisplayName();

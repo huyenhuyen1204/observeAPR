@@ -1,0 +1,9 @@
+@@ -88,7 +88,7 @@
+     reader = iw.getReader();
+     s1 = newSearcher(reader);
+     s2 = newSearcher(reader);
+-    iw.close();
++iw.shutdown();
+   }
+   
+   @AfterClass

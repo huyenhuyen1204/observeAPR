@@ -1,0 +1,9 @@
+@@ -386,7 +386,7 @@
+     }
+ 
+     @Override
+-    public DocsEnum docs(Bits liveDocs, DocsEnum reuse, boolean needsFreqs) {
++public DocsEnum docs(Bits liveDocs, DocsEnum reuse, int flags) {
+       return new RAMDocsEnum(ramField.termToDocs.get(current), liveDocs);
+     }
+ 

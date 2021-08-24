@@ -1,0 +1,9 @@
+@@ -75,7 +75,7 @@
+ 
+ 			if (firstTime) {
+ 				Logs.reportString("----------------------------------------------");
+-				Logs.reportMessage("CSLOOK_Header", "stored procedures");
++Logs.reportMessage("CSLOOK_StoredProcHeader");
+ 				Logs.reportString("----------------------------------------------\n");
+ 			}
+ 

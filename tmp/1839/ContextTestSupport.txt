@@ -1,0 +1,9 @@
+@@ -49,7 +49,7 @@
+         context.stop();
+     }
+ 
+-    protected CamelContext createCamelContext() {
++    protected CamelContext createCamelContext() throws Exception {
+         return new DefaultCamelContext();
+     }
+ 

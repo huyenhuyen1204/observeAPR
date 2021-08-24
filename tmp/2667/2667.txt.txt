@@ -1,0 +1,9 @@
+@@ -64,7 +64,7 @@
+ 
+ 			if (firstTime) {
+ 				Logs.reportString("----------------------------------------------");
+-				Logs.reportMessage("CSLOOK_SchemasHeader");
++Logs.reportMessage("DBLOOK_SchemasHeader");
+ 				Logs.reportString("----------------------------------------------\n");
+ 			}
+ 

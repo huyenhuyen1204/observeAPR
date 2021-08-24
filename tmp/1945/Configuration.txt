@@ -1,0 +1,8 @@
+@@ -68,6 +68,6 @@
+     if( interval == null ){
+       return DEFAULT_PUBLISH_DELAY;
+     }
+-    return Long.parseLong( ( String )interval );
++    return ( ( Long )interval );
+   }
+ }

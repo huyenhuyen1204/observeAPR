@@ -1,0 +1,8 @@
+@@ -48,7 +48,6 @@
+                     if (Parameters.DEBUG) {
+                         t.printStackTrace();
+                     }
+-                    r.notify(Exception.class, Event.wrap(t));
+                     emit(Output.ERR.class, t);
+                 }
+             }

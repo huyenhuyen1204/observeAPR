@@ -1,0 +1,9 @@
+@@ -3262,7 +3262,7 @@
+ 	*/
+ 	public int getSQLStateType()
+ 	{
+-		return JDBC30Translation.SQL_STATE_SQL99;
++return sqlStateSQL99;
+ 	}
+ 
+ 	/**

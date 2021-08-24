@@ -1,0 +1,8 @@
+@@ -98,6 +98,7 @@
+ 
+ 
+     @Override
++    @SuppressWarnings("unchecked")
+     public NextAction handleWrite(final FilterChainContext ctx) throws IOException {
+         final FilterChainContext suspendedParentContext =
+                 puFilter.suspendedContextAttribute.get(ctx);

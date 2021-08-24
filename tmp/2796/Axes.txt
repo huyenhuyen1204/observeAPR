@@ -1,0 +1,9 @@
+@@ -140,7 +140,7 @@
+ 	 *         defined axes.
+ 	 */
+ 	public static AxisType[] knownTypes() {
+-		return axes.values().toArray(null);
++		return axes.values().toArray(new AxisType[0]);
+ 	}
+ 
+ 	/**

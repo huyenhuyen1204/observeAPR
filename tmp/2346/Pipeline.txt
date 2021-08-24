@@ -1,0 +1,8 @@
+@@ -99,6 +99,7 @@
+ 
+     public Response<String> discard() {
+         client.discard();
++        currentMulti = null;
+         return getResponse(BuilderFactory.STRING);
+     }
+ 

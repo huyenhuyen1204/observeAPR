@@ -1,0 +1,9 @@
+@@ -54,7 +54,7 @@
+     }
+ 
+     @Override
+-    public final boolean incrementToken() throws IOException {
++public final boolean incrementToken() {
+       clearAttributes();
+       if (index < testToken.length) {
+         Token t = testToken[index++];

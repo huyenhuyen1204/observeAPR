@@ -1,0 +1,9 @@
+@@ -261,7 +261,7 @@
+     return this;
+   }
+ 
+-  public boolean setHighlightRequireFieldMatch() {
++public boolean getHighlightRequireFieldMatch() {
+     return this.getBool(HighlightParams.FIELD_MATCH, false);
+   }
+ 

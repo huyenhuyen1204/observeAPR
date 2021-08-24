@@ -1,0 +1,9 @@
+@@ -118,7 +118,7 @@
+         Object toReturn = null;
+ 
+         // Added method to unwrap from the collaborator.
+-        if (method.getName().equals("getWrappedObject")
++if (method.getName().equals("unwrapObject")
+                 && method.getDeclaringClass() == WrapperedObject.class) {
+             toReturn = object;
+         } else

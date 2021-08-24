@@ -1,0 +1,9 @@
+@@ -281,7 +281,7 @@
+ 
+ 		String encodingOption = "";
+ 		if (encoding != null)
+-			encoding = " encoding=" + encoding;
++			encodingOption = " encoding=" + encoding;
+ 
+ 		String partitionOption = "";
+ 		if (usePartition)

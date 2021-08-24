@@ -1,0 +1,9 @@
+@@ -1393,7 +1393,7 @@
+       return ((TermPositions)current).nextPosition();
+     }
+     
+-    public int getPayloadLength() {
++public int getPayloadLength() throws IOException {
+       return ((TermPositions)current).getPayloadLength();
+     }
+      

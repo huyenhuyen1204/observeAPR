@@ -1,0 +1,9 @@
+@@ -36,7 +36,7 @@
+     return new HindiNormalizationFilter(input);
+   }
+   
+-  @Override
++//@Override
+   public Object getMultiTermComponent() {
+     return this;
+   }

@@ -1,0 +1,8 @@
+@@ -226,7 +226,6 @@
+                                                     callingConvention, flags);
+             cbstruct = peer != 0 ? new Pointer(peer) : null;
+         }
+-
+     }
+     
+     private Class getNativeType(Class cls) {

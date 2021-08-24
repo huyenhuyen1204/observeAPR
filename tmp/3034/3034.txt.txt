@@ -1,0 +1,9 @@
+@@ -110,7 +110,7 @@
+     
+     taxoWriter.close();
+     reader = writer.getReader();
+-    writer.close();
++writer.shutdown();
+     
+     taxo = new DirectoryTaxonomyReader(taxoDir);
+   }

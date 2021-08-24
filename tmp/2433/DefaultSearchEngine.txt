@@ -1,0 +1,9 @@
+@@ -130,7 +130,7 @@
+ 
+         // Annotate the node with the optimizer and return search enumeration.
+         optimizer.annotate( root );
+-        return cursorBuilder.build( root );
++        return ( IndexCursor<Long, ServerEntry> ) cursorBuilder.build( root );
+     }
+ 
+ 

@@ -1,0 +1,9 @@
+@@ -86,7 +86,7 @@
+                 }
+                 rows.put(key, SSTableUtils.createCF(Long.MIN_VALUE, Integer.MIN_VALUE, cols));
+             }
+-            SSTableReader sstable = SSTableUtils.writeSSTable(rows);
++SSTableReader sstable = SSTableUtils.prepare().write(rows);
+             sstables.add(sstable);
+             store.addSSTable(sstable);
+         }

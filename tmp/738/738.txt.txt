@@ -1,0 +1,9 @@
+@@ -55,7 +55,7 @@
+   }
+ 
+   @Override
+-  public void release() {
++public void close() {
+   }
+ 
+   @Override

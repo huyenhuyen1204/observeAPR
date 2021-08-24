@@ -1,0 +1,9 @@
+@@ -422,7 +422,7 @@
+ 		if (! resultColumnList.columnTypesAndLengthsMatch(
+ 												resultSet.getResultColumns()))
+ 		{
+-			resultSet = resultSet.genNormalizeResultSetNode(resultSet, false);
++resultSet = resultSet.genNormalizeResultSetNode(false);
+ 			resultColumnList.copyTypesAndLengthsToSource(resultSet.getResultColumns());
+ 		}
+ 

@@ -1,0 +1,9 @@
+@@ -137,6 +137,8 @@
+       registerHandler(eventBus.addHandler(UserConfigChangeEvent.TYPE, this));
+ 
+       display.setListener(this);
++
++      display.updatePageSize(configHolder.getDocumentListPageSize());
+    }
+ 
+    @Override

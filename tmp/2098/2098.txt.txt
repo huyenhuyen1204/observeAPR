@@ -1,0 +1,9 @@
+@@ -485,7 +485,7 @@
+         {
+             ColumnFamilyStore cfStore = columnFamilyStores_.get( columnFamily );
+             if ( cfStore != null )
+-                MinorCompactionManager.instance().submitMajor(cfStore, 0);
++CompactionManager.instance().submitMajor(cfStore, 0);
+         }
+     }
+ 

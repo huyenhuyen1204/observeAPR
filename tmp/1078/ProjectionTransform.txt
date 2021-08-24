@@ -1,0 +1,8 @@
+@@ -179,6 +179,7 @@
+     if (inputSchema.isNullable()) {
+       if (val == null) {
+         builder.set(fieldName, null);
++        return;
+       }
+       inputType = inputSchema.getNonNullable().getType();
+       outputType = outputSchema.getNonNullable().getType();

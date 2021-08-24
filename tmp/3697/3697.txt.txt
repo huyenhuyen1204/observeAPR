@@ -1,0 +1,9 @@
+@@ -44,7 +44,7 @@
+      * @param agentContext JMXAgentContext instance.
+      */
+     public UserAdminMBeanHandler(JMXAgentContext agentContext) {
+-        super(agentContext, org.osgi.service.useradmin.UserAdmin.class.getCanonicalName());
++super(agentContext, "org.osgi.service.useradmin.UserAdmin");
+     }
+ 
+     /**

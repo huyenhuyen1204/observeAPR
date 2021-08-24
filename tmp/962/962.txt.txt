@@ -1,0 +1,9 @@
+@@ -113,7 +113,7 @@
+                 {
+                     MessageProducer prod = new MessageProducer()
+                     {
+-                        public Message getMessage(int version) throws IOException
++public Message getMessage(Integer version) throws IOException
+                         {
+                             return makeGossipDigestSynMessage(gDigests, version);
+                         }

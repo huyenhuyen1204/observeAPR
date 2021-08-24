@@ -1,0 +1,8 @@
+@@ -120,6 +120,7 @@
+ 
+         if (metaBean instanceof DynamicMetaBean) {
+             metaBean = metaBean.resolveMetaBean(ObjectUtils.defaultIfNull(validationContext.getBean(), rawType));
++            validationContext.setMetaBean(metaBean);
+         }
+         MetaProperty mp = metaBean.getProperty(token);
+         if (mp == null) {

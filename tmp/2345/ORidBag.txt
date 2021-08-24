@@ -1,0 +1,9 @@
+@@ -305,7 +305,7 @@
+       stream.skip(OUUIDSerializer.UUID_SIZE);
+     }
+ 
+-    stream.skip(delegate.deserialize(stream.bytes, stream.offset));
++    stream.skip(delegate.deserialize(stream.bytes, stream.offset) - stream.offset);
+   }
+ 
+   @Override

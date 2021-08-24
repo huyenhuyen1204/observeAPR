@@ -1,0 +1,9 @@
+@@ -53,7 +53,7 @@
+                 return uri.toString();
+             }
+         } catch (URISyntaxException e) {
+-            throw new RuntimeException(e);
++            return sanitizedUrl;
+         }
+         return sanitizedUrl;
+     }

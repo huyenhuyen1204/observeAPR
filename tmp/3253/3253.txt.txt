@@ -1,0 +1,9 @@
+@@ -57,7 +57,7 @@
+     }
+     
+     if (clusters.isEmpty()) {
+-      throw new IllegalStateException("Cluster is empty!!!");
++throw new IllegalStateException("No clusters found. Check your -c path.");
+     }
+   }
+ 

@@ -1,0 +1,9 @@
+@@ -81,7 +81,7 @@
+ 
+         @Override
+         public Object[] materialize() {
+-            return Buckets.materialize(delegate);
++            return Buckets.materialize(this);
+         }
+     };
+ 

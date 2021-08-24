@@ -1,0 +1,8 @@
+@@ -444,6 +444,7 @@
+      * @return null.
+      */
+     @Override
++    @TestMethod("testReturnsNull")
+     public Number getFlagValue() {
+         return null;
+     }

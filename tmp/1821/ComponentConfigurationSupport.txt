@@ -1,0 +1,8 @@
+@@ -174,7 +174,6 @@
+             } else {
+                 buffer.append(",");
+             }
+-            buffer.append(entry.getKey());
+             buffer.append("\n    ");
+             buffer.append(entry.getValue().toJson());
+         }

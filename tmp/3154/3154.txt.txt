@@ -1,0 +1,9 @@
+@@ -116,7 +116,7 @@
+       
+     // assure that we deal with a single segment  
+     writer.forceMerge(1);
+-    writer.close();
++writer.shutdown();
+     
+     IndexReader reader = DirectoryReader.open(dir);
+ 

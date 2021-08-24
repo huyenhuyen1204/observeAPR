@@ -1,0 +1,8 @@
+@@ -120,6 +120,7 @@
+             new Attributes()
+                 .with(AwsRule.FIELD_SPEC, spec.asText())
+                 .with(AwsRule.FIELD_DRAIN, drain.asText())
++                .with(AwsRule.FIELD_FAILURE, "")
+         );
+     }
+ 

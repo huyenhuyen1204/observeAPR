@@ -1,0 +1,8 @@
+@@ -73,6 +73,6 @@
+ 
+     public long maxTimestamp()
+     {
+-        throw new UnsupportedOperationException();
++return Long.MIN_VALUE;
+     }
+ }

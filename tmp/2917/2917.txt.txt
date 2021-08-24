@@ -1,0 +1,9 @@
+@@ -473,7 +473,7 @@
+             }
+             catch (StandardException se)
+             {
+-                if ( !se.getMessageId().equals( SQLState.LOCK_TIMEOUT ) ) { throw se; }
++if ( !se.isLockTimeout() ) { throw se; }
+             }
+             finally
+             {

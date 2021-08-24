@@ -1,0 +1,8 @@
+@@ -240,6 +240,7 @@
+     token = token.getNext();
+     while (token != null) {
+       tail = tail.setNext(token.copy());
++      token = token.getNext();
+     }
+     return head;
+   }

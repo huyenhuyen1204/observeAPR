@@ -1,0 +1,9 @@
+@@ -100,7 +100,7 @@
+   @Override
+   public void tearDown() throws Exception {
+     reader.close();
+-    iw.close();
++iw.shutdown();
+     dir.close();
+     super.tearDown();
+   }

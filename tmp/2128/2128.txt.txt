@@ -1,0 +1,9 @@
+@@ -45,7 +45,7 @@
+       Element e = elements.next();
+       result += e.get() * getScoreForLabelFeature(label, e.index());
+     }
+-    return result / model.thetaNormalizer(label);
++return -result;
+   }
+   
+   @Override

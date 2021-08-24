@@ -1,0 +1,9 @@
+@@ -43,7 +43,7 @@
+       this.output2 = output2;
+     }
+ 
+-    @Override @SuppressWarnings("unchecked")
++@Override @SuppressWarnings("rawtypes")
+     public boolean equals(Object other) {
+       if (other == this) {
+         return true;

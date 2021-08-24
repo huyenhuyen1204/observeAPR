@@ -1,0 +1,9 @@
+@@ -48,6 +48,8 @@
+         }
+ 
+         started = true;
++
++        accessorPool = new DataFileAccessorPool(this);
+                 
+         ArrayList<File> files = new ArrayList<File>();
+         for (File directory : dirs) {

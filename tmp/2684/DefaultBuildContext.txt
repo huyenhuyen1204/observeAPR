@@ -1,0 +1,9 @@
+@@ -749,7 +749,7 @@
+             inputIncludedInputs.put(inputFile, new LinkedHashSet<File>(includedInputs));
+ 
+             for (File includedInput : includedInputs) {
+-              putInputFileState(includedInput, oldState.getFileState(inputFile));
++              putInputFileState(includedInput, oldState.getFileState(includedInput));
+             }
+           }
+ 

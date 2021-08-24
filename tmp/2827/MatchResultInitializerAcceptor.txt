@@ -1,0 +1,9 @@
+@@ -88,7 +88,7 @@
+     @Override
+     public Pair<Request, Iterator<TreeAcceptor>> apply(final Request request) {
+         final RoutingContext rc = contextProvider.get();
+-        rc.pushMatchResult(new SingleMatchResult(Requests.relativePath(request)));
++        rc.pushMatchResult(new SingleMatchResult(Requests.relativePath(request, false)));
+ 
+         return Tuples.<Request, Iterator<TreeAcceptor>>of(request, Iterators.singletonIterator(rootRoute));
+     }

@@ -1,0 +1,9 @@
+@@ -447,7 +447,7 @@
+ 
+     public double getMergeShardsChance()
+     {
+-        return readRepairChance;
++return mergeShardsChance;
+     }
+ 
+     public boolean getReplicateOnWrite()

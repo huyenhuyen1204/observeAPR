@@ -1,0 +1,8 @@
+@@ -71,6 +71,6 @@
+     @Override
+     public String toString()
+     {
+-        return "#<User %s groups=%s>".format(username, groups);
++return String.format("#<User %s groups=%s>", username, groups);
+     }
+ }

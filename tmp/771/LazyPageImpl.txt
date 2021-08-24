@@ -1,0 +1,8 @@
+@@ -95,6 +95,7 @@
+     this.pageXml = pageXml;
+     this.headerXml = headerXml;
+     this.previewXml = previewXml;
++    this.page = new PageImpl(uri);
+   }
+ 
+   /**

@@ -1,0 +1,9 @@
+@@ -89,7 +89,7 @@
+                     return 1;
+                 }
+ 
+-                return -AbstractType.this.compare(o1, o2);
++return AbstractType.this.compare(o2, o1);
+             }
+         };
+     }

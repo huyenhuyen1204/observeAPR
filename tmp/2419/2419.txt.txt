@@ -1,0 +1,9 @@
+@@ -64,7 +64,7 @@
+   private static class PayloadAnalyzer extends Analyzer {
+ 
+     private PayloadAnalyzer() {
+-      super(new PerFieldReuseStrategy());
++super(PER_FIELD_REUSE_STRATEGY);
+     }
+ 
+     @Override

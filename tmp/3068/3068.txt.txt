@@ -1,0 +1,9 @@
+@@ -335,7 +335,7 @@
+     assertEquals(1 + endOffset + offsetGap, dpe.endOffset());
+     assertEquals(null, te.next());
+     reader.close();
+-    writer.close();
++writer.shutdown();
+     writer.w.getDirectory().close();
+   }
+ 

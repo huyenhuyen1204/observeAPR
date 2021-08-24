@@ -1,0 +1,9 @@
+@@ -810,7 +810,7 @@
+ 
+     @Override
+     public BuffersBuffer get(final ByteBuffer dst) {
+-        get(dst, 0, dst.remaining());
++        get(dst, dst.position(), dst.remaining());
+         dst.position(dst.limit());
+ 
+         return this;

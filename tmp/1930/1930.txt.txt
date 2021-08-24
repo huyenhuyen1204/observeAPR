@@ -1,0 +1,9 @@
+@@ -54,7 +54,7 @@
+    */
+   public static final String LOCK_DIR =
+     System.getProperty("org.apache.lucene.lockdir",
+-      System.getProperty("java.io.tmpdir"));
++System.getProperty("java.io.tmpdir", "."));
+ 
+   private static MessageDigest DIGESTER;
+ 

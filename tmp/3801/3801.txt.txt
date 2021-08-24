@@ -1,0 +1,9 @@
+@@ -52,7 +52,7 @@
+         epStateMap_ = epStateMap;
+     }
+         
+-    Map<InetAddress, EndPointState> getEndPointStateMap()
++Map<InetAddress, EndPointState> getEndpointStateMap()
+     {
+          return epStateMap_;
+     }

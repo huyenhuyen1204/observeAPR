@@ -1,0 +1,9 @@
+@@ -983,7 +983,7 @@
+         }
+         
+         @Override
+-        public void close() throws IOException {}
++public void close() {}
+       }));
+ 
+     try {

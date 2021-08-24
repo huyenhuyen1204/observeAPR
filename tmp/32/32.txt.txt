@@ -1,0 +1,9 @@
+@@ -559,7 +559,7 @@
+     public void addSSTable(SSTableReader sstable)
+     {
+         ssTables_.add(sstable);
+-        CompactionManager.instance.submitMinor(this);
++CompactionManager.instance.submitMinorIfNeeded(this);
+     }
+ 
+     /*

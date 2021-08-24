@@ -1,0 +1,9 @@
+@@ -2606,7 +2606,7 @@
+         }
+       }
+     } finally {
+-      IOUtils.closeSafely(true, cfsdir);
++IOUtils.closeSafely(false, cfsdir);
+     }
+     
+     info.dir = directory;

@@ -1,0 +1,9 @@
+@@ -214,7 +214,7 @@
+     }
+ 
+ 
+-    private boolean skipStandardObjectProperties = true;
++    private boolean skipStandardObjectProperties = false;
+     private final Map<String, Schema> knownSchemas = new HashMap<>();
+     private final Map<String,String> locationMap = new HashMap<>();
+ 

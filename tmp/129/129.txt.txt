@@ -1,0 +1,9 @@
+@@ -52,7 +52,7 @@
+     Path outpath = new Path(fs.getWorkingDirectory(), "output");
+ 
+     if (fs.exists(outpath)) {
+-      FileUtil.fullyDelete(fs, outpath);
++fs.delete(outpath, true);
+     }
+ 
+     return outpath;

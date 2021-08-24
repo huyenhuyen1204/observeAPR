@@ -1,0 +1,8 @@
+@@ -146,6 +146,6 @@
+         df++;
+       }
+     }
+-    return new TermStats(df, totTF);
++return new TermStats(df, indexOptions == IndexOptions.DOCS_ONLY ? -1 : totTF);
+   }
+ }

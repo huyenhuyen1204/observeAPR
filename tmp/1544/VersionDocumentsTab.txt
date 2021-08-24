@@ -1,0 +1,9 @@
+@@ -56,6 +56,8 @@
+                         .isDisplayed();
+             }
+         });
++        slightPause();
++        waitForPageSilence();
+         return new VersionDocumentsTab(getDriver());
+     }
+ 

@@ -1,0 +1,9 @@
+@@ -75,6 +75,8 @@
+                 messages.remove(0);
+             }
+ 
++            sendMessage(msg);
++
+             Message message = messageEnvelope.getMessage();
+             message.setReply();
+             msg.setMessageObject(message);

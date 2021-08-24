@@ -1,0 +1,9 @@
+@@ -100,7 +100,7 @@
+ 	}
+ 	
+ 	protected void removeConstituent() {
+-		removeConstituent(provisionTo, resource);
++removeConstituent(subsystem, resource);
+ 	}
+ 	
+ 	protected void removeReference() {

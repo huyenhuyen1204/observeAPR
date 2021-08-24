@@ -1,0 +1,9 @@
+@@ -55,7 +55,7 @@
+         }
+     }
+ 
+-    private void cleanClipboard() {
++    protected void cleanClipboard() {
+         Application.setClipboard(" ");
+     }
+ }

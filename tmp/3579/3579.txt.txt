@@ -1,0 +1,7 @@
+@@ -88,5 +88,5 @@
+                                  Object[] inputs) throws SqlException;
+ 
+ 
+-    public void writeSetSpecialRegister(java.util.ArrayList sqlsttList) throws SqlException;
++public void writeSetSpecialRegister(Section section, java.util.ArrayList sqlsttList) throws SqlException;
+ }

@@ -1,0 +1,9 @@
+@@ -61,7 +61,7 @@
+     writer.forceMerge(1);
+ 
+     reader = writer.getReader();
+-    writer.close();
++writer.shutdown();
+     searcher = newSearcher(reader);
+ 
+   }

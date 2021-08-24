@@ -1,0 +1,9 @@
+@@ -121,7 +121,7 @@
+ 
+         writer.close();
+ 
+-        r = IndexReader.open(index);
++r = IndexReader.open(index, true);
+         s = new IndexSearcher(r);
+         s.setSimilarity(sim);
+     }

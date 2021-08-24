@@ -1,0 +1,9 @@
+@@ -63,7 +63,7 @@
+ 
+                 @Override
+                 public void onFailure(@Nonnull Throwable t) {
+-                    throw new TaskExecutionException(AbstractChainedTask.this, t);
++                    result.setException(t);
+                 }
+             });
+         } else {

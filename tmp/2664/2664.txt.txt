@@ -1,0 +1,9 @@
+@@ -250,7 +250,7 @@
+   @Override
+   public NumericDocValues getNormValues(String field) throws IOException {
+     ensureOpen();
+-    return core.getSimpleNormValues(field);
++return core.getNormValues(field);
+   }
+ 
+   /**

@@ -1,0 +1,9 @@
+@@ -793,7 +793,7 @@
+ 		try {
+ 
+             nested_tc = 
+-                tc.startNestedUserTransaction(false);
++tc.startNestedUserTransaction(false, true);
+ 
+             switch (td.getTableType())
+             {

@@ -1,0 +1,9 @@
+@@ -47,7 +47,7 @@
+ 	private Map<Pattern, String> urlPatternMap = new HashMap<Pattern, String>();
+ 	private Set<String> safeCanonicalFilePaths = new HashSet<String>();
+ 
+-	private StagingManager() {
++	public StagingManager() {
+ 	}
+ 
+ 	/**

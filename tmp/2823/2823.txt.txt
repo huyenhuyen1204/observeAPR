@@ -1,0 +1,9 @@
+@@ -318,7 +318,7 @@
+     {
+         if (daemon == null)
+         {
+-            throw new IllegalStateException("No configured RPC daemon");
++return false;
+         }
+         return daemon.isRPCServerRunning();
+     }

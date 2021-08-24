@@ -1,0 +1,9 @@
+@@ -42,7 +42,7 @@
+ 
+ 		String colorAsString = properties.getProperty(prefix);
+ 		if (colorAsString == null) {
+-			return DEFAULT_COLOR;
++			return null;
+ 		} else {
+ 			return asColor(colorAsString);
+ 		}

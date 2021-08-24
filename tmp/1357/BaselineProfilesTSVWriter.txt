@@ -1,0 +1,9 @@
+@@ -84,7 +84,7 @@
+         if (requestContext.isGeneSetMatch()) {
+             return new String[]{GENE_SET_COLUMN_NAME};
+         }
+-        return new String[]{};
++        return new String[]{"Gene ID", "Gene Name"};
+     }
+ 
+     @Override

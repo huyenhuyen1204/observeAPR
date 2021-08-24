@@ -1,0 +1,9 @@
+@@ -99,7 +99,7 @@
+                    msg.contains(name));
+       }
+     } finally {
+-      w.close();
++w.shutdown();
+     }
+   }
+ }

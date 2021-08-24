@@ -1,0 +1,8 @@
+@@ -29,7 +29,6 @@
+ 	FileServiceTest.class,
+ 	FileDownloadTest.class,
+ 	FileUpdateTest.class,
+-
+ })
+ public class FileServiceTestSuite {
+ 

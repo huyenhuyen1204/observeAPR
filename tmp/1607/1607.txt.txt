@@ -1,0 +1,9 @@
+@@ -46,7 +46,7 @@
+   
+   private HTable table;
+   
+-  private ThreadLocal<HBaseConfiguration> hBconf;
++private ThreadLocal<HBaseConfiguration> hBconf = new ThreadLocal<HBaseConfiguration>();
+   
+   private boolean useHbase;
+   

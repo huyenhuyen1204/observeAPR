@@ -1,0 +1,9 @@
+@@ -58,7 +58,7 @@
+       writer.addDocument(doc);
+     }
+     IndexReader reader = writer.getReader();
+-    writer.close();
++writer.shutdown();
+     
+     IndexSearcher searcher=newSearcher(reader);
+     num = atLeast(50);

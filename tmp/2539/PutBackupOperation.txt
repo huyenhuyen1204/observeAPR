@@ -1,0 +1,8 @@
+@@ -50,6 +50,7 @@
+     }
+ 
+     public void run() {
++        ttl = recordInfo != null ? recordInfo.getTtl() : ttl;
+         final Record record = recordStore.putBackup(dataKey, dataValue, ttl);
+         if (recordInfo != null) {
+             Records.applyRecordInfo(record, recordInfo);

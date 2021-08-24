@@ -1,0 +1,9 @@
+@@ -258,6 +258,8 @@
+         if (value == null || "-".equals(value))
+         {
+             executor = (Executor)getServletContext().getAttribute("org.eclipse.jetty.server.Executor");
++            if (executor==null)
++                throw new IllegalStateException("No server executor for proxy");
+         }
+         else
+         {

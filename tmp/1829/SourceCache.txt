@@ -1,0 +1,9 @@
+@@ -34,7 +34,7 @@
+     }
+ 
+     public SourceCache(String data) {
+-        new StringSource(data);
++        super(data);
+     }
+ 
+     public void reset() {

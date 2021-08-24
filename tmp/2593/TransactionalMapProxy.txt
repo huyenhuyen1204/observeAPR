@@ -1,0 +1,9 @@
+@@ -313,7 +313,7 @@
+                 }
+             } else {
+                 // meanwhile remove values which are not in txMap.
+-                valueSet.remove(entry.getValue());
++                valueSet.remove(entry.getValue().value);
+             }
+         }
+ 

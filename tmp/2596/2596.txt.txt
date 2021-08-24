@@ -1,0 +1,9 @@
+@@ -188,7 +188,7 @@
+ 
+     @Override
+     public int numDocs() {
+-      return (int) liveDocs.cardinality();
++return liveDocs.cardinality();
+     }
+ 
+     /**

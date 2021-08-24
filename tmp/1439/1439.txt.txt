@@ -1,0 +1,9 @@
+@@ -94,7 +94,7 @@
+      */
+ 	public QueryTreeNode bind() throws StandardException
+ 	{
+-        privileges = (PrivilegeNode) privileges.bind( new HashMap(), grantees);
++privileges = (PrivilegeNode) privileges.bind( new HashMap(), grantees, false);
+         return this;
+     } // end of bind
+ 

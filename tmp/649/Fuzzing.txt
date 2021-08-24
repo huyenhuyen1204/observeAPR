@@ -1,0 +1,9 @@
+@@ -54,7 +54,7 @@
+                 param[1] = UUID.randomUUID().toString();
+             }
+             
+-            MessageProcessor.processMsg(param, false);
++            MessageProcessor.processMsg(param, false, null);
+         }
+     }
+ 

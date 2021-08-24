@@ -1,0 +1,9 @@
+@@ -880,7 +880,7 @@
+         return dataFileDirectory;
+     }
+ 
+-    public static String getLogFileLocation()
++public static String getCommitLogLocation()
+     {
+         return conf.commitlog_directory;
+     }

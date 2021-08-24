@@ -1,0 +1,8 @@
+@@ -67,6 +67,7 @@
+ 			}catch (ContradictionException e){
+ 				throw new UnsupportedOperationException("restoring the last solution ended in a failure");
+ 			}
++            solver.getEngine().flush();
+ 		}
+ 	}
+ 

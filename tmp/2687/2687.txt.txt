@@ -1,0 +1,9 @@
+@@ -30,7 +30,7 @@
+ public class StandardIndexReaderFactory extends IndexReaderFactory {
+   
+   @Override
+-  public DirectoryReader newReader(Directory indexDir) throws IOException {
++public DirectoryReader newReader(Directory indexDir, SolrCore core) throws IOException {
+     return DirectoryReader.open(indexDir, termInfosIndexDivisor);
+   }
+ }

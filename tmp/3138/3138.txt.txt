@@ -1,0 +1,9 @@
+@@ -52,7 +52,7 @@
+       writer.addDocument(doc);
+     }
+     reader = writer.getReader();
+-    writer.close();
++writer.shutdown();
+   }
+   
+   public void test() throws Exception {

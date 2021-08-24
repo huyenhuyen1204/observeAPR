@@ -1,0 +1,9 @@
+@@ -123,7 +123,7 @@
+                 continue;
+             }
+             if (prevLine != null) {
+-                line = prevLine + line;
++                line = prevLine + "\n" + line;
+             }
+             prevLine = null;
+             setPropertyLine(map, line);

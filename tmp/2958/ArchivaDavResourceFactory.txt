@@ -1,0 +1,9 @@
+@@ -446,7 +446,7 @@
+ 
+         String rootPath = StringUtils.substringBeforeLast( pathInfo, "/" );
+ 
+-        if ( StringUtils.endsWith( rootPath, "/" + repoGroupConfig.getMergedIndexPath() ) )
++        if ( StringUtils.endsWith( rootPath, repoGroupConfig.getMergedIndexPath() ) )
+         {
+             // we are in the case of index file request
+             String requestedFileName = StringUtils.substringAfterLast( pathInfo, "/" );

@@ -1,0 +1,9 @@
+@@ -325,7 +325,7 @@
+ 
+     @Override
+     public long getEarliestKeyCreationTime() {
+-        return seed.getCreationTimeSeconds();
++        return seed != null ? seed.getCreationTimeSeconds() : Utils.currentTimeSeconds();
+     }
+ 
+     @Override

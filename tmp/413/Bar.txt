@@ -1,0 +1,9 @@
+@@ -33,7 +33,7 @@
+    @In(create=true)
+    Foo foo;
+    
+-   @Out
++   @Out(required=false)
+    String string;
+    
+    @Begin

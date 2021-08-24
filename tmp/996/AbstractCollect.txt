@@ -1,0 +1,8 @@
+@@ -124,6 +124,7 @@
+ 			oldRecord = currentRecord;
+ 		}
+ 		if (resetNeedFor(currentEntity)) {
++			resetCondition();
+ 			clear();
+ 		}
+ 		oldEntity = currentEntity;

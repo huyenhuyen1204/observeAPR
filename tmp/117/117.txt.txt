@@ -1,0 +1,9 @@
+@@ -1293,7 +1293,7 @@
+         assertTrue(reader.numDocs() > 0);
+         SegmentInfos sis = new SegmentInfos();
+         sis.read(dir);
+-        for(AtomicReaderContext context : reader.getTopReaderContext().leaves()) {
++for(AtomicReaderContext context : reader.leaves()) {
+           assertFalse(context.reader().getFieldInfos().hasVectors());
+         }
+         reader.close();

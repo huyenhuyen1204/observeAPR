@@ -1,0 +1,8 @@
+@@ -82,6 +82,7 @@
+ 		this.routeResolver = routeResolver;
+ 		this.serializationProvider = serializationProvider;
+ 	    createCorrelationId();
++        this.queryStringMap = new HashMap<String, String>();
+ 		parseQueryString(request);
+ 		determineEffectiveHttpMethod(request);
+ 	}

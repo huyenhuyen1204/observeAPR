@@ -1,0 +1,9 @@
+@@ -258,7 +258,7 @@
+          * Get comments count.
+          * @return Count of comments
+          * @throws IOException If there is any I/O problem
+-         * @since 1.0.1
++         * @since 0.8
+          */
+         public int comments() throws IOException {
+             return new SmartJson(this).number("comments");

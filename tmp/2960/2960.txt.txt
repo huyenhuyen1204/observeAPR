@@ -1,0 +1,9 @@
+@@ -65,7 +65,7 @@
+ 
+     writer.close();
+ 
+-    searcher = new IndexSearcher(directory);
++searcher = new IndexSearcher(directory, true);
+   }
+   
+   public void testTerm() throws Exception {

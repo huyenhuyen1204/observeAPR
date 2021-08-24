@@ -1,0 +1,9 @@
+@@ -354,7 +354,7 @@
+                     ? "startKey"
+                     : "afterKey";
+             query = query
+-                    .concat(keyName)
++                    .concat('&' + keyName + '=')
+                     .concat(urlEncoder.encodeURL(kvListOp.getStartKey()));
+         }
+ 

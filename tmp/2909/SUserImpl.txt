@@ -1,0 +1,8 @@
+@@ -278,7 +278,6 @@
+         return "SUserImpl{" +
+                 "firstName='" + firstName + '\'' +
+                 ", lastName='" + lastName + '\'' +
+-                ", password='" + password + '\'' +
+                 ", userName='" + userName + '\'' +
+                 ", iconName='" + iconName + '\'' +
+                 ", iconPath='" + iconPath + '\'' +

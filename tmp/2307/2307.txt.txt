@@ -1,0 +1,9 @@
+@@ -22,7 +22,7 @@
+             Table table = Table.open(command.table);
+             keys = table.getKeyRange(command.startWith, command.stopAt, command.maxResults);
+         }
+-        catch (IOException e)
++catch (Exception e)
+         {
+             throw new RuntimeException(e);
+         }

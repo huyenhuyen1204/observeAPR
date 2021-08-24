@@ -1,0 +1,9 @@
+@@ -81,7 +81,7 @@
+   private void verifyDocFreq()
+       throws IOException
+   {
+-      IndexReader reader = IndexReader.open(dir);
++IndexReader reader = IndexReader.open(dir, true);
+       TermEnum termEnum = null;
+ 
+     // create enumeration of all terms

@@ -1,0 +1,9 @@
+@@ -86,7 +86,7 @@
+ 
+     /**
+      * Process avatar file from request and return avatar preview in response.
+-     * Used for IE, Opera specific request processing
++     * Used for IE, Opera specific request processing.
+      *
+      * @param request incoming request
+      * @return ResponseEntity

@@ -1,0 +1,9 @@
+@@ -154,7 +154,7 @@
+     }
+ 
+     public boolean removeEntryListener(String registrationId) {
+-        final RemoveEntryListenerRequest request = new RemoveEntryListenerRequest();
++        final RemoveEntryListenerRequest request = new RemoveEntryListenerRequest(name, registrationId);
+         return stopListening(request, registrationId);
+     }
+ 

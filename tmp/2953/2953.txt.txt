@@ -1,0 +1,9 @@
+@@ -57,7 +57,7 @@
+       writer.addDocument(doc);
+     }
+     writer.close();
+-    reader = IndexReader.open(directory);
++reader = IndexReader.open(directory, true);
+   }
+ 
+   public void testInfoStream() throws Exception {

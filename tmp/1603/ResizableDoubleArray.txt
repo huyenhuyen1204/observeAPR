@@ -1,0 +1,8 @@
+@@ -375,6 +375,7 @@
+      */
+     public synchronized void clear() {
+         numElements = 0;
++        startIndex = 0;
+         internalArray = new double[initialCapacity];
+     }
+     

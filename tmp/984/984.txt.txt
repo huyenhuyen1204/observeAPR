@@ -1,0 +1,9 @@
+@@ -109,7 +109,7 @@
+     if (s.length() < DATE_LEN) {
+       StringBuffer sb = new StringBuffer(s);
+       while (sb.length() < DATE_LEN)
+-        sb.insert(0, ' ');
++sb.insert(0, 0);
+       s = sb.toString();
+     }
+ 

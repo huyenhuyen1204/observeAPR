@@ -1,0 +1,9 @@
+@@ -422,7 +422,7 @@
+ 
+     b.rule(IDENTIFIER_NAME).is(
+       SPACING,
+-      b.regexp(EcmaScriptLexer.IDENTIFIER)).skip();
++      b.regexp(EcmaScriptLexer.IDENTIFIER));
+ 
+     lexical(b);
+     expressions(b);

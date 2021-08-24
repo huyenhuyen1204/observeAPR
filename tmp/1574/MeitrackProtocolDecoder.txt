@@ -1,0 +1,9 @@
+@@ -65,7 +65,7 @@
+             "(\\p{XDigit}+)?\\|" +              // ADC3
+             "(\\p{XDigit}+)\\|" +               // Battery
+             "(\\p{XDigit}+)," +                 // Power
+-            ".*"); // TODO: parse other stuff
++            ".*(\r\n)?");
+ 
+     private Position decodeRegularMessage(ChannelBuffer buf) {
+ 

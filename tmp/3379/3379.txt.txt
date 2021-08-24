@@ -1,0 +1,9 @@
+@@ -92,7 +92,7 @@
+         return executorService_.isShutdown();
+     }    
+     
+-    public long getTaskCount(){
++public long getPendingTasks(){
+         return (executorService_.getTaskCount() - executorService_.getCompletedTaskCount());
+     }
+     /* Finished implementing the IStage interface methods */

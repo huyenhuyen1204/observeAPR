@@ -1,0 +1,9 @@
+@@ -537,7 +537,7 @@
+       }
+       searchers.close();
+       mgr.close();
+-      writer.close();
++writer.shutdown();
+       dir.close();
+     }
+   }

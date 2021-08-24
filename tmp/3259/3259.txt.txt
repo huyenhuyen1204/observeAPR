@@ -1,0 +1,9 @@
+@@ -166,7 +166,7 @@
+ 			return;
+ 		}
+ 		if ( locale == null || locale.toString().equals("none") ){
+-			res = ResourceBundle.getBundle(MESSAGE_FILE);
++res = ResourceBundle.getBundle(messageFileName);
+ 		}
+ 		else
+ 		try {

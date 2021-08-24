@@ -1,0 +1,9 @@
+@@ -48,7 +48,7 @@
+         }
+     }
+ 
+-    private static Configuration configuration = null;
++    private Configuration configuration = null;
+ 
+     protected synchronized void read() {
+         try {

@@ -1,0 +1,9 @@
+@@ -73,7 +73,7 @@
+     Parameters params = new Parameters(context.getConfiguration().get(PFPGrowth.PFP_PARAMETERS, ""));
+     
+     int i = 0;
+-    for (Pair<String,Long> e : PFPGrowth.deserializeList(params, PFPGrowth.F_LIST, context.getConfiguration())) {
++for (Pair<String,Long> e : PFPGrowth.readFList(context.getConfiguration())) {
+       fMap.put(e.getFirst(), i++);
+     }
+     

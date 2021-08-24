@@ -1,0 +1,9 @@
+@@ -30,7 +30,7 @@
+ 
+     public boolean isMarkedForDelete();
+     public long getMarkedForDeleteAt();
+-    public long mostRecentChangeAt();
++public long mostRecentLiveChangeAt();
+     public byte[] name();
+     public int size();
+     public int serializedSize();

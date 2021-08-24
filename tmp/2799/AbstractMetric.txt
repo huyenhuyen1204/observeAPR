@@ -1,0 +1,9 @@
+@@ -125,7 +125,7 @@
+             sb.append(input);
+             part = getSuffix();
+             if (part != null) {
+-                sb.append(part).append(".");
++                sb.append(".").append(part);
+             }
+             return sb.toString();
+         }

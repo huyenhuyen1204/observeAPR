@@ -1,0 +1,9 @@
+@@ -177,7 +177,7 @@
+         info.add( "uptime", execute( "uptime" ) );
+       }
+     }
+-    catch( Throwable ex ) {
++catch( Exception ex ) {
+       ex.printStackTrace();
+     } 
+     return info;

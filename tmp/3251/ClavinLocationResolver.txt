@@ -1,0 +1,9 @@
+@@ -238,7 +238,7 @@
+                 states = new HashSet<String>();
+                 for (ResolvedLocation location: combo) {
+                     countries.add(location.getGeoname().getPrimaryCountryCode());
+-                    states.add(location.getGeoname().getAdmin1Code());
++                    states.add(location.getGeoname().getPrimaryCountryCode() + location.getGeoname().getAdmin1Code());
+                 }
+ 
+                 // calculate a score for this particular combination based on commonality

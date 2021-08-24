@@ -1,0 +1,9 @@
+@@ -414,7 +414,7 @@
+      * @return vc subcontext
+      */
+     public VariantContext subContextFromGenotypes(Collection<Genotype> genotypes, Set<Allele> alleles) {
+-        return new VariantContext(getSource(), contig, start, stop, alleles, genotypes, getNegLog10PError(), getFilters(), getAttributes());
++        return new VariantContext(getSource(), contig, start, stop, alleles, genotypes, getNegLog10PError(), filtersWereApplied() ? getFilters() : null, getAttributes());
+     }
+ 
+ 

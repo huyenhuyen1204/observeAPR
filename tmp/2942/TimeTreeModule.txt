@@ -1,0 +1,8 @@
+@@ -108,6 +108,7 @@
+                     LOG.info("Attaching existing events to TimeTree in batch " + batchNumber);
+                 }
+                 if (configuration.getInclusionPolicies().getNodeInclusionPolicy().include(input)) {
++                    deleteTimeTreeRelationship(input);
+                     createTimeTreeRelationship(input);
+                 }
+             }

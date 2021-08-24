@@ -1,0 +1,9 @@
+@@ -153,7 +153,7 @@
+ 					associationState = TRO_FAIL;
+ 					if (SQLState.DEADLOCK.equals(se.getMessageId()))
+ 						rollbackOnlyCode = XAException.XA_RBDEADLOCK;
+-					else if (SQLState.LOCK_TIMEOUT.equals(se.getMessageId()))
++else if (se.isLockTimeout())
+ 						rollbackOnlyCode = XAException.XA_RBTIMEOUT;					
+ 					else
+ 						rollbackOnlyCode = XAException.XA_RBOTHER;

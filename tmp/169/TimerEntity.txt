@@ -1,0 +1,8 @@
+@@ -51,6 +51,7 @@
+     processInstanceId = te.processInstanceId;
+     jobDefinitionId = te.jobDefinitionId;
+     suspensionState = te.suspensionState;
++    deploymentId = te.deploymentId;
+   }
+ 
+   @Override

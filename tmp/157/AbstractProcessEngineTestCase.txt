@@ -1,0 +1,9 @@
+@@ -230,7 +230,7 @@
+       timer.schedule(task, maxMillisToWait);
+       boolean conditionIsViolated = true;
+       try {
+-        while (conditionIsViolated) {
++        while (conditionIsViolated && !task.isTimeLimitExceeded()) {
+           Thread.sleep(intervalMillis);
+           conditionIsViolated = !condition.call();
+         }

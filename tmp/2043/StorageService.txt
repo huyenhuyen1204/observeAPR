@@ -1,0 +1,9 @@
+@@ -95,7 +95,7 @@
+         return udpAddr_;
+     }
+ 
+-    public static IPartitioner getPartitioner() {
++    public static IPartitioner<?> getPartitioner() {
+         return partitioner_;
+     }
+ 

@@ -1,0 +1,9 @@
+@@ -337,7 +337,7 @@
+       }
+ 
+       /* initiate rowIndices */
+-      rowIndices = new int[getChildren().length];
++      rowIndices = new int[tables[tableIndex].numColumns()];
+       Arrays.fill(rowIndices, 0);
+     }
+ 

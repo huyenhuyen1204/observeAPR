@@ -1,0 +1,9 @@
+@@ -111,7 +111,7 @@
+   }
+ 
+   public void clickInitiateDistribution() {
+-    testWebDriver.waitForElementToAppear(initiateDistributionButton);
++    testWebDriver.waitForElementToBeEnabled(initiateDistributionButton);
+     initiateDistributionButton.click();
+   }
+ 

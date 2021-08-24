@@ -1,0 +1,9 @@
+@@ -147,6 +147,8 @@
+             @Nullable
+             @Override
+             public String apply(Input<?> input) {
++                if (input.value() == null)
++                    return null;
+                 return input.value().toString();
+             }
+         });

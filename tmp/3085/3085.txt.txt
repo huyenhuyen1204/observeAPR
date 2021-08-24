@@ -1,0 +1,9 @@
+@@ -112,7 +112,7 @@
+       writer.addDocument(new Document());
+     }
+     reader = writer.getReader();
+-    writer.close();
++writer.shutdown();
+   }
+   
+   @Override

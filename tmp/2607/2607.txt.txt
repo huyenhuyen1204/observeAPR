@@ -1,0 +1,9 @@
+@@ -24,7 +24,7 @@
+ 
+   @Override
+   protected Codec getCodec() {
+-    return new Lucene40Codec();
++return new Lucene40RWCodec();
+   }
+   
+ }

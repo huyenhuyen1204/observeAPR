@@ -1,0 +1,9 @@
+@@ -39,7 +39,7 @@
+     return new CJKWidthFilter(input);
+   }
+   
+-  @Override
++//@Override
+   public Object getMultiTermComponent() {
+     return this;
+   }

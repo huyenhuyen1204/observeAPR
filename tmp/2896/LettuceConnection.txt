@@ -1,0 +1,8 @@
+@@ -526,7 +526,6 @@
+ 			return;
+ 		}
+ 		isMulti = true;
+-		openPipeline();
+ 		try {
+ 			if (isPipelined()) {
+ 				pipeline(asyncConn.multi());

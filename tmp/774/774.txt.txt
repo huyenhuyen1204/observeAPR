@@ -1,0 +1,9 @@
+@@ -530,7 +530,7 @@
+       
+       throw new SolrException(SolrException.ErrorCode.BAD_REQUEST,
+                               "Error CREATEing SolrCore '" + dcore.getName() + "': " +
+-                              ex.getMessage(), ex);
++ex.getMessage() + rootMsg, ex);
+     }
+   }
+ 

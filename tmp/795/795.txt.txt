@@ -1,0 +1,9 @@
+@@ -71,7 +71,7 @@
+ 			xaDataSource = new EmbeddedXADataSource();
+ 		}
+ 
+-		xaDataSource.setDatabaseName(shortDbName);
++xaDataSource.setDatabaseName(getShortDbName());
+ 		appendAttrString(p);
+ 		if (attrString != null)
+ 			xaDataSource.setConnectionAttributes(attrString);

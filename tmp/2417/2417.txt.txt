@@ -1,0 +1,9 @@
+@@ -311,7 +311,7 @@
+     MockAnalyzer stdAnalyzer = new MockAnalyzer(random());
+ 
+     public AnalyzerReturningNull() {
+-      super(new PerFieldReuseStrategy());
++super(PER_FIELD_REUSE_STRATEGY);
+     }
+ 
+     @Override

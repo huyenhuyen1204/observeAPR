@@ -1,0 +1,9 @@
+@@ -100,7 +100,7 @@
+    */
+   public static final Mode DEFAULT_MODE = Mode.SEARCH;
+ 
+-  enum Type {
++public enum Type {
+     KNOWN,
+     UNKNOWN,
+     USER

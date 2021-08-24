@@ -1,0 +1,9 @@
+@@ -134,7 +134,7 @@
+     } catch (InterruptedException e) {
+       // ignore ... shouldn't happen
+     } catch (ExecutionException e) {
+-      throw new IllegalStateException(e);
++throw new IllegalStateException(e.getCause());
+     }
+     buffer.clear();
+ 

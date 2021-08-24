@@ -1,0 +1,8 @@
+@@ -46,6 +46,7 @@
+         this.addr = addr;
+         this.port = port;
+         this.protocolVersion = protocolVersion;
++        this.services = BigInteger.ZERO;
+     }
+     
+     public void bitcoinSerializeToStream(OutputStream stream) throws IOException {

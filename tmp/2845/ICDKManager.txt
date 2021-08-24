@@ -1,0 +1,8 @@
+@@ -139,6 +139,7 @@
+                       methodSummary = "Loads molecules from a file at " +
+                       		          "a given path into a list of " +
+                       		          "molecules")
++    @TestMethods("testLoadMolecules")
+     public List<ICDKMolecule> loadMolecules(String path)
+         throws IOException, BioclipseException, CoreException;
+ 

@@ -1,0 +1,9 @@
+@@ -715,6 +715,8 @@
+             client.updateVariable(id, "selected", tabKeys.get(tabIndex)
+                     .toString(), true);
+             waitingForResponse = true;
++
++            tb.getTab(tabIndex).focus(); // move keyboard focus to active tab
+         }
+     }
+ 

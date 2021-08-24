@@ -1,0 +1,9 @@
+@@ -27,7 +27,7 @@
+ 
+ 	private static final long serialVersionUID = 1328676176772634649L;
+ 
+-	private static final String DEFAULT_TARGET = "dashboard";
++	private static final String DEFAULT_TARGET = "search";
+ 
+ 	private final Logger logger;
+ 

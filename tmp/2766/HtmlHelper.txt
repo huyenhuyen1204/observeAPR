@@ -1,0 +1,9 @@
+@@ -75,7 +75,7 @@
+     }
+     
+     public static String convertToStandardHtmlPart(String rawHtml) {
+-        String preProcessedHtml = replaceInRawHtmlString(rawHtml);
++        String preProcessedHtml = preProcessHtml(rawHtml);
+         return convertRawHtmlPartString(preProcessedHtml);
+     }
+ 

@@ -1,0 +1,9 @@
+@@ -167,7 +167,7 @@
+ 
+ 			subqueryNode = (SubqueryNode) elementAt(index);
+ 
+-			if (subqueryNode.getResultSet().referencesSessionSchema())
++if (subqueryNode.referencesSessionSchema())
+ 			{
+ 				return true;
+ 			}

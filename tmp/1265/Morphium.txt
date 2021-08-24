@@ -1,0 +1,9 @@
+@@ -339,7 +339,7 @@
+     }
+ 
+     public void inc(Class<?> cls,Query<?> query, String field,int amount) {
+-        inc(cls,query,field,amount);
++        inc(cls,query,field,amount,false,false);
+     }
+ 
+     public void inc(Class<?> cls,Query<?> query, String field,int amount, boolean insertIfNotExist, boolean multiple) {

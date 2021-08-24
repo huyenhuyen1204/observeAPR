@@ -1,0 +1,9 @@
+@@ -194,7 +194,7 @@
+     try {
+       doMaybeRefresh();
+     } finally {
+-      refreshLock.lock();
++refreshLock.unlock();
+     }
+   }
+ 

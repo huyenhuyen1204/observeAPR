@@ -1,0 +1,9 @@
+@@ -307,7 +307,7 @@
+             {
+                 sbEx.append("<").append(exEntry.getKey()).append(">");
+                 sbEx.append(exEntry.getValue());
+-                sbEx.append("<").append(exEntry.getKey()).append("/>");
++                sbEx.append("</").append(exEntry.getKey()).append(">");
+             }
+ 
+             sbEx.append("</extensions>");

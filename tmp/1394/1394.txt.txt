@@ -1,0 +1,9 @@
+@@ -350,7 +350,7 @@
+     if (index >= 0 && index < size()) {
+       setQuick(index, value);
+     } else {
+-      throw new IndexException();
++throw new IndexException(index, size());
+     }
+   }
+ 

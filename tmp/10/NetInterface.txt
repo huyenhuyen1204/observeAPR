@@ -1,0 +1,9 @@
+@@ -54,7 +54,7 @@
+         super();
+         final String[] cols = line.split(" ");
+         if (cols.length < 4) {
+-            Tools.appError("cannot parse: " + line);
++            Tools.appWarning("cannot parse: " + line);
+         }
+         String iface = "unknown";
+         if (cols.length > 0) {

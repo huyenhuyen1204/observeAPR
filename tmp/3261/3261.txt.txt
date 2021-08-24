@@ -1,0 +1,9 @@
+@@ -57,7 +57,7 @@
+ 
+     public CassandraServer()
+     {
+-        storageService = StorageService.instance();
++storageService = StorageService.instance;
+     }
+ 
+     protected Map<String, ColumnFamily> readColumnFamily(List<ReadCommand> commands, ConsistencyLevel consistency_level)

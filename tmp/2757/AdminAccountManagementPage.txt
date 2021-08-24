@@ -1,0 +1,8 @@
+@@ -36,6 +36,7 @@
+             String instructorId) {
+         browser.driver.findElement(By.id(instructorId + "_recentActions")).click();
+         waitForPageToLoad();
++        switchToNewWindow();
+         return changePageType(AdminActivityLogPage.class);
+     }
+ 

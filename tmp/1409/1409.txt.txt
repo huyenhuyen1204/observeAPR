@@ -1,0 +1,9 @@
+@@ -37,7 +37,7 @@
+   @Test
+   public void testUnitVectorizerMapper() throws Exception {
+     UnitVectorizerMapper mapper = new UnitVectorizerMapper();
+-    Configuration conf = new Configuration();
++Configuration conf = getConfiguration();
+     
+     // set up the dummy writers
+     DummyRecordWriter<IntWritable, VectorWritable> writer = new

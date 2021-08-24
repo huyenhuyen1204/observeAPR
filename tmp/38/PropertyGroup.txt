@@ -1,0 +1,9 @@
+@@ -133,7 +133,7 @@
+   }
+ 
+   public String getPresentableText() {
+-    return myPropertyName + ":" + myPropertyType.getPresentableText();
++    return myPropertyName + ": " + myPropertyType.getPresentableText();
+   }
+ 
+   public String toString() {

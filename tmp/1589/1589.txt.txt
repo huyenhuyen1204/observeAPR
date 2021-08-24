@@ -1,0 +1,9 @@
+@@ -146,7 +146,7 @@
+ 	{
+ 		if (SanityManager.DEBUG)
+ 		{
+-			return objectName.toString() + super.toString();
++return ((objectName==null)?"":objectName.toString()) + super.toString();
+ 		}
+ 		else
+ 		{

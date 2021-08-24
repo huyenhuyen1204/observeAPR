@@ -1,0 +1,9 @@
+@@ -1144,7 +1144,7 @@
+     {
+ 
+         // write the format id of this conglomerate
+-        FormatIdUtil.writeFormatIdInteger(out, this.getTypeFormatId());
++FormatIdUtil.writeFormatIdInteger(out, conglom_format_id);
+ 
+ 		out.writeInt((int) id.getSegmentId());
+         out.writeLong(id.getContainerId());

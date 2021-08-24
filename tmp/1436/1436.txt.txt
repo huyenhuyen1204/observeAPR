@@ -1,0 +1,9 @@
+@@ -49,7 +49,7 @@
+   }
+ 
+   public QueryMaker getQueryMaker() {
+-    return getRunData().getSearchQueryMaker();
++return getRunData().getQueryMaker(this);
+   }
+ 
+ 

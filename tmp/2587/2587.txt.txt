@@ -1,0 +1,9 @@
+@@ -53,7 +53,7 @@
+ 
+   private class CellQueue extends PriorityQueue<SpansCell> {
+     public CellQueue(int size) {
+-      initialize(size);
++super(size);
+     }
+     
+     @Override

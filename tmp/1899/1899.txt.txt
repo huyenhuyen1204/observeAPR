@@ -1,0 +1,9 @@
+@@ -544,7 +544,7 @@
+ 				else
+ 				{
+ 					throw StandardException.newException(SQLState.LANG_AMBIGUOUS_COLUMN_NAME, 
+-							 columnReference.getFullColumnName());
++columnReference.getSQLColumnName());
+ 				}
+ 			}
+ 

@@ -1,0 +1,9 @@
+@@ -122,7 +122,7 @@
+         break;
+       count++;
+     }
+-    Assert.assertEquals(2, local.get());
++Assert.assertEquals(2, (int) local.get());
+     Assert.assertEquals(4, count);
+   }
+ 

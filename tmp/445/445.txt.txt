@@ -1,0 +1,9 @@
+@@ -175,7 +175,7 @@
+     target.close();
+   }
+   
+-  private void checkOverrideMethods(Class<?> clazz) throws Exception {
++private void checkOverrideMethods(Class<?> clazz) {
+     boolean fail = false;
+     for (Method m : clazz.getMethods()) {
+       int mods = m.getModifiers();

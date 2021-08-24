@@ -1,0 +1,9 @@
+@@ -110,7 +110,7 @@
+  *
+  */
+ public class DisMaxQParserPlugin extends QParserPlugin {
+-  public static String NAME = "dismax";
++public static final String NAME = "dismax";
+ 
+   @Override
+   public void init(NamedList args) {

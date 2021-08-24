@@ -1,0 +1,9 @@
+@@ -109,7 +109,7 @@
+         }
+     }
+ 
+-    public List<InetAddress> getEndPoint(String key)
++public List<InetAddress> getEndPoint(byte[] key)
+     {
+         if (tokenMetadata == null)
+             throw new RuntimeException("Must refresh endpoints before looking up a key.");

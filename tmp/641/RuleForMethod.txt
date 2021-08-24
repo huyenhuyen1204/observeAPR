@@ -1,0 +1,9 @@
+@@ -52,7 +52,7 @@
+ 		return this.method;
+ 	}
+ 
+-	public String urlFor(Object... params) {
++	public String urlFor(Object params) {
+ 		return null;
+ 	}
+ 

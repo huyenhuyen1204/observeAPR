@@ -1,0 +1,9 @@
+@@ -361,7 +361,7 @@
+     public boolean implementsInteface(String name) {
+         ClassNode node = this;
+         do {
+-            if (declaresInterface(name)) {
++            if (node.declaresInterface(name)) {
+                 return true;
+             }
+             node = node.getSuperClassNode();

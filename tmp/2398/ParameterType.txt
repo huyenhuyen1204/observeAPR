@@ -1,0 +1,8 @@
+@@ -50,6 +50,7 @@
+ 			newCompleteType += completeType;
+ 			newCompleteType += ")";
+ 			completeType = newCompleteType;
++			parameter_id = parameter_id.parameter_id();
+ 		}
+ 		
+ 	}

@@ -1,0 +1,9 @@
+@@ -36,7 +36,7 @@
+ 
+     @Override
+     public int hashCode() {
+-        return value.length;
++        return Arrays.hashCode(value);
+     }
+ 
+     @Override

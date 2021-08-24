@@ -1,0 +1,9 @@
+@@ -193,7 +193,7 @@
+ 
+     @Override
+     public RpslObject getByKeyOrNull(final ObjectType type, final CIString key) {
+-        return getByKey(type, key.toString());
++        return getByKeyOrNull(type, key.toString());
+     }
+ 
+     @Override

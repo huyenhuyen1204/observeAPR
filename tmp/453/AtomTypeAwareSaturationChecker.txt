@@ -1,0 +1,9 @@
+@@ -47,7 +47,7 @@
+  * @cdk.created 2012-04-13
+  * 
+  * @cdk.keyword bond order
+- * @cdk.module  valency
++ * @cdk.module  valencycheck
+  */
+ @TestClass( "org.openscience.cdk.tools.ATASaturationCheckerTest" )
+ public class AtomTypeAwareSaturationChecker implements IValencyChecker,

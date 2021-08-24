@@ -1,0 +1,9 @@
+@@ -387,7 +387,7 @@
+          resumeStreaming();        
+     }
+     
+-    void doPendingWrites()
++public void doPendingWrites()
+     {
+         synchronized(this)
+         {

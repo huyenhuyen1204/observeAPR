@@ -1,0 +1,9 @@
+@@ -135,7 +135,7 @@
+     int maxPrefsPerUserInItemSimilarity = Integer.parseInt(getOption("maxPrefsPerUserInItemSimilarity"));
+     int maxSimilaritiesPerItem = Integer.parseInt(getOption("maxSimilaritiesPerItem"));
+     String similarityClassname = getOption("similarityClassname");
+-    double threshold = parsedArgs.containsKey("threshold") ?
++double threshold = hasOption("threshold") ?
+             Double.parseDouble(getOption("threshold")) : RowSimilarityJob.NO_THRESHOLD;
+ 
+ 

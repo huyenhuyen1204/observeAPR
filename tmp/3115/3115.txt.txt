@@ -1,0 +1,9 @@
+@@ -165,7 +165,7 @@
+       }
+     }
+     reader = iw.getReader();
+-    iw.close();
++iw.shutdown();
+     searcher = newSearcher(reader);
+     if (VERBOSE) {
+       System.out.println("  searcher=" + searcher);

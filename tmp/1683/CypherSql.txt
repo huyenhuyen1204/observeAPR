@@ -1,0 +1,8 @@
+@@ -394,7 +394,6 @@
+     {
+         String sql = "CREATE TABLE " + identifierQuoteString + name
+                      + identifierQuoteString + "(" + definition + ")";
+-        System.out.println( sql );
+         Statement statement = sqldb.createStatement();
+         statement.execute( sql );
+     }

@@ -1,0 +1,9 @@
+@@ -483,7 +483,7 @@
+     return getProcessEngine().getRuntimeService()
+       .createVariableInstanceQuery()
+       .disableBinaryFetching()
+-      .disableObjectValueDeserialization()
++      .disableCustomObjectDeserialization()
+       .variableNameIn(variableNames.toArray(new String[variableNames.size()]))
+       .variableScopeIdIn(variableScopeIds.toArray(new String[variableScopeIds.size()]))
+       .list();

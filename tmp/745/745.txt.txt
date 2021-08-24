@@ -1,0 +1,7 @@
+@@ -22,5 +22,5 @@
+  * A callback to indicate that a destroy operation has completed
+  */
+ public interface DestroyCallback {
+-  public void callback(Object key);
++public void callback();
+ }

@@ -1,0 +1,9 @@
+@@ -53,7 +53,7 @@
+     TrainingPlatformInfo trainingPlatformInfo = trainingPlatformInfoDao.get(trainingPlatformInfoDto
+         .getTrainingPlatformInfoId());
+     AppExceptionUtil.assertNotNull(trainingPlatformInfo);
+-
++    
+     if (trainingPlatformInfoDto.getTrainingUserId() != null) {
+       trainingPlatformInfo.setTrainingUserId(trainingPlatformInfoDto.getTrainingUserId());
+     }

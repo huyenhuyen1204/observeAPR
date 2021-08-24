@@ -1,0 +1,9 @@
+@@ -47,7 +47,7 @@
+ 
+ 		try {
+ 
+-			createTestDatabase();
++createTestDatabase(dbCreationScript_1);
+ 
+ 			// Don't let error stream ruin the diff.
+ 			System.err.close();

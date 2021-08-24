@@ -1,0 +1,9 @@
+@@ -150,7 +150,7 @@
+     return new IRStatisticsImpl(precision.getAverage(), recall.getAverage(), fallOut.getAverage());
+   }
+ 
+-  private void processOtherUser(Object id,
++private static void processOtherUser(Object id,
+                                 Collection<Item> relevantItems,
+                                 Collection<User> trainingUsers,
+                                 User user2) {

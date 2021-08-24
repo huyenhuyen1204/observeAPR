@@ -1,0 +1,9 @@
+@@ -38,7 +38,7 @@
+ 		page.addDriverLibrary(dd.getDriverLibrary());
+ 		page.setDriverClass(cfg.getDriverClass());
+ 		ddw.finish();
+-		preferencePage.ok();
++		preferenceDialog.ok();
+ 	}
+ 
+ 	/**

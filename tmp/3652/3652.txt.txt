@@ -1,0 +1,9 @@
+@@ -417,7 +417,7 @@
+             {
+                 isBootstrapMode = false;
+                 SystemTable.setBootstrapped(true);
+-                tokenMetadata_.updateNormalToken(token, FBUtilities.getLocalAddress());
++setToken(token);
+                 Gossiper.instance.addLocalApplicationState(ApplicationState.STATUS, valueFactory.normal(token));
+                 setMode("Normal", false);
+             }

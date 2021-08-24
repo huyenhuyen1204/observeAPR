@@ -1,0 +1,9 @@
+@@ -92,7 +92,7 @@
+         typingUtil = new TypingUtil<>(this);
+     }
+ 
+-    public ScreenActionLoader getScreenActionLoader() {
++    protected ScreenActionLoader getScreenActionLoader() {
+         return BeanLoader.loadScreenActionLoader();
+     }
+ 

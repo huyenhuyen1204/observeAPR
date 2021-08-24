@@ -1,0 +1,8 @@
+@@ -257,6 +257,7 @@
+   }
+ 
+   @Override
++  @Deprecated
+   public FileSet getUnderlyingFileSet() {
+     return getEmbeddedFileSet();
+   }

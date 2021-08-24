@@ -1,0 +1,9 @@
+@@ -172,7 +172,7 @@
+     final DocIdSetIterator docIdSetIterator;
+     final float theScore;
+ 
+-    public ConstantScorer(DocIdSetIterator docIdSetIterator, Weight w, float theScore) throws IOException {
++public ConstantScorer(DocIdSetIterator docIdSetIterator, Weight w, float theScore) {
+       super(w);
+       this.theScore = theScore;
+       this.docIdSetIterator = docIdSetIterator;

@@ -1,0 +1,9 @@
+@@ -214,7 +214,7 @@
+                             }
+                         }
+                     }
+-                }).start();
++}, "PERIODIC-COMMIT-LOG-SYNCER").start();
+             }
+         }
+     }

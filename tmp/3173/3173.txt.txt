@@ -1,0 +1,9 @@
+@@ -169,7 +169,7 @@
+         infoStream.message("IndexUpgrader", "All segments upgraded to version " + Constants.LUCENE_MAIN_VERSION);
+       }
+     } finally {
+-      w.close();
++w.shutdown();
+     }
+   }
+   

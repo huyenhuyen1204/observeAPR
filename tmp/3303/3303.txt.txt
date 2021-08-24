@@ -1,0 +1,9 @@
+@@ -45,7 +45,7 @@
+ 
+   @Override
+   public String getDescription() {
+-    return "GapFragmenter";
++return "HtmlFormatter";
+   }
+ 
+   @Override

@@ -1,0 +1,9 @@
+@@ -53,7 +53,7 @@
+       FieldDateResolutionMapAttribute dateResMapAttr = this.config
+           .addAttribute(FieldDateResolutionMapAttribute.class);
+       dateRes = dateResMapAttr.getFieldDateResolutionMap().get(
+-          fieldConfig.getFieldName().toString());
++fieldConfig.getField());
+     }
+ 
+     if (dateRes == null) {

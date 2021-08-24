@@ -1,0 +1,9 @@
+@@ -637,7 +637,7 @@
+                     {
+                         if (!subColumn.isMarkedForDelete() || subColumn.getLocalDeletionTime() > gcBefore)
+                         {
+-                            sc.addColumn(subColumn.name(), subColumn);
++sc.addColumn(subColumn);
+                         }
+                     }
+                 }

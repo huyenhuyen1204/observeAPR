@@ -1,0 +1,9 @@
+@@ -195,7 +195,7 @@
+    * RAMOutputStream.BUFFER_SIZE (now 1024) bytes.
+    */
+ 
+-  final long getRecomputedActualSizeInBytes() {
++final synchronized long getRecomputedActualSizeInBytes() {
+     long size = 0;
+     Iterator it = fileMap.values().iterator();
+     while (it.hasNext())

@@ -1,0 +1,9 @@
+@@ -89,7 +89,7 @@
+       throws IOException {
+     
+     Directory baseFromDir = getBaseDir(fromDir);
+-    Directory baseToDir = getBaseDir(fromDir);
++Directory baseToDir = getBaseDir(toDir);
+     
+     if (baseFromDir instanceof FSDirectory && baseToDir instanceof FSDirectory) {
+       File dir1 = ((FSDirectory) baseFromDir).getDirectory();

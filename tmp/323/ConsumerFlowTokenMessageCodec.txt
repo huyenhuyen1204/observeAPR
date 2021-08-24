@@ -1,0 +1,9 @@
+@@ -37,7 +37,7 @@
+    protected void encodeBody(ConsumerFlowTokenMessage message, RemotingBuffer out) throws Exception
+    {
+       out.putInt(INT_LENGTH);
+-      out.putFloat(message.getTokens());
++      out.putInt(message.getTokens());
+    }
+ 
+    @Override

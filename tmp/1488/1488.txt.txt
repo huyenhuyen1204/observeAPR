@@ -1,0 +1,9 @@
+@@ -85,7 +85,7 @@
+ 	 * Simple text indicating any limits execeeded while generating
+ 	 * the class file.
+ 	 */
+-	private String limitMsg;
++String limitMsg;
+ 	
+ 	//
+ 	// ClassBuilder interface

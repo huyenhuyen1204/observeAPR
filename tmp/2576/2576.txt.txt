@@ -1,0 +1,7 @@
+@@ -23,5 +23,5 @@
+ 
+ public interface IMessageSink
+ {
+-    public Message handleMessage(Message message);    
++public Message handleMessage(Message message, InetAddress to);
+ }

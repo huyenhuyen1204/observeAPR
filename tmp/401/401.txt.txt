@@ -1,0 +1,9 @@
+@@ -141,7 +141,7 @@
+         array.reset(term.buffer(), 0, term.length());
+       }
+ 
+-      public void reset(Reader input) throws IOException {
++public void reset(Reader input) {
+         try {
+           sentenceTokenizer.reset(input);
+           wordTokenFilter = (TokenStream) tokenFilterClass.getConstructor(

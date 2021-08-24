@@ -1,0 +1,9 @@
+@@ -1688,7 +1688,7 @@
+ 			ResultColumn resultColumn = (ResultColumn) elementAt(index);
+ 
+ 			/* Skip over generated columns */
+-			if (resultColumn.isGenerated())
++if (resultColumn.isGenerated() || resultColumn.isGeneratedForUnmatchedColumnInInsert())
+ 			{
+ 				continue;
+ 			}

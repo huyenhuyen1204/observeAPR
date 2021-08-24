@@ -1,0 +1,9 @@
+@@ -68,7 +68,7 @@
+         }
+     }
+ 
+-    public static int getAvialablePort(final int basePort) {
++    public static int getAvailablePort(final int basePort) {
+         if(basePort == 0) {
+             return getAvailablePort();
+         }

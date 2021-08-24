@@ -1,0 +1,9 @@
+@@ -42,7 +42,7 @@
+     subDocsEnum = new DocsEnum[subReaderCount];
+   }
+ 
+-  MultiDocsEnum reset(final EnumWithSlice[] subs, final int numSubs) throws IOException {
++MultiDocsEnum reset(final EnumWithSlice[] subs, final int numSubs) {
+     this.numSubs = numSubs;
+ 
+     this.subs = new EnumWithSlice[subs.length];

@@ -1,0 +1,9 @@
+@@ -92,7 +92,7 @@
+          writer.addDocument(d);
+             
+       }
+-      writer.close();
++writer.shutdown();
+       return directory;
+    }
+ }

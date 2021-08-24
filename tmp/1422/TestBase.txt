@@ -1,0 +1,9 @@
+@@ -36,7 +36,7 @@
+ 
+     private ApiServer apiStarter;
+     protected MidonetApi apiClient;
+-    private EmbeddedMidolman midolman;
++    protected EmbeddedMidolman midolman;
+     protected TestProbe probe;
+     protected Host thisHost;
+ 

@@ -1,0 +1,9 @@
+@@ -89,7 +89,7 @@
+             ldapOperations.create(entity);
+         } else {
+             ldapOperations.update(entity);
+-            if (declaredId != calculatedId) {
++            if (calculatedId != null && declaredId != calculatedId) {
+                 odm.setId(entity, calculatedId);
+             }
+         }

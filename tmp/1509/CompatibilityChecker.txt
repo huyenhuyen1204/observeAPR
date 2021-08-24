@@ -1,0 +1,9 @@
+@@ -18,7 +18,7 @@
+ }
+ 
+ class CompatibilityReport{
+-  boolean isCompatible;
++  boolean isCompatible=true;
+   List<String> messages=new ArrayList<String>();
+   public boolean isCompatible(){
+     return isCompatible;

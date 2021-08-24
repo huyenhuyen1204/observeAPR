@@ -1,0 +1,9 @@
+@@ -144,7 +144,7 @@
+   public static class DefaultCollectionModel implements CollectionModel {
+     @Override
+     public float computeProbability(BasicStats stats) {
+-      return (float)stats.getTotalTermFreq() / (stats.getNumberOfFieldTokens() +1);
++return (stats.getTotalTermFreq()+1F) / (stats.getNumberOfFieldTokens()+1F);
+     }
+     
+     @Override

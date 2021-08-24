@@ -1,0 +1,9 @@
+@@ -1604,7 +1604,7 @@
+         Gossiper.instance.addLocalApplicationState(ApplicationState.STATUS, valueFactory.left(getLocalToken()));
+         try
+         {
+-            Thread.sleep(2 * Gossiper.intervalInMillis_);
++Thread.sleep(2 * Gossiper.intervalInMillis);
+         }
+         catch (InterruptedException e)
+         {

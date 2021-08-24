@@ -1,0 +1,9 @@
+@@ -40,7 +40,7 @@
+   }
+ 
+   @Override
+-  public void build(SolrCore core, SolrIndexSearcher searcher) {
++public void build(SolrCore core, SolrIndexSearcher searcher) throws IOException {
+ 
+   }
+ 

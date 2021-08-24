@@ -1,0 +1,9 @@
+@@ -87,7 +87,7 @@
+ 
+     // Delete the input if it already exists
+     if (fs.exists(inpath)) {
+-      FileUtil.fullyDelete(fs, inpath);
++fs.delete(inpath, true);
+     }
+ 
+     fs.mkdirs(inpath);

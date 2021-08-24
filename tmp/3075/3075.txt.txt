@@ -1,0 +1,9 @@
+@@ -113,7 +113,7 @@
+                                          field("first",  "bubba"),
+                                          field("last",   "jones")     }));
+     reader = writer.getReader();
+-    writer.close();
++writer.shutdown();
+     searcher = newSearcher(reader);
+   }
+ 

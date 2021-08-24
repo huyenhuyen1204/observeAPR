@@ -1,0 +1,9 @@
+@@ -94,7 +94,7 @@
+ 
+     @Override
+     public boolean isOptional(AnnotatedElement annotated, A annotation) {
+-        return false; // TODO - is this ok?
++        return true;
+     }
+ 
+     @Override

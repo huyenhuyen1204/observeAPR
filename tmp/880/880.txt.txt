@@ -1,0 +1,9 @@
+@@ -102,7 +102,7 @@
+ 
+   static {
+     // does not yet work with ssl
+-    sslConfig = null;
++ALLOW_SSL = false;
+   }
+   
+   @BeforeClass

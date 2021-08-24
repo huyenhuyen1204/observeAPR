@@ -1,0 +1,9 @@
+@@ -428,7 +428,7 @@
+           // Protocols can't be used in typedefs.
+           printf("\n#define %s %s\n", unprefixedName, typeName);
+         } else {
+-          printf("\ntypedef %s %s;\n", typeName, unprefixedName);
++          printf("\n@compatibility_alias %s %s;\n", unprefixedName, typeName);
+         }
+       }
+     }

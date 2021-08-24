@@ -1,0 +1,9 @@
+@@ -1420,7 +1420,7 @@
+   }
+ 
+ 
+-  private Fields fields;
++private volatile Fields fields;
+ 
+   /** @lucene.internal */
+   void storeFields(Fields fields) {

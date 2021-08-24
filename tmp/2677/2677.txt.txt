@@ -1,0 +1,9 @@
+@@ -59,7 +59,7 @@
+ import java.io.IOException;
+ 
+ /** Implements the wildcard search query */
+-final public class WildcardQuery extends MultiTermQuery {
++public class WildcardQuery extends MultiTermQuery {
+     private Term wildcardTerm;
+ 
+     public WildcardQuery(Term term) {

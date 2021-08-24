@@ -1,0 +1,8 @@
+@@ -89,6 +89,7 @@
+         } catch ( SQLException e ) {
+             LOG.debug( "Unable to load driver: {}", e.getLocalizedMessage() );
+         }
++        System.out.println(workspace);
+         super.startup( workspace );
+     }
+ 

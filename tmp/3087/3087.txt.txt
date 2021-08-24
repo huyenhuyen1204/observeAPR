@@ -1,0 +1,9 @@
+@@ -108,7 +108,7 @@
+       writer.deleteDocuments(new Term("id", "" + docID));
+       docStates[docID] = 2;
+     }
+-    writer.close();
++writer.shutdown();
+     return docStates;
+   }
+ 

@@ -1,0 +1,9 @@
+@@ -348,7 +348,7 @@
+   }
+ 
+   @Override
+-  public void document(int docID, StoredFieldVisitor visitor) throws CorruptIndexException, IOException {
++public void document(int docID, StoredFieldVisitor visitor) throws IOException {
+     ensureOpen();
+     in.document(docID, visitor);
+   }

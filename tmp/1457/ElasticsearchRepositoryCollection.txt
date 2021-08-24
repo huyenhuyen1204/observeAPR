@@ -1,0 +1,8 @@
+@@ -47,6 +47,6 @@
+ 	@Override
+ 	public Repository getRepositoryByEntityName(String name)
+ 	{
+-		return new ElasticSearchRepository(client, INDEX_NAME, name);
++		return new ElasticsearchRepository(client, INDEX_NAME, name);
+ 	}
+ }

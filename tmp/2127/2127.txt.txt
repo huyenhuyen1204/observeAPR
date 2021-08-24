@@ -1,0 +1,9 @@
+@@ -521,7 +521,7 @@
+ 						bindTime - parseTime, //bind time
+ 						optimizeTime - bindTime, //optimize time
+ 						generateTime - optimizeTime, //generate time
+-						getElapsedTimeMillis(beginTime),
++generateTime - beginTime, //total compile time
+ 						beginTimestamp,
+ 						endTimestamp);
+ 				}

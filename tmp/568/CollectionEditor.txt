@@ -1,0 +1,9 @@
+@@ -126,7 +126,7 @@
+       if (isLast(index)) {
+         selectHome(index);
+       } else if (isFirst(index)) {
+-        selectEnd(index);
++        selectHome(index);
+       } else {
+         selectEnd(index - 1);
+       }

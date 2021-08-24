@@ -1,0 +1,9 @@
+@@ -221,7 +221,7 @@
+ 
+         @Override
+         public boolean prefixMatches(@NotNull String name) {
+-            return StringUtil.startsWithIgnoreCase(name, getPrefix());
++            return StringUtil.startsWith(name, getPrefix());
+         }
+ 
+         @NotNull

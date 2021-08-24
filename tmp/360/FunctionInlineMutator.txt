@@ -1,0 +1,9 @@
+@@ -90,7 +90,7 @@
+         renameLocalNames(namingContext, invokedFunction);
+         removeStatementsAfterTopReturn();
+ 
+-        if (canBeExpression(body)) {
++        if (isResultNeeded && canBeExpression(body)) {
+             resultExpr = asExpression(body);
+             body.getStatements().clear();
+ 

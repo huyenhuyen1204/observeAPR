@@ -1,0 +1,8 @@
+@@ -333,7 +333,6 @@
+                 lineno++;
+                 sawEOL = true;
+             } else {
+-                sawEOL = false;
+                 if (compilerEnv.isRecordingComments()) {
+                     recordComment(lineno);
+                 }

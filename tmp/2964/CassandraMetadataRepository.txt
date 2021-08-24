@@ -1,0 +1,9 @@
+@@ -1687,8 +1687,6 @@
+                 namespace ).withProjectId( project ).build();
+ 
+         this.projectVersionMetadataModelTemplate.deleteRow( key );
+-
+-
+     }
+ 
+     @Override

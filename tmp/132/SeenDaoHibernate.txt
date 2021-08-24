@@ -1,0 +1,9 @@
+@@ -33,7 +33,7 @@
+     }
+ 
+     public boolean isSeen(String nick, String channel) {
+-        return getSeen(nick, channel).getNick() != null;
++        return getSeen(nick, channel) != null;
+     }
+ 
+     public Seen getSeen(String nick, String channel) {

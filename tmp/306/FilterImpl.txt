@@ -1,0 +1,9 @@
+@@ -124,7 +124,7 @@
+       return sfilterString;
+    }
+ 
+-   public boolean match(final ServerMessage message)
++   public synchronized boolean match(final ServerMessage message)
+    {
+       try
+       {

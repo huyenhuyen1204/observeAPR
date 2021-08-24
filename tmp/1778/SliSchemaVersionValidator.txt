@@ -1,0 +1,8 @@
+@@ -54,7 +54,6 @@
+  * @author kmyers
+  * 
+  */
+-@Component
+ public class SliSchemaVersionValidator {
+ 
+     private static final Logger LOG = LoggerFactory.getLogger(SliSchemaVersionValidator.class);

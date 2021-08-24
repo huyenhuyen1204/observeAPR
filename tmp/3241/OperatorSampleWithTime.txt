@@ -1,0 +1,8 @@
+@@ -50,6 +50,7 @@
+         child.add(worker);
+         
+         SamplerSubscriber<T> sampler = new SamplerSubscriber<T>(s);
++        child.add(sampler);
+         worker.schedulePeriodically(sampler, time, time, unit);
+ 
+         return sampler;

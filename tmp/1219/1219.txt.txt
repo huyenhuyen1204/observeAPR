@@ -1,0 +1,9 @@
+@@ -598,7 +598,7 @@
+           
+     protected void setClientLocale(String locale)
+     {
+-        serverImpl.clientLocale = locale;
++serverImpl.setClientLocale( locale );
+     }
+ 
+     /**

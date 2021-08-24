@@ -1,0 +1,8 @@
+@@ -98,6 +98,7 @@
+             intervals = IntervalUtils.parseIntervalArguments(genomeLocParser, stringIntervals);
+         }
+ 
++        Collections.sort(intervals);
+         return intervals;
+     }
+ 

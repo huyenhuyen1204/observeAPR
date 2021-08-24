@@ -1,0 +1,8 @@
+@@ -162,7 +162,6 @@
+             }
+             tmp.dispose();
+         }
+-        handler.endDocument();
+     }
+ 
+    

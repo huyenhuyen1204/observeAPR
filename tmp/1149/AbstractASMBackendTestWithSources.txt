@@ -1,0 +1,8 @@
+@@ -55,6 +55,7 @@
+ 			"-src-prec", "java",
+ 			"-output-format", "asm",
+ 			"-allow-phantom-refs",
++			"-keep-line-number",
+ 			"-java-version", getRequiredJavaVersion(),
+ 			getTargetClass()
+ 		});

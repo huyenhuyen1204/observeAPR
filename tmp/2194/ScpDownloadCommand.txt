@@ -1,0 +1,9 @@
+@@ -65,7 +65,7 @@
+         if (recursive) {
+             command += "-r ";
+         }
+-        command += "'" + remoteFile + "'";
++        command += remoteFile.replace(" ", "\\ ");
+         return command;
+     }
+ 

@@ -1,0 +1,8 @@
+@@ -137,6 +137,6 @@
+ 
+ 
+   public SolrCore getSolrCore() {
+-    return dataImporter.getCore();
++return dataImporter == null ? null : dataImporter.getCore();
+   }
+ }

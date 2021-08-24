@@ -1,0 +1,9 @@
+@@ -393,7 +393,7 @@
+ 	 */
+ 	public ViewQuery staleOk(boolean b) {
+ 		reset();
+-		staleOk = "ok";
++		staleOk = b ? "ok" : null;
+ 		return this;
+ 	}
+ 	/**

@@ -1,0 +1,9 @@
+@@ -51,7 +51,7 @@
+ public class TestTermsEnum extends LuceneTestCase {
+ 
+   public void test() throws Exception {
+-    final LineFileDocs docs = new LineFileDocs(random);
++final LineFileDocs docs = new LineFileDocs(random, defaultCodecSupportsDocValues());
+     final Directory d = newDirectory();
+     final RandomIndexWriter w = new RandomIndexWriter(random, d);
+     final int numDocs = atLeast(10);

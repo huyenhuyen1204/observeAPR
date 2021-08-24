@@ -1,0 +1,9 @@
+@@ -140,7 +140,7 @@
+           lookup.store(storeDir);
+         }
+       } catch (Exception e) {
+-        throw new IOException(e);
++throw new IOException(e.toString());
+       }
+     }
+   }

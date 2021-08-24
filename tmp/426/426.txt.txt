@@ -1,0 +1,9 @@
+@@ -224,7 +224,7 @@
+   }
+   
+   @AfterClass
+-  public static void afterClass() throws Exception {
++public static void afterClass() {
+     tokenizers = null;
+     tokenfilters = null;
+     charfilters = null;

@@ -1,0 +1,7 @@
+@@ -36,5 +36,5 @@
+ public interface HttpClient {
+ 
+     HttpResponse request(HttpRequest req) throws TwitterException;
+-    public void shutdown();
++    void shutdown();
+ }

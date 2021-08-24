@@ -1,0 +1,7 @@
+@@ -116,5 +116,5 @@
+      * pending on this stage to be executed.
+      * @return task count.
+      */
+-    public long getTaskCount();
++public long getPendingTasks();
+ }

@@ -1,0 +1,9 @@
+@@ -60,7 +60,7 @@
+    *         configuration or <code>null</code>, if the implemented
+    *         {@link QueryConfigHandler} has no configuration for that field
+    */
+-  public FieldConfig getFieldConfig(CharSequence fieldName) {
++public FieldConfig getFieldConfig(String fieldName) {
+     FieldConfig fieldConfig = new FieldConfig(fieldName);
+ 
+     for (FieldConfigListener listener : this.listeners) {

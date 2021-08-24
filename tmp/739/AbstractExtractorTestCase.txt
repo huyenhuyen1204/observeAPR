@@ -1,0 +1,9 @@
+@@ -68,7 +68,7 @@
+     /**
+      * Internal connection used to collect extraction results.
+      */
+-    private RepositoryConnection conn;
++    protected RepositoryConnection conn;
+ 
+     /**
+      * The latest generated report.

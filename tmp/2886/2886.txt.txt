@@ -1,0 +1,9 @@
+@@ -83,7 +83,7 @@
+ 
+         try
+         {
+-            rows = StorageProxy.readProtocol(commands, select.getConsistencyLevel());
++rows = StorageProxy.read(commands, select.getConsistencyLevel());
+         }
+         catch (TimeoutException e)
+         {

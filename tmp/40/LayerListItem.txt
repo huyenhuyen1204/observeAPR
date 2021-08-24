@@ -1,0 +1,7 @@
+@@ -32,4 +32,6 @@
+   AndroidAttributeValue<ResourceValue> getDrawable();
+ 
+   List<BitmapOrNinePatchElement> getBitmaps();
++
++  List<Shape> getShapes();
+ }

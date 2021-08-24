@@ -1,0 +1,9 @@
+@@ -273,7 +273,7 @@
+ 
+ 
+     myAnimator.stopMovie();
+-    myTreeBuilder.performUpdate();
++    myTreeBuilder.updateFromRoot();
+ 
+     LvcsHelper.addLabel(this);
+ 

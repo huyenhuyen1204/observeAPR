@@ -1,0 +1,9 @@
+@@ -239,7 +239,7 @@
+     }
+ 
+     @Override
+-    public void setNextReader(IndexReader reader, int docBase)
++public FieldComparator setNextReader(IndexReader reader, int docBase)
+         throws IOException {
+       throw new UnsupportedOperationException(UNSUPPORTED_MSG);
+     }

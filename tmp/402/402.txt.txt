@@ -1,0 +1,9 @@
+@@ -39,7 +39,7 @@
+       }
+       
+       @Override
+-      public void reset(Reader input) throws IOException {
++public void reset(Reader input) {
+         delegate.reset(input);
+       }
+       

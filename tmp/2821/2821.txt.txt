@@ -1,0 +1,9 @@
+@@ -595,7 +595,7 @@
+    * </p>
+    */
+   public void setFollowRedirects(boolean followRedirects) {
+-    this.followRedirects = true;
++this.followRedirects = followRedirects;
+     HttpClientUtil.setFollowRedirects(httpClient,  followRedirects);
+   }
+   

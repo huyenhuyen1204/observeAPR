@@ -1,0 +1,9 @@
+@@ -42,7 +42,7 @@
+ 
+   @Override
+   public String toString() {
+-    return commandName;
++return commandName + ":{flags="+flags+", version="+version;
+   }
+ 
+   public long getVersion() {

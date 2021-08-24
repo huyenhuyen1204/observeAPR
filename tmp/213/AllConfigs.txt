@@ -1,0 +1,7 @@
+@@ -229,5 +229,6 @@
+     testClasses.add(Bugzilla_343332_Test.class);
+     testClasses.add(Bugzilla_343471_Test.class);
+     testClasses.add(Bugzilla_349793_Test.class);
++    testClasses.add(Bugzilla_349804_Test.class);
+   }
+ }

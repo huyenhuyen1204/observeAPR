@@ -1,0 +1,9 @@
+@@ -80,7 +80,7 @@
+       line = d.readLine();
+     }
+     d.close();
+-    writer.close();
++writer.shutdown();
+     reader = DirectoryReader.open(dir);
+     searcher = newSearcher(reader);
+ 

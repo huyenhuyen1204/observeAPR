@@ -1,0 +1,8 @@
+@@ -562,6 +562,6 @@
+ 
+     @Transient
+     public boolean isManifest() {
+-        return getType().isManifest();
++        return getType() == null ? false : getType().isManifest();
+     }
+ }

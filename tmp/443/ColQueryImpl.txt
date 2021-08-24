@@ -1,0 +1,9 @@
+@@ -37,7 +37,7 @@
+      * @param templates
+      */
+     public ColQueryImpl(ColQueryTemplates templates) {
+-        this(new DefaultQueryEngine(new DefaultEvaluatorFactory(ColQueryTemplates.DEFAULT)));
++        this(new DefaultQueryEngine(new DefaultEvaluatorFactory(templates)));
+     }
+     
+     /**

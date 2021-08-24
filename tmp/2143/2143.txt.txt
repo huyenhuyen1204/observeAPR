@@ -1,0 +1,7 @@
+@@ -41,5 +41,5 @@
+      * @return object representing the owner of the compatibility space, or
+      * <code>null</code> if no owner has been specified.
+      */
+-    Object getOwner();
++LockOwner getOwner();
+ }

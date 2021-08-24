@@ -1,0 +1,9 @@
+@@ -1054,7 +1054,7 @@
+                 placeholdersFromProps.put(placeholderName, placeholderValue);
+             }
+         }
+-        setPlaceholders(placeholdersFromProps);
++        if (placeholdersFromProps.size() > 0) setPlaceholders(placeholdersFromProps);
+     }
+ 
+     /**

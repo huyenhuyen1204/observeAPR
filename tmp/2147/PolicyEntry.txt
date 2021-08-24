@@ -1,0 +1,8 @@
+@@ -244,6 +244,7 @@
+         // is done.  We should refactor the browsers to better handle message dispatch so
+         // we can remove this and perform a more efficient dispatch.
+         sub.setMaxProducersToAudit(Integer.MAX_VALUE);
++        sub.setMaxAuditDepth(Short.MAX_VALUE);
+     }
+ 
+     public void configure(Broker broker, SystemUsage memoryManager, QueueSubscription sub) {

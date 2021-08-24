@@ -1,0 +1,9 @@
+@@ -31,7 +31,7 @@
+ 
+     @Override
+     public Image getImage(final Object object) {
+-        return null;//Pics.getImage("ContractInput.gif", ContractPlugin.getDefault());
++        return null;
+     }
+ 
+ }

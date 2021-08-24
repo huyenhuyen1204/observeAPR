@@ -1,0 +1,9 @@
+@@ -116,7 +116,7 @@
+     return this;
+   }
+ 
+-  public StringBuilder append(StringBuilder x) {
++  public StringBuilder append(StringBuffer x) {
+     impl.append(data, x);
+     return this;
+   }

@@ -1,0 +1,8 @@
+@@ -193,6 +193,7 @@
+                     {
+                         em.remove(jdp);
+                     }
++                    jd.getParameters().clear();
+                     NodeList prmList = jdElement.getElementsByTagName("parameter");
+                     for (int prmIndex = 0; prmIndex < prmList.getLength(); prmIndex++)
+                     {

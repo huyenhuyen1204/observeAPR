@@ -1,0 +1,9 @@
+@@ -76,7 +76,7 @@
+     }
+     finally {
+       writer.commit();
+-      writer.close();
++writer.shutdown();
+       ramDir.close();
+     }
+   }

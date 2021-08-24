@@ -1,0 +1,9 @@
+@@ -137,7 +137,7 @@
+   }
+ 
+   public static BytesRef analyzeMultiTerm(String field, String part, Analyzer analyzerIn) {
+-    if (part == null) return null;
++if (part == null || analyzerIn == null) return null;
+ 
+     TokenStream source;
+     try {

@@ -1,0 +1,9 @@
+@@ -455,7 +455,7 @@
+           if(constructor == null) {
+             binder.bind(assistedReturnType).to((Key)returnType);
+           } else {
+-            binder.bind(assistedReturnType).toConstructor((Constructor)constructor);
++            binder.bind(assistedReturnType).toConstructor((Constructor)constructor, (TypeLiteral)returnType.getTypeLiteral());
+           }
+         }
+       }

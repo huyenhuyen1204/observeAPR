@@ -1,0 +1,9 @@
+@@ -1084,7 +1084,7 @@
+   @Override
+   public void setUp() throws Exception {
+     super.setUp();
+-    indexDir = new File(TEMP_DIR, "IndexReaderReopen");
++indexDir = _TestUtil.getTempDir("IndexReaderReopen");
+   }
+   
+   public void testCloseOrig() throws Throwable {

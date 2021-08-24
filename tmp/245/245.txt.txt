@@ -1,0 +1,9 @@
+@@ -231,7 +231,7 @@
+         numSegments++;
+       } else {
+         if (upperBound * mergeFactor <= maxMergeDocs) {
+-          assertTrue("maxMergeDocs=" + maxMergeDocs + "; numSegments=" + numSegments + "; upperBound=" + upperBound + "; mergeFactor=" + mergeFactor, numSegments < mergeFactor);
++assertTrue("maxMergeDocs=" + maxMergeDocs + "; numSegments=" + numSegments + "; upperBound=" + upperBound + "; mergeFactor=" + mergeFactor + "; segs=" + writer.segString(), numSegments < mergeFactor);
+         }
+ 
+         do {

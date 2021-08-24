@@ -1,0 +1,9 @@
+@@ -91,7 +91,7 @@
+         Row row;
+         try
+         {
+-            row = StorageProxy.readProtocol(command, ConsistencyLevel.ONE);
++row = StorageProxy.readProtocol(command, consistency_level);
+         }
+         catch (IOException e)
+         {

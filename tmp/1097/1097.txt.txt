@@ -1,0 +1,9 @@
+@@ -39,7 +39,7 @@
+     RuleChain.outerRule(new SystemPropertiesRestoreRule());
+ 
+   public TestSameRandomnessLocalePassedOrNot() {
+-    super(false);
++super(true);
+   }
+   
+   public static class Nested extends WithNestedTests.AbstractNestedTest {

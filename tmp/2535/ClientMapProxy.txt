@@ -1,0 +1,8 @@
+@@ -669,6 +669,7 @@
+ 
+     @Override
+     public LocalMapStats getLocalMapStats() {
++        initNearCache();
+         LocalMapStatsImpl localMapStats = new LocalMapStatsImpl();
+         if (nearCache != null) {
+             localMapStats.setNearCacheStats(nearCache.getNearCacheStats());

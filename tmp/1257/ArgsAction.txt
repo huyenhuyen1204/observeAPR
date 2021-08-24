@@ -1,0 +1,9 @@
+@@ -28,7 +28,7 @@
+ 	public static class User {
+ 		long id;
+ 		String username;
+-		static int counter;
++		public static int counter;
+ 
+ 		public User() {
+ 			counter++;

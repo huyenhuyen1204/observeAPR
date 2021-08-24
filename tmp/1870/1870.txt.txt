@@ -1,0 +1,9 @@
+@@ -178,7 +178,7 @@
+     return simpleTag("optimize", args);
+   }
+ 
+-  private static String simpleTag(String tag, String... args) {
++public static String simpleTag(String tag, String... args) {
+     try {
+       StringWriter r = new StringWriter();
+ 
