@@ -9,11 +9,12 @@ import util.ASTHelper;
 import java.util.ArrayList;
 
 public class NumbericNode extends StatementNode {
-    public static final String type = "NumberLiteral";
+//    public static final String nodeType = "NumberLiteral";
     private Object numberic;
 
-    public NumbericNode(Object numberic, ASTNode astNode) {
+    public NumbericNode(Object numberic, ASTNode astNode, String classfullName) {
         this.numberic = numberic;
+        setFullNameParent(classfullName);
         Position position = ASTHelper.getPosition(astNode);
         this.startPostion = position.getStartPos();
         this.endPostion = position.getEndPos();

@@ -2,12 +2,13 @@ package object.context;
 
 import AST.stm.abst.NodeInstance;
 import AST.stm.abst.StatementNode;
+import AST.stm.token.MethodCalledNode;
 
 public class Context {
 
     //is find sameMethod or Not
-    public Boolean findSameMethod = false;
-    public Boolean findSameLine = false;
+    public Boolean findSameMethod = null;
+    public Boolean findSameLine = null;
     public float distance = -1f; //diff between 2 strings
     public NodeInstance fixInstance;
     public  int bugLine;
@@ -23,6 +24,14 @@ public class Context {
 
     public String bugNode;
     public String fixNode;
+    public Scope scope;
+
+    public String originalBug;
+    public String originalFix;
+
+    public enum Scope {
+        ONLY_CURRENT, ALL_AFTER
+    }
 
 
     public NodeInstance bugInstance;
@@ -32,5 +41,17 @@ public class Context {
     public String pathBugFile;
 
     public String type;
+
+    public void setOriginalString (StatementNode stmbug, StatementNode stmFix) {
+        this.originalBug = stmbug.getStatementString();
+        this.originalFix = stmFix.getStatementString();
+        if (stmbug instanceof MethodCalledNode) {
+            originalBug = stmbug.toString();
+        }
+        if (stmFix instanceof MethodCalledNode) {
+            originalFix = stmFix.toString();
+
+        }
+    }
 
 }

@@ -5,12 +5,13 @@ import AST.parser.Convert;
 import AST.stm.abst.StatementNode;
 import AST.stm.nodetype.InitNode;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import org.eclipse.jdt.core.dom.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import util.ASTHelper;
+import util.ReflectionHelper;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,15 +20,16 @@ import java.util.List;
  */
 
 
-public class ClassNode extends AbstractableElementNode {
+public class ClassNode extends JavaNode {
     public static final Logger logger = LoggerFactory.getLogger(ClassNode.class);
-    protected boolean isInterface;
+    //    protected boolean isInterface;
     protected String parentClass;
     protected List<String> interfaceList;
     protected String qualifiedName;
+    public File file;
     //    protected String type;
-    protected int numOfmethod;
-    protected int numOfvariable;
+//    protected int numOfmethod;
+//    protected int numOfvariable;
     protected int line;
     @JsonIgnore
     protected List<InitNode> initNodes; //to save var & type when init
@@ -65,21 +67,21 @@ public class ClassNode extends AbstractableElementNode {
         this.qualifiedName = qualifiedName;
     }
 
-    public int getNumOfmethod() {
-        return numOfmethod;
-    }
-
-    public void setNumOfmethod(int numOfmethod) {
-        this.numOfmethod = numOfmethod;
-    }
-
-    public int getNumOfvariable() {
-        return numOfvariable;
-    }
-
-    public void setNumOfvariable(int numOfvariable) {
-        this.numOfvariable = numOfvariable;
-    }
+//    public int getNumOfmethod() {
+//        return numOfmethod;
+//    }
+//
+//    public void setNumOfmethod(int numOfmethod) {
+//        this.numOfmethod = numOfmethod;
+//    }
+//
+//    public int getNumOfvariable() {
+//        return numOfvariable;
+//    }
+//
+//    public void setNumOfvariable(int numOfvariable) {
+//        this.numOfvariable = numOfvariable;
+//    }
 
     public int getLine() {
         return line;
@@ -105,14 +107,14 @@ public class ClassNode extends AbstractableElementNode {
     }
 
 
-    @JsonProperty("isInterface")
-    public boolean isInterface() {
-        return isInterface;
-    }
-
-    public void setInterface(boolean anInterface) {
-        isInterface = anInterface;
-    }
+//    @JsonProperty("isInterface")
+//    public boolean isInterface() {
+//        return isInterface;
+//    }
+//
+//    public void setInterface(boolean anInterface) {
+//        isInterface = anInterface;
+//    }
 
     @JsonIgnore
     public List<MethodNode> getMethodList() {
@@ -138,101 +140,111 @@ public class ClassNode extends AbstractableElementNode {
     public String toString() {
         return "ClassNode {" +
                 "id=" + this.id +
-                "visibility=" + this.getVisibility() +
+//                "visibility=" + this.getVisibility() +
 //                ", type='" + type + '\'' +
                 ", name=" + this.name +
-                ", isStatic=" + this.isStatic() +
-                ", isAbstract=" + this.isAbstract() +
-                ", isFinal=" + this.isFinal() +
-                ", isInterface=" + isInterface +
+//                ", isStatic=" + this.isStatic() +
+//                ", isAbstract=" + this.isAbstract() +
+//                ", isFinal=" + this.isFinal() +
+//                ", isInterface=" + isInterface +
                 ", parentClass='" + parentClass + '\'' +
                 ", interfaceList=" + interfaceList +
                 '}';
     }
 
     public void setInforFromASTNode(TypeDeclaration node, CompilationUnit cu) {
-        if (node.isInterface() == true) this.setInterface(true);
+//        if (node.isInterface() == true) this.setInterface(true);
         Position position = ASTHelper.getPosition(node);
         this.setStartLine(ASTHelper.getLine(position.getStartPos(), cu));
         this.setEndLine(ASTHelper.getLine(position.getEndPos(), cu));
-
-        //lay ten
-        if (node.getName() != null) {
-            if (node.getName().getIdentifier() != null) {
-                String name = node.getName().getIdentifier();
-                this.setName(name);
-            }
-        }
-//        this.setQualifiedName(name);
-        PackageDeclaration packageDeclaration = cu.getPackage();
-        if (packageDeclaration != null) {
-            if (packageDeclaration.getName() != null) {
-                if (packageDeclaration.getName().getFullyQualifiedName() != null) {
-                    this.setQualifiedName(packageDeclaration.getName().getFullyQualifiedName() + "." + name);
-                }
-            }
-        } else {
-            this.setQualifiedName(name);
-        }
-
-        //lay visibility
-        this.setVisibility(DEFAULT_MODIFIER);
-        List modifiers = node.modifiers();
-        if (modifiers.size() == 0) {
-            this.setVisibility(DEFAULT_MODIFIER);
-        } else {
-            for (Object o : modifiers) {
-                //System.out.println(o.getKeyword().toString());
-                if (o instanceof Modifier) {
-                    Modifier m = (Modifier) o;
-                    if (m.getKeyword() != null) {
-                        if (m.getKeyword().toFlagValue() == Modifier.ModifierKeyword.PUBLIC_KEYWORD.toFlagValue()) {
-                            this.setVisibility(PUBLIC_MODIFIER);
-                        } else if (m.getKeyword().toFlagValue() == Modifier.ModifierKeyword.STATIC_KEYWORD.toFlagValue()) {
-                            this.setStatic(true);
-                        } else if (m.getKeyword().toFlagValue() == Modifier.ModifierKeyword.ABSTRACT_KEYWORD.toFlagValue()) {
-                            this.setAbstract(true);
-                        } else if (m.getKeyword().toFlagValue() == Modifier.ModifierKeyword.FINAL_KEYWORD.toFlagValue()) {
-                            this.setFinal(true);
-                        } else if (m.getKeyword().toFlagValue() == Modifier.ModifierKeyword.PRIVATE_KEYWORD.toFlagValue()) {
-                            this.setVisibility(PRIVATE_MODIFIER);
-                        } else if (m.getKeyword().toFlagValue() == Modifier.ModifierKeyword.PROTECTED_KEYWORD.toFlagValue()) {
-                            this.setVisibility(PROTECTED_MODIFIER);
-                        } else {
-                            this.setVisibility(DEFAULT_MODIFIER);
-                        }
-
-                    }
-                }
-            }
-        }
-
-        //lay cac properties
-        FieldDeclaration[] fieldList = node.getFields();
-        List<Node> fieldNodes = Convert.convertASTListNodeToFieldNode(fieldList, cu, initNodes);
-
-        this.addChildren(fieldNodes, cu);
-        //lay cac methods
-        MethodDeclaration[] methodList = node.getMethods();
-        List<Node> methodNodes = Convert.convertASTListNodeToMethodNode(methodList, cu);
-        this.addChildren(methodNodes, cu);
-
-        parserStatements(methodNodes);
-
-        //TODO lay cac class con ben trong
-        TypeDeclaration[] classList = node.getTypes();
-        List<Node> innerClassNode = Convert.convertASTListNodeToClassNode(classList, cu);
-        this.addChildren(innerClassNode, cu);
 
         //lay superClass
         Type superClassType = node.getSuperclassType();
         if (superClassType != null && superClassType instanceof SimpleType) {
             SimpleType superSimpleClassType = (SimpleType) superClassType;
             if (superSimpleClassType.getName() != null) {
-                String fullname = ASTHelper.getFullyQualifiedName(superClassType, cu);
+//                String fullname = ASTHelper.getQualifiedNameInnerClass(
+//                        null,superSimpleClassType.getName().getFullyQualifiedName(), cu );
+                String fullname = ASTHelper.getFullyQualifiedTypeName(
+                        null, superSimpleClassType.getName().getFullyQualifiedName(), cu);
                 this.setParentClass(fullname);
             }
         }
+
+
+//        this.setQualifiedName(name);
+        if (this.qualifiedName == null) {
+            //lay ten
+            if (node.getName() != null) {
+                if (node.getName().getIdentifier() != null) {
+                    String name = node.getName().getIdentifier();
+                    this.setName(name);
+                }
+            }
+            this.setQualifiedName(ASTHelper.getFullyQualifiedTypeName(null, this.getName(), cu));
+        }
+//        } else {
+//            this.setQualifiedName(this.parentClass + "$" + this.getName());
+//        }
+
+//        //lay visibility
+//        this.setVisibility(DEFAULT_MODIFIER);
+//        List modifiers = node.modifiers();
+//        if (modifiers.size() == 0) {
+//            this.setVisibility(DEFAULT_MODIFIER);
+//        } else {
+//            for (Object o : modifiers) {
+//                //System.out.println(o.getKeyword().toString());
+//                if (o instanceof Modifier) {
+//                    Modifier m = (Modifier) o;
+//                    if (m.getKeyword() != null) {
+//                        if (m.getKeyword().toFlagValue() == Modifier.ModifierKeyword.PUBLIC_KEYWORD.toFlagValue()) {
+//                            this.setVisibility(PUBLIC_MODIFIER);
+//                        } else if (m.getKeyword().toFlagValue() == Modifier.ModifierKeyword.STATIC_KEYWORD.toFlagValue()) {
+//                            this.setStatic(true);
+//                        } else if (m.getKeyword().toFlagValue() == Modifier.ModifierKeyword.ABSTRACT_KEYWORD.toFlagValue()) {
+//                            this.setAbstract(true);
+//                        } else if (m.getKeyword().toFlagValue() == Modifier.ModifierKeyword.FINAL_KEYWORD.toFlagValue()) {
+//                            this.setFinal(true);
+//                        } else if (m.getKeyword().toFlagValue() == Modifier.ModifierKeyword.PRIVATE_KEYWORD.toFlagValue()) {
+//                            this.setVisibility(PRIVATE_MODIFIER);
+//                        } else if (m.getKeyword().toFlagValue() == Modifier.ModifierKeyword.PROTECTED_KEYWORD.toFlagValue()) {
+//                            this.setVisibility(PROTECTED_MODIFIER);
+//                        } else {
+//                            this.setVisibility(DEFAULT_MODIFIER);
+//                        }
+//
+//                    }
+//                }
+//            }
+//        }
+
+        //lay cac properties
+        FieldDeclaration[] fieldList = node.getFields();
+        List<Node> fieldNodes = Convert.convertASTListNodeToFieldNode(
+                fieldList, this, cu, initNodes);
+
+        this.addChildren(fieldNodes, cu);
+        //lay cac methods
+        MethodDeclaration[] methodList = node.getMethods();
+        List<Node> methodNodes = Convert.convertASTListNodeToMethodNode(this, methodList, cu);
+        this.addChildren(methodNodes, cu);
+        System.out.println("=============");
+        for (Node n : methodNodes) {
+            if (n instanceof MethodNode) {
+                System.out.println(n.name);
+            }
+        }
+        //TODO lay cac class con ben trong
+        TypeDeclaration[] classList = node.getTypes();
+        List<Node> innerClassNode = Convert.convertASTListNodeToClassNode(this.getName(), classList, cu);
+        this.addChildren(innerClassNode, cu);
+
+        List<Node> innerTmp = new ArrayList<>();
+        innerTmp.add(this);
+        innerTmp.addAll(innerClassNode);
+        //parserStatementNodes
+        parserStatements(methodNodes, innerTmp);
 
         //lay danh sach cac superInterface
         List superInterfaceList = node.superInterfaceTypes();
@@ -241,53 +253,86 @@ public class ClassNode extends AbstractableElementNode {
             for (Object o : superInterfaceList) {
                 if (o instanceof SimpleType) {
                     SimpleType intefaceType = (SimpleType) o;
-                    String fullInterfaceName = ASTHelper.getFullyQualifiedName(intefaceType, cu);
+                    String fullInterfaceName = ASTHelper.getFullyQualifiedName(this, intefaceType, cu);
                     interfaceNameList.add(fullInterfaceName);
                 }
             }
             this.setInterfaceList(interfaceNameList);
         }
-
+        // Lay cac enums
+        List<Node> enumNodes = new ArrayList<>();
+        for (Object obj : node.bodyDeclarations()) {
+            if (obj instanceof EnumDeclaration) {
+                EnumNode enumNode = Convert.convertToEnumNode(this.getName(), (EnumDeclaration) obj, cu);
+                enumNodes.add(enumNode);
+            }
+        }
+        this.addChildren(enumNodes, cu);
     }
 
-    private void parserStatements(List<Node> methodNodes) {
+    private void parserStatements(List<Node> methodNodes, List<Node> innerClasses) {
         for (Node node : methodNodes) {
             MethodNode methodNode = (MethodNode) node;
-            methodNode.parserStatements(1, methodNode.getStatements());
+            methodNode.innerclasses = innerClasses;
+            methodNode.parseStatements(1, methodNode.getStatements());
         }
     }
 
-    public StatementNode findStatemmentByLine(int line) {
-        List<MethodNode> methodNodes = this.getMethodList();
-        for (MethodNode methodNode : methodNodes) {
-            if (methodNode.getStartLine() <= line && methodNode.getEndLine() >= line) {
-                return methodNode.findStatementByLine(line);
+    public StatementNode findStatemmentByLine(List<Node> childs, int line) {
+        for (Node node : childs) {
+            if (node instanceof MethodNode) {
+                if (node.getStartLine() <= line && node.getEndLine() >= line) {
+                    return ((MethodNode) node).findStatementByLine(line);
+                }
+            } else if (node instanceof ClassNode) {
+                StatementNode statementNode =  findStatemmentByLine(node.getChildren(), line);
+                if (statementNode != null) {
+                    return statementNode;
+                }
             }
         }
         return null;
     }
 
-    public int findIndexTypeVar(String varname) {
-        for (int i = 0; i < initNodes.size(); i++) {
-            InitNode initNode = initNodes.get(i);
+        public int findIndexTypeVar (String varname){
+            for (int i = 0; i < initNodes.size(); i++) {
+                InitNode initNode = initNodes.get(i);
 
-            if (initNode.getVarname().equals(varname)) {
-                return i;
+                if (initNode.getVarname().equals(varname)) {
+                    return i;
+                }
+
             }
-
+            return -1;
         }
-        return -1;
-    }
 
-    public InitNode findTypeVar(String varname) {
-        for (int i = 0; i < initNodes.size(); i++) {
-            InitNode initNode = initNodes.get(i);
-            if (initNode.getVarname().equals(varname)) {
-                return initNodes.get(i);
+        public String findTypeVar (String varname, ClassNode parent){
+            String result = null;
+            for (int i = 0; i < initNodes.size(); i++) {
+                InitNode initNode = initNodes.get(i);
+                if (initNode.getVarname().equals(varname)) {
+                    result = initNodes.get(i).getType();
+                    return result;
+                }
             }
+            if (this instanceof EnumNode) {
+                for (String enumConstant : ((EnumNode) this).getEnumConstants()) {
+                    if (varname.equals(enumConstant)) {
+                        return this.getQualifiedName();
+                    }
+                }
+            }
+            if (parent != null) {
+                for (int i = 0; i < parent.initNodes.size(); i++) {
+                    InitNode initNode = parent.initNodes.get(i);
+                    if (initNode.getVarname().equals(varname)) {
+                        result = parent.initNodes.get(i).getType();
+                        return result;
+                    }
+                }
+            }
+            return result;
         }
-        return null;
-    }
 
 //    public MethodNode findMethodNode(String methodName, List<String> params) {
 //        List<MethodNode> methodNodes = new ArrayList<>();
@@ -306,57 +351,77 @@ public class ClassNode extends AbstractableElementNode {
 //        return null;
 //    }
 
-    public List<MethodNode> findMethodNode(String methodName, List<String> params) {
-        List<MethodNode> methodNodes = new ArrayList<>();
-        for (MethodNode methodNode : getMethodList()) {
-            if (methodName.equals(methodNode.getName())) {
-                if (compareParams(methodNode.getParameters(), params))
-                    methodNodes.add(methodNode);
+
+        public MethodNode findMethodNode (String methodName, List < String > params){
+            for (MethodNode methodNode : getMethodList()) {
+                if (methodName.equals(methodNode.getName())) {
+                    List<String> expected = new ArrayList<>();
+                    for (ParameterNode p : methodNode.getParameters()) {
+                        expected.add(p.getType());
+                    }
+                    if (ReflectionHelper.compareParams(expected, params)) {
+                        return methodNode;
+                    }
+                }
             }
-        }
 //        if (methodNodes.size() == 1) {
 //            return methodNodes.get(0);
 //        } else if (methodNodes.size() > 1) {
 //            logger.error("THIS IS ERR");
 //            return null;
 //        }
-        return methodNodes;
-    }
+            return null;
+        }
 
-    public MethodNode findMethodNodeByStmLine(String methodName, int line) {
-        for (MethodNode methodNode : getMethodList()) {
-            if (methodName.equals(methodNode.getName())) {
+        public MethodNode findMethodNodeByStmLine (String methodName,int line){
+            for (MethodNode methodNode : getMethodList()) {
+                if (methodName.equals(methodNode.getName())) {
+                    if (line <= methodNode.getEndLine()
+                            && line >= methodNode.getStartLine())
+                        return methodNode;
+                }
+            }
+            return null;
+        }
+
+        public MethodNode findMethodNodeInFile ( int line) {
+            for (Node node : this.getChildren()) {
+                if (node instanceof MethodNode) {
+                    if (line <= node.getEndLine()
+                            && line >= node.getStartLine())
+                        return (MethodNode) node;
+                } else if (node instanceof ClassNode) {
+                    MethodNode methodNode = ((ClassNode) node).findMethodNodeByStmLine(line);
+                    if (methodNode != null) {
+                        return methodNode;
+                    }
+                }
+            }
+            return null;
+        }
+        public MethodNode findMethodNodeByStmLine ( int line){
+            for (MethodNode methodNode : getMethodList()) {
                 if (line <= methodNode.getEndLine()
                         && line >= methodNode.getStartLine())
                     return methodNode;
             }
+            return null;
         }
-        return null;
-    }
 
-    public MethodNode findMethodNodeByStmLine(int line) {
-        for (MethodNode methodNode : getMethodList()) {
-            if (line <= methodNode.getEndLine()
-                    && line >= methodNode.getStartLine())
-                return methodNode;
-        }
-        return null;
-    }
-
-    private boolean compareParams(List<ParameterNode> parameterNodes, List<String> params) {
-        boolean result = true;
-        if (parameterNodes.size() == params.size()) {
-            if (params.size() == 0) {
-                return true;
-            }
-            for (int i = 0; i < parameterNodes.size(); i++) {
-                if (params.get(i) != null) {
-                    if (!params.get(i).equals(parameterNodes.get(i).getType())) {
-                        result = false;
-                        break;
+        private boolean compareParams (List < ParameterNode > parameterNodes, List < String > params){
+            boolean result = true;
+            if (parameterNodes.size() == params.size()) {
+                if (params.size() == 0) {
+                    return true;
+                }
+                for (int i = 0; i < parameterNodes.size(); i++) {
+                    if (params.get(i) != null) {
+                        if (!params.get(i).equals(parameterNodes.get(i).getType())) {
+                            result = false;
+                            break;
+                        }
                     }
                 }
-            }
 //            for (ParameterNode parameterNode : parameterNodes) {
 //                for (String param : params) {
 //                    if (param != null) {
@@ -367,11 +432,11 @@ public class ClassNode extends AbstractableElementNode {
 //                    }
 //                }
 //            }
-            return result;
-        } else {
-            return false;
+                return result;
+            } else {
+                return false;
+            }
         }
+
+
     }
-
-
-}

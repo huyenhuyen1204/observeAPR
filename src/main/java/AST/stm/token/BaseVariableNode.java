@@ -3,7 +3,6 @@ package AST.stm.token;
 import AST.obj.Position;
 import AST.stm.abst.NodeType;
 import AST.stm.abst.StatementNode;
-import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.jdt.core.dom.Name;
 import org.eclipse.jdt.core.dom.SimpleName;
@@ -13,14 +12,24 @@ import java.util.ArrayList;
 
 public class BaseVariableNode extends StatementNode implements Token {
     private String keyVar;
+    public boolean isSameMethod = false;
+    public boolean isSameClass = false;
 
-    public BaseVariableNode() {
+    {
+        this.nodeType = NodeType.BaseVariableNode;
+    }
+    public BaseVariableNode(String keyVar) {
         super();
+        this.keyVar = keyVar;
+        this.setStatementString(keyVar);
+        this.children = new ArrayList<>();
+//        setFullNameParent(classfullName);
     }
 
-    public BaseVariableNode(SimpleName stmNode, String type, int  line) {
+    public BaseVariableNode(SimpleName stmNode, String type, int  line, String classfullName) {
         super();
         this.keyVar = stmNode.getIdentifier();
+//        setFullNameParent(classfullName);
         Position position = ASTHelper.getPosition(stmNode);
         this.startPostion = position.getStartPos();
         this.endPostion = position.getEndPos();
@@ -32,8 +41,9 @@ public class BaseVariableNode extends StatementNode implements Token {
         this.nodeType = NodeType.BaseVariableNode;
     }
 
-    public BaseVariableNode(Name stmNode, String type, int  line) {
+    public BaseVariableNode(Name stmNode, String type, int  line, String classfullName) {
         super();
+        setFullNameParent(classfullName);
         this.keyVar = stmNode.getFullyQualifiedName();
         Position position = ASTHelper.getPosition(stmNode);
         this.startPostion = position.getStartPos();
@@ -46,12 +56,13 @@ public class BaseVariableNode extends StatementNode implements Token {
         this.nodeType = NodeType.BaseVariableNode;
     }
 
-    public BaseVariableNode(String keyVar, ASTNode astNode, int  line) {
+    public BaseVariableNode(String keyVar, String classFullName, int  line, String classfullName) {
         super();
+        setFullNameParent(classFullName);
         this.keyVar = keyVar;
         this.statementString = keyVar;
         this.line = line;
-        this.type = null;
+        this.type = classFullName;
         this.children = new ArrayList<>();
 //        if (astNode != null) {
 ////            this.nodeType = astNode.getNodeType();
@@ -59,8 +70,10 @@ public class BaseVariableNode extends StatementNode implements Token {
         this.nodeType = NodeType.BaseVariableNode;
     }
 
-    public BaseVariableNode(Name stmNode, String varname, String typevar, CompilationUnit cu) {
+    public BaseVariableNode(Name stmNode, String varname,
+                            String typevar, CompilationUnit cu, String classfullName) {
         super();
+        setFullNameParent(classfullName);
         this.keyVar = varname;
         Position position = ASTHelper.getPosition(stmNode);
         this.startPostion = position.getStartPos();
@@ -90,20 +103,18 @@ public class BaseVariableNode extends StatementNode implements Token {
     }
 
     @Override
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    @Override
     public int getHashCode() {
         if (type != null) {
             return (type +keyVar).hashCode();
-        }else  if (keyVar == null) {
+        } else  if (keyVar == null) {
             return "null".hashCode();
         } else {
             return keyVar.hashCode();
         }
     }
 
-
+    @Override
+    public String toString() {
+        return keyVar;
+    }
 }

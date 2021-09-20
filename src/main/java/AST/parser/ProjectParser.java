@@ -43,8 +43,9 @@ public class ProjectParser {
             for (File f : arr) {
                 if (f.isFile() && f.getName().endsWith(".java")) {
                     String fileToString = FileService.readFileToString(f.getPath());
-                    List<ClassNode> classes = JavaFileParser.parse(fileToString);
+                    List<ClassNode> classes = JavaFileParser.parse(f, fileToString);
                     folderNode.addChildrenFolder(classes);
+
                 }
                 else if (f.isDirectory()) {
                     FolderNode childFolder = new FolderNode();

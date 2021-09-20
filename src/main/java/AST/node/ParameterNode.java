@@ -17,10 +17,10 @@ public class ParameterNode extends JavaNode {
         this.type = type;
     }
 
-    @Override
-    public boolean isFinal() {
-        return isFinal;
-    }
+//    @Override
+//    public boolean isFinal() {
+//        return isFinal;
+//    }
 
     @Override
     public void setFinal(boolean aFinal) {

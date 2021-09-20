@@ -1,27 +1,29 @@
 package AST.stm.token;
 
+import AST.node.MethodNode;
 import AST.obj.Position;
 import AST.stm.abst.NodeType;
 import AST.stm.abst.StatementNode;
 import org.eclipse.jdt.core.dom.ASTNode;
+import org.eclipse.jdt.core.dom.CompilationUnit;
 import util.ASTHelper;
+import util.ReflectionHelper;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
-public class  MethodInvocationStmNode extends StatementNode implements Token {
-    public static final String type = "MethodInvocation";
+public class MethodInvocationStmNode extends StatementNode implements Token {
+    //    public static final String nodeType = "MethodInvocation";
     private String methodType;
 //    private String keyVar;
-    private BaseVariableNode baseVar;
+//    private BaseVariableNode baseVar;
 //    private String methodCalled = null; // eg: student.getname() - method called is getname
     //for list method call eg: customerList.get(0).toString()
     // methods called: get, tostring
-    private List<StatementNode> methodsCalled = null; //customerList.get(0).toString() -> toString, get
+    private List<StatementNode> nodes = null; //customerList.get(0).toString() -> toString, get
 
-    public MethodInvocationStmNode(ASTNode methodInvocation, int line) {
-        this.methodsCalled = new ArrayList<>();
+    public MethodInvocationStmNode(ASTNode methodInvocation, int line, String classfullName) {
+        this.nodes = new ArrayList<>();
         this.line = line;
         this.statementString = methodInvocation.toString();
         Position position = ASTHelper.getPosition(methodInvocation);
@@ -31,34 +33,48 @@ public class  MethodInvocationStmNode extends StatementNode implements Token {
         this.children = new ArrayList<>();
 //        this.nodeType = methodInvocation.getNodeType();
         this.nodeType = NodeType.MethodInvocationStmNode;
+        setFullNameParent(classfullName);
     }
 
-    public void setChild() {
-        Collections.reverse(methodsCalled);
-        if (this.methodType == null) {
-            if (methodsCalled.get(methodsCalled.size() - 1) instanceof Token) {
-                this.setMethodType((methodsCalled.get(methodsCalled.size() - 1)).getType());
+    public void setChildren(String classType, CompilationUnit cu, MethodNode methodNode) {
+//        Collections.reverse(nodes);
+        if (nodes.get(0) instanceof MethodCalledNode) {
+            List<String> params = new ArrayList<>();
+            for (StatementNode param : ((MethodCalledNode) nodes.get(0)).getAgurements()) {
+                params.add(param.getType());
             }
-        } else {
-            if (methodsCalled.get(methodsCalled.size() - 1) instanceof Token) {
-                if ((methodsCalled.get(methodsCalled.size() - 1)).getType() == null) {
-                    ( methodsCalled.get(methodsCalled.size() - 1)).setType(this.methodType);
+            String methodType = ReflectionHelper.findMethodType(classType,
+                    ((MethodCalledNode) nodes.get(0)),
+                    params, methodNode, cu);
+            nodes.get(0).setType(methodType);
+
+//            this.getChildren().get(0).setType(method.getReturnType().getName());
+        }
+        if (this.methodType != null) { // setLast elemt
+            if (nodes.get(nodes.size() - 1) instanceof Token) {
+                if ((nodes.get(nodes.size() - 1)).getType() == null) {
+                    (nodes.get(nodes.size() - 1)).setType(this.methodType);
+                } else {
+                    this.methodType = (nodes.get(nodes.size() - 1)).getType();
                 }
             }
         }
-        //set Child
-         if (baseVar == null) { //is super
-             BaseVariableNode baseVariableNode = new BaseVariableNode((String) null, null, this.line);
-             this.baseVar = baseVariableNode;
-         } else {
-            baseVar.setParent(this);
-        }
-        this.children.add(baseVar);
-        StatementNode parentStmNode = baseVar;
-        for (StatementNode mt : methodsCalled) {
+
+        // set Child
+//         if (baseVar == null) { //is super
+//             BaseVariableNode baseVariableNode = new BaseVariableNode((String) null, null, this.line);
+//             this.baseVar = baseVariableNode;
+//         } else {
+//            baseVar.setParent(this);
+//        }
+//        this.children.add(baseVar);
+        StatementNode parentStmNode = this;
+        for (StatementNode mt : nodes) {
             //set Child
             if (parentStmNode != null) {
-                parentStmNode.setChildren(mt);
+                if (mt != null) {
+                    parentStmNode.setChild(mt, methodNode);
+                }
             }
             //setParent
             if (mt != null) {
@@ -66,35 +82,32 @@ public class  MethodInvocationStmNode extends StatementNode implements Token {
             }
             parentStmNode = mt;
         }
+        if (this.methodType == null) { //set parent Type
+            if (getLastChild(this) instanceof Token) {
+                this.methodType = (getLastChild(this)).getType();
+            }
+        }
     }
 
-    public void addMethodCall(MethodCalledNode methodCalledNode) {
-        this.methodsCalled.add(methodCalledNode);
-        //final methodCall is type Of methodCall
-//        this.methodType = ((MethodCalledNode)this.methodsCalled.get(this.getMethodsCalled().size() -1)).getMethodType();
+//    public void addMethodCall(MethodCalledNode methodCalledNode) {
+//        this.nodes.add(methodCalledNode);
+//        //final methodCall is type Of methodCall
+////        this.methodType = ((MethodCalledNode)this.methodsCalled.get(this.getMethodsCalled().size() -1)).getMethodType();
+//    }
+
+    public List<StatementNode> getNodes() {
+        return nodes;
     }
 
-    public List<StatementNode> getMethodsCalled() {
-        return methodsCalled;
-    }
 
-
-
-    public BaseVariableNode getBaseVar() {
-        return baseVar;
-    }
-
-    public void setBaseVar(BaseVariableNode baseVar) {
-        this.baseVar = baseVar;
-    }
-
-    public String getMethodType() {
-        return methodType;
-    }
-
-    public void setMethodType(String methodType) {
-        this.methodType = methodType;
-    }
+//
+//    public BaseVariableNode getBaseVar() {
+//        return baseVar;
+//    }
+//
+//    public void setBaseVar(BaseVariableNode baseVar) {
+//        this.baseVar = baseVar;
+//    }
 
 
     @Override
@@ -103,31 +116,30 @@ public class  MethodInvocationStmNode extends StatementNode implements Token {
     }
 
     @Override
-    public String getType() {
-        return this.methodType;
-    }
-
-    @Override
     public void setType(String type) {
-        if (methodType == null) {
-            this.methodType = type;
-        }
-        if (methodsCalled.size() > 0) {
-            if (methodsCalled.get(methodsCalled.size() - 1) instanceof Token) {
-                if (( methodsCalled.get(methodsCalled.size() - 1)).getType() == null) {
-                    ( methodsCalled.get(methodsCalled.size() - 1)).setType(this.methodType);
-                }
+//        if (this.type == null) {
+        this.methodType = type;
+//        }
+        StatementNode statementNode = getLastChild(this);
+        if (statementNode != this) {
+            if (type != null) {
+                statementNode.setType(type);
             }
         }
+//        if (nodes.size() > 0) {
+//            if ((nodes.get(nodes.size() - 1)).getType() == null) {
+//                (nodes.get(nodes.size() - 1)).setType(type);
+//            }
+//        }
     }
 
     @Override
     public int getHashCode() {
         String hash = "";
-        if (baseVar != null) {
-           hash = baseVar.getType();
-        }
-        for (StatementNode stm: methodsCalled) {
+//        if (baseVar != null) {
+//           hash = baseVar.getType();
+//        }
+        for (StatementNode stm : nodes) {
             if (stm instanceof Token) {
                 hash += ((Token) stm).getHashCode();
             }
@@ -137,10 +149,55 @@ public class  MethodInvocationStmNode extends StatementNode implements Token {
     }
 
 
+//    public void addChild(StatementNode node) {
+//        this.children.add(node);
+//    }
 
-    public void addChild(MethodCalledNode methodCalledNode) {
-        this.children.add(methodCalledNode);
+    public void addNode(StatementNode node) {
+        this.nodes.add(node);
+    }
+
+    public void setChildType(StatementNode statementNode, MethodNode methodNode) {
+        if (this.getChildren().size() > 0) {
+//            this.getChildren().get(0).setChild(statementNode);
+            //final child to add
+            addFinalChild(this, statementNode, methodNode);
+            this.nodes.add(statementNode);
+        } else if (this.getChildren().size() == 0) {
+            this.children.add(statementNode);
+            this.nodes.add(statementNode);
+        }
+    }
+
+    private void addFinalChild (StatementNode child, StatementNode nodeadd, MethodNode methodNode) {
+        if (child.getChildren().size() > 0) {
+            addFinalChild(child.getChildren().get(0), nodeadd, methodNode);
+        } else {
+            child.setChild(nodeadd, methodNode);
+        }
+    }
+
+    public StatementNode getLastChild (StatementNode child) {
+        if (child.getChildren().size() > 0) {
+           return getLastChild(child.getChildren().get(0));
+        } else {
+            return child;
+        }
     }
 
 
+
+
+    @Override
+    public String toString() {
+        return getStatementString();
+    }
+
+    public String getMethodType() {
+        return methodType;
+    }
+
+    public void setMethodType(String methodType) {
+        this.methodType = methodType;
+    }
 }

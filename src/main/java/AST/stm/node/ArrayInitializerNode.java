@@ -8,8 +8,9 @@ import util.ASTHelper;
 import java.util.ArrayList;
 
 public class ArrayInitializerNode extends StatementNode {
-    public ArrayInitializerNode(ASTNode astNode, int line) {
+    public ArrayInitializerNode(ASTNode astNode, int line, String classfullName) {
         this.line = line;
+        setFullNameParent(classfullName);
         Position position = ASTHelper.getPosition(astNode);
         this.startPostion = position.getStartPos();
         this.endPostion = position.getEndPos();

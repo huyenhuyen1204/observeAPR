@@ -10,6 +10,7 @@ import util.ASTHelper;
 import java.util.ArrayList;
 
 public class IfStmNode extends StatementNode  {
+    // children: infix, then, if else, else
     private StatementNode infix;
     public IfStmNode(StatementNode infix, ASTNode astNode, int line) {
         super();

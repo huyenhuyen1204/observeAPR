@@ -4,6 +4,7 @@ import AST.obj.Position;
 import AST.stm.abst.NodeInstance;
 import AST.stm.abst.NodeType;
 import AST.stm.abst.StatementNode;
+import AST.stm.node.OperatorNode;
 import org.eclipse.jdt.core.dom.ASTNode;
 import util.ASTHelper;
 
@@ -11,17 +12,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InfixExpressionStmNode extends StatementNode implements Token {
-    private String operator;
+    private OperatorNode operator;
     private StatementNode left;
     private StatementNode right;
     private List<StatementNode> extendedOperands;
 
 
     public InfixExpressionStmNode(String operator, StatementNode left, StatementNode right,
-                                  List<StatementNode> extendedOperands, int line, String stmString, ASTNode astNode) {
-        this.operator = operator;
+                                  List<StatementNode> extendedOperands, int line,
+                                  String stmString, ASTNode astNode, String classfullName) {
+        setFullNameParent(classfullName);
         this.left = left;
         this.right = right;
+        setFullNameParent(fullNameParent);
 
         this.extendedOperands = extendedOperands;
         this.line = line;
@@ -56,6 +59,8 @@ public class InfixExpressionStmNode extends StatementNode implements Token {
                 }
             }
         }
+        this.operator = new OperatorNode(operator, this.startPostion, this.endPostion);
+
         this.nodeType = NodeType.InfixExpressionStmNode;
 //        this.nodeType = astNode.getNodeType();
     }
@@ -72,11 +77,11 @@ public class InfixExpressionStmNode extends StatementNode implements Token {
 
 
 
-    public String getOperator() {
+    public OperatorNode getOperator() {
         return operator;
     }
 
-    public void setOperator(String operator) {
+    public void setOperator(OperatorNode operator) {
         this.operator = operator;
     }
 
@@ -113,7 +118,7 @@ public class InfixExpressionStmNode extends StatementNode implements Token {
 
     @Override
     public String getType() {
-        return null;
+        return type;
     }
 
 

@@ -13,9 +13,11 @@ public class ExpressionNode extends StatementNode {
     private StatementNode leftNode;
     private StatementNode rightNode;
 
-    public ExpressionNode(StatementNode leftNode, StatementNode rightNode, String type, ASTNode astNode, int line) {
+    public ExpressionNode(StatementNode leftNode, StatementNode rightNode,
+                          String type, ASTNode astNode, int line, String classfullName) {
         this.leftNode = leftNode;
         this.rightNode = rightNode;
+        setFullNameParent(classfullName);
         this.type = type;
         Position position = ASTHelper.getPosition(astNode);
         this.startPostion = position.getStartPos();

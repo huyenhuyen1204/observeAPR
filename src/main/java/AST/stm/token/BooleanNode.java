@@ -12,8 +12,9 @@ public class BooleanNode extends StatementNode implements Token {
     private boolean value;
     private String keyVar;
 
-    public BooleanNode(boolean value, ASTNode astNode, String stmString, int line) {
+    public BooleanNode(boolean value, ASTNode astNode, String stmString, int line, String classfullName) {
         this.value = value;
+        setFullNameParent(classfullName);
         this.statementString = stmString;
         this.line = line;
         Position position = ASTHelper.getPosition(astNode);
@@ -23,6 +24,11 @@ public class BooleanNode extends StatementNode implements Token {
         this.children = new ArrayList<>();
 //        this.nodeType = astNode.getNodeType();
         this.nodeType = NodeType.BooleanNode;
+    }
+
+    public BooleanNode(String keyVar) {
+        this.keyVar = keyVar;
+        this.statementString = keyVar;
     }
 
     public boolean isValue() {

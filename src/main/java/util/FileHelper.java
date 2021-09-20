@@ -1,6 +1,7 @@
 package util;
 
 import AST.obj.StackTrace;
+import main.calculator.Feature;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -383,7 +384,7 @@ public class FileHelper {
         }
         return subDirectories;
     }
-//
+
 //    public static List<SuspiciousPosition> readSuspiciousCodeFromFile(String suspiciousFile, List<String> susClassnameList) {
 //        List<SuspiciousPosition> suspiciousCodeList = new
 //                ArrayList<>();
@@ -392,9 +393,9 @@ public class FileHelper {
 //            try {
 //                FileReader fileReader = new FileReader(suspiciousFile);
 //                BufferedReader reader = new BufferedReader(fileReader);
-//                String line.txt = null;
-//                while ((line.txt = reader.readLine()) != null) {
-//                    String[] elements = line.txt.split("@");
+//                String line = null;
+//                while ((line = reader.readLine()) != null) {
+//                    String[] elements = line.split("@");
 //                    SuspiciousPosition sp = new SuspiciousPosition();
 //                    sp.classPath = elements[0];
 //                    sp.lineNumber = Integer.parseInt(elements[1]);
@@ -422,7 +423,7 @@ public class FileHelper {
 //        if (suspiciousCodeList.isEmpty()) return null;
 //        return suspiciousCodeList;
 //    }
-//
+
 //    public static List<SuspiciousPosition> readSuspiciousCodeFromFile(String suspiciousFile) {
 //        List<SuspiciousPosition> suspiciousCodeList = new
 //                ArrayList<>();
@@ -431,9 +432,9 @@ public class FileHelper {
 //            try {
 //                FileReader fileReader = new FileReader(suspiciousFile);
 //                BufferedReader reader = new BufferedReader(fileReader);
-//                String line.txt = null;
-//                while ((line.txt = reader.readLine()) != null) {
-//                    String[] elements = line.txt.split("@");
+//                String line = null;
+//                while ((line = reader.readLine()) != null) {
+//                    String[] elements = line.split("@");
 //                    SuspiciousPosition sp = new SuspiciousPosition();
 //                    sp.classPath = elements[0];
 //                    sp.lineNumber = Integer.parseInt(elements[1]);
@@ -538,7 +539,7 @@ public class FileHelper {
             FileReader fr = new FileReader(source);
             BufferedReader br = new BufferedReader(fr);
             String line = "";
-//            line.txt = br.readLine();
+//            line = br.readLine();
             int count = 1;
 //			List<String> lines = new ArrayList<String>();
             while ((line = br.readLine()) != null && count <= endLine) {
@@ -615,6 +616,7 @@ public class FileHelper {
             return null;
         }
     }
+
     public static void writeInputStreamToFile(InputStream initialStream, String pathToFile) {
 //        String content = readOutput(initialStream);
         String content = readFromInputStream(initialStream);
@@ -638,6 +640,7 @@ public class FileHelper {
             close(writer);
         }
     }
+
     public static String readFromInputStream(InputStream inputStream) {
 //        BufferedReader stdInput = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
         String s = "";
@@ -678,8 +681,9 @@ public class FileHelper {
         }
         return s;
     }
+
     public static String read(InputStream modified) {
-        String s  = "";
+        String s = "";
         try {
             int c;
             while ((c = modified.read()) != -1)
@@ -702,6 +706,28 @@ public class FileHelper {
             }
         }
         return stackTraces;
+    }
+
+    //    public int getCurrentCursorLine(String editText, int pos)
+//    {
+//        Layout layout = editText.getLayout();
+//
+//        if (selectionStart != -1) {
+//            return layout.getLineForOffset(selectionStart);
+//        }
+//
+//        return -1;
+//    }]
+    public static List<Feature> readObservationCSV(String pathElement) {
+        List<Feature> table = new ArrayList<>();
+        List<String> raws = FileHelper.readDataAsList(pathElement);
+        for (int i = 0; i < raws.size(); i++) {
+            String[] raw = raws.get(i).split(",");
+            Feature parameter = new Feature(raw);
+            table.add(parameter);
+
+        }
+        return table;
     }
 
     public static void writeToXlsx(Map< String, Object[] > empinfo, String sheetName, String pathOut) {
@@ -742,14 +768,5 @@ public class FileHelper {
         }
     }
 
-//    public int getCurrentCursorLine(String editText, int pos)
-//    {
-//        Layout layout = editText.getLayout();
-//
-//        if (selectionStart != -1) {
-//            return layout.getLineForOffset(selectionStart);
-//        }
-//
-//        return -1;
-//    }
+
 }

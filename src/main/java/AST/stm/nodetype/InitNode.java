@@ -17,6 +17,11 @@ public class InitNode {
 //        this.statementsUsed = new ArrayList();
     }
 
+    @Override
+    public String toString() {
+        return varname;
+    }
+
     public String getVarname() {
         return this.varname;
     }

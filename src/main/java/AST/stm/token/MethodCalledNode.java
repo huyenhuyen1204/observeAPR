@@ -1,8 +1,10 @@
 package AST.stm.token;
 
+import AST.node.ParameterNode;
 import AST.obj.Position;
 import AST.stm.abst.NodeType;
 import AST.stm.abst.StatementNode;
+import AST.stm.node.TypeNode;
 import org.eclipse.jdt.core.dom.ASTNode;
 import util.ASTHelper;
 
@@ -10,17 +12,38 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MethodCalledNode extends StatementNode implements Token {
-    private String methodType;
+//    private String methodType;
     private String methodName;
     private List<StatementNode> agurementTypes = null;
 
+    {
+        this.nodeType = NodeType.MethodCalledNode;
+    }
 
-    public MethodCalledNode(String methodName, List<StatementNode> agurementTypes, ASTNode astNode, int line) {
-        super();
-        if (this.getParent() == null) {
-            BaseVariableNode baseVariableNode = new BaseVariableNode();
-            this.setParent(baseVariableNode);
+    /**
+     * For testing. Minor
+     * @param methodName
+     */
+    public MethodCalledNode(String methodName) {
+        this.methodName = methodName;
+        this.agurementTypes = new ArrayList<>();
+    }
+
+    public void addParameterParams(List<ParameterNode> stmParams) {
+        for (ParameterNode param : stmParams) {
+            TypeNode typeNode = new TypeNode(param.getType());
+            this.agurementTypes.add(typeNode);
         }
+    }
+
+    public MethodCalledNode(String methodName, List<StatementNode> agurementTypes,
+                            ASTNode astNode, int line, String classfullName) {
+        super();
+//        if (this.getParent() == null) {
+//            BaseVariableNode baseVariableNode = new BaseVariableNode();
+//            this.setParent(baseVariableNode);
+//        }
+        setFullNameParent(classfullName);
         this.methodName = methodName;
         this.agurementTypes = new ArrayList<>();
         if (agurementTypes.size() > 0) {
@@ -34,7 +57,6 @@ public class MethodCalledNode extends StatementNode implements Token {
         //set child
         this.children = new ArrayList<>();
 //        this.nodeType = astNode.getNodeType();
-        this.nodeType = NodeType.MethodCalledNode;
     }
 
     public String getMethodName() {
@@ -53,13 +75,13 @@ public class MethodCalledNode extends StatementNode implements Token {
         this.agurementTypes = agurementTypes;
     }
 
-    public String getMethodType() {
-        return methodType;
-    }
+//    public String getMethodType() {
+//        return methodType;
+//    }
 
-    public void setMethodType(String methodType) {
-        this.methodType = methodType;
-    }
+//    public void setMethodType(String methodType) {
+//        this.methodType = methodType;
+//    }
 
     @Override
     public NodeType getObject() {
@@ -68,13 +90,9 @@ public class MethodCalledNode extends StatementNode implements Token {
 
     @Override
     public String getType() {
-        return methodType;
+        return type;
     }
 
-    @Override
-    public void setType(String type) {
-        this.methodType = type;
-    }
 
     @Override
     public int getHashCode() {
@@ -113,5 +131,26 @@ public class MethodCalledNode extends StatementNode implements Token {
         }
     }
 
+    @Override
+    public String toString() {
+//        if (statementString != null) return statementString;
+        StringBuilder builder = new StringBuilder();
+        builder.append(methodName).append("(");
+        for (int i = 0; i < agurementTypes.size(); i++) {
+            StatementNode stm = agurementTypes.get(i);
+            builder.append(stm.getStatementString());
 
+//            if (stm instanceof Token) {
+//
+//                builder.append(stm);
+//            } else {
+//                builder.append(stm.getStatementString());
+//            }
+            if (i < agurementTypes.size() - 1)
+                builder.append(",");
+        }
+        builder.append(")");
+        statementString = builder.toString();
+        return statementString;
+    }
 }

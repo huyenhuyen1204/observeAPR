@@ -11,8 +11,9 @@ import java.util.ArrayList;
 public class UndefinedNode extends StatementNode {
     private String undefindQualityType;
 
-    public UndefinedNode(String undefindNode, ASTNode astNode, int line) {
+    public UndefinedNode(String undefindNode, ASTNode astNode, int line, String classfullName) {
         this.undefindQualityType = undefindNode;
+        setFullNameParent(classfullName);
         Position position = ASTHelper.getPosition(astNode);
         this.startPostion = position.getStartPos();
         this.endPostion = position.getEndPos();

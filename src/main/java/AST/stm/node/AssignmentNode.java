@@ -13,8 +13,10 @@ public class AssignmentNode extends StatementNode {
     private StatementNode rightNode;
     private String assignmentOperator;
 
-    public AssignmentNode(String operator, StatementNode leftSide, StatementNode rightNode, int line, ASTNode astNode) {
+    public AssignmentNode(String operator, StatementNode leftSide,
+                          StatementNode rightNode, int line, ASTNode astNode, String classfullName) {
         super();
+        setFullNameParent(classfullName);
 //        this.nodeType = astNode.getNodeType();
         this.assignmentOperator = operator;
         this.leftSide = leftSide;

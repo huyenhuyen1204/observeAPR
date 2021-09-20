@@ -12,7 +12,10 @@ public class ArrayAccessNode extends StatementNode{
     private StatementNode arrayExpression;
     private StatementNode indexExpression;
 
-    public ArrayAccessNode(StatementNode arrayExpression, StatementNode indexExpression, ASTNode astNode, int line) {
+    public ArrayAccessNode(StatementNode arrayExpression,
+                           StatementNode indexExpression, ASTNode astNode,
+                           int line, String classQualifiedName) {
+        this.fullNameParent = classQualifiedName;
 //        this.nodeType = astNode.getNodeType();
         this.arrayExpression = arrayExpression;
         this.indexExpression = indexExpression;

@@ -16,10 +16,10 @@ public class JavaNode extends Node {
     @JsonIgnore
     protected ASTNode astNode;
 
-    @JsonProperty("isFinal")
-    public boolean isFinal() {
-        return isFinal;
-    }
+//    @JsonProperty("isFinal")
+//    public boolean isFinal() {
+//        return isFinal;
+//    }
 
     public void setFinal(boolean aFinal) {
         isFinal = aFinal;
