@@ -20,8 +20,13 @@ public class QualifiedNameNode extends StatementNode implements Token {
 //    private BaseVariableNode name;
     private List<BaseVariableNode> baseVariableNodes;
 
+    {
+        this.nodeType = NodeType.QualifiedNameNode;
+    }
+
     public QualifiedNameNode(BaseVariableNode qualifier,
                              BaseVariableNode name, ASTNode astNode, int line) {
+        super();
         baseVariableNodes = new ArrayList<>();
 //        this.qualifier = qualifier;
 //        this.name = name;
@@ -30,16 +35,15 @@ public class QualifiedNameNode extends StatementNode implements Token {
         this.endPostion = position.getEndPos();
         this.statementString = astNode.toString();
         this.line = line;
-        //add child
-        this.children = new ArrayList<>();
 //        this.children.add(name);
 //        this.children.add(qualifier);
         //add parent
-        if (name != null) {
-            name.setParent(this);
-        }
+
         if (qualifier != null) {
             qualifier.setParent(this);
+        }
+        if (name != null) {
+            name.setParent(this);
         }
         this.type = name.getType();
 //        this.nodeType = astNode.getNodeType();
@@ -47,8 +51,8 @@ public class QualifiedNameNode extends StatementNode implements Token {
     }
 
     public QualifiedNameNode(BaseVariableNode qualifier, BaseVariableNode name) {
+        super();
         this.baseVariableNodes = new ArrayList<>();
-        this.children = new ArrayList<>();
         this.baseVariableNodes.add(qualifier);
         this.baseVariableNodes.add(name);
         this.setType(name.getType());
@@ -58,6 +62,7 @@ public class QualifiedNameNode extends StatementNode implements Token {
     public QualifiedNameNode(List<BaseVariableNode> baseVariableNodes,
                              ASTNode astNode, int line, String classfullName,
                              MethodNode methodNode) {
+        super();
         this.baseVariableNodes = new ArrayList<>();
         this.baseVariableNodes.addAll(baseVariableNodes);
         setFullNameParent(classfullName);
@@ -69,7 +74,6 @@ public class QualifiedNameNode extends StatementNode implements Token {
         this.statementString = astNode.toString();
         this.line = line;
         //add child
-        this.children = new ArrayList<>();
         BaseVariableNode node = baseVariableNodes.get(0);
         this.setChild(node, methodNode);
         node.setParent(this);
@@ -78,8 +82,20 @@ public class QualifiedNameNode extends StatementNode implements Token {
             baseVariableNode.setParent(node);
             node.setChild(baseVariableNode, methodNode);
             node = baseVariableNode;
+            if (this.getType() == null) {
+                if (this.baseVariableNodes.get(this.baseVariableNodes.size() - i).getType() != null) {
+                    this.setType(this.baseVariableNodes.get(this.baseVariableNodes.size() - i).getType());
+                }
+            }
         }
-        this.setType(this.baseVariableNodes.get(this.baseVariableNodes.size() - 1).getType());
+        for (int i = 1; i <= baseVariableNodes.size(); i++) {
+            if (this.getType() == null) {
+                if (this.baseVariableNodes.get(this.baseVariableNodes.size() - i).getType() != null) {
+                    this.setType(this.baseVariableNodes.get(this.baseVariableNodes.size() - i).getType());
+                }
+            }
+        }
+
 //        this.children.add(name);
 //        this.children.add(qualifier);
         //add parent

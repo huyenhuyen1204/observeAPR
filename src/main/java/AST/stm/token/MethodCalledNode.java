@@ -25,6 +25,7 @@ public class MethodCalledNode extends StatementNode implements Token {
      * @param methodName
      */
     public MethodCalledNode(String methodName) {
+        super();
         this.methodName = methodName;
         this.agurementTypes = new ArrayList<>();
     }
@@ -32,6 +33,7 @@ public class MethodCalledNode extends StatementNode implements Token {
     public void addParameterParams(List<ParameterNode> stmParams) {
         for (ParameterNode param : stmParams) {
             TypeNode typeNode = new TypeNode(param.getType());
+//            typeNode.setStmBugDeepLevel( typeNode,this.stmBugDeepLevel + 1);
             this.agurementTypes.add(typeNode);
         }
     }
@@ -47,6 +49,9 @@ public class MethodCalledNode extends StatementNode implements Token {
         this.methodName = methodName;
         this.agurementTypes = new ArrayList<>();
         if (agurementTypes.size() > 0) {
+//            for (StatementNode arg: agurementTypes) {
+//                arg.setStmBugDeepLevel(arg, this.stmBugDeepLevel + 1);
+//            }
             this.agurementTypes.addAll(agurementTypes);
         }
         Position position = ASTHelper.getPosition(astNode);
@@ -54,8 +59,6 @@ public class MethodCalledNode extends StatementNode implements Token {
         this.endPostion = position.getEndPos();
         this.statementString = astNode.toString();
         this.line = line;
-        //set child
-        this.children = new ArrayList<>();
 //        this.nodeType = astNode.getNodeType();
     }
 
@@ -72,6 +75,9 @@ public class MethodCalledNode extends StatementNode implements Token {
     }
 
     public void setAgurementTypes(List<StatementNode> agurementTypes) {
+//        for (StatementNode arg: agurementTypes) {
+//            arg.setStmBugDeepLevel(arg,this.stmBugDeepLevel + 1);
+//        }
         this.agurementTypes = agurementTypes;
     }
 

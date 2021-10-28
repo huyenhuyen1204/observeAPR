@@ -6,8 +6,6 @@ import AST.stm.abst.StatementNode;
 import org.eclipse.jdt.core.dom.ASTNode;
 import util.ASTHelper;
 
-import java.util.ArrayList;
-
 public class ExpressionNode extends StatementNode {
     private String type;
     private StatementNode leftNode;
@@ -15,6 +13,7 @@ public class ExpressionNode extends StatementNode {
 
     public ExpressionNode(StatementNode leftNode, StatementNode rightNode,
                           String type, ASTNode astNode, int line, String classfullName) {
+        super();
         this.leftNode = leftNode;
         this.rightNode = rightNode;
         setFullNameParent(classfullName);
@@ -24,8 +23,6 @@ public class ExpressionNode extends StatementNode {
         this.endPostion = position.getEndPos();
         this.line = line;
         this.statementString = astNode.toString();
-        //set child
-        this.children = new ArrayList<>();
         //set parent
         if (leftNode != null) {
             leftNode.setParent(this);
@@ -35,7 +32,6 @@ public class ExpressionNode extends StatementNode {
             rightNode.setParent(this);
             children.add(rightNode);
         }
-//        this.nodeType = astNode.getNodeType();
         this.nodeType = NodeType.ClassInstanceCreationNode;
     }
 

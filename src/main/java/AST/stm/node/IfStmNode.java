@@ -7,8 +7,6 @@ import AST.stm.abst.StatementNode;
 import org.eclipse.jdt.core.dom.ASTNode;
 import util.ASTHelper;
 
-import java.util.ArrayList;
-
 public class IfStmNode extends StatementNode  {
     // children: infix, then, if else, else
     private StatementNode infix;
@@ -20,14 +18,11 @@ public class IfStmNode extends StatementNode  {
         this.endPostion = position.getEndPos();
         this.line = line;
         this.statementString = astNode.toString();
-        //set child
-        this.children = new ArrayList<>();
         if (infix != null) {
             this.infix.setParent(this);
-            this.infix.setNodeInstance(NodeInstance.INFIX);
+            this.infix.setNodeInstance(NodeInstance.NORMAL);
             children.add(infix);
         }
-//        this.nodeType = astNode.getNodeType();
         this.nodeType = NodeType.IfStmNode;
     }
 

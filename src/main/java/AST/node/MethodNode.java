@@ -1,12 +1,10 @@
 package AST.node;
 
+import AST.obj.Position;
 import AST.stm.abst.NodeInstance;
 import AST.stm.abst.StatementNode;
 import AST.stm.node.*;
-import AST.stm.nodetype.InitNode;
-import AST.stm.nodetype.NumbericNode;
-import AST.stm.nodetype.StringNode;
-import AST.stm.nodetype.UndefinedNode;
+import AST.stm.nodetype.*;
 import AST.stm.token.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -746,7 +744,10 @@ public class MethodNode extends JavaNode {
                 String type = ASTHelper.getFullyQualifiedName(this.classNode, ((CastExpression) expression).getType(), cu);
                 if (statementNode instanceof Token) {
                     statementNode.setType(type);
-                    statementNode.setStatementString(expression.toString());
+                    statementNode.setCast("(" + ((CastExpression) expression).getType() + ")");
+//                    statementNode.setCast(expression.);
+                    statementNode.setStartPostion(expression.getStartPosition());
+//                    statementNode.setStatementString(expression.toString());
                 }
             } else if (Checker.isClassInstanceCreation(typeNode)) {
                 // ClassInstanceCreation
@@ -768,68 +769,33 @@ public class MethodNode extends JavaNode {
                 FieldAccess fieldAccess = (FieldAccess) expression;
                 StatementNode firstSide = parseExpression(fieldAccess.getExpression(), line);
                 StatementNode lastSide = parseExpression(fieldAccess.getName(), line);
-
                 if (firstSide != null) {
                     if (firstSide.getType() != null) {
                         String type = null;
                         //is != private
                         type = ReflectionHelper.findFieldType(firstSide.getType(),
                                 fieldAccess.getName().getIdentifier(), this);
-
                         lastSide.setType(type);
                     }
                     if (firstSide instanceof MethodInvocationStmNode) {
                         ((MethodInvocationStmNode) firstSide).setChildType(lastSide, this);
                     } else {
                         firstSide.setChild(lastSide, this);
+                        lastSide.setParent(firstSide);
+                        if (firstSide instanceof BaseVariableNode && lastSide instanceof BaseVariableNode) {
+                            List<BaseVariableNode> baseVars = new ArrayList<>();
+                            baseVars.add((BaseVariableNode) firstSide);
+                            firstSide.clearChildren();
+                            baseVars.add((BaseVariableNode) lastSide);
+                            statementNode = new QualifiedNameNode(baseVars, expression, line, classNode.getQualifiedName(), this);
+
+                        } else {
+                            statementNode = firstSide;
+                        }
                     }
-                    statementNode = firstSide;
                 } else {
                     statementNode = lastSide;
                 }
-//
-//                if (fieldAccess.getExpression() instanceof FieldAccess) {
-//                    //to qualifierName
-//                    // QualifiedName
-//                    InitNode initNode = findTypeVar(((FieldAccess) fieldAccess.getExpression()).getName().getIdentifier(), line.txt);
-//                    String type;
-//                    if (initNode == null) {
-//                        type = ASTHelper.getFullyQualifiedTypeName(((FieldAccess) fieldAccess.getExpression()).getName().getIdentifier(), cu);
-//                    } else {
-//                        type = initNode.getType();
-//                    }
-//                    BaseVariableNode qualifier = new BaseVariableNode(((FieldAccess) fieldAccess.getExpression()).getName(), type, line.txt);
-//                    BaseVariableNode name = new BaseVariableNode(fieldAccess.getName().getIdentifier(), fieldAccess.getName(), line.txt);
-//                    statementNode = new QualifiedNameNode(qualifier, name, expression, line.txt);
-//                } else if (fieldAccess.getExpression() instanceof ThisExpression) {
-//                    InitNode initNode = ((ClassNode) this.getParent()).findTypeVar(fieldAccess.getName().getIdentifier());
-//                    if (initNode != null) {
-//                        statementNode = new BaseVariableNode(fieldAccess, initNode.getVarname(), initNode.getType(), cu);
-//                    } else {
-////                    initNodes.add()
-//                        //in super Class => ??????
-//                        //TODO: xu ly
-//                        StatementNode stm = parseExpression(fieldAccess.getExpression(), line.txt);
-//                        if (stm != null) {
-//                            StatementNode child = parseExpression(((FieldAccess) expression).getName(), line.txt);
-//                            stm.setChildren(child);
-//                            statementNode = stm;
-//                        }
-//                        String type = ASTHelper.getFullyQualifiedTypeName(fieldAccess.getName().getIdentifier(), cu);
-//                        logger.info("initNode == null" + expression.getParent().toString());
-//                    }
-//                } else if (fieldAccess.getExpression() instanceof MethodInvocation) {
-//                    MethodInvocationStmNode methodInvocationStmNode = (MethodInvocationStmNode) parseExpression(fieldAccess.getExpression(), line.txt);
-//                    BaseVariableNode baseVariableNode = (BaseVariableNode) parseExpression(fieldAccess.getName(), line.txt);
-//                    methodInvocationStmNode.setChildren(baseVariableNode);
-//                    statementNode = methodInvocationStmNode;
-//                } else {
-//                    StatementNode stm = parseExpression(fieldAccess.getExpression(), line.txt);
-//                    stm.setChildren(stm);
-//                    statementNode = stm;
-////                    logger.error("Chua xu ly Field Access");
-//                }
-
             } else if (Checker.isThisExpression(typeNode)) {
                 if (((ThisExpression) expression).getQualifier() != null) {
                     String initNode = ((ClassNode) this.getParent())
@@ -849,8 +815,6 @@ public class MethodNode extends JavaNode {
                             stm.setChild(child, this);
                             statementNode = stm;
                         }
-//                    String type = ASTHelper.getFullyQualifiedTypeName(fieldAccess.getName().getIdentifier(), cu);
-//                    logger.info("initNode == null" + expression.getParent().toString());
                     }
                 } else {
                     BaseVariableNode baseVariableNode = new BaseVariableNode(
@@ -875,12 +839,20 @@ public class MethodNode extends JavaNode {
             } else if (Checker.isParenthesizedExpression(typeNode)) {
                 // ParenthesizedExpression
                 statementNode = parseExpression(((ParenthesizedExpression) expression).getExpression(), line);
+                if (statementNode != null) {
+                    statementNode.setLparen("(");
+                    statementNode.setRparen(")");
+                    Position pos = ASTHelper.getPosition(expression);
+                    statementNode.setStartPostion(pos.getStartPos());
+                    statementNode.setEndPostion(pos.getEndPos());
+                }
             } else if (Checker.isPostfixExpression(typeNode)) {
                 // PostfixExpression
                 StatementNode leftNode = parseExpression(((PostfixExpression) expression).getOperand(), line);
                 InfixExpressionStmNode infixExpressionStmNode = new InfixExpressionStmNode(((PostfixExpression) expression).getOperator().toString(),
                         leftNode, null, null, line,
                         expression.toString(), expression, classNode.getQualifiedName());
+                statementNode = infixExpressionStmNode;
 //                logger.info("isPostfixExpression");
             } else if (Checker.isPrefixExpression(typeNode)) {
                 // PrefixExpression
@@ -946,13 +918,7 @@ public class MethodNode extends JavaNode {
                         type = ASTHelper.getFullyQualifiedTypeName(this.classNode,
                                 ((SimpleName) expression).getIdentifier(), cu);
                     }
-//                    if (Character.isUpperCase(((SimpleName) expression).getIdentifier().charAt(0))) {
-//
-//                    }
-//                    else {
-//                        type = ReflectionHelper.findFieldType(((ClassNode) this.getParent()).getQualifiedName(),
-//                                ((SimpleName) expression).getIdentifier());
-//                    }
+
                     statementNode = new BaseVariableNode((SimpleName) expression,
                             type, line, classNode.getQualifiedName());
                 }
@@ -991,7 +957,8 @@ public class MethodNode extends JavaNode {
 
     private void setArgumentInstance(List<StatementNode> args) {
         for (StatementNode statementNode : args) {
-            statementNode.setNodeInstance(NodeInstance.ARGUMENT);
+//            statementNode.setNodeInstance(NodeInstance.ARGUMENT);
+            statementNode.setParamSize(args.size());
         }
     }
 
@@ -1093,8 +1060,10 @@ public class MethodNode extends JavaNode {
                 } else if (statementNode instanceof MethodInvocationStmNode) {
 //                    Collections.reverse(((MethodInvocationStmNode) statementNode).getNodes());
                     for (StatementNode stmNode : ((MethodInvocationStmNode) statementNode).getNodes()) {
-                        node.addNode(stmNode);
-                        stmNode.getChildren().clear();
+                        if (stmNode != null) {
+                            node.addNode(stmNode);
+                            stmNode.getChildren().clear();
+                        }
                     }
                 } else {
                     node.addNode(statementNode);

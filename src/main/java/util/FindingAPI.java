@@ -4,7 +4,7 @@ import AST.stm.abst.StatementNode;
 import AST.stm.token.MethodCalledNode;
 import AST.stm.token.MethodInvocationStmNode;
 import AST.stm.token.Token;
-import sketch.SketchNode;
+import main.core.pattern.Pattern;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -79,9 +79,9 @@ public class FindingAPI {
             addToMap(methodCalleds, statementNode, key);
         }
 
-        if (statementNode != null && !(statementNode instanceof SketchNode)) {
+        if (statementNode != null && !(statementNode instanceof main.core.token.Token)) {
             for (StatementNode child : statementNode.getChildren()) {
-                if (!(child instanceof SketchNode)) {
+                if (!(child instanceof main.core.token.Token)) {
                     HashMap<Integer, List<StatementNode>> statementNodes = parseFile(child, parentType, itType);
                     for (Integer k : statementNodes.keySet()) {
                         if (methodCalleds.containsKey(k)) {

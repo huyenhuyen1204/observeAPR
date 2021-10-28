@@ -6,8 +6,6 @@ import AST.stm.abst.StatementNode;
 import org.eclipse.jdt.core.dom.ASTNode;
 import util.ASTHelper;
 
-import java.util.ArrayList;
-
 public class AssignmentNode extends StatementNode {
     private StatementNode leftSide;
     private StatementNode rightNode;
@@ -26,8 +24,6 @@ public class AssignmentNode extends StatementNode {
         this.startPostion = position.getStartPos();
         this.endPostion = position.getEndPos();
         this.statementString = astNode.toString();
-        //set child
-        this.children = new ArrayList<>();
         //set parent
         if (leftSide != null) {
             leftSide.setParent(this);

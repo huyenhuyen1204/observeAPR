@@ -11,9 +11,10 @@ import java.util.List;
 
 public class ClassInstanceCreationNode extends StatementNode implements Token {
     private String name;
-    private String objectName;
     private List<StatementNode> args;
-
+    {
+        this.nodeType = NodeType.ClassInstanceCreationNode;
+    }
     public ClassInstanceCreationNode(String type, List<StatementNode> args,
                                      ASTNode astNode, int line, String classfullName) {
         super();
@@ -27,7 +28,6 @@ public class ClassInstanceCreationNode extends StatementNode implements Token {
         this.statementString = astNode.toString();
         this.args = new ArrayList<>();
         this.args.addAll(args);
-        this.children = new ArrayList<>();
         //set child
 //        children = args;
         //set parent

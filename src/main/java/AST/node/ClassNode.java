@@ -27,21 +27,10 @@ public class ClassNode extends JavaNode {
     protected List<String> interfaceList;
     protected String qualifiedName;
     public File file;
-    //    protected String type;
-//    protected int numOfmethod;
-//    protected int numOfvariable;
+
     protected int line;
     @JsonIgnore
     protected List<InitNode> initNodes; //to save var & type when init
-//    HashMap<Integer, QualifiedNameNode> qualifiers;
-//
-//    public HashMap<Integer, QualifiedNameNode> getQualifiers() {
-//        return qualifiers;
-//    }
-//
-//    public void setQualifiers(HashMap<Integer, QualifiedNameNode> qualifiers) {
-//        this.qualifiers = qualifiers;
-//    }
 
     public String getParentClass() {
         return parentClass;
@@ -107,15 +96,6 @@ public class ClassNode extends JavaNode {
     }
 
 
-//    @JsonProperty("isInterface")
-//    public boolean isInterface() {
-//        return isInterface;
-//    }
-//
-//    public void setInterface(boolean anInterface) {
-//        isInterface = anInterface;
-//    }
-
     @JsonIgnore
     public List<MethodNode> getMethodList() {
         List<MethodNode> result = new ArrayList<>();
@@ -163,8 +143,6 @@ public class ClassNode extends JavaNode {
         if (superClassType != null && superClassType instanceof SimpleType) {
             SimpleType superSimpleClassType = (SimpleType) superClassType;
             if (superSimpleClassType.getName() != null) {
-//                String fullname = ASTHelper.getQualifiedNameInnerClass(
-//                        null,superSimpleClassType.getName().getFullyQualifiedName(), cu );
                 String fullname = ASTHelper.getFullyQualifiedTypeName(
                         null, superSimpleClassType.getName().getFullyQualifiedName(), cu);
                 this.setParentClass(fullname);
@@ -172,7 +150,6 @@ public class ClassNode extends JavaNode {
         }
 
 
-//        this.setQualifiedName(name);
         if (this.qualifiedName == null) {
             //lay ten
             if (node.getName() != null) {
@@ -183,41 +160,6 @@ public class ClassNode extends JavaNode {
             }
             this.setQualifiedName(ASTHelper.getFullyQualifiedTypeName(null, this.getName(), cu));
         }
-//        } else {
-//            this.setQualifiedName(this.parentClass + "$" + this.getName());
-//        }
-
-//        //lay visibility
-//        this.setVisibility(DEFAULT_MODIFIER);
-//        List modifiers = node.modifiers();
-//        if (modifiers.size() == 0) {
-//            this.setVisibility(DEFAULT_MODIFIER);
-//        } else {
-//            for (Object o : modifiers) {
-//                //System.out.println(o.getKeyword().toString());
-//                if (o instanceof Modifier) {
-//                    Modifier m = (Modifier) o;
-//                    if (m.getKeyword() != null) {
-//                        if (m.getKeyword().toFlagValue() == Modifier.ModifierKeyword.PUBLIC_KEYWORD.toFlagValue()) {
-//                            this.setVisibility(PUBLIC_MODIFIER);
-//                        } else if (m.getKeyword().toFlagValue() == Modifier.ModifierKeyword.STATIC_KEYWORD.toFlagValue()) {
-//                            this.setStatic(true);
-//                        } else if (m.getKeyword().toFlagValue() == Modifier.ModifierKeyword.ABSTRACT_KEYWORD.toFlagValue()) {
-//                            this.setAbstract(true);
-//                        } else if (m.getKeyword().toFlagValue() == Modifier.ModifierKeyword.FINAL_KEYWORD.toFlagValue()) {
-//                            this.setFinal(true);
-//                        } else if (m.getKeyword().toFlagValue() == Modifier.ModifierKeyword.PRIVATE_KEYWORD.toFlagValue()) {
-//                            this.setVisibility(PRIVATE_MODIFIER);
-//                        } else if (m.getKeyword().toFlagValue() == Modifier.ModifierKeyword.PROTECTED_KEYWORD.toFlagValue()) {
-//                            this.setVisibility(PROTECTED_MODIFIER);
-//                        } else {
-//                            this.setVisibility(DEFAULT_MODIFIER);
-//                        }
-//
-//                    }
-//                }
-//            }
-//        }
 
         //lay cac properties
         FieldDeclaration[] fieldList = node.getFields();
@@ -229,12 +171,7 @@ public class ClassNode extends JavaNode {
         MethodDeclaration[] methodList = node.getMethods();
         List<Node> methodNodes = Convert.convertASTListNodeToMethodNode(this, methodList, cu);
         this.addChildren(methodNodes, cu);
-        System.out.println("=============");
-        for (Node n : methodNodes) {
-            if (n instanceof MethodNode) {
-                System.out.println(n.name);
-            }
-        }
+
         //TODO lay cac class con ben trong
         TypeDeclaration[] classList = node.getTypes();
         List<Node> innerClassNode = Convert.convertASTListNodeToClassNode(this.getName(), classList, cu);
@@ -351,7 +288,6 @@ public class ClassNode extends JavaNode {
 //        return null;
 //    }
 
-
         public MethodNode findMethodNode (String methodName, List < String > params){
             for (MethodNode methodNode : getMethodList()) {
                 if (methodName.equals(methodNode.getName())) {
@@ -384,21 +320,22 @@ public class ClassNode extends JavaNode {
             return null;
         }
 
-        public MethodNode findMethodNodeInFile ( int line) {
-            for (Node node : this.getChildren()) {
-                if (node instanceof MethodNode) {
-                    if (line <= node.getEndLine()
-                            && line >= node.getStartLine())
-                        return (MethodNode) node;
-                } else if (node instanceof ClassNode) {
-                    MethodNode methodNode = ((ClassNode) node).findMethodNodeByStmLine(line);
-                    if (methodNode != null) {
-                        return methodNode;
-                    }
+    public MethodNode findMethodNodeInFile ( int line) {
+        for (Node node : this.getChildren()) {
+            if (node instanceof MethodNode) {
+                if (line <= node.getEndLine()
+                        && line >= node.getStartLine())
+                    return (MethodNode) node;
+            } else if (node instanceof ClassNode) {
+                MethodNode methodNode = ((ClassNode) node).findMethodNodeByStmLine(line);
+                if (methodNode != null) {
+                    return methodNode;
                 }
             }
-            return null;
         }
+        return null;
+    }
+
         public MethodNode findMethodNodeByStmLine ( int line){
             for (MethodNode methodNode : getMethodList()) {
                 if (line <= methodNode.getEndLine()

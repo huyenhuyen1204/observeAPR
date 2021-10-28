@@ -1,12 +1,11 @@
 package AST.obj;
 
 import AST.stm.abst.StatementNode;
-import AST.stm.nodetype.InitNode;
+import AST.stm.token.BaseVariableNode;
 import AST.stm.token.MethodCalledNode;
-//import main.calculator.BayesSmoothing;
-//import main.calculator.CaculatorDistance;
-//import main.obj.InputFeature;
-
+import main.calculator.BayesSmoothing;
+import main.calculator.CaculatorDistance;
+import main.obj.InputFeature;
 
 public class CandidateElement {
     private String candidate;
@@ -36,14 +35,7 @@ public class CandidateElement {
     private StatementNode fixNode;
 
     public CandidateElement(StatementNode targetNode, StatementNode sourceNode) {
-//        String targetName = targetNode.getStatementString();
-//        String sourceName = sourceNode.getStatementString();
-//        if (targetNode instanceof MethodCalledNode) {
-//            targetName = ((MethodCalledNode) targetNode).getMethodName();
-//        }
-//        if (sourceNode instanceof MethodCalledNode) {
-//            sourceName = ((MethodCalledNode) sourceNode).getMethodName();
-//        }
+
         //method: changes className, sub args
         if (targetNode instanceof MethodCalledNode && sourceNode instanceof MethodCalledNode) {
             int paramBug =((MethodCalledNode) targetNode).getAgurements().size();
@@ -51,9 +43,9 @@ public class CandidateElement {
             distanceParam =  (float) paramFix/paramBug ;
         }
 
-//        distanceName = CaculatorDistance.caculateDistance(targetNode.getStatementString(), sourceNode.getStatementString());
-//        BayesSmoothing bayesSmoothing = new BayesSmoothing();
-//        InputFeature inputFeature = new InputFeature();
+        distanceName = CaculatorDistance.caculateDistance(targetNode.getStatementString(), sourceNode.getStatementString());
+        BayesSmoothing bayesSmoothing = new BayesSmoothing();
+        main.obj.InputFeature inputFeature = new main.obj.InputFeature();
         this.bugNode = targetNode;
         this.candidate = sourceNode.getStatementString();
         this.startPos = targetNode.getStartPostion();
@@ -61,18 +53,14 @@ public class CandidateElement {
 
         this.fixNode = sourceNode;
 
-//        if (targetNode.getStatementString().equals(fix.getStatementString())) {
-//            this.score = 1f;
-//        } else {
-//        this.statisticalScore = bayesSmoothing.calculatorScore(inputFeature.nodeMap(sourceNode.isSameMethod, targetNode, sourceNode));
-//        }
+        this.statisticalScore = bayesSmoothing.calculatorScore(inputFeature.nodeMap(sourceNode.isSameMethod, targetNode, sourceNode));
     }
 
     //Create candidate for MethodInvocation
     public CandidateElement(String candidate, StatementNode bug, StatementNode fix) {
-//        distanceName = CaculatorDistance.caculateDistance(bug.getStatementString(), fix.getStatementString());
-//        BayesSmoothing bayesSmoothing = new BayesSmoothing();
-//        InputFeature inputFeature = new InputFeature();
+        distanceName = CaculatorDistance.caculateDistance(bug.getStatementString(), fix.getStatementString());
+        BayesSmoothing bayesSmoothing = new BayesSmoothing();
+        main.obj.InputFeature inputFeature = new main.obj.InputFeature();
         this.bugNode = bug;
 
         this.candidate = candidate;
@@ -82,7 +70,7 @@ public class CandidateElement {
             this.statisticalScore = 1f;
         } else {
 //            this.score = diffTreeNode(bug, fix);
-//            this.statisticalScore = bayesSmoothing.calculatorScore(inputFeature.nodeMap(fix.isSameMethod, bug, fix));
+            this.statisticalScore = bayesSmoothing.calculatorScore(inputFeature.nodeMap(fix.isSameMethod, bug, fix));
         }
     }
 
@@ -91,14 +79,14 @@ public class CandidateElement {
 //    }
 
 
-    public CandidateElement(Boolean isSameMethod, StatementNode bug, InitNode fix) {
-//        distanceName = CaculatorDistance.caculateDistance(bug.getStatementString(), fix.getVarname());
-//        BayesSmoothing bayesSmoothing = new BayesSmoothing();
-//        InputFeature inputFeature = new InputFeature();
+    public CandidateElement(Boolean isSameMethod, StatementNode bug, BaseVariableNode fix) {
+        distanceName = CaculatorDistance.caculateDistance(bug.getStatementString(), fix.getKeyVar());
+        BayesSmoothing bayesSmoothing = new BayesSmoothing();
+        main.obj.InputFeature inputFeature = new InputFeature();
         if (isSameMethod) {
-            this.candidate = fix.getVarname();
+            this.candidate = fix.getKeyVar();
         } else {
-            this.candidate = "this." + fix.getVarname();
+            this.candidate = "this." + fix.getKeyVar();
         }
         this.bugNode = bug;
         this.startPos = bug.getStartPostion();
@@ -107,10 +95,10 @@ public class CandidateElement {
 //        if (type == Fix.FixType.ELEMENT) {
 //            this.score = bayesSmoothing.calculatorScore(inputFeature.elementMap(isSameMethod, bug, fix), distance);
 //        } else if (type == Fix.FixType.NODE) {
-        if (bug.getStatementString().equals(fix.getVarname())) {
+        if (bug.getStatementString().equals(fix.getKeyVar())) {
             this.statisticalScore = 1f;
         } else {
-//            this.statisticalScore = bayesSmoothing.calculatorScore(inputFeature.nodeMap(isSameMethod, bug, fix));
+            this.statisticalScore = bayesSmoothing.calculatorScore(inputFeature.nodeMap(isSameMethod, bug, fix));
         }
     }
 

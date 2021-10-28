@@ -6,8 +6,6 @@ import AST.stm.abst.StatementNode;
 import org.eclipse.jdt.core.dom.ASTNode;
 import util.ASTHelper;
 
-import java.util.ArrayList;
-
 public class ArrayAccessNode extends StatementNode{
     private StatementNode arrayExpression;
     private StatementNode indexExpression;
@@ -15,8 +13,8 @@ public class ArrayAccessNode extends StatementNode{
     public ArrayAccessNode(StatementNode arrayExpression,
                            StatementNode indexExpression, ASTNode astNode,
                            int line, String classQualifiedName) {
+        super();
         this.fullNameParent = classQualifiedName;
-//        this.nodeType = astNode.getNodeType();
         this.arrayExpression = arrayExpression;
         this.indexExpression = indexExpression;
         this.line = line;
@@ -24,9 +22,6 @@ public class ArrayAccessNode extends StatementNode{
         this.startPostion = position.getStartPos();
         this.endPostion = position.getEndPos();
         this.statementString = astNode.toString();
-//        this.nodeType = astNode.getNodeType();
-        //set child
-        this.children = new ArrayList<>();
 
         //set parent
         if (arrayExpression != null) {

@@ -12,8 +12,6 @@ import java.util.ArrayList;
 
 public class BaseVariableNode extends StatementNode implements Token {
     private String keyVar;
-    public boolean isSameMethod = false;
-    public boolean isSameClass = false;
 
     {
         this.nodeType = NodeType.BaseVariableNode;
@@ -22,22 +20,17 @@ public class BaseVariableNode extends StatementNode implements Token {
         super();
         this.keyVar = keyVar;
         this.setStatementString(keyVar);
-        this.children = new ArrayList<>();
-//        setFullNameParent(classfullName);
     }
 
     public BaseVariableNode(SimpleName stmNode, String type, int  line, String classfullName) {
         super();
         this.keyVar = stmNode.getIdentifier();
-//        setFullNameParent(classfullName);
         Position position = ASTHelper.getPosition(stmNode);
         this.startPostion = position.getStartPos();
         this.endPostion = position.getEndPos();
         this.statementString = stmNode.toString();
         this.line = line;
         this.type = type;
-        this.children = new ArrayList<>();
-//        this.nodeType = stmNode.getNodeType();
         this.nodeType = NodeType.BaseVariableNode;
     }
 

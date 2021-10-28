@@ -14,6 +14,10 @@ import java.util.List;
 
 public class MethodInvocationStmNode extends StatementNode implements Token {
     //    public static final String nodeType = "MethodInvocation";
+
+    {
+        this.nodeType = NodeType.MethodCalledNode;
+    }
     private String methodType;
 //    private String keyVar;
 //    private BaseVariableNode baseVar;
@@ -23,15 +27,13 @@ public class MethodInvocationStmNode extends StatementNode implements Token {
     private List<StatementNode> nodes = null; //customerList.get(0).toString() -> toString, get
 
     public MethodInvocationStmNode(ASTNode methodInvocation, int line, String classfullName) {
+        super();
         this.nodes = new ArrayList<>();
         this.line = line;
         this.statementString = methodInvocation.toString();
         Position position = ASTHelper.getPosition(methodInvocation);
         this.startPostion = position.getStartPos();
         this.endPostion = position.getEndPos();
-        //set child
-        this.children = new ArrayList<>();
-//        this.nodeType = methodInvocation.getNodeType();
         this.nodeType = NodeType.MethodInvocationStmNode;
         setFullNameParent(classfullName);
     }

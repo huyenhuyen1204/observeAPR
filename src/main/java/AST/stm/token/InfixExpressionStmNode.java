@@ -8,7 +8,6 @@ import AST.stm.node.OperatorNode;
 import org.eclipse.jdt.core.dom.ASTNode;
 import util.ASTHelper;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class InfixExpressionStmNode extends StatementNode implements Token {
@@ -16,11 +15,14 @@ public class InfixExpressionStmNode extends StatementNode implements Token {
     private StatementNode left;
     private StatementNode right;
     private List<StatementNode> extendedOperands;
-
+    {
+        this.nodeType = NodeType.InfixExpressionStmNode;
+    }
 
     public InfixExpressionStmNode(String operator, StatementNode left, StatementNode right,
                                   List<StatementNode> extendedOperands, int line,
                                   String stmString, ASTNode astNode, String classfullName) {
+        super();
         setFullNameParent(classfullName);
         this.left = left;
         this.right = right;
@@ -29,26 +31,26 @@ public class InfixExpressionStmNode extends StatementNode implements Token {
         this.extendedOperands = extendedOperands;
         this.line = line;
         this.statementString = stmString;
-        //set child
-        this.children = new ArrayList<>();
         Position pos = ASTHelper.getPosition(astNode);
         int startLeft = pos.getStartPos();
         int endRight = pos.getEndPos();
+        this.startPostion = startLeft;
+        this.endPostion = endRight;
         if (left != null) {
             children.add(left);
             left.setParent(this);
-            left.setNodeInstance(NodeInstance.INFIX);
-            this.startPostion = left.getEndPostion();
+            left.setNodeInstance(NodeInstance.NORMAL);
+//            this.startPostion = left.getEndPostion();
         } else {
-            this.startPostion = startLeft;
+//            this.startPostion = startLeft;
         }
         if (right != null) {
             children.add(right);
             right.setParent(this);
-            right.setNodeInstance(NodeInstance.INFIX);
-            this.endPostion = right.getStartPostion();
+            right.setNodeInstance(NodeInstance.NORMAL);
+//            this.endPostion = right.getStartPostion();
         } else {
-            this.endPostion = endRight;
+//            this.endPostion = endRight;
         }
         if (extendedOperands != null) {
 //            children.addAll(extendedOperands);
@@ -60,9 +62,7 @@ public class InfixExpressionStmNode extends StatementNode implements Token {
             }
         }
         this.operator = new OperatorNode(operator, this.startPostion, this.endPostion);
-
         this.nodeType = NodeType.InfixExpressionStmNode;
-//        this.nodeType = astNode.getNodeType();
     }
 
 //    @Override

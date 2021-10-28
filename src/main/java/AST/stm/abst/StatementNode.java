@@ -4,37 +4,86 @@ import AST.node.MethodNode;
 import AST.stm.token.BaseVariableNode;
 import AST.stm.token.MethodCalledNode;
 import AST.stm.token.MethodInvocationStmNode;
-import sketch.SketchNode;
+import main.core.token.Token;
 import util.ReflectionHelper;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class StatementNode {
     protected int line;
-    //    protected String keyVar = null;
     protected String statementString;
     protected int startPostion;
     protected int endPostion;
     protected StatementNode parent;
+    protected String lparen = "";
+    protected String rparen = "";
     protected List<StatementNode> children;
-    public boolean isSameMethod;
-    protected int deepLevel = 0;
+    public Boolean isSameMethod = null; // for new Method()
+
+    protected StatementNode () {
+        children = new ArrayList<>();
+    }
+
+
+    public int getStmBugDeepLevel() {
+        return stmBugDeepLevel;
+    }
+
+    public String getLparen() {
+        return lparen;
+    }
+
+    public void setLparen(String lparen) {
+        this.lparen = lparen;
+    }
+
+    public String getRparen() {
+        return rparen;
+    }
+
+    public void setRparen(String rparen) {
+        this.rparen = rparen;
+    }
+
+    /**
+     * set bug deep level for itself and its children.
+     * @param statementNode current statement node
+     * @param stmBugDeepLevel bug deep level
+     */
+    public void setStmBugDeepLevel(StatementNode statementNode, int stmBugDeepLevel) {
+        statementNode.stmBugDeepLevel = stmBugDeepLevel;
+        if (this.getChildren()!= null) {
+            for (StatementNode child : this.getChildren()) {
+                child.setStmBugDeepLevel(child, stmBugDeepLevel);
+            }
+        }
+    }
+    protected  int deepLevel = 0;
+    protected int stmBugDeepLevel = 0;
     protected String type = null;
     public String fullNameParent = null;
-    public String typeFull = null;
-    public String cast = null;
+    public String cast = "";
+    public Integer paramSize = null;
 
     // for generate candidate
     private String prefix = null;
     private String suffix = null;
-    protected List<SketchNode> sketchNodes = null;
+    protected Token typeToken = null;
+    protected int sketcheLevel = 0;
 
-//    protected int nodeType;
     public NodeType nodeType;
 
     protected NodeInstance nodeInstance = NodeInstance.NORMAL;
 
-    // Hoan's methods start
+    public Token getToken() {
+        return typeToken;
+    }
+
+    public void setToken(Token typeToken) {
+        this.typeToken = typeToken;
+    }
+
     public String getPrefix() {
         if (prefix == null) {
             if (parent instanceof MethodCalledNode || parent instanceof BaseVariableNode) {
@@ -46,7 +95,7 @@ public class StatementNode {
             } else
                 prefix = "";
         }
-        return prefix;
+        return cast + lparen + prefix;
     }
 
     public String getSuffix() {
@@ -63,25 +112,43 @@ public class StatementNode {
                 }
             }
         }
-        return suffix;
+        return suffix + rparen;
     }
 
-    public List<SketchNode> getSketchNodes() {
-        return sketchNodes;
-    }
 
-    public void setSketchNodes(List<SketchNode> sketchNodes) {
-        this.sketchNodes = sketchNodes;
-    }
-
-    // Hoan's methods end
 
     public NodeInstance getNodeInstance() {
         return nodeInstance;
     }
 
     public void setNodeInstance(NodeInstance nodeInstance) {
+//        if (nodeInstance == NodeInstance.ARGUMENT) {
+//            recursive(this, nodeInstance);
+//        } else {
+            this.nodeInstance = nodeInstance;
+//        }
+    }
+    public void setParamSize(int size) {
+        recursiveParam(this, size);
+    }
+
+    private void recursiveParam(StatementNode statementNode, int size) {
+        statementNode.paramSize = size;
+        for (StatementNode child : statementNode.getChildren()) {
+            recursiveParam(child, size);
+        }
+    }
+
+    public void setInstance(NodeInstance nodeInstance) {
         this.nodeInstance = nodeInstance;
+    }
+
+
+    public void recursive (StatementNode stm, NodeInstance nodeInstance) {
+        stm.setInstance(nodeInstance);
+        for (StatementNode child : stm.getChildren()) {
+            recursive(child, nodeInstance);
+        }
     }
 
     public List<StatementNode> getChildren() {
@@ -96,7 +163,6 @@ public class StatementNode {
     public void setParent(StatementNode parent) {
         this.parent = parent;
     }
-
 
     public int getStartPostion() {
         return startPostion;
@@ -114,6 +180,9 @@ public class StatementNode {
         this.endPostion = endPostion;
     }
 
+    public void clearChildren() {
+        this.children = new ArrayList<>();
+    }
 
     public int getLine() {
         return this.line;
@@ -132,6 +201,9 @@ public class StatementNode {
     }
 
     public String getStatementString() {
+        return cast + lparen + this.statementString + rparen;
+    }
+    public String getString() {
         return this.statementString;
     }
 

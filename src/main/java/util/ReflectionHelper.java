@@ -982,7 +982,7 @@ public class ReflectionHelper {
 //                            new BaseVariableCandidate(false, true,
 //                                    initNode.getVarname());
                         BaseVariableNode baseVariableCandidate = new BaseVariableNode(initNode.getVarname());
-                        baseVariableCandidate.isSameClass = true;
+//                        baseVariableCandidate.isSameClass = true;
                         baseVariableCandidate.setType(initNode.getType());
                         map.put(initNode.getVarname(), baseVariableCandidate);
                     }

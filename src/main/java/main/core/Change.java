@@ -1,12 +1,13 @@
-package sketch;
+package main.core;
 
 import AST.stm.abst.StatementNode;
+import main.core.token.Token;
 
 import java.util.List;
 
 public class Change {
     private StatementNode originalNode;
-    private SketchNode sketchNode;
+    private Token token;
 
     private List<Change> changes = null;
 
@@ -18,26 +19,26 @@ public class Change {
         return originalNode;
     }
 
-    public void setSketchNode(SketchNode sketchNode) {
-        this.sketchNode = sketchNode;
+    public void setToken(Token sketchNode) {
+        this.token = sketchNode;
     }
 
-    public SketchNode getSketchNode() {
-        return sketchNode;
+    public Token getToken() {
+        return token;
     }
 
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        if (sketchNode.getTargetScope() == SketchNode.Scope.ONLY_CURRENT) {
+        if (token.getTargetScope() == Token.Scope.ONLY_CURRENT) {
             builder.append(originalNode.toString()).append(" -> ");
-            builder.append(sketchNode.toString());
+            builder.append(token.toString());
 
-        } else if (sketchNode.getTargetScope() == SketchNode.Scope.ALL_AFTER) {
+        } else if (token.getTargetScope() == Token.Scope.ALL_AFTER) {
             String suffix = originalNode.getSuffix();
             suffix = suffix.equals("") ? suffix : "." + suffix;
             builder.append(originalNode.toString()).append(suffix);
-            builder.append(" -> ").append(sketchNode.toString());
+            builder.append(" -> ").append(token.toString());
         }
         return builder.toString();
     }

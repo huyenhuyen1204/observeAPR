@@ -6,8 +6,6 @@ import AST.stm.abst.StatementNode;
 import org.eclipse.jdt.core.dom.ASTNode;
 import util.ASTHelper;
 
-import java.util.ArrayList;
-
 public class StringNode extends StatementNode {
 //    public static final String nodeType = "StringLiteral";
     private String value;
@@ -24,7 +22,6 @@ public class StringNode extends StatementNode {
         this.startPostion = position.getStartPos();
         this.endPostion = position.getEndPos();
         this.statementString = astNode.toString();
-        this.children = new ArrayList<>();
 //        this.nodeType = astNode.getNodeType();
 //        if (value.startsWith("\"") && value.endsWith("\"")) {
             this.setType("java.lang.String");

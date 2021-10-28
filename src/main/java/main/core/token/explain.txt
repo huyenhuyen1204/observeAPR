@@ -1,0 +1,3 @@
+//changes:  in PatchSketch (element to <sketch>)
+//changeMaps: PatchCandidate (<sketch> -> statementNode (candiadate)
+//changeArg : patchSketch voi changeMethod != null => to synthesis for methodPattern

@@ -6,6 +6,7 @@ public class OperatorNode extends StatementNode {
     private  String operator;
 
     public OperatorNode(String operator, int startPos, int endPos) {
+        super();
         this.operator = operator;
         this.statementString =  operator;
         this.startPostion = startPos;
