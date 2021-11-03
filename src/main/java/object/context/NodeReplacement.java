@@ -3,8 +3,8 @@ package object.context;
 import AST.stm.abst.NodeInstance;
 import AST.stm.abst.StatementNode;
 import AST.stm.nodetype.InitNode;
+import AST.stm.token.ClassInstanceCreationNode;
 import AST.stm.token.MethodCalledNode;
-import AST.stm.token.MethodInvocationStmNode;
 import object.Algorithm;
 
 public class NodeReplacement extends Context {
@@ -17,15 +17,18 @@ public class NodeReplacement extends Context {
     //NEEDED CONTEXT
     public NodeReplacement(StatementNode bugNode, StatementNode fixNode,
                            Object stmFind, Boolean isSameMethod,
-                           Boolean isSameLine,  Scope scope) {
+                           Boolean isSameLine, Scope scope) {
         this.bugLine = bugNode.getLine();
         this.bugInstance = bugNode.getNodeInstance();
         this.findSameLine = isSameLine;
 
         this.bugNode = bugNode.nodeType.toString();
         this.fixNode = fixNode.nodeType.toString();
-        this.bugString = bugNode.getStatementString();
-        this.fixString = fixNode.getStatementString();
+        this.bugString = bugNode.toString();
+        this.fixString = fixNode.toString();
+
+        this.bugNode_fixNode = this.bugNode + "_" + this.fixNode;
+
         if (bugNode instanceof MethodCalledNode) {
             this.bugString = bugNode.toString();
         }
@@ -34,13 +37,33 @@ public class NodeReplacement extends Context {
             this.fixString = fixNode.toString();
         }
 
+        if ((bugNode instanceof MethodCalledNode && fixNode instanceof MethodCalledNode)
+         || (bugNode instanceof ClassInstanceCreationNode && fixNode instanceof ClassInstanceCreationNode)) {
+            String methodBug = bugNode.toString().replace(" ", "");
+            String methodFix = fixNode.toString().replace(" ", "");
+
+            String[] bugs = methodBug.split("\\(");
+            String[] fixs = methodFix.split("\\(");
+            this.bugNode_fixNode = this.bugNode;
+            if (bugs[0].equals(fixs[0])) {
+                this.bugNode_fixNode += "+SameMethod";
+            } else {
+                this.bugNode_fixNode += "+ChangeMethod";
+            }
+            if (bugs[1].equals(fixs[1])) {
+                this.bugNode_fixNode += "+SameParam";
+            } else {
+                this.bugNode_fixNode += "+ChangeParam";
+            }
+        }
+
 
         this.bugType = bugNode.getType();
 
         if (stmFind != null) {
             if (stmFind instanceof StatementNode) {
                 this.fixInstance = ((StatementNode) stmFind).getNodeInstance();
-                this.fixString = ((StatementNode) stmFind).getStatementString();
+                this.fixString = ((StatementNode) stmFind).toString();
                 this.fixType = ((StatementNode) stmFind).getType();
             } else if (stmFind instanceof InitNode) {
                 this.fixInstance = NodeInstance.INIT;
@@ -53,7 +76,6 @@ public class NodeReplacement extends Context {
         this.scope = scope;
         this.findSameMethod = isSameMethod;
     }
-
 
 
     public void setSameMethod(boolean isSame) {

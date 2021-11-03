@@ -20,8 +20,8 @@ public class ElementReplacement extends Context {
         this.bugLine = stmBug.getLine();
         this.findSameLine = isSameLine;
         this.bugInstance = stmBug.getNodeInstance();
-        this.bugString = stmBug.getStatementString();
-        this.fixString = stmFix.getStatementString();
+        this.bugString = stmBug.toString();
+        this.fixString = stmFix.toString();
         if (stmBug instanceof InfixExpressionStmNode) {
             this.bugString = ((InfixExpressionStmNode) stmBug).getOperator().getOperator();
         }
@@ -41,7 +41,7 @@ public class ElementReplacement extends Context {
         if (stmFind != null) {
             if (stmFind instanceof StatementNode) {
                 this.fixInstance = ((StatementNode) stmFind).getNodeInstance();
-                this.fixString = ((StatementNode) stmFind).getStatementString();
+                this.fixString = ((StatementNode) stmFind).toString();
                 this.bugType = ((StatementNode) stmFind).getType();
             } else if (stmFind instanceof InitNode) {
                 this.fixInstance = NodeInstance.INIT;

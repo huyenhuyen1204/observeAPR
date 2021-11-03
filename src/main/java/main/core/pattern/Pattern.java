@@ -97,7 +97,7 @@ public class Pattern {
                 for (StatementNode candidate : candidates) {
                     if (token.getOriginalValue() == null
                             || (token.getOriginalValue() != null && !token.getOriginalValue()
-                            .equals(candidate.getStatementString()))) {
+                            .equals(candidate.toString()))) {
                         Map<Token, StatementNode> newMap = new HashMap<>();
                         newMap.put(token, candidate);
                         synthesis.add(newMap);
@@ -116,7 +116,7 @@ public class Pattern {
                 for (StatementNode candidate : candidates) {
                     if (token.getOriginalValue() == null
                             || (token.getOriginalValue() != null && !token.getOriginalValue()
-                            .equals(candidate.getStatementString()))) {
+                            .equals(candidate.toString()))) {
                         Map<Token, StatementNode> newMap = new HashMap<>(synthesizedMap);
                         newMap.put(token, candidate);
                         tmpSynthesis.add(newMap);
@@ -185,7 +185,7 @@ public class Pattern {
                 if (argPattern != null) {
                     builder.append(argPattern.toString());
                 } else {
-                    builder.append(argNode.getStatementString());
+                    builder.append(argNode.toString());
                 }
 
                 if (i < argStatementNodes.size() - 1)

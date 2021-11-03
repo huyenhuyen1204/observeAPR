@@ -46,6 +46,7 @@ public class ClassInstanceCreationNode extends StatementNode implements Token {
         this.setType(type);
         this.name = name;
         this.nodeType = NodeType.ClassInstanceCreationNode;
+        this.statementString = null;
     }
 
     public void addParam (StatementNode statementNode) {
@@ -71,12 +72,17 @@ public class ClassInstanceCreationNode extends StatementNode implements Token {
 
     @Override
     public String toString () {
-        String content = "new " + name + "(";
-        for (StatementNode param : args) {
-            content += param.getStatementString() + ",";
+        if (this.statementString == null) {
+            StringBuilder builder = new StringBuilder();
+            builder.append("new ").append(name.replace("$", ".")).append("(");
+            for (StatementNode param : args) {
+                builder.append(param.toString() + ",");
+            }
+            builder.substring(0, builder.length() - 1);
+            builder.append(")");
+            this.statementString = builder.toString() ;
         }
-        content = content.substring(0, content.length() -1);
-        return  content + ")";
+        return this.statementString;
     }
 
     @Override
@@ -93,7 +99,7 @@ public class ClassInstanceCreationNode extends StatementNode implements Token {
                     params += param.getType();
                 } else {
                     if (param != null) {
-                        params += param.getStatementString();
+                        params += param.toString();
                     } else {
                         params += "";
                     }

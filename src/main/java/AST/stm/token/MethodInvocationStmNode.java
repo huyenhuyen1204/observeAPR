@@ -156,7 +156,11 @@ public class MethodInvocationStmNode extends StatementNode implements Token {
 //    }
 
     public void addNode(StatementNode node) {
-        this.nodes.add(node);
+        if (node instanceof QualifiedNameNode) {
+            this.nodes.add(((QualifiedNameNode) node).getBaseVariableNodes().get(0));
+        } else {
+            this.nodes.add(node);
+        }
     }
 
     public void setChildType(StatementNode statementNode, MethodNode methodNode) {
@@ -189,11 +193,6 @@ public class MethodInvocationStmNode extends StatementNode implements Token {
 
 
 
-
-    @Override
-    public String toString() {
-        return getStatementString();
-    }
 
     public String getMethodType() {
         return methodType;

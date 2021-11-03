@@ -43,7 +43,7 @@ public class InfixPattern extends Pattern {
             }
             equation += stm.getRparen();
         } else {
-            equation += stm.getStatementString();
+            equation += stm.toString();
         }
         return equation;
     }
@@ -64,7 +64,7 @@ public class InfixPattern extends Pattern {
             }
         } else {
             if (node.getChildren().size() == 0) {
-                result = prefix + node.getStatementString();
+                result = prefix + node.toString();
                 return result + suffix;
             } else {
                 return getString(node.getChildren().get(0));

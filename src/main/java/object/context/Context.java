@@ -16,6 +16,7 @@ public class Context {
     public String methodFind;
     public String methodFix;
 
+
     public String bugString;
     public String fixString;
 
@@ -28,6 +29,9 @@ public class Context {
 
     public String originalBug;
     public String originalFix;
+
+    public String bugNode_fixNode;
+
 
     public enum Scope {
         ONLY_CURRENT, ALL_AFTER
@@ -43,8 +47,8 @@ public class Context {
     public String type;
 
     public void setOriginalString (StatementNode stmbug, StatementNode stmFix) {
-        this.originalBug = stmbug.getStatementString();
-        this.originalFix = stmFix.getStatementString();
+        this.originalBug = stmbug.toString();
+        this.originalFix = stmFix.toString();
         if (stmbug instanceof MethodCalledNode) {
             originalBug = stmbug.toString();
         }

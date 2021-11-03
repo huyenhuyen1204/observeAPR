@@ -4,7 +4,10 @@ import AST.obj.Position;
 import AST.stm.abst.NodeInstance;
 import AST.stm.abst.StatementNode;
 import AST.stm.node.*;
-import AST.stm.nodetype.*;
+import AST.stm.nodetype.InitNode;
+import AST.stm.nodetype.NumbericNode;
+import AST.stm.nodetype.StringNode;
+import AST.stm.nodetype.UndefinedNode;
 import AST.stm.token.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -351,9 +354,11 @@ public class MethodNode extends JavaNode {
 
             MethodCalledNode methodCalledNode = new MethodCalledNode(
                     "this", args, (ASTNode) obj, line, classNode.getQualifiedName());
+            methodCalledNode.setEndPostion(methodCalledNode.getEndPostion() - 1);
             MethodInvocationStmNode methodInvocationStmNode = new MethodInvocationStmNode
                     ((ASTNode) obj, line, classNode.getQualifiedName());
             methodInvocationStmNode.setChild(methodCalledNode, this);
+            methodInvocationStmNode.setEndPostion(methodInvocationStmNode.getEndPostion()-1);
             statementNode = methodInvocationStmNode;
         } else if (Checker.isContinueStatement(typeNode)) {
             // ContinueStatement
@@ -376,20 +381,18 @@ public class MethodNode extends JavaNode {
             MethodInvocationStmNode methodInvocationStmNode = new MethodInvocationStmNode
                     ((ASTNode) obj, line, classNode.getQualifiedName());
             methodInvocationStmNode.fullNameParent = ((ClassNode) this.getParent()).qualifiedName;
-            //            BaseVariableNode baseVariableNode = new BaseVariableNode((String) null, null, line);
-////            methodInvocationStmNode.setBaseVar(baseVariableNode);
-//            methodInvocationStmNode.setChildren(baseVariableNode);
+
             List<StatementNode> args = parseObjects(((SuperConstructorInvocation) obj).arguments(), line);
             setArgumentInstance(args);
             MethodCalledNode methodCalledNode = new MethodCalledNode(
                     "super", args, (ASTNode) obj, line, classNode.getQualifiedName());
-//            methodInvocationStmNode.addMethodCall(methodCalledNode);
+            methodCalledNode.setEndPostion(methodCalledNode.getEndPostion() - 1);
             methodInvocationStmNode.setChild(methodCalledNode, this);
+            methodInvocationStmNode.setEndPostion(methodInvocationStmNode.getEndPostion() - 1);
             statementNode = methodInvocationStmNode;
         } else if (Checker.isSwitchCase(typeNode)) {
             // SwitchCase
             //not use
-//            logger.info("Chua xu ly isSwitchCase");
         } else if (Checker.isThrowStatement(typeNode)) {
             // ThrowStatement
             //Not used
@@ -566,7 +569,7 @@ public class MethodNode extends JavaNode {
             } else if (objInit instanceof PostfixExpression) {
                 //not use
             } else {
-                logger.info("Chua xy ly:parseForInfo");
+//                logger.info("Chua xy ly:parseForInfo");
             }
         }
         //TODO: step2: need to parse "optionalConditionExpression (i <n ) of forStatement

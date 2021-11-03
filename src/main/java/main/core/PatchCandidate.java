@@ -97,7 +97,7 @@ public class PatchCandidate {
                     if (candidate instanceof MethodCalledNode) {
                         builder.append(candidate.toString());
                     } else {
-                        builder.append(candidate.getStatementString());
+                        builder.append(candidate.toString());
                     }
                 }
                 if (token.getTargetScope() == Token.Scope.ONLY_CURRENT) { // need to get suffix
@@ -129,12 +129,12 @@ public class PatchCandidate {
                     if (argPattern != null) {
                         builder.append(computeContent(argPattern));
                     } else {
-                        builder.append(argNode.getStatementString());
+                        builder.append(argNode.toString());
 
 //                    if (argNode instanceof Token) {
 //                        builder.append(argNode.toString());
 //                    } else {
-//                        builder.append(argNode.getStatementString());
+//                        builder.append(argNode.toString());
 //                    }
                     }
 

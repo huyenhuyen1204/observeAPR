@@ -9,31 +9,31 @@ public class CodRepDatasetMain {
     static String datasetFormat = "/home/huyenhuyen/Desktop/data-bugfixes/CodRepFormat";
     static String out = "/home/huyenhuyen/obseve/out/codrep";
 
-    public static void main(String[] args) throws Exception {
-        if (new File(datasetFormat).listFiles().length == 0) {
-            mainFormatData();
-        } else {
-           File[] files = new File(datasetFormat).listFiles();
-           HDRepairDatatasetMain hdRepairDatatasetMain = new HDRepairDatatasetMain(out);
-           for (File file: files){
-               File fix = Objects.requireNonNull(new File(file.getAbsolutePath() + File.separator + "fix").listFiles())[0];
-               File old = Objects.requireNonNull(new File(file.getAbsolutePath() + File.separator + "old").listFiles())[0];
-               hdRepairDatatasetMain.getDiff(old, fix, fix.getName().replace(".txt", ""));
-           }
-            hdRepairDatatasetMain.writeToXlSX(hdRepairDatatasetMain.contexts);
-           FileHelper.outputToFile(new File("out/codrep/bugs.txt"), hdRepairDatatasetMain.list, false);
-            System.out.println(hdRepairDatatasetMain.counts.toString());
-
-        }
-    }
-
 //    public static void main(String[] args) throws Exception {
-//                   HDRepairDatatasetMain hdRepairDatatasetMain = new HDRepairDatatasetMain(out);
-//        File old = Objects.requireNonNull(new File("/home/huyenhuyen/Desktop/data-bugfixes/CodRepFormat/Dataset1_2601/old/2601.txt"));
-//        File fix = Objects.requireNonNull(new File("/home/huyenhuyen/Desktop/data-bugfixes/CodRepFormat/Dataset1_2601/fix/2601.txt"));
-//        hdRepairDatatasetMain.getDiff(old, fix, fix.getName());
-//        System.out.println(hdRepairDatatasetMain.contexts);
+//        if (new File(datasetFormat).listFiles().length == 0) {
+//            mainFormatData();
+//        } else {
+//           File[] files = new File(datasetFormat).listFiles();
+//           HDRepairDatatasetMain hdRepairDatatasetMain = new HDRepairDatatasetMain(out);
+//           for (File file: files){
+//               File fix = Objects.requireNonNull(new File(file.getAbsolutePath() + File.separator + "fix").listFiles())[0];
+//               File old = Objects.requireNonNull(new File(file.getAbsolutePath() + File.separator + "old").listFiles())[0];
+//               hdRepairDatatasetMain.getDiff(old, fix, fix.getName().replace(".txt", ""));
+//           }
+//            hdRepairDatatasetMain.writeToXlSX(hdRepairDatatasetMain.contexts);
+//           FileHelper.outputToFile(new File("out/codrep/bugs.txt"), hdRepairDatatasetMain.list, false);
+//            System.out.println(hdRepairDatatasetMain.counts.toString());
+//
+//        }
 //    }
+
+    public static void main(String[] args) throws Exception {
+                   HDRepairDatatasetMain hdRepairDatatasetMain = new HDRepairDatatasetMain(out);
+        File old = Objects.requireNonNull(new File("/home/huyenhuyen/Desktop/data-bugfixes/CodRepFormat/Dataset1_2552/old/2552.txt"));
+        File fix = Objects.requireNonNull(new File("/home/huyenhuyen/Desktop/data-bugfixes/CodRepFormat/Dataset1_2552/fix/2552.txt"));
+        hdRepairDatatasetMain.getDiff(old, fix, fix.getName());
+        System.out.println(hdRepairDatatasetMain.contexts);
+    }
 
     public static void mainFormatData() {
         for (int i = 0; i < 5; i++) {

@@ -200,9 +200,11 @@ public class StatementNode {
         this.cast = cast;
     }
 
-    public String getStatementString() {
+    @Override
+    public String toString() {
         return cast + lparen + this.statementString + rparen;
     }
+
     public String getString() {
         return this.statementString;
     }

@@ -111,7 +111,7 @@ public class Genner {
                     Change change = new Change();
                     change.setOriginalNode(targetNode);
                     change.setToken(token);
-                    token.setOriginalValue(targetNode.getStatementString()); // a basevar
+                    token.setOriginalValue(targetNode.toString()); // a basevar
 
                     BasePattern basePattern = new BasePattern();
                     basePattern.setTargetNode(targetNode);
@@ -361,7 +361,7 @@ public class Genner {
             if (child.getChildren().size() > 0) { // when the child has child
                 TypeToken typeToken = new TypeToken(child, Token.Scope.ALL_AFTER);
                 typeToken.setNodeType(this.nodeType);
-                typeToken.setOriginalValue(node.getStatementString()); // redundant
+                typeToken.setOriginalValue(node.toString()); // redundant
 //                node.getChildren().add(typeToken); // same level of the child node
                 node.setToken(typeToken);
             }
@@ -381,7 +381,7 @@ public class Genner {
             }
             typeToken.setNodeType(node.getType());
 //            typeToken.setNodeType(node.getType());
-            typeToken.setOriginalValue(node.getStatementString());
+            typeToken.setOriginalValue(node.toString());
             // ===save to sketchMap (candidates)
 //            List<Token> sketchNodes = new ArrayList<>();
 //            sketchNodes.add(sketchNode);
@@ -397,7 +397,7 @@ public class Genner {
                     rest.setNodeType(this.nodeType);
                     String suffix = child.getSuffix();
                     suffix = suffix.equals("") ? suffix : "." + suffix;
-                    rest.setOriginalValue(child.getStatementString() + suffix);
+                    rest.setOriginalValue(child.toString() + suffix);
                     node.getChildren().add(rest); // same level of the child node
                 }
             }
@@ -483,7 +483,7 @@ public class Genner {
         } else if (node instanceof BooleanNode) {
             TypeToken token = new TypeToken(node, Token.Scope.ONLY_CURRENT);
             token.setNodeType(BooleanType.BooleanNode.toString());
-            token.setOriginalValue(node.getStatementString());
+            token.setOriginalValue(node.toString());
             node.setToken(token);
         }
 
@@ -663,7 +663,7 @@ public class Genner {
     private BooleanNode genBooleanCandidates(BooleanNode booleanNode) {
         List<String> values = booleanCandies.get(BooleanType.BooleanNode.toString());
         for (String value : values) {
-            if (!value.equals(booleanNode.getStatementString())) {
+            if (!value.equals(booleanNode.toString())) {
                 BooleanNode newCandi = new BooleanNode(value);
                 return newCandi;
             }

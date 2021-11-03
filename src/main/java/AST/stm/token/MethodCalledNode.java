@@ -109,7 +109,7 @@ public class MethodCalledNode extends StatementNode implements Token {
                     params += param.getType();
                 } else {
                     if (param != null) {
-                        params += param.getStatementString();
+                        params += param.toString();
                     } else {
                         params += "";
                     }
@@ -144,7 +144,7 @@ public class MethodCalledNode extends StatementNode implements Token {
         builder.append(methodName).append("(");
         for (int i = 0; i < agurementTypes.size(); i++) {
             StatementNode stm = agurementTypes.get(i);
-            builder.append(stm.getStatementString());
+            builder.append(stm.getCast() + stm.getLparen() + stm.toString() + stm.getRparen());
 
 //            if (stm instanceof Token) {
 //
