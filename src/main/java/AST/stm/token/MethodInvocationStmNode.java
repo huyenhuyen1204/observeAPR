@@ -157,7 +157,10 @@ public class MethodInvocationStmNode extends StatementNode implements Token {
 
     public void addNode(StatementNode node) {
         if (node instanceof QualifiedNameNode) {
-            this.nodes.add(((QualifiedNameNode) node).getBaseVariableNodes().get(0));
+            for (StatementNode statementNode: ((QualifiedNameNode) node).getBaseVariableNodes()) {
+                statementNode.clearChildren();
+                this.nodes.add(statementNode);
+            }
         } else {
             this.nodes.add(node);
         }

@@ -21,7 +21,7 @@ public class StatementNode {
     protected List<StatementNode> children;
     public Boolean isSameMethod = null; // for new Method()
 
-    protected StatementNode () {
+    protected StatementNode() {
         children = new ArrayList<>();
     }
 
@@ -48,18 +48,20 @@ public class StatementNode {
 
     /**
      * set bug deep level for itself and its children.
-     * @param statementNode current statement node
+     *
+     * @param statementNode   current statement node
      * @param stmBugDeepLevel bug deep level
      */
     public void setStmBugDeepLevel(StatementNode statementNode, int stmBugDeepLevel) {
         statementNode.stmBugDeepLevel = stmBugDeepLevel;
-        if (this.getChildren()!= null) {
+        if (this.getChildren() != null) {
             for (StatementNode child : this.getChildren()) {
                 child.setStmBugDeepLevel(child, stmBugDeepLevel);
             }
         }
     }
-    protected  int deepLevel = 0;
+
+    protected int deepLevel = 0;
     protected int stmBugDeepLevel = 0;
     protected String type = null;
     public String fullNameParent = null;
@@ -116,18 +118,20 @@ public class StatementNode {
     }
 
 
-
     public NodeInstance getNodeInstance() {
         return nodeInstance;
     }
 
     public void setNodeInstance(NodeInstance nodeInstance) {
-//        if (nodeInstance == NodeInstance.ARGUMENT) {
-//            recursive(this, nodeInstance);
-//        } else {
+        if (nodeInstance == NodeInstance.INFIX) {
+            recursive(this, nodeInstance);
+        } else if (nodeInstance == NodeInstance.ARGUMENT) {
+            recursive(this, nodeInstance);
+        } else {
             this.nodeInstance = nodeInstance;
-//        }
+        }
     }
+
     public void setParamSize(int size) {
         recursiveParam(this, size);
     }
@@ -144,7 +148,7 @@ public class StatementNode {
     }
 
 
-    public void recursive (StatementNode stm, NodeInstance nodeInstance) {
+    public void recursive(StatementNode stm, NodeInstance nodeInstance) {
         stm.setInstance(nodeInstance);
         for (StatementNode child : stm.getChildren()) {
             recursive(child, nodeInstance);

@@ -37,26 +37,6 @@ public class NodeReplacement extends Context {
             this.fixString = fixNode.toString();
         }
 
-        if ((bugNode instanceof MethodCalledNode && fixNode instanceof MethodCalledNode)
-         || (bugNode instanceof ClassInstanceCreationNode && fixNode instanceof ClassInstanceCreationNode)) {
-            String methodBug = bugNode.toString().replace(" ", "");
-            String methodFix = fixNode.toString().replace(" ", "");
-
-            String[] bugs = methodBug.split("\\(");
-            String[] fixs = methodFix.split("\\(");
-            this.bugNode_fixNode = this.bugNode;
-            if (bugs[0].equals(fixs[0])) {
-                this.bugNode_fixNode += "+SameMethod";
-            } else {
-                this.bugNode_fixNode += "+ChangeMethod";
-            }
-            if (bugs[1].equals(fixs[1])) {
-                this.bugNode_fixNode += "+SameParam";
-            } else {
-                this.bugNode_fixNode += "+ChangeParam";
-            }
-        }
-
 
         this.bugType = bugNode.getType();
 

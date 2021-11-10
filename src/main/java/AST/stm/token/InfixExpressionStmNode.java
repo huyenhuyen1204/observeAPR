@@ -39,7 +39,7 @@ public class InfixExpressionStmNode extends StatementNode implements Token {
         if (left != null) {
             children.add(left);
             left.setParent(this);
-            left.setNodeInstance(NodeInstance.NORMAL);
+            left.setNodeInstance(NodeInstance.INFIX);
 //            this.startPostion = left.getEndPostion();
         } else {
 //            this.startPostion = startLeft;
@@ -47,7 +47,7 @@ public class InfixExpressionStmNode extends StatementNode implements Token {
         if (right != null) {
             children.add(right);
             right.setParent(this);
-            right.setNodeInstance(NodeInstance.NORMAL);
+            right.setNodeInstance(NodeInstance.INFIX);
 //            this.endPostion = right.getStartPostion();
         } else {
 //            this.endPostion = endRight;
@@ -62,6 +62,8 @@ public class InfixExpressionStmNode extends StatementNode implements Token {
             }
         }
         this.operator = new OperatorNode(operator, this.startPostion, this.endPostion);
+        this.operator.setNodeInstance(NodeInstance.INFIX);
+        this.setInstance(NodeInstance.INFIX);
         this.nodeType = NodeType.InfixExpressionStmNode;
     }
 

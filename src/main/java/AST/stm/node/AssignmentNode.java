@@ -10,7 +10,9 @@ public class AssignmentNode extends StatementNode {
     private StatementNode leftSide;
     private StatementNode rightNode;
     private String assignmentOperator;
-
+    {
+        this.nodeType = NodeType.AssignmentNode;
+    }
     public AssignmentNode(String operator, StatementNode leftSide,
                           StatementNode rightNode, int line, ASTNode astNode, String classfullName) {
         super();

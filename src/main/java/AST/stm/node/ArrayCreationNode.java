@@ -7,6 +7,9 @@ import org.eclipse.jdt.core.dom.ASTNode;
 import util.ASTHelper;
 
 public class ArrayCreationNode extends StatementNode {
+    {
+        this.nodeType = NodeType.ArrayCreationNode;
+    }
     public ArrayCreationNode(ASTNode astNode, int line, String classfullName) {
         super();
         this.line = line;

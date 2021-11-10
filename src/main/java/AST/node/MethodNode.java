@@ -960,7 +960,7 @@ public class MethodNode extends JavaNode {
 
     private void setArgumentInstance(List<StatementNode> args) {
         for (StatementNode statementNode : args) {
-//            statementNode.setNodeInstance(NodeInstance.ARGUMENT);
+            statementNode.setNodeInstance(NodeInstance.ARGUMENT);
             statementNode.setParamSize(args.size());
         }
     }

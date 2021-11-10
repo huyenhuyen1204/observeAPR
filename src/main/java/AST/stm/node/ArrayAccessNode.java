@@ -9,7 +9,9 @@ import util.ASTHelper;
 public class ArrayAccessNode extends StatementNode{
     private StatementNode arrayExpression;
     private StatementNode indexExpression;
-
+    {
+        this.nodeType = NodeType.ArrayAccessNode;
+    }
     public ArrayAccessNode(StatementNode arrayExpression,
                            StatementNode indexExpression, ASTNode astNode,
                            int line, String classQualifiedName) {

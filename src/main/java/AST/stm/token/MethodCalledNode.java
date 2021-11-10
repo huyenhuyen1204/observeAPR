@@ -2,6 +2,7 @@ package AST.stm.token;
 
 import AST.node.ParameterNode;
 import AST.obj.Position;
+import AST.stm.abst.NodeInstance;
 import AST.stm.abst.NodeType;
 import AST.stm.abst.StatementNode;
 import AST.stm.node.TypeNode;

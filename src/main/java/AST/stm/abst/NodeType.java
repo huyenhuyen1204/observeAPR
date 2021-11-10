@@ -6,7 +6,10 @@ package AST.stm.abst;
 public enum NodeType {
     BaseVariableNode, BooleanNode, MethodCalledNode, QualifiedNameNode,
     ArrayAccessNode,ArrayCreationNode,AssignmentNode, ClassInstanceCreationNode, ExpressionNode,
-    IfStmNode, ConstructorInvocationNode, NumbericNode, StringNode, UndefinedNode,
+    IfStmNode, ConstructorInvocationNode, NumbericNode, StringNode, UndefinedNode, ArrayInitializerNode,
     // just getOperator
-    MethodInvocationStmNode, InfixExpressionStmNode
+    MethodInvocationStmNode, InfixExpressionStmNode,
+    OperatorNode
+
+
 }

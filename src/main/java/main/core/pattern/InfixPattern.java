@@ -45,6 +45,7 @@ public class InfixPattern extends Pattern {
         } else {
             equation += stm.toString();
         }
+
         return equation;
     }
 
