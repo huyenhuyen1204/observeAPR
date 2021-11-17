@@ -31,6 +31,10 @@ public class Context {
     public String originalFix;
 
     public String bugNode_fixNode;
+    public float similar_score;
+    public String context;
+
+    public Boolean find = null;
 
 
     public enum Scope {

@@ -3,9 +3,11 @@ package object.context;
 import AST.stm.abst.NodeInstance;
 import AST.stm.abst.StatementNode;
 import AST.stm.nodetype.InitNode;
-import AST.stm.token.ClassInstanceCreationNode;
-import AST.stm.token.MethodCalledNode;
+import AST.stm.token.*;
 import object.Algorithm;
+import util.FileHelper;
+
+import java.io.File;
 
 public class NodeReplacement extends Context {
     //    public  int fixNodeType = -1;
@@ -17,7 +19,8 @@ public class NodeReplacement extends Context {
     //NEEDED CONTEXT
     public NodeReplacement(StatementNode bugNode, StatementNode fixNode,
                            Object stmFind, Boolean isSameMethod,
-                           Boolean isSameLine, Scope scope) {
+                           Boolean isSameLine, Scope scope, String pathBugFile) {
+
         this.bugLine = bugNode.getLine();
         this.bugInstance = bugNode.getNodeInstance();
         this.findSameLine = isSameLine;
@@ -37,7 +40,6 @@ public class NodeReplacement extends Context {
             this.fixString = fixNode.toString();
         }
 
-
         this.bugType = bugNode.getType();
 
         if (stmFind != null) {
@@ -55,6 +57,14 @@ public class NodeReplacement extends Context {
         }
         this.scope = scope;
         this.findSameMethod = isSameMethod;
+
+        if (fixNode instanceof MethodCalledNode || fixNode instanceof MethodInvocationStmNode
+                || fixNode instanceof ClassInstanceCreationNode) {
+            String file = FileHelper.readFile(new File(pathBugFile));
+            this.find = file.contains(fixString);
+        }
+        this.context = this.bugNode_fixNode + (this.findSameMethod != null ? "&" + this.findSameMethod :"") + (this.find != null ? "&" + this.find :"");
+//        this.bugNode_fixNode = this.bugNode_fixNode_1;
     }
 
 

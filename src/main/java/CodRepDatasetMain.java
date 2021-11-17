@@ -16,10 +16,10 @@ public class CodRepDatasetMain {
             String pathOld = "";
             String pathNew = "";
 
-                File[] files = new File(datasetFormat).listFiles();
-                HDRepairDatatasetMain hdRepairDatatasetMain = new HDRepairDatatasetMain(out);
-                for (File file: files){
-                    try {
+            File[] files = new File(datasetFormat).listFiles();
+            HDRepairDatatasetMain hdRepairDatatasetMain = new HDRepairDatatasetMain(out);
+            for (File file : files) {
+                try {
                     pathOld = file.getAbsolutePath() + File.separator + "old";
                     pathNew = file.getAbsolutePath() + File.separator + "fix";
                     File fix = Objects.requireNonNull(new File(file.getAbsolutePath() + File.separator + "fix").listFiles())[0];
@@ -31,11 +31,10 @@ public class CodRepDatasetMain {
                     System.out.println(pathOld);
                     System.out.println(pathNew);
                 }
-                }
-                hdRepairDatatasetMain.writeToXlSX(hdRepairDatatasetMain.contexts, "CodRed");
-                FileHelper.outputToFile(new File("out/codrep/bugs.txt"), hdRepairDatatasetMain.list, false);
-                System.out.println(hdRepairDatatasetMain.counts.toString());
-
+            }
+            hdRepairDatatasetMain.writeToXlSX(hdRepairDatatasetMain.contexts, "CodRed");
+            FileHelper.outputToFile(new File("out/codrep/bugs.txt"), hdRepairDatatasetMain.list, false);
+            System.out.println(hdRepairDatatasetMain.counts.toString());
 
 
         }

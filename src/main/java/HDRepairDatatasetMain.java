@@ -1,7 +1,6 @@
 import AST.node.ClassNode;
 import AST.node.MethodNode;
 import AST.parser.JavaFileParser;
-import AST.stm.abst.NodeInstance;
 import AST.stm.abst.StatementNode;
 import AST.stm.node.AssignmentNode;
 import AST.stm.node.ExpressionNode;
@@ -15,7 +14,6 @@ import object.context.NodeReplacement;
 import object.context.ElementReplacement;
 import org.eclipse.jgit.diff.*;
 import util.FileHelper;
-import util.ReflectionHelper;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -41,10 +39,12 @@ public class HDRepairDatatasetMain {
     private static String classFix = "";
     public static List<Integer> counts;
     public static String list;
+    public int startPos = -1;
+    public int endPos = -1;
     public static boolean isSameMethodInvo = false;
     List<ClassNode> classNodeListOld;
 
-    //    //
+//
     public static void main(String[] args) throws Exception {
         String folderBug = "/home/huyenhuyen/Desktop/data-bugfixes/all";
 //        getDiff(new File("/home/huyenhuyen/Desktop/data-bugfixes/all/jayway_rest-assured/modifiedFiles/2/old/RequestSpecBuilder.java"),
@@ -81,6 +81,7 @@ public class HDRepairDatatasetMain {
                 "fixNode",
                 "bugNode_fixNode",
                 "context",
+                "context_1",
                 "bugInstance",
                 "scope",
 //                "fixInstance",
@@ -113,10 +114,10 @@ public class HDRepairDatatasetMain {
                     context.findSameMethod,
                     context.bugNode,
                     context.fixNode,
-                    context.bugNode_fixNode + (context.findSameMethod != null ?
-                            "&" + context.findSameMethod : "") ,
-                    context.bugNode_fixNode + (context.findSameMethod != null ?
-                            "&" + context.findSameMethod : "") + "&" + context.bugInstance,
+                    context.bugNode_fixNode,
+//                    context.find,
+                    context.context + "&" + context.bugInstance,
+                    context.context,
                     context.bugInstance,
                     context.scope.toString(),
 //                    context.fixInstance,
@@ -331,11 +332,11 @@ public class HDRepairDatatasetMain {
                     if (elms.size() > 0 || !isSameMethodInvo) {
                         contexts.addAll(elms);
                     } else if (elms.size() == 0 && !isSameMethodInvo) {
-                        NodeReplacement nodeReplacement = setNodeAllAfter(stmBug, stmFix, stmBugg, stmFixx);
+                        Context nodeReplacement = setNodeAllAfter(stmBug, stmFix, stmBugg, stmFixx);
                         contexts.add(nodeReplacement);
                     }
                 } else {
-                    NodeReplacement nodeReplacement = setNodeAllAfter(stmBug, stmFix, stmBugg, stmFixx);
+                    Context nodeReplacement = setNodeAllAfter(stmBug, stmFix, stmBugg, stmFixx);
                     contexts.add(nodeReplacement);
                 }
                 System.out.println(stmBug.toString() + " -> " + stmFix.toString());
@@ -343,7 +344,10 @@ public class HDRepairDatatasetMain {
                 if (((BaseVariableNode) stmBug).getKeyVar() != null && ((BaseVariableNode) stmFix).getKeyVar() != null) {
                     if (!((BaseVariableNode) stmBug).getKeyVar().equals(((BaseVariableNode) stmFix).getKeyVar())) {
                         //find base var  in method, in class
-                        findBaseVar(((BaseVariableNode) stmBug), ((BaseVariableNode) stmFix), stmBugg, stmFixx);
+                        Context context = setBaseVar(((BaseVariableNode) stmBug), ((BaseVariableNode) stmFix), stmBugg, stmFixx);
+                        if (context != null) {
+                            contexts.add(context);
+                        }
                     }
                 } else if (((BaseVariableNode) stmBug).getKeyVar() == null &&
                         ((BaseVariableNode) stmFix).getKeyVar() != null) {
@@ -359,7 +363,7 @@ public class HDRepairDatatasetMain {
                 add = false;
                 //if (qualifierName != null)
                 if (!stmBug.toString().equals(stmFix.toString())) {
-                    ElementReplacement elementReplacement = setElementAllAfter(stmBug, stmFix, stmBugg, stmFixx);
+                    Context elementReplacement = setElementAllAfter(stmBug, stmFix, stmBugg, stmFixx);
                     contexts.add(elementReplacement);
                 }
             } else if (stmFix instanceof ExpressionNode) {
@@ -373,7 +377,7 @@ public class HDRepairDatatasetMain {
             } else if (stmFix instanceof BooleanNode) {
                 add = false;
                 if (!stmFix.toString().equals(stmBug.toString())) {
-                    ElementReplacement elementReplacement = setElementOnlyCurrent(stmBug, stmFix, stmBugg, stmFixx);
+                    Context elementReplacement = setElementOnlyCurrent(stmBug, stmFix, stmBugg, stmFixx);
                     contexts.add(elementReplacement);
                 }
             } else if (stmFix instanceof IfStmNode) {
@@ -387,7 +391,7 @@ public class HDRepairDatatasetMain {
                         .equals(infixBug.getOperator().getOperator())) {
                     if (infixFix.toString().replace(infixFix.getOperator().getOperator(), "")
                             .equals(infixBug.toString().replace(infixBug.getOperator().getOperator(), ""))) {
-                        ElementReplacement elementReplacement = setElementOnlyCurrent(infixFix.getOperator(), infixBug.getOperator(), stmBugg, stmFixx);
+                        Context elementReplacement = setElementOnlyCurrent(infixFix.getOperator(), infixBug.getOperator(), stmBugg, stmFixx);
                         contexts.add(elementReplacement);
                     }
                 }
@@ -421,7 +425,7 @@ public class HDRepairDatatasetMain {
                 add = false;
             } else if (stmBug instanceof MethodInvocationStmNode) {
                 if (stmBug.getChildren().get(0).getChildren() != null) { // > 2 child
-                    NodeReplacement nodeReplacement = setNodeAllAfter(stmBug, stmFix, stmBugg, stmFixx);
+                    Context nodeReplacement = setNodeAllAfter(stmBug, stmFix, stmBugg, stmFixx);
                     contexts.add(nodeReplacement);
                 } else {
                     NodeReplacement nodeReplacement = setNodeOnlyCurrent(stmBug, stmFix, stmBugg, stmFixx);
@@ -431,26 +435,28 @@ public class HDRepairDatatasetMain {
             } else if (stmBug instanceof InfixExpressionStmNode) {
                 if (stmBug.toString().replace(((InfixExpressionStmNode) stmBug).getOperator().getOperator(), "")
                         .equals(stmFix.toString())) {
-                    ElementReplacement elementReplacement = setElementOnlyCurrent(((InfixExpressionStmNode) stmBug).getOperator(),
+                    Context elementReplacement = setElementOnlyCurrent(((InfixExpressionStmNode) stmBug).getOperator(),
                             null, stmBugg, stmFixx);
                     contexts.add(elementReplacement);
                 } else {
-                    NodeReplacement nodeReplacement = setNodeAllAfter(stmBug, stmFix, stmBugg, stmFixx);
+                    Context nodeReplacement = setNodeAllAfter(stmBug, stmFix, stmBugg, stmFixx);
                     contexts.add(nodeReplacement);
                 }
             } else if (stmFix instanceof InfixExpressionStmNode) {
                 if (stmFix.toString().replace(((InfixExpressionStmNode) stmFix).getOperator().getOperator(), "")
                         .equals(stmBug.toString())) {
-                    ElementReplacement elementReplacement = setElementOnlyCurrent(null, ((InfixExpressionStmNode) stmFix).getOperator(), stmBugg, stmFixx);
+                    Context elementReplacement = setElementOnlyCurrent(null, ((InfixExpressionStmNode) stmFix).getOperator(), stmBugg, stmFixx);
                     contexts.add(elementReplacement);
                 } else {
-                    NodeReplacement nodeReplacement = setNodeAllAfter(stmBug, stmFix, stmBugg, stmFixx);
+                    Context nodeReplacement = setNodeAllAfter(stmBug, stmFix, stmBugg, stmFixx);
                     contexts.add(nodeReplacement);
                 }
             } else if (stmFix instanceof BaseVariableNode) {
-                findBaseVar(stmBug, (BaseVariableNode) stmFix, stmBugg, stmFixx);
-            } else {
-                NodeReplacement nodeReplacement = setNodeAllAfter(stmBug, stmFix, stmBugg, stmFixx);
+                Context context = setBaseVar(stmBug, (BaseVariableNode) stmFix, stmBugg, stmFixx);
+                if (context != null) {
+                    contexts.add(context);
+                }            } else {
+                Context nodeReplacement = setNodeAllAfter(stmBug, stmFix, stmBugg, stmFixx);
                 contexts.add(nodeReplacement);
             }
             if (add) {
@@ -481,7 +487,7 @@ public class HDRepairDatatasetMain {
             }
         }
         if (isDiffMethod) {
-            ElementReplacement elementReplacement = setElementOnlyCurrent(bug, fixed, bugg, fixedd);
+            Context elementReplacement = setElementOnlyCurrent(bug, fixed, bugg, fixedd);
             contexts.add(elementReplacement);
         }
     }
@@ -494,47 +500,56 @@ public class HDRepairDatatasetMain {
                 if (((MethodInvocationStmNode) stmFix.getParent()).getNodes().size()
                 == 1) {
                     NodeReplacement nodeReplacement = new NodeReplacement(stmBug, stmFix.getParent(), null, null, null,
-                            Context.Scope.ONLY_CURRENT);
+                            Context.Scope.ONLY_CURRENT, pathBugFile);
                     nodeReplacement.setOriginalString(stmBugg, stmFixx);
-                    nodeReplacement.pathBugFile = pathBugFile;
                     return nodeReplacement;
                 }
             }
         }
 
         NodeReplacement nodeReplacement = new NodeReplacement(stmBug, stmFix, null, null, null,
-                Context.Scope.ONLY_CURRENT);
+                Context.Scope.ONLY_CURRENT, pathBugFile);
         nodeReplacement.setOriginalString(stmBugg, stmFixx);
-        nodeReplacement.pathBugFile = pathBugFile;
 
         return nodeReplacement;
     }
 
-    private ElementReplacement setElementOnlyCurrent(StatementNode stmBug, StatementNode stmFix,
+    private Context setElementOnlyCurrent(StatementNode stmBug, StatementNode stmFix,
                                                      StatementNode stmBugg, StatementNode stmFixx) {
-        ElementReplacement elementReplacement = new ElementReplacement(stmBug, stmFix, null,
-                null, null, Context.Scope.ONLY_CURRENT);
-        elementReplacement.setOriginalString(stmBugg, stmFixx);
-        elementReplacement.pathBugFile = pathBugFile;
-        return elementReplacement;
+        Context context = setBaseVar(stmBug, stmFix, stmBugg, stmFixx);
+        if (context == null) {
+            ElementReplacement elementReplacement = new ElementReplacement(stmBug, stmFix, null,
+                    null, null, Context.Scope.ONLY_CURRENT, pathBugFile);
+            elementReplacement.setOriginalString(stmBugg, stmFixx);
+            elementReplacement.pathBugFile = pathBugFile;
+            return elementReplacement;
+        }
+        return context;
     }
 
-    private NodeReplacement setNodeAllAfter(StatementNode stmBug, StatementNode stmFix,
+    private Context setNodeAllAfter(StatementNode stmBug, StatementNode stmFix,
                                             StatementNode stmBugg, StatementNode stmFixx) {
-        NodeReplacement nodeReplacement = new NodeReplacement(stmBug, stmFix, null, null, null,
-                Context.Scope.ALL_AFTER);
-        nodeReplacement.pathBugFile = pathBugFile;
-        nodeReplacement.setOriginalString(stmBugg, stmFixx);
-        return nodeReplacement;
+        Context context = setBaseVar(stmBug, stmFix, stmBugg, stmFixx);
+        if (context == null) {
+            NodeReplacement nodeReplacement = new NodeReplacement(stmBug, stmFix, null, null, null,
+                    Context.Scope.ALL_AFTER, pathBugFile);
+            nodeReplacement.pathBugFile = pathBugFile;
+            nodeReplacement.setOriginalString(stmBugg, stmFixx);
+            return nodeReplacement;
+        }
+        return context;
     }
 
-    private ElementReplacement setElementAllAfter(StatementNode stmBug, StatementNode stmFix,
+    private Context setElementAllAfter(StatementNode stmBug, StatementNode stmFix,
                                                   StatementNode stmBugg, StatementNode stmFixx) {
-        ElementReplacement elementReplacement = new ElementReplacement(stmBug, stmFix, null,
-                null, null, Context.Scope.ALL_AFTER);
-        elementReplacement.setOriginalString(stmBugg, stmFixx);
-        elementReplacement.pathBugFile = pathBugFile;
-        return elementReplacement;
+        Context context = setBaseVar(stmBug, stmFix, stmBugg, stmFixx);
+        if (context == null) {
+            ElementReplacement elementReplacement = new ElementReplacement(stmBug, stmFix, null,
+                    null, null, Context.Scope.ALL_AFTER, pathBugFile);
+            elementReplacement.setOriginalString(stmBugg, stmFixx);
+            return elementReplacement;
+        }
+        return  context;
     }
 
     private void compareStatementOld(StatementNode stmBug, StatementNode stmFix) {
@@ -570,8 +585,10 @@ public class HDRepairDatatasetMain {
                 if (((BaseVariableNode) stmBug).getKeyVar() != null && ((BaseVariableNode) stmFix).getKeyVar() != null) {
                     if (!((BaseVariableNode) stmBug).getKeyVar().equals(((BaseVariableNode) stmFix).getKeyVar())) {
                         //find base var  in method, in class
-                        findBaseVar(((BaseVariableNode) stmBug), ((BaseVariableNode) stmFix), stmBug, stmFix);
-                    }
+                        Context context = setBaseVar(((BaseVariableNode) stmBug), ((BaseVariableNode) stmFix), stmBug, stmFix);
+                        if (context != null) {
+                            contexts.add(context);
+                        }                    }
                 } else if (((BaseVariableNode) stmBug).getKeyVar() == null &&
                         ((BaseVariableNode) stmFix).getKeyVar() != null) {
                     System.out.println("Chuwa xu ly 1 ===>" + stmBug.getParent().toString()
@@ -599,7 +616,7 @@ public class HDRepairDatatasetMain {
                 //if (qualifierName != null)
                 if (!stmBug.toString().equals(stmFix.toString())) {
                     ElementReplacement elementReplacement = new ElementReplacement(stmBug, stmFix, null,
-                            null, null, Context.Scope.ALL_AFTER);
+                            null, null, Context.Scope.ALL_AFTER, pathBugFile);
                     contexts.add(elementReplacement);
                     elementReplacement.pathBugFile = pathBugFile;
 //                    if (!tokenExist.isSameMethod) {
@@ -644,7 +661,7 @@ public class HDRepairDatatasetMain {
                 add = false;
                 if (!stmFix.toString().equals(stmBug.toString())) {
                     ElementReplacement elementReplacement = new ElementReplacement(stmBug, stmFix, null,
-                            null, null, Context.Scope.ONLY_CURRENT);
+                            null, null, Context.Scope.ONLY_CURRENT, pathBugFile);
                     contexts.add(elementReplacement);
                     elementReplacement.pathBugFile = pathBugFile;
 //                    findElement(stmBug, stmFix, methodNodeBug, classNodeBug);
@@ -676,7 +693,7 @@ public class HDRepairDatatasetMain {
                         .equals(((InfixExpressionStmNode) stmBug).getOperator())) {
                     ElementReplacement elementReplacement = new ElementReplacement(((InfixExpressionStmNode) stmBug).getOperator()
                             , ((InfixExpressionStmNode) stmFix).getOperator(), null,
-                            null, null, Context.Scope.ONLY_CURRENT);
+                            null, null, Context.Scope.ONLY_CURRENT, pathBugFile);
                     contexts.add(elementReplacement);
                     elementReplacement.pathBugFile = pathBugFile;
                 }
@@ -722,7 +739,7 @@ public class HDRepairDatatasetMain {
                 if (tokenExist.line != -1) {
                     NodeReplacement nodeReplacement = new NodeReplacement(stmBug, stmFix,
                             tokenExist.statementNode, tokenExist.isSameMethod,
-                            tokenExist.isSameLine, Context.Scope.ALL_AFTER);
+                            tokenExist.isSameLine, Context.Scope.ALL_AFTER, pathBugFile);
                     nodeReplacement.methodBug = classBug.substring(methodNodeBug.getStartPosition(),
                             methodNodeBug.getEndPosition());
                     nodeReplacement.pathBugFile = pathBugFile;
@@ -739,8 +756,10 @@ public class HDRepairDatatasetMain {
             } else if (stmFix instanceof BaseVariableNode) {
                 //find baseVar node
                 //=> hard to replace
-                findBaseVar(stmBug, (BaseVariableNode) stmFix, stmBug, stmFix);
-                isAdd = false;
+                Context context =setBaseVar(stmBug, (BaseVariableNode) stmFix, stmBug, stmFix);
+                if (context != null) {
+                    contexts.add(context);
+                }                isAdd = false;
             } else if (stmFix instanceof BooleanNode) {
                 System.out.println(stmBug.toString() + " -> " + stmFix.toString());
 //                System.out.println("Quan sat BooleanNode");
@@ -755,7 +774,7 @@ public class HDRepairDatatasetMain {
                 QualifiedNameNode qualifiedFix = (QualifiedNameNode) stmFix;
                 TokenExist tokenExist = findNodeInClass(stmBug, qualifiedFix, methodNodeBug, classNodeBug);
                 if (tokenExist.line != -1) {
-                    NodeReplacement nodeReplacement = new NodeReplacement(stmBug, stmFix, tokenExist.statementNode, tokenExist.isSameMethod, tokenExist.isSameLine, Context.Scope.ALL_AFTER);
+                    NodeReplacement nodeReplacement = new NodeReplacement(stmBug, stmFix, tokenExist.statementNode, tokenExist.isSameMethod, tokenExist.isSameLine, Context.Scope.ALL_AFTER, pathBugFile);
                     nodeReplacement.methodBug = classBug.substring(methodNodeBug.getStartPosition(),
                             methodNodeBug.getEndPosition());
                     nodeReplacement.findSameMethod = tokenExist.isSameMethod;
@@ -787,9 +806,8 @@ public class HDRepairDatatasetMain {
             }
             if (isAdd) {
                 System.out.println("REPLACE: " + buggyNode + " => " + fixedNode);
-                NodeReplacement nodeReplacement = new NodeReplacement(stmBug, stmFix, null, null, null, Context.Scope.ALL_AFTER);
+                NodeReplacement nodeReplacement = new NodeReplacement(stmBug, stmFix, null, null, null, Context.Scope.ALL_AFTER, pathBugFile);
                 nodeReplacement.methodFind = classBug.substring(methodNodeBug.getStartPosition(), methodNodeBug.getEndPosition());
-                nodeReplacement.pathBugFile = pathBugFile;
                 nodeReplacement.fixInstance = null;
                 contexts.add(nodeReplacement);
             }
@@ -802,7 +820,7 @@ public class HDRepairDatatasetMain {
         TokenExist tokenExist = findNodeInClass(stmBug, stmFix, methodNodeBug, classNodeBug);
         if (tokenExist.line != -1) {
             ElementReplacement elementReplacement = new ElementReplacement(stmBug, stmFix, tokenExist.statementNode,
-                    tokenExist.isSameMethod, tokenExist.isSameLine, Context.Scope.ONLY_CURRENT);
+                    tokenExist.isSameMethod, tokenExist.isSameLine, Context.Scope.ONLY_CURRENT, pathBugFile);
             if (!tokenExist.isSameMethod) {
                 MethodNode methodNodeFind = classNodeBug.findMethodNodeByStmLine(tokenExist.line);
                 elementReplacement.methodFind = classBug.substring(methodNodeFind.getStartPosition(), methodNodeFind.getEndPosition());
@@ -813,7 +831,7 @@ public class HDRepairDatatasetMain {
         } else {
             // diff name, diff param
             ElementReplacement elementReplacement = new ElementReplacement(stmBug, stmFix,
-                    null, null, null, Context.Scope.ONLY_CURRENT);
+                    null, null, null, Context.Scope.ONLY_CURRENT, pathBugFile);
             elementReplacement.pathBugFile = pathBugFile;
             contexts.add(elementReplacement);
             //what type? token or not?
@@ -845,68 +863,66 @@ public class HDRepairDatatasetMain {
     }
 
 
-    private void findBaseVar(StatementNode stmBug, BaseVariableNode stmFix,
-                             StatementNode stmBugg, StatementNode stmFixx) {
-        MethodNode methodNode = null;
-        ClassNode classNodeBUG = null;
-        for (ClassNode classNode : classNodeListOld) {
-            methodNode = classNode.findMethodNodeInFile(stmBug.getLine());
-            if (methodNode != null) {
-                classNodeBUG = classNode;
-                break;
+    private Context setBaseVar(StatementNode stmBug, StatementNode stmFix,
+                               StatementNode stmBugg, StatementNode stmFixx) {
+        if (stmFix instanceof BaseVariableNode) {
+            MethodNode methodNode = null;
+            ClassNode classNodeBUG = null;
+            for (ClassNode classNode : classNodeListOld) {
+                methodNode = classNode.findMethodNodeInFile(stmBug.getLine());
+                if (methodNode != null) {
+                    classNodeBUG = classNode;
+                    break;
+                }
             }
-        }
-        if (methodNode == null) {
-            return;
-        }
-        for (InitNode initNode : methodNode.getInitNodes()) {
-            if (initNode.getLine() <= stmFix.getLine()) {
-                if (initNode.getVarname().equals(stmFix.getKeyVar())) {
-                    if (initNode.getType().equals(stmFix.getType())) {
-                        if (stmBug instanceof BaseVariableNode) {
+            if (methodNode == null) {
+                return null;
+            }
+            for (InitNode initNode : methodNode.getInitNodes()) {
+                if (initNode.getLine() <= stmFix.getLine()) {
+                    if (initNode.getVarname().equals(((BaseVariableNode)stmFix).getKeyVar())) {
+                        if (initNode.getType().equals(stmFix.getType())) {
+                            if (stmBug instanceof BaseVariableNode) {
 //                            StatementNode statementNode = findNodeInStatement(stmBug, )
-                            ElementReplacement elementReplacement = new ElementReplacement(stmBug, stmFix, initNode, true, null, Context.Scope.ONLY_CURRENT);
-                            elementReplacement.methodBug = classBug.substring(methodNode.getStartPosition(),
-                                    methodNode.getEndPosition());
-                            elementReplacement.pathBugFile = pathBugFile;
-                            elementReplacement.setOriginalString(stmBugg, stmFixx);
-                            contexts.add(elementReplacement);
-                            return;
-                        } else {
-                            NodeReplacement nodeReplacement = new NodeReplacement(stmBug, stmFix, initNode, true, false, Context.Scope.ALL_AFTER);
-                            nodeReplacement.methodBug = classBug.substring(methodNode.getStartPosition(), methodNode.getEndPosition());
-                            nodeReplacement.methodBug = classBug.substring(methodNode.getStartPosition(),
-                                    methodNode.getEndPosition());
-                            nodeReplacement.pathBugFile = pathBugFile;
-                            nodeReplacement.setOriginalString(stmBugg, stmFixx);
-                            contexts.add(nodeReplacement);
-                            return;
+                                ElementReplacement elementReplacement = new ElementReplacement(stmBug, stmFix, initNode, true, null, Context.Scope.ONLY_CURRENT, pathBugFile);
+                                elementReplacement.methodBug = classBug.substring(methodNode.getStartPosition(),
+                                        methodNode.getEndPosition());
+                                elementReplacement.pathBugFile = pathBugFile;
+                                elementReplacement.setOriginalString(stmBugg, stmFixx);
+                                return elementReplacement;
+                            } else {
+                                NodeReplacement nodeReplacement = new NodeReplacement(stmBug, stmFix, initNode, true, false, Context.Scope.ALL_AFTER, pathBugFile);
+                                nodeReplacement.methodBug = classBug.substring(methodNode.getStartPosition(), methodNode.getEndPosition());
+                                nodeReplacement.methodBug = classBug.substring(methodNode.getStartPosition(),
+                                        methodNode.getEndPosition());
+                                nodeReplacement.pathBugFile = pathBugFile;
+                                nodeReplacement.setOriginalString(stmBugg, stmFixx);
+                                return nodeReplacement;
+                            }
                         }
                     }
                 }
             }
-        }
-        for (ClassNode classNode : classNodeListOld) {
-            for (InitNode initNode : classNode.getInitNodes()) {
-                if (initNode.getLine() <= stmFix.getLine()) {
-                    if (initNode.getType().equals(stmFix.getType())) {
-                        if (initNode.getVarname().equals(stmFix.getKeyVar())) {
-                            if (initNode.getType().equals(stmFix.getType())) {
-                                if (stmBug instanceof BaseVariableNode) {
-                                    ElementReplacement elementReplacement = new ElementReplacement(stmBug, stmFix, initNode, false, null, Context.Scope.ONLY_CURRENT);
-                                    elementReplacement.pathBugFile = pathBugFile;
-                                    elementReplacement.setOriginalString(stmBugg, stmFixx);
-                                    contexts.add(elementReplacement);
-                                    return;
-                                } else {
-                                    NodeReplacement nodeReplacement = new NodeReplacement(stmBug, stmFix, initNode, false, false, Context.Scope.ALL_AFTER);
-                                    nodeReplacement.methodBug = classBug.substring(methodNode.getStartPosition(), methodNode.getEndPosition());
-                                    nodeReplacement.methodBug = classBug.substring(methodNode.getStartPosition(),
-                                            methodNode.getEndPosition());
-                                    nodeReplacement.pathBugFile = pathBugFile;
-                                    nodeReplacement.setOriginalString(stmBugg, stmFixx);
-                                    contexts.add(nodeReplacement);
-                                    return;
+            for (ClassNode classNode : classNodeListOld) {
+                for (InitNode initNode : classNode.getInitNodes()) {
+                    if (initNode.getLine() <= stmFix.getLine()) {
+                        if (initNode.getType().equals(stmFix.getType())) {
+                            if (initNode.getVarname().equals(((BaseVariableNode)stmFix).getKeyVar())) {
+                                if (initNode.getType().equals(stmFix.getType())) {
+                                    if (stmBug instanceof BaseVariableNode) {
+                                        ElementReplacement elementReplacement = new ElementReplacement(stmBug, stmFix, initNode, false, null, Context.Scope.ONLY_CURRENT, pathBugFile);
+                                        elementReplacement.pathBugFile = pathBugFile;
+                                        elementReplacement.setOriginalString(stmBugg, stmFixx);
+                                        return elementReplacement;
+                                    } else {
+                                        NodeReplacement nodeReplacement = new NodeReplacement(stmBug, stmFix, initNode, false, false, Context.Scope.ALL_AFTER, pathBugFile);
+                                        nodeReplacement.methodBug = classBug.substring(methodNode.getStartPosition(), methodNode.getEndPosition());
+                                        nodeReplacement.methodBug = classBug.substring(methodNode.getStartPosition(),
+                                                methodNode.getEndPosition());
+                                        nodeReplacement.pathBugFile = pathBugFile;
+                                        nodeReplacement.setOriginalString(stmBugg, stmFixx);
+                                        return nodeReplacement;
+                                    }
                                 }
                             }
                         }
@@ -914,7 +930,7 @@ public class HDRepairDatatasetMain {
                 }
             }
         }
-
+        return null;
     }
 
     private void observeParams(List<StatementNode> paramsBug, List<StatementNode> paramFix, StatementNode
@@ -925,7 +941,7 @@ public class HDRepairDatatasetMain {
         } else {
             // diff node same name, diff params (CREATE PARAM)
             NodeReplacement nodeReplacement = new NodeReplacement(bug, fix, null,
-                    null, null, Context.Scope.ONLY_CURRENT);
+                    null, null, Context.Scope.ONLY_CURRENT, pathBugFile);
             nodeReplacement.pathBugFile = pathBugFile;
             contexts.add(nodeReplacement);
 //            add = false;
@@ -1081,8 +1097,10 @@ public class HDRepairDatatasetMain {
 
         if (bug instanceof BaseVariableNode && fixed instanceof BaseVariableNode) {
             if (!((BaseVariableNode) bug).getKeyVar().equals(((BaseVariableNode) fixed).getKeyVar())) {
-                findBaseVar(bug, (BaseVariableNode) fixed, bugg, fixedd);
-            } else {
+                Context context =setBaseVar(bug, (BaseVariableNode) fixed, bugg, fixedd);
+                if (context != null) {
+                    contexts.add(context);
+                }            } else {
                 isSameMethodInvo = true;
             }
         } else if (bug instanceof MethodCalledNode && fixed instanceof MethodCalledNode) {
@@ -1105,15 +1123,15 @@ public class HDRepairDatatasetMain {
             if (isDiffMethod) {
                 if (bug.getChildren().size() > 0
                         && fixed.getChildren().size() > 0) {
-                    ElementReplacement elementReplacement = setElementOnlyCurrent(bug, fixed, bugg, fixedd);
+                    Context elementReplacement = setElementOnlyCurrent(bug, fixed, bugg, fixedd);
                     elements.add(elementReplacement);
 
                 } else if (bug.getChildren().size() > 0 && fixed.getChildren().size() == 0) {
-                    ElementReplacement elementReplacement = setElementAllAfter(bug, fixed, bugg, fixedd);
+                    Context elementReplacement = setElementAllAfter(bug, fixed, bugg, fixedd);
                     elements.add(elementReplacement);
                     isChild = false;
                 } else if (bug.getChildren().size() == 0 && fixed.getChildren().size() == 0) {
-                    ElementReplacement elementReplacement = setElementOnlyCurrent(bug, fixed, bugg, fixedd);
+                    Context elementReplacement = setElementOnlyCurrent(bug, fixed, bugg, fixedd);
                     elements.add(elementReplacement);
                     isChild = false;
                 } else {
@@ -1182,20 +1200,20 @@ public class HDRepairDatatasetMain {
     }
 
 //    public static void main(String[] args) {
-//        String oldFile = "/home/huyenhuyen/Desktop/data-bugfixes/CodRepFormat/Dataset1_3805/old/3805.txt";
-//        String fixFile = "/home/huyenhuyen/Desktop/data-bugfixes/CodRepFormat/Dataset1_3805/fix/3805.txt";
+//        String oldFile = "/home/huyenhuyen/Desktop/data-bugfixes/all/bcdev_beam/modifiedFiles/2/old/SubsetOp.java";
+//        String fixFile = "/home/huyenhuyen/Desktop/data-bugfixes/all/bcdev_beam/modifiedFiles/2/fix/SubsetOp.java";
 //        File fileOld = new File(oldFile);
 //        File fileFix = new File(fixFile);
 //        contexts = new ArrayList<>();
-//        int id = 70;
+//        String id = "70";
 //        try {
 //            HDRepairDatatasetMain hdRepairDatatasetMain = new HDRepairDatatasetMain("/home/huyenhuyen/obseve/out/hd");
-//            h.getDiff(fileOld, fileFix, id);
+//            hdRepairDatatasetMain.getDiff(fileOld, fileFix, id);
 //        } catch (Exception e) {
 //            e.printStackTrace();
 //        }
 //    }
-    //    public static void main(String[] args) throws Exception {
+//        public static void main(String[] args) throws Exception {
 //                   HDRepairDatatasetMain hdRepairDatatasetMain = new HDRepairDatatasetMain(out);
 //        File old = Objects.requireNonNull(new File("/home/huyenhuyen/Desktop/data-bugfixes/CodRepFormat/Dataset1_1961/old/1961.txt"));
 //        File fix = Objects.requireNonNull(new File("/home/huyenhuyen/Desktop/data-bugfixes/CodRepFormat/Dataset1_1961/fix/1961.txt"));

@@ -4,20 +4,19 @@ import AST.stm.abst.NodeInstance;
 import AST.stm.abst.NodeType;
 import AST.stm.abst.StatementNode;
 import AST.stm.nodetype.InitNode;
-import AST.stm.token.ClassInstanceCreationNode;
-import AST.stm.token.InfixExpressionStmNode;
-import AST.stm.token.MethodCalledNode;
+import AST.stm.token.*;
 import object.Algorithm;
+import util.FileHelper;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.File;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class ElementReplacement extends Context {
 //    public int NodeType = -1;// eg: MethodInvocation, Simple Name
 
     public ElementReplacement(StatementNode stmBug, StatementNode stmFix, Object stmFind,
-                              Boolean isSameMethod, Boolean isSameLine, Context.Scope scope) {
+                              Boolean isSameMethod, Boolean isSameLine, Context.Scope scope, String pathBugFile) {
 //        NodeType = stmBug.getNodeType();
         if (isSameMethod != null) {
             this.findSameMethod = isSameMethod;
@@ -73,6 +72,13 @@ public class ElementReplacement extends Context {
         }
         this.distance = Algorithm.caculatorDistence(bugString, fixString);
         this.bugNode_fixNode = this.bugNode + "_" + this.fixNode;
+        this.context = this.bugNode_fixNode;
+
+        if (stmFix instanceof MethodCalledNode || stmFix instanceof MethodInvocationStmNode
+                || stmFix instanceof ClassInstanceCreationNode) {
+            String file = FileHelper.readFile(new File(pathBugFile)).replace(" ", "");
+            this.find = file.contains(fixString.replace(" ", ""));
+        }
         if ((stmBug instanceof MethodCalledNode && stmFix instanceof MethodCalledNode)
                 || (stmBug instanceof ClassInstanceCreationNode && stmFix instanceof ClassInstanceCreationNode)) {
             String methodBug = stmBug.toString().replace(" ", "");
@@ -80,12 +86,12 @@ public class ElementReplacement extends Context {
 
             int firstIndex = methodBug.indexOf("(");
             String method1 = methodBug.substring(0, firstIndex);
-            String param1 = methodBug.substring(firstIndex + 1, methodBug.length() -1);
+            String param1 = methodBug.substring(firstIndex + 1, methodBug.length() - 1);
 
             int firstIndexFix = methodFix.indexOf("(");
             String method2 = methodFix.substring(0, firstIndexFix);
             String param2 = methodFix.substring(firstIndexFix + 1, methodFix.length() - 1);
-            this.bugNode_fixNode = this.bugNode;
+
             int paramSize1 = 0;
             int paramSize2 = 0;
             List<StatementNode> param1List = null;
@@ -102,34 +108,88 @@ public class ElementReplacement extends Context {
                 param2List = ((ClassInstanceCreationNode) stmFix).getArgs();
             }
             if (method1.equals(method2)) {
-                this.bugNode_fixNode += "&SameMethod";
+                this.context += "&SameMethod";
             } else {
-                this.bugNode_fixNode += "&ChangeMethod";
+                this.context += "&ChangeMethod";
             }
-            if (param1.equals(param2)){
-                this.bugNode_fixNode += "&SameParam";
+            if (param1.equals(param2)) {
+                this.context += "&SameParam";
             } else {
-                this.bugNode_fixNode += "&ChangeParam" + action(param1List, param2List) + Math.abs(paramSize1 - paramSize2);
+//                String type = action(param1List, param2List);
+                String type = getAction(param1List, param2List);
+                if (!type.equals("&CHANGE")) {
+                    this.context += "&ChangeParam" + type;
+                } else {
+                    this.context += "&ChangeParam" + type;
+                }
 
             }
+            this.similar_score =  getScore(param1List, param2List);
         }
+        this.context +=  (this.findSameMethod != null ? "&" + this.findSameMethod :"") + (this.find != null ? "&" + this.find :"");
+//        this.bugNode_fixNode = this.bugNode_fixNode_1;
     }
 
-    public String action (List<StatementNode> param1, List<StatementNode> param2) {
+//    public String action(List<StatementNode> param1, List<StatementNode> param2) {
+//        String action = "";
+//        if (param2.size() > param1.size()) {
+//            if (constain(param2, param1)) {
+//                action = "&ADD";
+//            } else {
+//                action = "&CHANGE";
+//            }
+//        } else if (param1.size() > param2.size()) {
+//            if (constain(param1, param2)) {
+//                action = "&REMOVE";
+//            } else {
+//                action = "&CHANGE";
+//            }
+//        } else {
+//            action = "&CHANGE";
+//        }
+//        return action;
+//    }
+
+    public String getAction(List<StatementNode> param1, List<StatementNode> param2) {
+        List<String> list1 = param1.stream().map(StatementNode::toString).collect(Collectors.toList());
+        List<String> list2 = param2.stream().map(StatementNode::toString).collect(Collectors.toList());
+
+        int min = Math.min(list2.size(), list1.size());
+        int max = Math.max(list2.size(), list1.size());
+        List<String> maxList = list1.size() > list2.size() ? list1 : list2;
+        List<String> minList = list1.size() > list2.size() ? list2 : list1;
+        int same = 0;
+        for (int i = 0; i < min; i++) {
+            for (int j = 0; j < max; j++) {
+                if (min > i) {
+                    if (minList.get(i).equals(maxList.get(j))) {
+                        same++;
+                        i++;
+                    }
+                } else {
+                    break;
+                }
+            }
+        }
         String action = "";
+//
+//        if (same != min) {
+//            action =  "&CHANGE" + (max - same);
+//        }
         if (param2.size() > param1.size()) {
-            if (constain(param2, param1)) {
-                action = "&ADD";
+            if (min == same) {
+                action = "&ADD" + (max - same);
             } else {
                 action = "&CHANGE";
             }
         } else if (param1.size() > param2.size()) {
-            if (constain(param1, param2)) {
-                action = "&REMOVE";
+            if (min == same) {
+                action = "&REMOVE" + (max - same);
             } else {
                 action = "&CHANGE";
             }
-        } else {
+        }
+        if (same == 0) {
             action = "&CHANGE";
         }
         return action;
@@ -139,12 +199,36 @@ public class ElementReplacement extends Context {
         List<String> list1 = new ArrayList<>();
         for (int i = 0; i < param1.size() - 1; i++) {
             String near = param1.get(i).toString() + param1.get(i+1).toString();
-
+            list1.add(near);
         }
-
+        List<String> list2 = new ArrayList<>();
+        for (int i = 0; i < param2.size() - 1; i++) {
+            String near = param2.get(i).toString() + param2.get(i+1).toString();
+            list2.add(near);
+        }
+        Collections.sort(list1);
+        Collections.sort(list2);
+        int  min = Math.min(list2.size(), list1.size());
+        int  max = Math.max(list2.size(), list1.size());
+        List<String> maxList = list1.size() > list2.size() ? list1 : list2;
+        List<String> minList = list1.size() > list2.size() ? list2 : list1;
+        int same = 0;
+        for (int i = 0; i < min; i++) {
+            for (int j = 0; j < max; j++) {
+                if (min > i) {
+                    if (minList.get(i).equals(maxList.get(j))) {
+                        same++;
+                        i++;
+                    }
+                } else {
+                    break;
+                }
+            }
+        }
+        return (float) (max - same) + (min - same);
     }
 
-    public boolean constain (List<StatementNode> param, List<StatementNode> paramSmaller) {
+    public boolean constain(List<StatementNode> param, List<StatementNode> paramSmaller) {
         List<String> parSmaller = paramSmaller.stream().map(StatementNode::toString)
                 .collect(Collectors.toList());
         List<String> pr = param.stream().map(StatementNode::toString)
@@ -161,9 +245,5 @@ public class ElementReplacement extends Context {
         return false;
     }
 
-    public void setMethod(String methodbug, String methodfind) {
-        this.methodBug = methodbug;
-        this.methodFind = methodfind;
-    }
 
 }

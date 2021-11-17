@@ -45,7 +45,7 @@ public class JavaFileParser {
                     classNode.file = file;
                     classNode.setInforFromASTNode(node, cu);
                     classes.add(classNode);
-                    return false;
+//                    return false;
                 }
                 return true;
             }
@@ -54,7 +54,7 @@ public class JavaFileParser {
                 EnumNode enumNode = Convert.convertToEnumNode(null, node, cu);
                 if (enumNode != null) {
                     classes.add(enumNode);
-                    return false;
+//                    return false;
                 }
                 return true;
             }
